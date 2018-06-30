@@ -1,0 +1,294 @@
+%%% -*-BibTeX-*-
+%%% Do NOT edit. File created by BibTeX with style
+%%% ACM-Reference-Format-Journals [18-Jan-2012].
+
+\begin{thebibliography}{20}
+
+%%% ====================================================================
+%%% NOTE TO THE USER: you can override these defaults by providing
+%%% customized versions of any of these macros before the \bibliography
+%%% command.  Each of them MUST provide its own final punctuation,
+%%% except for \shownote{}, \showDOI{}, and \showURL{}.  The latter two
+%%% do not use final punctuation, in order to avoid confusing it with
+%%% the Web address.
+%%%
+%%% To suppress output of a particular field, define its macro to expand
+%%% to an empty string, or better, \unskip, like this:
+%%%
+%%% \newcommand{\showDOI}[1]{\unskip}   % LaTeX syntax
+%%%
+%%% \def \showDOI #1{\unskip}           % plain TeX syntax
+%%%
+%%% ====================================================================
+
+\ifx \showCODEN    \undefined \def \showCODEN     #1{\unskip}     \fi
+\ifx \showDOI      \undefined \def \showDOI       #1{#1}\fi
+\ifx \showISBNx    \undefined \def \showISBNx     #1{\unskip}     \fi
+\ifx \showISBNxiii \undefined \def \showISBNxiii  #1{\unskip}     \fi
+\ifx \showISSN     \undefined \def \showISSN      #1{\unskip}     \fi
+\ifx \showLCCN     \undefined \def \showLCCN      #1{\unskip}     \fi
+\ifx \shownote     \undefined \def \shownote      #1{#1}          \fi
+\ifx \showarticletitle \undefined \def \showarticletitle #1{#1}   \fi
+\ifx \showURL      \undefined \def \showURL       {\relax}        \fi
+% The following commands are used for tagged output and should be
+% invisible to TeX
+\providecommand\bibfield[2]{#2}
+\providecommand\bibinfo[2]{#2}
+\providecommand\natexlab[1]{#1}
+\providecommand\showeprint[2][]{arXiv:#2}
+
+\bibitem[\protect\citeauthoryear{Bach and Schroeder}{Bach and
+  Schroeder}{2004}]%
+        {bach2004pairwise}
+\bibfield{author}{\bibinfo{person}{James Bach} {and} \bibinfo{person}{Patrick
+  Schroeder}.} \bibinfo{year}{2004}\natexlab{}.
+\newblock \showarticletitle{Pairwise testing: A best practice that isn’t}. In
+  \bibinfo{booktitle}{\emph{Proceedings of 22nd Pacific Northwest Software
+  Quality Conference}}. Citeseer, \bibinfo{pages}{180--196}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Colbourn and McClary}{Colbourn and
+  McClary}{2008}]%
+        {colbourn2008locating}
+\bibfield{author}{\bibinfo{person}{Charles~J Colbourn} {and}
+  \bibinfo{person}{Daniel~W McClary}.} \bibinfo{year}{2008}\natexlab{}.
+\newblock \showarticletitle{Locating and detecting arrays for interaction
+  faults}.
+\newblock \bibinfo{journal}{\emph{Journal of combinatorial optimization}}
+  \bibinfo{volume}{15}, \bibinfo{number}{1} (\bibinfo{year}{2008}),
+  \bibinfo{pages}{17--48}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Fouch{\'e}, Cohen, and Porter}{Fouch{\'e}
+  et~al\mbox{.}}{2009}]%
+        {fouche2009incremental}
+\bibfield{author}{\bibinfo{person}{Sandro Fouch{\'e}}, \bibinfo{person}{Myra~B
+  Cohen}, {and} \bibinfo{person}{Adam Porter}.}
+  \bibinfo{year}{2009}\natexlab{}.
+\newblock \showarticletitle{Incremental covering array failure characterization
+  in large configuration spaces}. In \bibinfo{booktitle}{\emph{Proceedings of
+  the eighteenth international symposium on Software testing and analysis}}.
+  ACM, \bibinfo{pages}{177--188}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Ghandehari, Lei, Xie, Kuhn, and
+  Kacker}{Ghandehari et~al\mbox{.}}{2012}]%
+        {ghandehari2012identifying}
+\bibfield{author}{\bibinfo{person}{Laleh Shikh~Gholamhossein Ghandehari},
+  \bibinfo{person}{Yu Lei}, \bibinfo{person}{Tao Xie}, \bibinfo{person}{Richard
+  Kuhn}, {and} \bibinfo{person}{Raghu Kacker}.}
+  \bibinfo{year}{2012}\natexlab{}.
+\newblock \showarticletitle{Identifying failure-inducing combinations in a
+  combinatorial test set}. In \bibinfo{booktitle}{\emph{Software Testing,
+  Verification and Validation (ICST), 2012 IEEE Fifth International Conference
+  on}}. IEEE, \bibinfo{pages}{370--379}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Kuhn and Reilly}{Kuhn and Reilly}{2002}]%
+        {kuhn2002investigation}
+\bibfield{author}{\bibinfo{person}{D~Richard Kuhn} {and}
+  \bibinfo{person}{Michael~J Reilly}.} \bibinfo{year}{2002}\natexlab{}.
+\newblock \showarticletitle{An investigation of the applicability of design of
+  experiments to software testing}. In \bibinfo{booktitle}{\emph{Software
+  Engineering Workshop, 2002. Proceedings. 27th Annual NASA Goddard/IEEE}}.
+  IEEE, \bibinfo{pages}{91--95}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Kuhn, Wallace, and AM~Gallo}{Kuhn
+  et~al\mbox{.}}{2004}]%
+        {kuhn2004software}
+\bibfield{author}{\bibinfo{person}{D~Richard Kuhn}, \bibinfo{person}{Dolores~R
+  Wallace}, {and} \bibinfo{person}{Jr AM~Gallo}.}
+  \bibinfo{year}{2004}\natexlab{}.
+\newblock \showarticletitle{Software fault interactions and implications for
+  software testing}.
+\newblock \bibinfo{journal}{\emph{Software Engineering, IEEE Transactions on}}
+  \bibinfo{volume}{30}, \bibinfo{number}{6} (\bibinfo{year}{2004}),
+  \bibinfo{pages}{418--421}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Li, Nie, and Lei}{Li et~al\mbox{.}}{2012}]%
+        {li2012improved}
+\bibfield{author}{\bibinfo{person}{Jie Li}, \bibinfo{person}{Changhai Nie},
+  {and} \bibinfo{person}{Yu Lei}.} \bibinfo{year}{2012}\natexlab{}.
+\newblock \showarticletitle{Improved Delta Debugging Based on Combinatorial
+  Testing}. In \bibinfo{booktitle}{\emph{Quality Software (QSIC), 2012 12th
+  International Conference on}}. IEEE, \bibinfo{pages}{102--105}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Mart{\'\i}nez, Moura, Panario, and
+  Stevens}{Mart{\'\i}nez et~al\mbox{.}}{2008}]%
+        {martinez2008algorithms}
+\bibfield{author}{\bibinfo{person}{Conrado Mart{\'\i}nez},
+  \bibinfo{person}{Lucia Moura}, \bibinfo{person}{Daniel Panario}, {and}
+  \bibinfo{person}{Brett Stevens}.} \bibinfo{year}{2008}\natexlab{}.
+\newblock \showarticletitle{Algorithms to locate errors using covering arrays}.
+\newblock In \bibinfo{booktitle}{\emph{LATIN 2008: Theoretical Informatics}}.
+  \bibinfo{publisher}{Springer}, \bibinfo{pages}{504--519}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Mart{\'\i}nez, Moura, Panario, and
+  Stevens}{Mart{\'\i}nez et~al\mbox{.}}{2009}]%
+        {martinez2009locating}
+\bibfield{author}{\bibinfo{person}{Conrado Mart{\'\i}nez},
+  \bibinfo{person}{Lucia Moura}, \bibinfo{person}{Daniel Panario}, {and}
+  \bibinfo{person}{Brett Stevens}.} \bibinfo{year}{2009}\natexlab{}.
+\newblock \showarticletitle{Locating errors using ELAs, covering arrays, and
+  adaptive testing algorithms}.
+\newblock \bibinfo{journal}{\emph{SIAM Journal on Discrete Mathematics}}
+  \bibinfo{volume}{23}, \bibinfo{number}{4} (\bibinfo{year}{2009}),
+  \bibinfo{pages}{1776--1799}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Masri and Assi}{Masri and Assi}{2014}]%
+        {Masri:2014:PCC:2582050.2559932}
+\bibfield{author}{\bibinfo{person}{Wes Masri} {and} \bibinfo{person}{Rawad~Abou
+  Assi}.} \bibinfo{year}{2014}\natexlab{}.
+\newblock \showarticletitle{Prevalence of Coincidental Correctness and
+  Mitigation of Its Impact on Fault Localization}.
+\newblock \bibinfo{journal}{\emph{ACM Trans. Softw. Eng. Methodol.}}
+  \bibinfo{volume}{23}, \bibinfo{number}{1}, Article \bibinfo{articleno}{8}
+  (\bibinfo{date}{Feb.} \bibinfo{year}{2014}), \bibinfo{numpages}{28}~pages.
+\newblock
+\showISSN{1049-331X}
+
+
+\bibitem[\protect\citeauthoryear{Nie and Leung}{Nie and Leung}{2011}]%
+        {nie2011minimal}
+\bibfield{author}{\bibinfo{person}{Changhai Nie} {and} \bibinfo{person}{Hareton
+  Leung}.} \bibinfo{year}{2011}\natexlab{}.
+\newblock \showarticletitle{The minimal failure-causing schema of combinatorial
+  testing}.
+\newblock \bibinfo{journal}{\emph{ACM Transactions on Software Engineering and
+  Methodology (TOSEM)}} \bibinfo{volume}{20}, \bibinfo{number}{4}
+  (\bibinfo{year}{2011}), \bibinfo{pages}{15}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Niu, Nie, Lei, and Chan}{Niu
+  et~al\mbox{.}}{2013}]%
+        {niu2013identifying}
+\bibfield{author}{\bibinfo{person}{Xintao Niu}, \bibinfo{person}{Changhai Nie},
+  \bibinfo{person}{Yu Lei}, {and} \bibinfo{person}{Alvin~TS Chan}.}
+  \bibinfo{year}{2013}\natexlab{}.
+\newblock \showarticletitle{Identifying Failure-Inducing Combinations Using
+  Tuple Relationship}. In \bibinfo{booktitle}{\emph{Software Testing,
+  Verification and Validation Workshops (ICSTW), 2013 IEEE Sixth International
+  Conference on}}. IEEE, \bibinfo{pages}{271--280}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Shakya, Xie, Li, Lei, Kacker, and Kuhn}{Shakya
+  et~al\mbox{.}}{2012}]%
+        {shakya2012isolating}
+\bibfield{author}{\bibinfo{person}{Kiran Shakya}, \bibinfo{person}{Tao Xie},
+  \bibinfo{person}{Nuo Li}, \bibinfo{person}{Yu Lei}, \bibinfo{person}{Raghu
+  Kacker}, {and} \bibinfo{person}{Richard Kuhn}.}
+  \bibinfo{year}{2012}\natexlab{}.
+\newblock \showarticletitle{Isolating Failure-Inducing Combinations in
+  Combinatorial Testing using Test Augmentation and Classification}. In
+  \bibinfo{booktitle}{\emph{Software Testing, Verification and Validation
+  (ICST), 2012 IEEE Fifth International Conference on}}. IEEE,
+  \bibinfo{pages}{620--623}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Shi, Nie, and Xu}{Shi et~al\mbox{.}}{2005}]%
+        {shi2005software}
+\bibfield{author}{\bibinfo{person}{Liang Shi}, \bibinfo{person}{Changhai Nie},
+  {and} \bibinfo{person}{Baowen Xu}.} \bibinfo{year}{2005}\natexlab{}.
+\newblock \showarticletitle{A software debugging method based on pairwise
+  testing}.
+\newblock In \bibinfo{booktitle}{\emph{Computational Science--ICCS 2005}}.
+  \bibinfo{publisher}{Springer}, \bibinfo{pages}{1088--1091}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Song, Porter, and Foster}{Song
+  et~al\mbox{.}}{2012}]%
+        {song2012itree}
+\bibfield{author}{\bibinfo{person}{Charles Song}, \bibinfo{person}{Adam
+  Porter}, {and} \bibinfo{person}{Jeffrey~S Foster}.}
+  \bibinfo{year}{2012}\natexlab{}.
+\newblock \showarticletitle{iTree: Efficiently discovering high-coverage
+  configurations using interaction trees}. In
+  \bibinfo{booktitle}{\emph{Proceedings of the 2012 International Conference on
+  Software Engineering}}. IEEE Press, \bibinfo{pages}{903--913}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Wang, Xu, Chen, and Xu}{Wang
+  et~al\mbox{.}}{2010}]%
+        {wang2010adaptive}
+\bibfield{author}{\bibinfo{person}{Ziyuan Wang}, \bibinfo{person}{Baowen Xu},
+  \bibinfo{person}{Lin Chen}, {and} \bibinfo{person}{Lei Xu}.}
+  \bibinfo{year}{2010}\natexlab{}.
+\newblock \showarticletitle{Adaptive interaction fault location based on
+  combinatorial testing}. In \bibinfo{booktitle}{\emph{Quality Software (QSIC),
+  2010 10th International Conference on}}. IEEE, \bibinfo{pages}{495--502}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Yilmaz, Cohen, and Porter}{Yilmaz
+  et~al\mbox{.}}{2006}]%
+        {yilmaz2006covering}
+\bibfield{author}{\bibinfo{person}{Cemal Yilmaz}, \bibinfo{person}{Myra~B
+  Cohen}, {and} \bibinfo{person}{Adam~A Porter}.}
+  \bibinfo{year}{2006}\natexlab{}.
+\newblock \showarticletitle{Covering arrays for efficient fault
+  characterization in complex configuration spaces}.
+\newblock \bibinfo{journal}{\emph{Software Engineering, IEEE Transactions on}}
+  \bibinfo{volume}{32}, \bibinfo{number}{1} (\bibinfo{year}{2006}),
+  \bibinfo{pages}{20--34}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Yilmaz, Dumlu, Cohen, and Porter}{Yilmaz
+  et~al\mbox{.}}{2014}]%
+        {yilmaz2013reducing}
+\bibfield{author}{\bibinfo{person}{C. Yilmaz}, \bibinfo{person}{E. Dumlu},
+  \bibinfo{person}{M.B. Cohen}, {and} \bibinfo{person}{A. Porter}.}
+  \bibinfo{year}{2014}\natexlab{}.
+\newblock \showarticletitle{Reducing Masking Effects in
+  CombinatorialInteraction Testing: A Feedback DrivenAdaptive Approach}.
+\newblock \bibinfo{journal}{\emph{Software Engineering, IEEE Transactions on}}
+  \bibinfo{volume}{40}, \bibinfo{number}{1} (\bibinfo{date}{Jan}
+  \bibinfo{year}{2014}), \bibinfo{pages}{43--66}.
+\newblock
+\showISSN{0098-5589}
+
+
+\bibitem[\protect\citeauthoryear{Zhang, Ma, and Zhang}{Zhang
+  et~al\mbox{.}}{2012}]%
+        {zhang2012faulty}
+\bibfield{author}{\bibinfo{person}{Jian Zhang}, \bibinfo{person}{Feifei Ma},
+  {and} \bibinfo{person}{Zhiqiang Zhang}.} \bibinfo{year}{2012}\natexlab{}.
+\newblock \showarticletitle{Faulty interaction identification via constraint
+  solving and optimization}.
+\newblock In \bibinfo{booktitle}{\emph{Theory and Applications of
+  Satisfiability Testing--SAT 2012}}. \bibinfo{publisher}{Springer},
+  \bibinfo{pages}{186--199}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Zhang and Zhang}{Zhang and Zhang}{2011}]%
+        {zhang2011characterizing}
+\bibfield{author}{\bibinfo{person}{Zhiqiang Zhang} {and} \bibinfo{person}{Jian
+  Zhang}.} \bibinfo{year}{2011}\natexlab{}.
+\newblock \showarticletitle{Characterizing failure-causing parameter
+  interactions by adaptive testing}. In \bibinfo{booktitle}{\emph{Proceedings
+  of the 2011 International Symposium on Software Testing and Analysis}}. ACM,
+  \bibinfo{pages}{331--341}.
+\newblock
+
+
+\end{thebibliography}
