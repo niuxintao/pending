@@ -1,5 +1,4 @@
-\section{Introduction}
-
+\section{Introduction}\label{sec:intro}
 
 The behavior of modern software is affected by many factors, such as input parameters, configuration options, and specific events. To test such software system is challenging, as in theory we should test all the possible interaction of these factors to ensure the correctness of the System Under Test (SUT)\cite{song2012itree}. When the number of factors is large, the interactions to be checked increase exponentially. Hence to apply exhaustive testing is not feasible, and even if it is possible, it is resource-inefficient to check all the interactions. Combinatorial testing (CT) is a promising solution to handle the combinatorial explosion problem \cite{kuhn2002investigation,kuhn2004software}. Instead of testing all the possible interactions in a system, it focuses on checking those interactions with number of involved factors no more than a prior number. Many studies in CT focus on designing a elaborate test suite (called covering array) to reveal such failures. Although covering array is effective and efficient as a test suite, it provides weak support to distinguish the failure-inducing interactions from all the remaining interactions.
 
@@ -51,6 +50,29 @@ The remainder of this paper is organized as follows: Section \ref{sec:back} intr
 %Section \ref{sec:motiv} presents some limitations of exiting failure-inducing interactions identification approaches which motivate this paper.
  Section \ref{sec:app} describes our approaches for identifying failure-inducing schemas. Section \ref{sec:simulateEx} gives the comparisons in theoretical metrics. Section \ref{sec:realEx} describes the experiment based on real-life subjects. Section \ref{sec:related} summarizes the related works. Section \ref{sec:conclusion} concludes this paper and discusses the future works.
 
+
+\section{Motivating examples}\label{motiv}
+
+In this section, we first shows that with a normal $\tau$-way covering array, it is not completeness in terms of making  all the schemas clear for each failing test case. 
+
+Then we give examples shows that even with fault localization, this is also not completeness (with three most important fault localization techniques.)  
+
+give examples show based on two wide-used fault localization approaches in CT.
+
+\subsection{The incompleteness of covering array}
+
+\subsection{The incompleteness of error locating array}
+Since that , many approaches give a alleviation of how to compute the remaining schemas, which is called the fault localization. Error locating array is one of them. However, this time, we also give .
+
+\subsection{The incompleteness of OFOT and SOFOT}
+Why minimal failure-causing schema is not effective?
+This example shows that . Because there still existing pending schemas.
+
+\subsection{The incompleteness of FIC and FIC\_BS}
+
+
+Since we cannot obtain a completeness of . It is important to evaluate how incompleteness of covering array, fault localizaiton.
+
 \section{Preliminary}\label{sec:back}
 This section presents some definitions and propositions to give a formal model for CT.
 
@@ -59,9 +81,9 @@ This section presents some definitions and propositions to give a formal model f
 Assume that the Software Under Test (SUT) is influenced by a set of parameters $P$, which contains \emph{n} parameters, and each parameter $p_{i} \in P$ can take the values from the finite set $V_{i}$ ($i$ = 1,2,..n).
 
 \newtheorem{assumption}{Assumption}
-\newtheorem{proposition}{Proposition}
+%\newtheorem{proposition}{Proposition}
 
-\newdef{definition}{Definition}
+%\newdef{definition}{Definition}
 \begin{definition}\label{de:testcase}
 A \emph{test case} of the SUT is a tuple of \emph{n} values, one for each parameter of the SUT. It is denoted as  ($v_{1}$, $v_{2}$,...,$v_{n}$), where $v_{1}\in V_{1}$, $v_{2} \in V_{2}$ ... $v_{n} \in V_{n}$.
 \end{definition}
@@ -141,18 +163,36 @@ We will later discuss the impacts on MFS identification from these two assumptio
 \begin{proposition}\label{pro:subsumetrans}
 Given schemas $s_{1}$, $s_{2}$, and $s_{3}$, if $s_{1} \prec s_{2}$, $s_{2} \prec s_{3}$, then $s_{1} \prec s_{3}$.
 \end{proposition}
+
+
+
+
 \begin{proposition}\label{pro:superoffaulty}
 Given a faulty schema $s_{1}$, then $\forall s_{2}, s_{1} \prec s_{2}$, $s_{2}$ is a faulty schema.
 \end{proposition}
+
+
 \begin{proposition}\label{pro:subofhealthy}
 Given a healthy schema $s_{1}$, then $\forall s_{2}, s_{2} \prec s_{1}$, $s_{2}$ is a healthy schema.
 \end{proposition}
+
+
 \begin{proposition}\label{pro:pending}
 Given two pending schemas $s_{1}$, $s_{2}$, and $s_{1} \prec s_{2}$. Then $\forall s_{3}, s_{1} \prec s_{3} \prec s_{2}$, $s_{3}$ is a pending schema.
 \end{proposition}
 
-\section{The approach}\label{sec:app}
+
+You should give normal sentences description and examples of them (if possible, give some simple proofs)
+
+\section{Pending schema}\label{sec:app}
 In this section, we will describe our approach to identify the failure-inducing schemas in the SUT. To give a better description, we will give several propositions which provide theoretical supports for our approach. The proofs of these propositions are given in the Appendix.
+
+\subsection{What is pending schema}
+Through the motivating examples, we can learn that the pending schema is not checked to be healthy and faulty. That is, 
+
+However, to emulate all the faulty schemas and all the healthy schemas is very large. By the propostios 3 and 4,
+
+More formally, we can learn that it should not be any super-schemas of existing faulty schemas, and any sub-shemas of existing healthy schemas.
 
 
 \subsection{Obtaining pending schema}
@@ -237,7 +277,7 @@ As an example, considering a failing test case $t$ -- \{($p_{1}$, 1),($p_{2}$, 1
   \centering
   \setlength{\tabcolsep}{2pt}
   \caption{An example of Proposition \ref{pro:subofCMXSfor2}}
-    \begin{tabular}{|c|c|c|C{5cm}|}
+    \begin{tabular}{|c|c|c|c|}
     \hline
   \textbf{  Test case $\textbf{t}$} & \textbf{ \{$\textbf{c}\ |\ \textbf{c} \prec \textbf{t}\ \&\&\ \forall \textbf{c}_{\textbf{i}} \in FSS, \textbf{c}_{\textbf{i}} \npreceq \textbf{c}$\} }& \textbf{  CMXS(FSS, t)} & \textbf{\{$ \textbf{c}\ |\ \exists \textbf{c}_{\textbf{1}}' \in \textbf{ CMXS(FSS, t)} $ , $\textbf{c} \preceq \textbf{c}_{\textbf{1}}'$ \}}\\\hline
     \{($p_{1}$, 1),($p_{2}$, 1),($p_{3}$, 1),($p_{4}$, 1)\}  & \{($p_{1}$, 1),($p_{4}$, 1)\} & \{($p_{1}$, 1),($p_{4}$, 1)\} & \{($p_{1}$, 1),($p_{4}$, 1)\}\\ \cline{1-1}
@@ -316,7 +356,7 @@ As an example, considering a failing test case $t$ -- \{($p_{1}$, 1),($p_{2}$, 1
   \centering
   \setlength{\tabcolsep}{2pt}
   \caption{An example of Proposition \ref{pro:superofCMNS2}}
-    \begin{tabular}{|c|c|c|C{5cm}|}
+    \begin{tabular}{|c|c|c|c|}
     \hline
   \textbf{  Test case $\textbf{t}$} & \textbf{ \{$\textbf{c}\ |\ \textbf{c} \prec \textbf{t}\ \&\&\ \forall \textbf{c}_{\textbf{i}} \in \textbf{HSS}, \textbf{c} \npreceq \textbf{c}_{\textbf{i}} $\} }& \textbf{  CMNS(HSS, t)} & \textbf{\{$ \textbf{c}\ |\ \textbf{c} \prec \textbf{t} \ \&\& \ \exists \textbf{c}_{\textbf{1}}' \in \textbf{CMNS(HSS, t)}$, $\textbf{c}_{\textbf{1}}' \preceq \textbf{c}$\}}\\\hline
     \{($p_{1}$, 1),($p_{2}$, 1),($p_{3}$, 1),($p_{4}$, 1)\}  & \{($p_{1}$, 1),($p_{4}$, 1)\} & \{($p_{1}$, 1),($p_{4}$, 1)\} & \{($p_{1}$, 1),($p_{4}$, 1)\}\\ \cline{1-1}
@@ -391,86 +431,135 @@ According to Formula \ref{eq:pssthird}, the complexity of obtaining one pending 
 
 % Start of "Sample References" section
 
-\section{Typical References in New ACM Reference Format}
-A paginated journal article \cite{Abril07}, an enumerated
-journal article \cite{Cohen07}, a reference to an entire issue \cite{JCohen96},
-a monograph (whole book) \cite{Kosiur01}, a monograph/whole book in a series (see 2a in spec. document)
-\cite{Harel79}, a divisible-book such as an anthology or compilation \cite{Editor00}
-followed by the same example, however we only output the series if the volume number is given
-\cite{Editor00a} (so Editor00a's series should NOT be present since it has no vol. no.),
-a chapter in a divisible book \cite{Spector90}, a chapter in a divisible book
-in a series \cite{Douglass98}, a multi-volume work as book \cite{Knuth97},
-an article in a proceedings (of a conference, symposium, workshop for example)
-(paginated proceedings article) \cite{Andler79}, a proceedings article
-with all possible elements \cite{Smith10}, an example of an enumerated
-proceedings article \cite{VanGundy07},
-an informally published work \cite{Harel78}, a doctoral dissertation \cite{Clarkson85},
-a master's thesis: \cite{anisi03}, an online document / world wide web
-resource \cite{Thornburg01, Ablamowicz07, Poker06}, a video game (Case 1) \cite{Obama08} and (Case 2) \cite{Novak03}
-and \cite{Lee05} and (Case 3) a patent \cite{JoeScientist001},
-work accepted for publication \cite{rous08}, 'YYYYb'-test for prolific author
-\cite{SaeediMEJ10} and \cite{SaeediJETC10}. Other cites might contain
-'duplicate' DOI and URLs (some SIAM articles) \cite{Kirschmer:2010:AEI:1958016.1958018}.
-Boris / Barbara Beeton: multi-volume works as books
-\cite{MR781536} and \cite{MR781537}.
+\section{Empirical studies}\label{emp}
 
-A couple of citations with DOIs: \cite{2004:ITE:1009386.1010128,
-  Kirschmer:2010:AEI:1958016.1958018}.
+\subsection{The pending schemas for covering arrays}
 
-Online citations: \cite{TUGInstmem, Thornburg01, CTANacmart}.
+\subsection{The existence of pending schemas for different MFS identification approaches}
+
+
+\subsection{The characteristics of pending schemas with various types of MFS (multiple, overlapped, single, low-high degrees)}
+
+
+\subsection{The effectiveness of the approach}
 
 % Appendix
 \appendix
-\section{Switching Times}
+\section{Proof}
 
-In this appendix, we measure the channel switching time of Micaz
-\cite{CROSSBOW} sensor devices.  In our experiments, one mote
-alternatingly switches between Channels~11 and~12. Every time after
-the node switches to a channel, it sends out a packet immediately and
-then changes to a new channel as soon as the transmission is finished.
-We measure the number of packets the test mote can send in 10 seconds,
-denoted as $N_{1}$. In contrast, we also measure the same value of the
-test mote without switching channels, denoted as $N_{2}$. We calculate
-the channel-switching time $s$ as
-\begin{displaymath}%
-s=\frac{10}{N_{1}}-\frac{10}{N_{2}}.
-\end{displaymath}%
-By repeating the experiments 100 times, we get the average
-channel-switching time of Micaz motes: 24.3\,$\mu$s.
+We will give the proofs of several important propositions.
 
-\section{Supplementary Materials}
+Proposition \ref{pro:subofCMXS}.
+\begin{proof}
+
+Let A =  \{$c\ |\ c \prec t\ \&\&\ c_{1} \npreceq c$\}, and B = \{$ c\ |\ \exists c_{1}' \in CMXS(c_{1}, t)$, $c \preceq c_{1}'$\}.
 
 
-\begin{printonly}
-  See the supplementary materials in the online version
-\end{printonly}
 
-\begin{screenonly}
-\subsection{This is an Example of Appendix Subsection Head}
+Let $c_{1}$ = \{$(p_{x_{1}}, v_{x_{1}})$, $(p_{x_{2}}, v_{x_{2}})$, ..., $(p_{x_{k}}, v_{x_{k}})$\},  t = \{$(p_{1}, v_{1})$, $(p_{2}, v_{2})$, ..., $(p_{n}, v_{n})$\}, and CMXS($c_{1}$,$t$)= \{$t \backslash (p_{x_{i}}, v_{x_{i}})$ | $(p_{x_{i}},$ $v_{x_{i}})$ $ \in c_{1} $\}.
 
-Channel-switching time is measured as the time length it takes for
-motes to successfully switch from one channel to another. This
-parameter impacts the maximum network throughput, because motes
-cannot receive or send any packet during this period of time, and it
-also affects the efficiency of toggle snooping in MMSN, where motes
-need to sense through channels rapidly.
+First we will show A $\subseteq$ B.
 
-By repeating experiments 100 times, we get the average
-channel-switching time of Micaz motes: 24.3 $\mu$s. We then conduct
-the same experiments with different Micaz motes, as well as
-experiments with the transmitter switching from Channel 11 to other
-channels. In both scenarios, the channel-switching time does not have
-obvious changes. (In our experiments, all values are in the range of
-23.6 $\mu$s to 24.9 $\mu$s.)
+With respect to set A, $\forall c' \in A$, it has $c' \prec t$ and $ c_{1} \npreceq c'$. That is, $\forall e \in c', e \in t$, and  $\exists e' \in c_{1}, e' \not\in c'$. As $c_{1} \preceq t$, $e' \in t$. Hence, we have $\forall e \in c', e \in t \backslash e'$, i.e., $c' \preceq t \backslash e'$.
 
-\subsection{Appendix Subsection Head}
+Since $t \backslash e' \in CMXS(c_{1}, t)$,  $c' \in $ \{$ c\ |\ \exists c_{1}' \in CMXS(c_{1}, t)$, $c \preceq c_{1}'$\} = B. Hence, A $\subseteq$ B.
 
-The primary consumer of energy in WSNs is idle listening. The key to
-reduce idle listening is executing low duty-cycle on nodes. Two
-primary approaches are considered in controlling duty-cycles in the
-MAC layer.
+Second we will show B $\subseteq$ A.
 
-\end{screenonly}
+With respect to set B, $\forall c' \in B$, it has $\exists c_{1}' \in CMXS(c_{1}, t), c'$ $ \preceq c_{1}'$. Since $c_{1}' \in CMXS(c_{1}, t)$, $\exists e' \in c_{1}, c_{1}' =  t \backslash e'$. Consequently, $c' \preceq t \backslash e'$. Hence, $c_{1} \npreceq c'$. Also, $c' \preceq t \backslash e' \prec t$. Consequently, $c \in $  \{$c\ |\ c \prec t\ \&\&\ c_{1} \npreceq c$\} = A, which indicates that B $\subseteq$ A.
+
+As we have shown B $\subseteq$ A, and A $\subseteq$ B, so A = B.
+
+\end{proof}
+
+Proposition \ref{pro:subofCMXSfor2}.
+\begin{proof}
+
+We just need to prove that for two faulty schemas $c_{1}$, $c_{2}$, and a failing test case $t$ ($c_{1} \preceq t$, $c_{2} \preceq t$), we have \{$c\ |\ c \prec t\ \&\&\ \forall c_{i} \in \{c_{1}, c_{2}\}, c_{i} \npreceq c $\} $=$  \{$ c\ |\ \exists c_{1}' \in CMXS(c_{1}, t)$ $\bigwedge CMXS(c_{2}, t)$, $c \preceq c_{1}'$\}.
+
+Let $A = $ \{$c\ |\ c \prec t\ \&\&\ \forall c_{i} \in \{c_{1}, c_{2}\}, c_{i} \npreceq c $\}, $A_{1}$ = \{$c\ |\ c \prec t\ \&\&\  c_{1} \npreceq c $\}, $A_{2}$ = \{$c\ |\ c \prec t\ \&\&\  c_{2} \npreceq c $\}. It is easily to get $A = A_{1} \bigcap A_{2}$.
+
+Let $B = $ \{$ c\ |\ \exists c_{1}' \in CMXS(c_{1}, t)$ $\bigwedge CMXS(c_{2}, t)$, $c \preceq c_{1}'$\}. Here,  $ CMXS(c_{1}, t) \bigwedge CMXS(c_{2}, t) = \{ c\ |\ c = c_{1}' \cap c_{2}',\ where\ c_{1}' \in CMXS(c_{1}, t),\ and\ c_{2}' \in CMXS(c_{2}, t) \}$.
+
+Let $B_{1} = $ \{$ c\ |\ \exists c_{1}' \in CMXS(c_{1}, t)$, $c \preceq c_{1}'$\}, and $B_{2} = $ \{$ c\ |\ \exists c_{2}' \in CMXS(c_{2}, t)$, $c \preceq c_{2}'$\}. $B_{1} \bigcap B_{2} = $ \{$ c\ |\ \exists c_{1}' \in CMXS(c_{1}, t)$, $c \preceq c_{1}'$ \&\& $\exists c_{2}' \in CMXS(c_{2}, t)$, $c \preceq c_{2}'$\}. Note that, $c \preceq c_{1}'$ \&\& $c \preceq c_{2}'$ $\equiv$ $c \preceq c_{1}' \cap c_{2}'$. Hence, $B_{1} \bigcap B_{2} = $ \{$ c\ |\ \exists c_{1}', c_{2}',\  c_{1}' \in CMXS(c_{1}, t)$, and $c_{2}' \in CMXS(c_{2}, t)$, $c \preceq c_{1}' \cap c_{2}'$ \} = B.
+
+Based on Proposition \ref{pro:subofCMXS}, $A_{1} = B_{1}$, $A_{2} = B_{2}$. Consequently,
+$A = A_{1} \bigcap A_{2}$ = $B_{1} \bigcap B_{2}$  = B.
+
+\end{proof}
+
+Proposition \ref{pro:superofCMNS}.
+
+%Given a healthy schema $c_{1}$, a failing test case $t$, we have \{$c\ |\ c \preceq t\ \&\&\ c \npreceq c_{1}$\} $=$  \{$ c\ |\ \exists c_{1}' \in CMNS(c_{1}, t)$, $c_{1}' \preceq c$\}.
+
+\begin{proof}
+Let A = \{$c\ |\ c \prec t\ \&\&\ c \npreceq c_{1}$\}. B = \{$ c\ |\ c \prec t \ \&\&\  \exists c_{1}' \in CMNS(c_{1}, t)$, $c_{1}' \preceq c$\}. $CMNS(c_{1},t)$=\{$(p_{x_{i}}, v_{x_{i}})$ | $(p_{x_{i}}, v_{x_{i}}) \in t \backslash c_{1} $\}.
+
+First we will show A $\subseteq$ B.
+
+With respect to set A, $\forall c' \in A$, it has $c' \prec t$ and $c' \npreceq c_{1}$. That is, $\forall e \in c', e \in t$, and  $\exists e' \in c', e' \not\in c_{1}$. Hence, $\{e'\}\ \preceq c',\  e' \in t \backslash c_{1}$, which indicates that $c' \in $ \{$ c\ |\ c \prec t \ \&\&\  \exists c_{1}' \in CMNS(c_{1}, t)$, $c_{1}' \preceq c$\} = B, so A $\subseteq$ B.
+
+
+Second we will show B $\subseteq$ A.
+
+With respect to set B, $\forall c' \in B$, it has $c' \prec t$  and $\exists c_{1}' \in CMNS(c_{1}, t), c_{1}' \preceq c'$. As $c_{1}' \in CMNS(c_{1}, t)$, $\exists e' \in  t \backslash c_{1}, c_{1}' = \{ e' \}$. Hence, $\{e'\} \preceq c'$. Hence, $c' \npreceq c_{1}$. Consequently, $c' \in $  \{$c\ |\ c \prec t\ \&\&\ c \npreceq c_{1}$\} = A, which indicates that B $\subseteq$ A.
+
+\end{proof}
+
+
+Proposition \ref{pro:superofCMNS2}.
+
+\begin{proof}
+We just need to prove that for two healthy schemas $c_{1}$, $c_{2}$, and a failing test case $t$ ($c_{1} \prec t$, $c_{2} \prec t$), we have \{$c\ |\ c \prec t\ \&\&\ \forall c_{i} \in \{c_{1}, c_{2}\}, c \npreceq c_{i} $\} $=$  \{$ c\ |\ c \prec t \ \&\&\  \exists c_{1}' \in CHFS(c_{1}, t)$ $ \bigvee CHFS(c_{2}, t)$, $c_{1}' \preceq c$\}.
+
+Let $A = $ \{$c\ |\ c \prec t\ \&\&\ \forall c_{i} \in \{c_{1}, c_{2}\}, c \npreceq c_{i} $\}, $A_{1}$ = \{$c\ |\ c \prec t\ \&\&\  c \npreceq c_{1} $\}, $A_{2}$ = \{$c\ |\ c \prec t\ \&\&\  c \npreceq c_{2} $\}. It is easily to get $A = A_{1} \bigcap A_{2}$.
+
+Let $B = $ \{$ c\ |\ c \prec t \ \&\&\  \exists c_{1}' \in CHFS(c_{1}, t)$ $ \bigvee CHFS(c_{2}, t)$, $c \preceq c_{1}'$\}. Here,    $ CMXS(c_{1}, t) \bigvee CMXS(c_{2}, t) = \{ c\ |\ c = c_{1}' \cup c_{2}',\ where\ c_{1}' \in CMXS(c_{1}, t),\ and\ c_{2}' \in CMXS(c_{2}, t) \}$.
+
+Let $B_{1} = $ \{$ c\ |\ c \prec t \ \&\&\  \exists c_{1}' \in CHFS(c_{1}, t)$, $c_{1}' \preceq c$\}, and $B_{2} = $ \{$ c\ |\ c \prec t \ \&\&\  \exists c_{2}' \in CHFS(c_{2}, t)$, $c_{2}' \preceq c$\}. $B_{1} \bigcap B_{2} = $ \{$ c\ |\ c \prec t \ \&\&\  \exists c_{1}' \in CHFS(c_{1}, t)$, $c_{1}' \preceq c$ \&\& $\exists c_{2}' \in CHFS(c_{2}, t)$, $c_{2}' \preceq c$\}. Note that, $c_{1}' \preceq c $ \&\& $c_{2}' \preceq c$ $\equiv$ $c_{1}' \cup c_{2}' \preceq c$. Hence, $B_{1} \bigcap B_{2} = $ \{$ c\ |\ c \preceq t \ \&\&\  \exists c_{1}', c_{2}',\  c_{1}' \in CHFS(c_{1}, t)$, and $c_{2}' \in CHFS(c_{2}, t)$, $ c_{1}' \cup c_{2}' \preceq c$ \} = B.
+
+Based on Proposition \ref{pro:superofCMNS}, $A_{1} = B_{1}$, $A_{2} = B_{2}$. Consequently,
+$A = A_{1} \bigcap A_{2}$ = $B_{1} \bigcap B_{2}$  = B.
+
+
+\end{proof}
+
+
+Proposition \ref{pro:identicialPending}.
+%
+%Given a failing test case $t$, a set of faulty schemas $FSS$, and a set of healthy schemas $HSS$, we have \{$ c\ |\ \exists c_{1}' \in CMXS(FSS^{\bot}, t)$, $c \preceq c_{1}'$ $\&\&$ $\exists c_{1}' \in CMNS($ $HSS^{\top}, t)$, $c_{1}' \preceq c$\} $=$  \{$ c\ |\ \exists c_{1}' \in CMXS(FSS, t)$, $c \preceq c_{1}'$ $\&\&$ $\exists c_{1}' \in CMNS(HSS, t)$, $c_{1}' \preceq c$\}.
+
+\begin{proof}
+Let A = \{$ c\ |\ \exists c_{1}' \in CMXS(FSS^{\bot}, t)$, $c_{2}' \in $ $CMNS$ $(HSS^{\top}, t)$, $c_{2}' \preceq c \preceq c_{1}'$\}.
+
+
+Let B =  \{$ c\ |\ \exists c_{1}' \in CMXS(FSS, t)$, $c_{2}' \in CMNS($ $HSS, t)$, $c_{2}' \preceq c \preceq c_{1}'$ \}.
+
+
+Based on Proposition \ref{pro:subofCMXSfor2} and \ref{pro:superofCMNS2}:
+
+A = \{$c\ |\ c \prec t\ \&\&\ \forall c_{i} \in FSS^{\bot}, c _{i} \npreceq c \ \&\&\  \forall c_{i} \in HSS^{\top}, c \npreceq c_{i}  $\}.
+
+B = \{$c\ |\ c \prec t\ \&\&\ \forall c_{i} \in FSS, c _{i} \npreceq c \ \&\&\  \forall c_{i} \in HSS, c \npreceq c_{i}  $\}.
+
+
+First we will prove B $\subseteq$ A.
+
+As $FSS^{\bot} \subseteq FSS,\ HSS^{\top} \subseteq HSS$, \{ $c\ |\ \forall c_{i} \in FSS, c_{i} \npreceq c $\}  $\subseteq$  \{ $c\ |\ \forall c_{i} \in FSS^{\bot}, c_{i} \npreceq c $\} and \{ $c\ |\ \forall c_{i} \in HSS, c \npreceq c_{i} $\}  $\subseteq$  \{ $c\ |\ \forall c_{i} \in HSS^{\top}, c \npreceq c_{i} $\}. Hence, \{$c\ |\ c \prec t\ \&\&\ \forall c_{i} \in FSS, c _{i} \npreceq c \ \&\&\  \forall c_{i} \in HSS, c \npreceq c_{i}  $\}  $\subseteq$ \{$c\ |\ c \prec t\ \&\&\ \forall c_{i} \in FSS^{\bot}, c _{i} \npreceq c \ \&\&\  \forall c_{i} \in HSS^{\top}, c \npreceq c_{i}  $\}. That is  $B \subseteq A$.
+
+Next we will prove A $\subseteq$ B.
+
+Note that  $\forall c \prec t$, if $\forall c_{i} \in FSS^{\bot}, c_{i} \npreceq c$, it must have $\forall c_{i}' \in FSS, c_{i}' \npreceq c$. Because if not so, then $\exists c_{i}' \in FSS, c_{i}' \preceq c$. As $\exists c_{i} \in FSS^{\bot}, c_{i}' \in FSS, c_{i} \preceq c_{i}'$, hence, $c_{i} \preceq c_{i}' \preceq c$,  which is contradiction.
+
+Similarly, $\forall c \prec t$, if $\forall c_{i} \in HSS^{\top}, c \npreceq c_{i}$, it must have $\forall c_{i}' \in HSS, c \npreceq c_{i}'$. Because if not so, then $\exists c_{i}' \in HSS, c \preceq c_{i}'$. As $\exists c_{i} \in HSS^{\top}, c_{i}' \in HSS, c_{i}' \preceq c_{i}$, hence, $c \preceq c_{i}' \preceq c_{i}$,  which is contradiction.
+
+Combining them, we can get $\forall c' \in $\{$c\ |\ c \prec t\ \&\&\ \forall c_{i} \in FSS^{\bot}, c _{i} \npreceq c \ \&\&\  \forall c_{i} \in HSS^{\top}, c \npreceq c_{i}  $\}, $c' \in $ \{$c\ |\ c \prec t\ \&\&\ \forall c_{i} \in FSS, c _{i} \npreceq c \ \&\&\  \forall c_{i} \in HSS, c \npreceq c_{i}  $\}. That is, A $\subseteq$ B.
+
+As we have shown B $\subseteq$ A, and A $\subseteq$ B, so A = B.
+\end{proof}
+
+
+
 
 \begin{acks}
 

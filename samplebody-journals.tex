@@ -51,10 +51,27 @@ The remainder of this paper is organized as follows: Section \ref{sec:back} intr
  Section \ref{sec:app} describes our approaches for identifying failure-inducing schemas. Section \ref{sec:simulateEx} gives the comparisons in theoretical metrics. Section \ref{sec:realEx} describes the experiment based on real-life subjects. Section \ref{sec:related} summarizes the related works. Section \ref{sec:conclusion} concludes this paper and discusses the future works.
 
 
-\section{Motivating example}\label{motiv}
+\section{Motivating examples}\label{motiv}
 
-Why minimal failure-causing schema is not effective? 
-This exmaple shows that . Because there still existing pending schemas.
+In this section, we first shows that with a normal $\tau$-way covering array, it is not completeness in terms of making  all the schemas clear for each failing test case. 
+
+Then we give examples shows that even with fault localization, this is also not completeness (with three most important fault localization techniques.)  
+
+give examples show based on two wide-used fault localization approaches in CT.
+
+\subsection{The incompleteness of covering array}
+
+\subsection{The incompleteness of error locating array}
+Since that , many approaches give a alleviation of how to compute the remaining schemas, which is called the fault localization. Error locating array is one of them. However, this time, we also give .
+
+\subsection{The incompleteness of OFOT and SOFOT}
+Why minimal failure-causing schema is not effective?
+This example shows that . Because there still existing pending schemas.
+
+\subsection{The incompleteness of FIC and FIC\_BS}
+
+
+Since we cannot obtain a completeness of . It is important to evaluate how incompleteness of covering array, fault localizaiton.
 
 \section{Preliminary}\label{sec:back}
 This section presents some definitions and propositions to give a formal model for CT.
@@ -146,18 +163,36 @@ We will later discuss the impacts on MFS identification from these two assumptio
 \begin{proposition}\label{pro:subsumetrans}
 Given schemas $s_{1}$, $s_{2}$, and $s_{3}$, if $s_{1} \prec s_{2}$, $s_{2} \prec s_{3}$, then $s_{1} \prec s_{3}$.
 \end{proposition}
+
+
+
+
 \begin{proposition}\label{pro:superoffaulty}
 Given a faulty schema $s_{1}$, then $\forall s_{2}, s_{1} \prec s_{2}$, $s_{2}$ is a faulty schema.
 \end{proposition}
+
+
 \begin{proposition}\label{pro:subofhealthy}
 Given a healthy schema $s_{1}$, then $\forall s_{2}, s_{2} \prec s_{1}$, $s_{2}$ is a healthy schema.
 \end{proposition}
+
+
 \begin{proposition}\label{pro:pending}
 Given two pending schemas $s_{1}$, $s_{2}$, and $s_{1} \prec s_{2}$. Then $\forall s_{3}, s_{1} \prec s_{3} \prec s_{2}$, $s_{3}$ is a pending schema.
 \end{proposition}
 
-\section{The approach}\label{sec:app}
+
+You should give normal sentences description and examples of them (if possible, give some simple proofs)
+
+\section{Pending schema}\label{sec:app}
 In this section, we will describe our approach to identify the failure-inducing schemas in the SUT. To give a better description, we will give several propositions which provide theoretical supports for our approach. The proofs of these propositions are given in the Appendix.
+
+\subsection{What is pending schema}
+Through the motivating examples, we can learn that the pending schema is not checked to be healthy and faulty. That is, 
+
+However, to emulate all the faulty schemas and all the healthy schemas is very large. By the propostios 3 and 4,
+
+More formally, we can learn that it should not be any super-schemas of existing faulty schemas, and any sub-shemas of existing healthy schemas.
 
 
 \subsection{Obtaining pending schema}
@@ -396,12 +431,33 @@ According to Formula \ref{eq:pssthird}, the complexity of obtaining one pending 
 
 % Start of "Sample References" section
 
-\subsection{Empirical studies}\label{emp}
+\section{Empirical studies}\label{emp}
 
-\subsection{The existence of pending schemas}
+
+\subsection{The pending schemas for covering arrays}
+
+subjects (30 existing wildly used)
+
+generation approaches (ipog, aetg, augmented simulating?)
+
+\subsection{The existence of pending schemas for different MFS identification approaches}
+
+subjects (my , may also used from )
+
+approaches (my)
+
+\subsection{The characteristics of pending schemas with various types of MFS (multiple, overlapped, single, low-high degrees)}
+
+the same as the captions
 
 
 \subsection{The effectiveness of the approach}
+
+three way: (three formulas in the propositions)
+
+
+
+
 
 % Appendix
 \appendix
