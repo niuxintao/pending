@@ -61,10 +61,19 @@ give examples show based on two wide-used fault localization approaches in CT.
 
 \subsection{The incompleteness of covering array}
 
-in terms of making the failing test case clear
+in terms of making the failing test case clear.
+
 
 \subsection{The incompleteness of error locating array}
 Since that , many approaches give a alleviation of how to compute the remaining schemas, which is called the fault localization. Error locating array is one of them. However, this time, we also give .
+
+\begin{figure*}[ht]
+ \centering
+ \includegraphics[width=7in]{minmax.eps}
+ \caption{The example of Proposition \ref{pro:identicialPending}}
+ \label{fig_minmax}
+\end{figure*}
+
 
 \subsection{The incompleteness of OFOT and SOFOT}
 Why minimal failure-causing schema is not effective?
