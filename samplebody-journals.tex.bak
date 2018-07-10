@@ -36,22 +36,28 @@ To evaluate the performance of our approach, we firstly conduct several experime
 
 \textbf{Contributions of this paper}:
 \begin{itemize}
-  \item We proposed several important propositions to support failure-inducing schemas identification, with which the complexity of obtaining un-determined schemas is significantly reduced.
 
-  \item We proposed a novel adaptive approach which can identify the failure-inducing schemas effectively and efficiently.
-%  \item We classified existed works, and give an comprehensive comparison both on theoretical and empirical metrics.
-  \item Our approach takes into account several issues that may negatively affect the performance of existing approaches of failure-inducing schemas identification.
-
+  \item We show that the traditional covering arrays and the minimal failure-causing schema model are still incomplete in terms of the determination of schemas to be faulty or healthy.
+  \item We introduce the notion of the pending schema to evaluate the incompleteness of these models in combinatorial testing.
+  \item We propose several propositions to formulate the formula to obtain the pending schemas, and reduce the complexity from O() to O().
+  %\item We proposed several important propositions to support failure-inducing schemas identification, with which the complexity of obtaining un-determined schemas is significantly reduced.
+%
+%  \item We proposed a novel adaptive approach which can identify the failure-inducing schemas effectively and efficiently.
+%%  \item We classified existed works, and give an comprehensive comparison both on theoretical and empirical metrics.
+%  \item Our approach takes into account several issues that may negatively affect the performance of existing approaches of failure-inducing schemas identification.
   \item We conducted a series of experiments to comprehensively compare all those adaptive approaches.
 
 \end{itemize}
 
-The remainder of this paper is organized as follows: Section \ref{sec:back} introduces some preliminary definitions and propositions.
+The remainder of this paper is organized as follows: Section \ref{sec:motiv} describes the motivation for this work. Section \ref{sec:back} introduces some preliminary definitions and propositions.
 %Section \ref{sec:motiv} presents some limitations of exiting failure-inducing interactions identification approaches which motivate this paper.
- Section \ref{sec:app} describes our approaches for identifying failure-inducing schemas. Section \ref{sec:simulateEx} gives the comparisons in theoretical metrics. Section \ref{sec:realEx} describes the experiment based on real-life subjects. Section \ref{sec:related} summarizes the related works. Section \ref{sec:conclusion} concludes this paper and discusses the future works.
+ Section \ref{sec:pending} proposes several important propositions to formally identify the characteristics of the pending schemas.
+ %Section \ref{sec:simulateEx} gives the comparisons in theoretical metrics. Section \ref{sec:realEx} describes the experiment based on real-life subjects.
+ Section \ref{sec:emp} evaluates the incompleteness of MFS identification approaches and compares the effectiveness of different approaches for obtaining pending schemas.
+ Section \ref{sec:related} summarizes the related works. Section \ref{sec:conclusion} concludes this paper and discusses the future works.
 
 
-\section{Motivating examples}\label{motiv}
+\section{Motivating examples}\label{sec:motiv}
 
 In this section, we first shows that with a normal $\tau$-way covering array, it is not completeness in terms of making  all the schemas clear for each failing test case.
 
@@ -101,22 +107,29 @@ This example shows that . Because there still existing pending schemas.
 
 Since we cannot obtain a completeness of . It is important to evaluate how incompleteness of covering array, fault localizaiton.
 
-\begin{figure*}[ht]
+\begin{figure*}[!htb]
  \centering
- \includegraphics[width=5.6in]{fic.eps}
+ \includegraphics[width=5.3in]{fic.eps}
  \caption{fic with multiple MFS}
  \label{fig_fic_multi}
 \end{figure*}
 
 
-\begin{figure*}[ht]
+\begin{figure*}[!htb]
  \centering
- \includegraphics[width=5.6in]{fic.eps}
- \caption{fic with multiple MFS}
- \label{fig_fic_multi}
+ \includegraphics[width=5.3in]{finovlp.eps}
+ \caption{finovlp with multiple MFS}
+ \label{fig_finovlp_multi}
 \end{figure*}
 
+\subsection{A complete process}
 
+\begin{figure*}[!htb]
+ \centering
+ \includegraphics[width=5.3in]{non-pending.eps}
+ \caption{Non pending schema}
+ \label{fig_no_pending}
+\end{figure*}
 
 
 \section{Preliminary}\label{sec:back}
@@ -230,7 +243,7 @@ Given two pending schemas $s_{1}$, $s_{2}$, and $s_{1} \prec s_{2}$. Then $\fora
 
 You should give normal sentences description and examples of them (if possible, give some simple proofs)
 
-\section{Pending schema}\label{sec:app}
+\section{Pending schema}\label{sec:pending}
 In this section, we will describe our approach to identify the failure-inducing schemas in the SUT. To give a better description, we will give several propositions which provide theoretical supports for our approach. The proofs of these propositions are given in the Appendix.
 
 \subsection{What is pending schema}
@@ -477,7 +490,7 @@ According to Formula \ref{eq:pssthird}, the complexity of obtaining one pending 
 
 % Start of "Sample References" section
 
-\section{Empirical studies}\label{emp}
+\section{Empirical studies}\label{sec:emp}
 
 
 \subsection{The pending schemas for covering arrays}
@@ -503,6 +516,10 @@ three way: (three formulas in the propositions)
 
 
 
+
+\section{Related works}\label{sec:related}
+
+\section{Conclusion}\label{sec:conclusion}
 
 
 % Appendix
