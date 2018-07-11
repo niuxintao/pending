@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6500) (preloaded format=pdflatex 2017.12.21)  10 JUL 2018 21:01
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6500) (preloaded format=pdflatex 2017.12.21)  11 JUL 2018 17:19
 entering extended mode
 **./pending_schema.tex
 (pending_schema.tex
@@ -1080,16 +1080,15 @@ LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
 (Font)              scaled to size 10.0pt on input line 4.
  [1.1{C:/CTEX/UserData/pdftex/config/pdftex.map}]
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/it' will be
-(Font)              scaled to size 10.0pt on input line 5.
+(Font)              scaled to size 10.0pt on input line 6.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/n' will be
-(Font)              scaled to size 10.0pt on input line 12.
+(Font)              scaled to size 10.0pt on input line 13.
+LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
+(Font)              scaled to size 7.3pt on input line 31.
+LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
+(Font)              scaled to size 6.2pt on input line 31.
 
 [2.2]
-LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 7.3pt on input line 28.
-LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 6.2pt on input line 28.
- [3.3]
 Package epstopdf Info: Source file: <ca.eps>
 (epstopdf)                    date: 2018-07-09 13:02:55
 (epstopdf)                    size: 1574127 bytes
@@ -1098,21 +1097,21 @@ Package epstopdf Info: Source file: <ca.eps>
 (epstopdf)                    size: 219314 bytes
 (epstopdf)             Command: <epstopdf --outfile=ca-eps-converted-to.pdf ca.
 eps>
-(epstopdf)             \includegraphics on input line 75.
+(epstopdf)             \includegraphics on input line 77.
 Package epstopdf Info: Output file is already uptodate.
 <ca-eps-converted-to.pdf, id=172, pagebox=cropbox, 599.23875pt x 470.75874pt>
 File: ca-eps-converted-to.pdf Graphic file (type pdf)
 <use ca-eps-converted-to.pdf>
-Package pdftex.def Info: ca-eps-converted-to.pdf  used on input line 75. on inp
-ut line 75.
+Package pdftex.def Info: ca-eps-converted-to.pdf  used on input line 77. on inp
+ut line 77.
 Package pdftex.def Info: Requested size: 404.71243pt x 317.94957pt on input lin
-e 75.
+e 77.
 
-Overfull \hbox (8.88994pt too wide) in paragraph at lines 75--76
+Overfull \hbox (8.88994pt too wide) in paragraph at lines 77--78
  [][] 
  []
 
-[4.4 <./ca-eps-converted-to.pdf>]
+[3.3]
 Package epstopdf Info: Source file: <ofot_single.eps>
 (epstopdf)                    date: 2018-07-09 13:42:13
 (epstopdf)                    size: 2565054 bytes
@@ -1121,18 +1120,18 @@ Package epstopdf Info: Source file: <ofot_single.eps>
 (epstopdf)                    size: 353901 bytes
 (epstopdf)             Command: <epstopdf --outfile=ofot_single-eps-converted-t
 o.pdf ofot_single.eps>
-(epstopdf)             \includegraphics on input line 91.
+(epstopdf)             \includegraphics on input line 93.
 Package epstopdf Info: Output file is already uptodate.
-<ofot_single-eps-converted-to.pdf, id=496, pagebox=cropbox, 600.2425pt x 500.87
+<ofot_single-eps-converted-to.pdf, id=178, pagebox=cropbox, 600.2425pt x 500.87
 125pt>
 File: ofot_single-eps-converted-to.pdf Graphic file (type pdf)
 <use ofot_single-eps-converted-to.pdf>
 Package pdftex.def Info: ofot_single-eps-converted-to.pdf  used on input line 9
-1. on input line 91.
+3. on input line 93.
 Package pdftex.def Info: Requested size: 404.71243pt x 337.72192pt on input lin
-e 91.
+e 93.
 
-Overfull \hbox (8.88994pt too wide) in paragraph at lines 91--92
+Overfull \hbox (8.88994pt too wide) in paragraph at lines 93--94
  [][] 
  []
 
@@ -1144,18 +1143,18 @@ Package epstopdf Info: Source file: <ofot_multi.eps>
 (epstopdf)                    size: 365046 bytes
 (epstopdf)             Command: <epstopdf --outfile=ofot_multi-eps-converted-to
 .pdf ofot_multi.eps>
-(epstopdf)             \includegraphics on input line 98.
+(epstopdf)             \includegraphics on input line 100.
 Package epstopdf Info: Output file is already uptodate.
-<ofot_multi-eps-converted-to.pdf, id=497, pagebox=cropbox, 601.24625pt x 500.87
+<ofot_multi-eps-converted-to.pdf, id=179, pagebox=cropbox, 601.24625pt x 500.87
 125pt>
 File: ofot_multi-eps-converted-to.pdf Graphic file (type pdf)
 <use ofot_multi-eps-converted-to.pdf>
-Package pdftex.def Info: ofot_multi-eps-converted-to.pdf  used on input line 98
-. on input line 98.
+Package pdftex.def Info: ofot_multi-eps-converted-to.pdf  used on input line 10
+0. on input line 100.
 Package pdftex.def Info: Requested size: 404.71243pt x 337.15637pt on input lin
-e 98.
+e 100.
 
-Overfull \hbox (8.88994pt too wide) in paragraph at lines 98--99
+Overfull \hbox (8.88994pt too wide) in paragraph at lines 100--101
  [][] 
  []
 
@@ -1167,15 +1166,15 @@ Package epstopdf Info: Source file: <fic.eps>
 (epstopdf)                    size: 368344 bytes
 (epstopdf)             Command: <epstopdf --outfile=fic-eps-converted-to.pdf fi
 c.eps>
-(epstopdf)             \includegraphics on input line 112.
+(epstopdf)             \includegraphics on input line 114.
 Package epstopdf Info: Output file is already uptodate.
-<fic-eps-converted-to.pdf, id=498, pagebox=cropbox, 598.235pt x 495.8525pt>
+<fic-eps-converted-to.pdf, id=180, pagebox=cropbox, 598.235pt x 495.8525pt>
 File: fic-eps-converted-to.pdf Graphic file (type pdf)
 <use fic-eps-converted-to.pdf>
-Package pdftex.def Info: fic-eps-converted-to.pdf  used on input line 112. on i
-nput line 112.
+Package pdftex.def Info: fic-eps-converted-to.pdf  used on input line 114. on i
+nput line 114.
 Package pdftex.def Info: Requested size: 383.03122pt x 317.4807pt on input line
- 112.
+ 114.
 Package epstopdf Info: Source file: <finovlp.eps>
 (epstopdf)                    date: 2018-07-09 17:33:41
 (epstopdf)                    size: 3672365 bytes
@@ -1184,15 +1183,15 @@ Package epstopdf Info: Source file: <finovlp.eps>
 (epstopdf)                    size: 499962 bytes
 (epstopdf)             Command: <epstopdf --outfile=finovlp-eps-converted-to.pd
 f finovlp.eps>
-(epstopdf)             \includegraphics on input line 120.
+(epstopdf)             \includegraphics on input line 122.
 Package epstopdf Info: Output file is already uptodate.
-<finovlp-eps-converted-to.pdf, id=499, pagebox=cropbox, 602.25pt x 798.985pt>
+<finovlp-eps-converted-to.pdf, id=181, pagebox=cropbox, 602.25pt x 798.985pt>
 File: finovlp-eps-converted-to.pdf Graphic file (type pdf)
 <use finovlp-eps-converted-to.pdf>
-Package pdftex.def Info: finovlp-eps-converted-to.pdf  used on input line 120. 
-on input line 120.
+Package pdftex.def Info: finovlp-eps-converted-to.pdf  used on input line 122. 
+on input line 122.
 Package pdftex.def Info: Requested size: 383.03122pt x 508.17886pt on input lin
-e 120.
+e 122.
 Package epstopdf Info: Source file: <non-pending.eps>
 (epstopdf)                    date: 2018-07-09 18:39:55
 (epstopdf)                    size: 2817043 bytes
@@ -1201,37 +1200,32 @@ Package epstopdf Info: Source file: <non-pending.eps>
 (epstopdf)                    size: 375364 bytes
 (epstopdf)             Command: <epstopdf --outfile=non-pending-eps-converted-t
 o.pdf non-pending.eps>
-(epstopdf)             \includegraphics on input line 129.
+(epstopdf)             \includegraphics on input line 131.
 Package epstopdf Info: Output file is already uptodate.
-<non-pending-eps-converted-to.pdf, id=500, pagebox=cropbox, 601.24625pt x 711.6
+<non-pending-eps-converted-to.pdf, id=182, pagebox=cropbox, 601.24625pt x 711.6
 5875pt>
 File: non-pending-eps-converted-to.pdf Graphic file (type pdf)
 <use non-pending-eps-converted-to.pdf>
 Package pdftex.def Info: non-pending-eps-converted-to.pdf  used on input line 1
-29. on input line 129.
+31. on input line 131.
 Package pdftex.def Info: Requested size: 383.03122pt x 453.38597pt on input lin
-e 129.
+e 131.
+[4.4 <./ca-eps-converted-to.pdf>]
 \c@assumption=\count147
-[5.5 <./ofot_single-eps-converted-to.pdf>] [6.6 <./ofot_multi-eps-converted-to.
-pdf>] [7.7 <./fic-eps-converted-to.pdf>]
-Underfull \vbox (badness 2951) has occurred while \output is active []
-
- [8.8 <./finovlp-eps-converted-to.pdf>] [9.9 <./non-pending-eps-converted-to.pd
-f>]
+ [5.5 <./ofot_single-eps-converted-to.pdf>]
+[6.6 <./ofot_multi-eps-converted-to.pdf>] [7.7 <./fic-eps-converted-to.pdf>]
+[8.8 <./finovlp-eps-converted-to.pdf>]
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/sc' will be
-(Font)              scaled to size 10.0pt on input line 210.
- [10.10]
+(Font)              scaled to size 10.0pt on input line 212.
+ [9.9 <./non-pending-eps-converted-to.pdf>] [10.10]
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/n' will be
-(Font)              scaled to size 7.3pt on input line 298.
+(Font)              scaled to size 8.0pt on input line 306.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/n' will be
-(Font)              scaled to size 5.5pt on input line 298.
+(Font)              scaled to size 6.2pt on input line 306.
+LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/n' will be
+(Font)              scaled to size 5.5pt on input line 306.
 
-Overfull \hbox (30.66986pt too wide) in paragraph at lines 296--308
- [][][] 
- []
-
-[11.11]
-Overfull \hbox (2.70097pt too wide) in paragraph at lines 315--316
+Overfull \hbox (2.70097pt too wide) in paragraph at lines 323--324
 \T1/LinuxLibertineT-TLF/m/n/10 (-20) For two faulty schemas $\OML/nxlmi/m/it/10
  c[]$\T1/LinuxLibertineT-TLF/m/n/10 (-20) , $\OML/nxlmi/m/it/10 c[]$\T1/LinuxLi
 bertineT-TLF/m/n/10 (-20) , and a fail-ing test case $\OML/nxlmi/m/it/10 t$ \T1
@@ -1243,71 +1237,12 @@ bertineT-TLF/m/n/10 (-20) , and a fail-ing test case $\OML/nxlmi/m/it/10 t$ \T1
 t/10 c[]; t\LMS/ntxsy/m/n/10 º \U/ntxmia/m/it/10 =
  []
 
-
-Overfull \hbox (20.63763pt too wide) in paragraph at lines 317--318
-\T1/LinuxLibertineT-TLF/m/n/10 (-20) {$\LMS/ntxsy/m/n/10 ¹\OML/nxlmi/m/it/10 p[
-]; v[]\LMS/ntxsy/m/n/10 º\OML/nxlmi/m/it/10 ; \LMS/ntxsy/m/n/10 ¹\OML/nxlmi/m/i
-t/10 p[]; v[]\LMS/ntxsy/m/n/10 º$\T1/LinuxLibertineT-TLF/m/n/10 (-20) } }, and 
-$\OML/nxlmi/m/it/10 CMXS\LMS/ntxsy/m/n/10 ¹\OML/nxlmi/m/it/10 c[];$ $t\LMS/ntxs
-y/m/n/10 º [] \OML/nxlmi/m/it/10 CMXS\LMS/ntxsy/m/n/10 ¹\OML/nxlmi/m/it/10 c[];
- t\LMS/ntxsy/m/n/10 º \U/ntxmia/m/it/10 = \LMS/ntxsy/m/n/10 ff¹\OML/nxlmi/m/it/
-10 p[]; v[]\LMS/ntxsy/m/n/10 ºg\OML/nxlmi/m/it/10 ; \LMS/ntxsy/m/n/10 f¹\OML/nx
-lmi/m/it/10 p[]; v[]\LMS/ntxsy/m/n/10 º\OML/nxlmi/m/it/10 ; \LMS/ntxsy/m/n/10 ¹
-\OML/nxlmi/m/it/10 p[]; v[]\LMS/ntxsy/m/n/10 ºg\OML/nxlmi/m/it/10 ; \LMS/ntxsy/
-m/n/10 f¹\OML/nxlmi/m/it/10 p[]; v[]\LMS/ntxsy/m/n/10 ºg\OML/nxlmi/m/it/10 ;$ $
-\LMS/ntxsy/m/n/10 f¹\OML/nxlmi/m/it/10 p[]; v[]\LMS/ntxsy/m/n/10 ºgg$\T1/LinuxL
-ibertineT-TLF/m/n/10 (-20) .
- []
-
-
-Overfull \hbox (59.8143pt too wide) in paragraph at lines 339--349
+[11.11] [12.12]
+Overfull \hbox (4.21948pt too wide) in paragraph at lines 429--439
  [][][] 
- []
-
-[12.12]
-Overfull \hbox (47.68927pt too wide) in paragraph at lines 378--390
- [][][] 
- []
-
-
-Overfull \hbox (58.81549pt too wide) in paragraph at lines 393--394
-[]\T1/LinuxLibertineT-TLF/m/n/10 (-20) Similarly, for two healthy schemas $\OML
-/nxlmi/m/it/10 c[]$\T1/LinuxLibertineT-TLF/m/n/10 (-20) , $\OML/nxlmi/m/it/10 c
-[]$\T1/LinuxLibertineT-TLF/m/n/10 (-20) , and a fail-ing test case $\OML/nxlmi/
-m/it/10 t$ \T1/LinuxLibertineT-TLF/m/n/10 (-20) ($\OML/nxlmi/m/it/10 c[] \LMS/n
-txsy/m/n/10  \OML/nxlmi/m/it/10 t$\T1/LinuxLibertineT-TLF/m/n/10 (-20) , $\OML
-/nxlmi/m/it/10 c[] \LMS/ntxsy/m/n/10  \OML/nxlmi/m/it/10 t$\T1/LinuxLibertineT
--TLF/m/n/10 (-20) ), let $\OML/nxlmi/m/it/10 CMNS\LMS/ntxsy/m/n/10 ¹\OML/nxlmi/
-m/it/10 c[]; t\LMS/ntxsy/m/n/10 º [] \OML/nxlmi/m/it/10 CMNS\LMS/ntxsy/m/n/10 ¹
-\OML/nxlmi/m/it/10 c[]; t\LMS/ntxsy/m/n/10 º \U/ntxmia/m/it/10 =
  []
 
 [13.13]
-Overfull \hbox (100.14973pt too wide) in paragraph at lines 418--428
- [][][] 
- []
-
-
-Overfull \hbox (26.89136pt too wide) in paragraph at lines 463--464
-\OML/nxlmi/m/it/10 FSS \U/ntxmia/m/it/10 =$ \T1/LinuxLibertineT-TLF/m/n/10 (-20
-) { $\LMS/ntxsy/m/n/10 f¹\OML/nxlmi/m/it/10 p[];$ $\OT1/LinuxLibertineT-TLF/m/n
-/10 (-20) 1\LMS/ntxsy/m/n/10 º\OML/nxlmi/m/it/10 ; \LMS/ntxsy/m/n/10 ¹\OML/nxlm
-i/m/it/10 p[]; \OT1/LinuxLibertineT-TLF/m/n/10 (-20) 1\LMS/ntxsy/m/n/10 º\OML/n
-xlmi/m/it/10 ; \LMS/ntxsy/m/n/10 ¹\OML/nxlmi/m/it/10 p[]; \OT1/LinuxLibertineT-
-TLF/m/n/10 (-20) 1\LMS/ntxsy/m/n/10 ºg$\T1/LinuxLibertineT-TLF/m/n/10 (-20) , $
-\LMS/ntxsy/m/n/10 f¹\OML/nxlmi/m/it/10 p[]; \OT1/LinuxLibertineT-TLF/m/n/10 (-2
-0) 1\LMS/ntxsy/m/n/10 º\OML/nxlmi/m/it/10 ; \LMS/ntxsy/m/n/10 ¹\OML/nxlmi/m/it/
-10 p[]; \OT1/LinuxLibertineT-TLF/m/n/10 (-20) 1\LMS/ntxsy/m/n/10 ºg$ \T1/LinuxL
-ibertineT-TLF/m/n/10 (-20) }, and the healthy schema set $\OML/nxlmi/m/it/10 HS
-S \U/ntxmia/m/it/10 =$ \T1/LinuxLibertineT-TLF/m/n/10 (-20) { $\LMS/ntxsy/m/n/1
-0 f¹\OML/nxlmi/m/it/10 p[]; \OT1/LinuxLibertineT-TLF/m/n/10 (-20) 1\LMS/ntxsy/m
-/n/10 º\OML/nxlmi/m/it/10 ; \LMS/ntxsy/m/n/10 ¹\OML/nxlmi/m/it/10 p[]; \OT1/Lin
-uxLibertineT-TLF/m/n/10 (-20) 1\LMS/ntxsy/m/n/10 º\OML/nxlmi/m/it/10 ; \LMS/ntx
-sy/m/n/10 ¹\OML/nxlmi/m/it/10 p[]; \OT1/LinuxLibertineT-TLF/m/n/10 (-20) 1\LMS/
-ntxsy/m/n/10 ºg$\T1/LinuxLibertineT-TLF/m/n/10 (-20) ,
- []
-
-[14.14]
 Package epstopdf Info: Source file: <minmax.eps>
 (epstopdf)                    date: 2016-12-16 16:29:44
 (epstopdf)                    size: 2932942 bytes
@@ -1316,23 +1251,30 @@ Package epstopdf Info: Source file: <minmax.eps>
 (epstopdf)                    size: 204241 bytes
 (epstopdf)             Command: <epstopdf --outfile=minmax-eps-converted-to.pdf
  minmax.eps>
-(epstopdf)             \includegraphics on input line 471.
+(epstopdf)             \includegraphics on input line 481.
 Package epstopdf Info: Output file is already uptodate.
 <minmax-eps-converted-to.pdf, id=2175, pagebox=cropbox, 644.4075pt x 544.0325pt
 >
 File: minmax-eps-converted-to.pdf Graphic file (type pdf)
 <use minmax-eps-converted-to.pdf>
-Package pdftex.def Info: minmax-eps-converted-to.pdf  used on input line 471. o
-n input line 471.
-Package pdftex.def Info: Requested size: 505.89pt x 427.10796pt on input line 4
-71.
+Package pdftex.def Info: minmax-eps-converted-to.pdf  used on input line 481. o
+n input line 481.
+Package pdftex.def Info: Requested size: 404.71243pt x 341.68803pt on input lin
+e 481.
 
-Overfull \hbox (110.0675pt too wide) in paragraph at lines 471--472
+Overfull \hbox (8.88994pt too wide) in paragraph at lines 481--482
  [][] 
  []
 
-[15.15] [16.16 <./minmax-eps-converted-to.pdf>]
-Overfull \hbox (3.99635pt too wide) in paragraph at lines 596--597
+[14.14]
+Underfull \vbox (badness 1831) has occurred while \output is active []
+
+ [15.15 <./minmax-eps-converted-to.pdf>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [16.16]
+[17.17]
+Overfull \hbox (3.99635pt too wide) in paragraph at lines 628--629
 []\T1/LinuxLibertineT-TLF/m/n/10 (-20) Let $\OML/nxlmi/m/it/10 B \U/ntxmia/m/it
 /10 =$ \T1/LinuxLibertineT-TLF/m/n/10 (-20) {$\OML/nxlmi/m/it/10 c \LMS/ntxsy/m
 /n/10 j \OML/nxlmi/m/it/10 c \LMS/ntxsy/m/n/10  \OML/nxlmi/m/it/10 t \OT1/Linu
@@ -1346,7 +1288,7 @@ mi/m/it/10 c[]; t\LMS/ntxsy/m/n/10 º [] \OML/nxlmi/m/it/10 CMXS\LMS/ntxsy/m/n/1
 0 ¹\OML/nxlmi/m/it/10 c[]; t\LMS/ntxsy/m/n/10 º \U/ntxmia/m/it/10 =
  []
 
-[17.17] Processing 'acks' comment.
+Processing 'acks' comment.
 \openout4 = `comment.cut'.
 
  Comment 'acks' writing to comment.cut.
@@ -1367,21 +1309,24 @@ Package rerunfilecheck Warning: File `pending_schema.out' has changed.
 (rerunfilecheck)                or use package `bookmark'.
 
 Package rerunfilecheck Info: Checksums for `pending_schema.out':
-(rerunfilecheck)             Before: 34A8CA351510E00E2C4885133E21B16D;6493
-(rerunfilecheck)             After:  C606BD565414ACBE00C53378B0F49442;4738.
+(rerunfilecheck)             Before: CF3E1ABD5986E12EF04E3F24DC4BA112;6877
+(rerunfilecheck)             After:  E7FAD65AC8FC28A712CC7153957F69BA;5316.
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
  )
 (\end occurred inside a group at level 1)
 
-### simple group (level 1) entered at line 371 ({)
+### simple group (level 1) entered at line 380 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 19309 strings out of 493312
- 292210 string characters out of 3143321
- 416291 words of memory out of 3000000
- 21824 multiletter control sequences out of 15000+200000
- 187838 words of font info for 391 fonts, out of 3000000 for 9000
+ 19352 strings out of 493312
+ 292832 string characters out of 3143321
+ 417469 words of memory out of 3000000
+ 21835 multiletter control sequences out of 15000+200000
+ 199988 words of font info for 418 fonts, out of 3000000 for 9000
  1302 hyphenation exceptions out of 8191
- 60i,17n,94p,1794b,640s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 60i,17n,94p,1794b,612s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/CTEX/MikTex2.9/fonts/enc/dvips/libertine/lbtn_ncsllp.enc}{C
 :/CTEX/MikTex2.9/fonts/enc/dvips/newtx/libertinealt.enc}{C:/CTEX/MikTex2.9/font
 s/enc/dvips/base/8r.enc}{C:/CTEX/MikTex2.9/fonts/enc/dvips/libertine/lbtn_oexx6
@@ -1396,15 +1341,15 @@ ne/LinLibertineTB.pfb><C:/CTEX/MikTex2.9/fonts/type1/public/libertine/LinLibert
 ineTI.pfb><C:/CTEX/MikTex2.9/fonts/type1/public/newtx/fxlri-5letters.pfb><C:/CT
 EX/MikTex2.9/fonts/type1/public/newtx/fxlri-7letters.pfb><C:/CTEX/MikTex2.9/fon
 ts/type1/public/newtx/ntxsyralt.pfb><C:/CTEX/MikTex2.9/fonts/type1/public/txfon
-ts/rtxmi.pfb><C:/CTEX/MikTex2.9/fonts/type1/public/txfonts/rtxr.pfb><C:/CTEX/Mi
-kTex2.9/fonts/type1/public/newtx/txexs.pfb><C:/CTEX/MikTex2.9/fonts/type1/publi
-c/txfonts/txsya.pfb><C:/CTEX/MikTex2.9/fonts/type1/public/txfonts/txsyb.pfb><C:
-/CTEX/MikTex2.9/fonts/type1/public/txfonts/txsyc.pfb><C:/CTEX/MikTex2.9/fonts/t
-ype1/public/newtx/txsys.pfb><C:/CTEX/MikTex2.9/fonts/type1/public/newtx/zxlri.p
-fb>
-Output written on pending_schema.pdf (19 pages, 3093194 bytes).
+ts/rtxmi.pfb><C:/CTEX/MikTex2.9/fonts/type1/public/newtx/rtxmi7.pfb><C:/CTEX/Mi
+kTex2.9/fonts/type1/public/txfonts/rtxr.pfb><C:/CTEX/MikTex2.9/fonts/type1/publ
+ic/newtx/txexs.pfb><C:/CTEX/MikTex2.9/fonts/type1/public/txfonts/txsya.pfb><C:/
+CTEX/MikTex2.9/fonts/type1/public/txfonts/txsyb.pfb><C:/CTEX/MikTex2.9/fonts/ty
+pe1/public/txfonts/txsyc.pfb><C:/CTEX/MikTex2.9/fonts/type1/public/newtx/txsys.
+pfb><C:/CTEX/MikTex2.9/fonts/type1/public/newtx/zxlri.pfb>
+Output written on pending_schema.pdf (19 pages, 3108491 bytes).
 PDF statistics:
- 2378 PDF objects out of 2487 (max. 8388607)
- 99 named destinations out of 1000 (max. 500000)
- 59104 words of extra memory for PDF output out of 61914 (max. 10000000)
+ 2407 PDF objects out of 2487 (max. 8388607)
+ 104 named destinations out of 1000 (max. 500000)
+ 61680 words of extra memory for PDF output out of 61914 (max. 10000000)
 

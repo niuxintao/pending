@@ -39,27 +39,26 @@ To evaluate the performance of our approach, we firstly conduct several experime
 
   \item We show that the traditional covering arrays and the minimal failure-causing schema model are still incomplete in terms of the determination of schemas to be faulty or healthy.
   \item We introduce the notion of the pending schema to evaluate the incompleteness of these models in combinatorial testing.
-  \item We propose several propositions to formulate the formula to obtain the pending schemas, and reduce the complexity from O() to O().
+  \item We propose several propositions to formulate the set of pending schemas and give three equivalent formulas to obtain the pending schemas, based on which we reduce the complexity of obtaining pending schemas from O($2^{n}$) to O($ \tau^{|FSS^{\bot}|} \times \tau^{|HSS^{\top}|}$), where $|FSS^{\bot}|$ and $|HSS^{\top}|$ are two relatively small numbers.
   %\item We proposed several important propositions to support failure-inducing schemas identification, with which the complexity of obtaining un-determined schemas is significantly reduced.
-%
 %  \item We proposed a novel adaptive approach which can identify the failure-inducing schemas effectively and efficiently.
 %%  \item We classified existed works, and give an comprehensive comparison both on theoretical and empirical metrics.
 %  \item Our approach takes into account several issues that may negatively affect the performance of existing approaches of failure-inducing schemas identification.
-  \item We conducted a series of experiments to comprehensively compare all those adaptive approaches.
-
+  \item We conducted a series of experiments to evaluate the incompleteness of traditional covering arrays and MFS identification approaches. Besides, we also evaluate the efficiency of the three formulas on obtaining pending schemas.
 \end{itemize}
 
 The remainder of this paper is organized as follows: Section \ref{sec:motiv} describes the motivation for this work. Section \ref{sec:back} introduces some preliminary definitions and propositions.
 %Section \ref{sec:motiv} presents some limitations of exiting failure-inducing interactions identification approaches which motivate this paper.
  Section \ref{sec:pending} proposes several important propositions to formally identify the characteristics of the pending schemas.
  %Section \ref{sec:simulateEx} gives the comparisons in theoretical metrics. Section \ref{sec:realEx} describes the experiment based on real-life subjects.
- Section \ref{sec:emp} evaluates the incompleteness of MFS identification approaches and compares the effectiveness of different approaches for obtaining pending schemas.
+ Section \ref{sec:emp} evaluates the incompleteness of MFS identification approaches and compares the effectiveness of different approaches for obtaining pending schemas. Section \ref{sec:discussion} discusses the findings of our research works.
  Section \ref{sec:related} summarizes the related works. Section \ref{sec:conclusion} concludes this paper and discusses the future works.
 
 
 \section{Motivating examples}\label{sec:motiv}
 
-In this section, we first shows that with a normal $\tau$-way covering array, it is not completeness in terms of making  all the schemas clear for each failing test case.
+In this section, we will 
+first shows that with a normal $\tau$-way covering array, it is not completeness in terms of making  all the schemas clear for each failing test case.
 
 Then we give examples shows that even with fault localization, this is also not completeness (with three most important fault localization techniques.)
 
@@ -515,9 +514,29 @@ the same as the captions
 three way: (three formulas in the propositions)
 
 
+\subsection{Threats to validity}
+
+
+\section{Discussion}\label{sec:discussion}
 
 
 \section{Related works}\label{sec:related}
+Shi and Nie \cite{shi2005software} presented an approach for failure revealing and failure diagnosis in CT , which first tests the SUT with a covering array, then reduces the value schemas contained in the failing test case by eliminating those appearing in the passing test cases. If the failure-causing schema is found in the reduced schema set, failure diagnosis is completed with the identification of the specific input values which caused the failure; otherwise, a further test suite based on SOFOT is developed for each failing test case, and the schema set is then further reduced, until no more faults are found or the fault is located. Based on this work, Wang \cite{wang2010adaptive} proposed an AIFL approach which extended the SOFOT process by adaptively mutating factors in the original failing test cases in each iteration to characterize failure-inducing interactions.
+
+Nie et al. \cite{nie2011minimal} introduced the notion of Minimal Failure-causing Schema(MFS) and proposed the OFOT approach which is an extension of SOFOT that can isolate the MFS in the SUT. This approach mutates one value of that parameter at a time, hence generating a group of additional test cases each time to be executed. Compared with SOFOT, this approach  strengthens the validation of the factor under analysis and can also detect the newly imported faulty interactions.
+
+Delta debugging \cite{zeller2002simplifying} is an adaptive divide-and-conquer approach to locate interaction failure. It is very efficient and has been applied to real software environment. Zhang et al. \cite{zhang2011characterizing} also proposed a similar approach that can efficiently identify the failure-inducing interactions that have no overlapped part. Later, Li \cite{li2012improved} improved the delta-debugging based approach by exploiting useful information in the executed covering array.
+
+Colbourn and McClary \cite{colbourn2008locating} proposed a non-adaptive method. Their approach extends a covering array to the locating array to detect and locate interaction failures. Mart{\'\i}nez \cite{martinez2008algorithms,martinez2009locating} proposed two adaptive algorithms. The first one requires safe value as the assumption and the second one removes this assumption when the number of values of each parameter is equal to 2. Their algorithms focus on identifying faulty tuples that have no more than 2 parameters.
+
+Ghandehari et al. \cite{ghandehari2012identifying} defined the suspiciousness of tuple and suspiciousness of the environment of a tuple. Based on this, they ranked the possible tuples and generated the test configurations. They \cite{ghandehari2013fault} further utilized the test cases generated from the inducing interaction to locate the fault.
+
+Yilmaz \cite{yilmaz2006covering} proposed a machine learning method to identify inducing interactions from a combinatorial testing set. They constructed a classification tree to analyze the covering arrays and detect potential faulty interactions. Beside this, Fouch{\'e} \cite{fouche2009incremental} and Shakya \cite{shakya2012isolating} made some improvements in identifying failure-inducing interactions based on Yilmaz's work.
+
+Our previous work \cite{niu2013identifying} proposed an approach that utilizes the tuple relationship tree to isolate the failure-inducing interactions in a failing test case. One novelty of this approach is that it can identify the overlapped faulty interaction. This work also alleviates the problem of introducing new failure-inducing interactions in additional test cases.
+
+
+
 
 \section{Conclusion}\label{sec:conclusion}
 

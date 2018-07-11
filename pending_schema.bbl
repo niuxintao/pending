@@ -2,7 +2,7 @@
 %%% Do NOT edit. File created by BibTeX with style
 %%% ACM-Reference-Format-Journals [18-Jan-2012].
 
-\begin{thebibliography}{20}
+\begin{thebibliography}{22}
 
 %%% ====================================================================
 %%% NOTE TO THE USER: you can override these defaults by providing
@@ -71,6 +71,19 @@
   in large configuration spaces}. In \bibinfo{booktitle}{\emph{Proceedings of
   the eighteenth international symposium on Software testing and analysis}}.
   ACM, \bibinfo{pages}{177--188}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Ghandehari, Lei, Kung, Kacker, and
+  Kuhn}{Ghandehari et~al\mbox{.}}{2013}]%
+        {ghandehari2013fault}
+\bibfield{author}{\bibinfo{person}{Laleh~Sh Ghandehari}, \bibinfo{person}{Yu
+  Lei}, \bibinfo{person}{David Kung}, \bibinfo{person}{Raghu Kacker}, {and}
+  \bibinfo{person}{Richard Kuhn}.} \bibinfo{year}{2013}\natexlab{}.
+\newblock \showarticletitle{Fault localization based on failure-inducing
+  combinations}. In \bibinfo{booktitle}{\emph{Software Reliability Engineering
+  (ISSRE), 2013 IEEE 24th International Symposium on}}. IEEE,
+  \bibinfo{pages}{168--177}.
 \newblock
 
 
@@ -265,6 +278,18 @@
   \bibinfo{year}{2014}), \bibinfo{pages}{43--66}.
 \newblock
 \showISSN{0098-5589}
+
+
+\bibitem[\protect\citeauthoryear{Zeller and Hildebrandt}{Zeller and
+  Hildebrandt}{2002}]%
+        {zeller2002simplifying}
+\bibfield{author}{\bibinfo{person}{Andreas Zeller} {and} \bibinfo{person}{Ralf
+  Hildebrandt}.} \bibinfo{year}{2002}\natexlab{}.
+\newblock \showarticletitle{Simplifying and isolating failure-inducing input}.
+\newblock \bibinfo{journal}{\emph{Software Engineering, IEEE Transactions on}}
+  \bibinfo{volume}{28}, \bibinfo{number}{2} (\bibinfo{year}{2002}),
+  \bibinfo{pages}{183--200}.
+\newblock
 
 
 \bibitem[\protect\citeauthoryear{Zhang, Ma, and Zhang}{Zhang
