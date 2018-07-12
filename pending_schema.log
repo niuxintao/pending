@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6500) (preloaded format=pdflatex 2017.12.21)  11 JUL 2018 17:19
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6500) (preloaded format=pdflatex 2017.12.21)  12 JUL 2018 17:59
 entering extended mode
 **./pending_schema.tex
 (pending_schema.tex
@@ -1005,57 +1005,57 @@ Package caption Info: float package is loaded.
 Package caption Info: End \AtBeginDocument code.
  Excluding 'CCSXML' comment.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 14.4pt on input line 126.
+(Font)              scaled to size 14.4pt on input line 130.
 LaTeX Font Info:    Try loading font information for T1+LinuxBiolinumT-TLF on i
-nput line 126.
+nput line 130.
 
 (C:\CTEX\MikTex2.9\tex\latex\libertine\t1linuxbiolinumt-tlf.fd
 File: T1LinuxBiolinumT-TLF.fd 2017/03/20 (autoinst) Font definitions for T1/Lin
 uxBiolinumT-TLF.
 )
 LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/n' will be
-(Font)              scaled to size 14.4pt on input line 126.
+(Font)              scaled to size 14.4pt on input line 130.
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `LinuxBiolinumT-TLF' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/b/n' will be
-(Font)              scaled to size 14.4pt on input line 126.
+(Font)              scaled to size 14.4pt on input line 130.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 10.95pt on input line 126.
+(Font)              scaled to size 10.95pt on input line 130.
 LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/n' will be
-(Font)              scaled to size 10.95pt on input line 126.
+(Font)              scaled to size 10.95pt on input line 130.
 LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/n' will be
-(Font)              scaled to size 9.0pt on input line 126.
+(Font)              scaled to size 9.0pt on input line 130.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 9.0pt on input line 126.
+(Font)              scaled to size 9.0pt on input line 130.
 LaTeX Font Info:    Try loading font information for TS1+LinuxLibertineT-TLF on
- input line 126.
+ input line 130.
 
 (C:\CTEX\MikTex2.9\tex\latex\libertine\ts1linuxlibertinet-tlf.fd
 File: TS1LinuxLibertineT-TLF.fd 2017/03/20 (autoinst) Font definitions for TS1/
 LinuxLibertineT-TLF.
 )
 LaTeX Font Info:    Font shape `TS1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 8.0pt on input line 126.
+(Font)              scaled to size 8.0pt on input line 130.
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `LinuxLibertineT-TLF' (encoding: TS1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 LaTeX Font Info:    Font shape `TS1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 9.0pt on input line 126.
+(Font)              scaled to size 9.0pt on input line 130.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/n' will be
-(Font)              scaled to size 9.0pt on input line 126.
+(Font)              scaled to size 9.0pt on input line 130.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/it' will be
-(Font)              scaled to size 9.0pt on input line 126.
+(Font)              scaled to size 9.0pt on input line 130.
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 9.0pt on input line 126.
+(Font)              scaled to size 9.0pt on input line 130.
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `LinuxLibertineT-TLF' (encoding: OT1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 7.3pt on input line 126.
+(Font)              scaled to size 7.3pt on input line 130.
 
 (C:\CTEX\MikTex2.9\tex\latex\microtype\mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
@@ -1065,11 +1065,11 @@ File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
 
 Package hyperref Warning: Option `pdflang' has already been used,
-(hyperref)                setting the option has no effect on input line 126.
+(hyperref)                setting the option has no effect on input line 130.
 
 
 Package hyperref Warning: Option `pdfdisplaydoctitle' has already been used,
-(hyperref)                setting the option has no effect on input line 126.
+(hyperref)                setting the option has no effect on input line 130.
 
 (samplebody-journals.tex
 LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/n' will be
@@ -1083,12 +1083,13 @@ LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/it' will be
 (Font)              scaled to size 10.0pt on input line 6.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/n' will be
 (Font)              scaled to size 10.0pt on input line 13.
-LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 7.3pt on input line 31.
-LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 6.2pt on input line 31.
 
 [2.2]
+LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
+(Font)              scaled to size 7.3pt on input line 30.
+LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
+(Font)              scaled to size 6.2pt on input line 30.
+ [3.3]
 Package epstopdf Info: Source file: <ca.eps>
 (epstopdf)                    date: 2018-07-09 13:02:55
 (epstopdf)                    size: 1574127 bytes
@@ -1097,21 +1098,20 @@ Package epstopdf Info: Source file: <ca.eps>
 (epstopdf)                    size: 219314 bytes
 (epstopdf)             Command: <epstopdf --outfile=ca-eps-converted-to.pdf ca.
 eps>
-(epstopdf)             \includegraphics on input line 77.
+(epstopdf)             \includegraphics on input line 62.
 Package epstopdf Info: Output file is already uptodate.
-<ca-eps-converted-to.pdf, id=172, pagebox=cropbox, 599.23875pt x 470.75874pt>
+<ca-eps-converted-to.pdf, id=184, pagebox=cropbox, 599.23875pt x 470.75874pt>
 File: ca-eps-converted-to.pdf Graphic file (type pdf)
 <use ca-eps-converted-to.pdf>
-Package pdftex.def Info: ca-eps-converted-to.pdf  used on input line 77. on inp
-ut line 77.
+Package pdftex.def Info: ca-eps-converted-to.pdf  used on input line 62. on inp
+ut line 62.
 Package pdftex.def Info: Requested size: 404.71243pt x 317.94957pt on input lin
-e 77.
+e 62.
 
-Overfull \hbox (8.88994pt too wide) in paragraph at lines 77--78
+Overfull \hbox (8.88994pt too wide) in paragraph at lines 62--63
  [][] 
  []
 
-[3.3]
 Package epstopdf Info: Source file: <ofot_single.eps>
 (epstopdf)                    date: 2018-07-09 13:42:13
 (epstopdf)                    size: 2565054 bytes
@@ -1120,18 +1120,18 @@ Package epstopdf Info: Source file: <ofot_single.eps>
 (epstopdf)                    size: 353901 bytes
 (epstopdf)             Command: <epstopdf --outfile=ofot_single-eps-converted-t
 o.pdf ofot_single.eps>
-(epstopdf)             \includegraphics on input line 93.
+(epstopdf)             \includegraphics on input line 78.
 Package epstopdf Info: Output file is already uptodate.
-<ofot_single-eps-converted-to.pdf, id=178, pagebox=cropbox, 600.2425pt x 500.87
+<ofot_single-eps-converted-to.pdf, id=185, pagebox=cropbox, 600.2425pt x 500.87
 125pt>
 File: ofot_single-eps-converted-to.pdf Graphic file (type pdf)
 <use ofot_single-eps-converted-to.pdf>
-Package pdftex.def Info: ofot_single-eps-converted-to.pdf  used on input line 9
-3. on input line 93.
+Package pdftex.def Info: ofot_single-eps-converted-to.pdf  used on input line 7
+8. on input line 78.
 Package pdftex.def Info: Requested size: 404.71243pt x 337.72192pt on input lin
-e 93.
+e 78.
 
-Overfull \hbox (8.88994pt too wide) in paragraph at lines 93--94
+Overfull \hbox (8.88994pt too wide) in paragraph at lines 78--79
  [][] 
  []
 
@@ -1143,18 +1143,18 @@ Package epstopdf Info: Source file: <ofot_multi.eps>
 (epstopdf)                    size: 365046 bytes
 (epstopdf)             Command: <epstopdf --outfile=ofot_multi-eps-converted-to
 .pdf ofot_multi.eps>
-(epstopdf)             \includegraphics on input line 100.
+(epstopdf)             \includegraphics on input line 85.
 Package epstopdf Info: Output file is already uptodate.
-<ofot_multi-eps-converted-to.pdf, id=179, pagebox=cropbox, 601.24625pt x 500.87
+<ofot_multi-eps-converted-to.pdf, id=186, pagebox=cropbox, 601.24625pt x 500.87
 125pt>
 File: ofot_multi-eps-converted-to.pdf Graphic file (type pdf)
 <use ofot_multi-eps-converted-to.pdf>
-Package pdftex.def Info: ofot_multi-eps-converted-to.pdf  used on input line 10
-0. on input line 100.
+Package pdftex.def Info: ofot_multi-eps-converted-to.pdf  used on input line 85
+. on input line 85.
 Package pdftex.def Info: Requested size: 404.71243pt x 337.15637pt on input lin
-e 100.
+e 85.
 
-Overfull \hbox (8.88994pt too wide) in paragraph at lines 100--101
+Overfull \hbox (8.88994pt too wide) in paragraph at lines 85--86
  [][] 
  []
 
@@ -1166,15 +1166,16 @@ Package epstopdf Info: Source file: <fic.eps>
 (epstopdf)                    size: 368344 bytes
 (epstopdf)             Command: <epstopdf --outfile=fic-eps-converted-to.pdf fi
 c.eps>
-(epstopdf)             \includegraphics on input line 114.
+(epstopdf)             \includegraphics on input line 99.
 Package epstopdf Info: Output file is already uptodate.
-<fic-eps-converted-to.pdf, id=180, pagebox=cropbox, 598.235pt x 495.8525pt>
+<fic-eps-converted-to.pdf, id=187, pagebox=cropbox, 598.235pt x 495.8525pt>
 File: fic-eps-converted-to.pdf Graphic file (type pdf)
 <use fic-eps-converted-to.pdf>
-Package pdftex.def Info: fic-eps-converted-to.pdf  used on input line 114. on i
-nput line 114.
+Package pdftex.def Info: fic-eps-converted-to.pdf  used on input line 99. on in
+put line 99.
 Package pdftex.def Info: Requested size: 383.03122pt x 317.4807pt on input line
- 114.
+ 99.
+[4.4 <./ca-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <finovlp.eps>
 (epstopdf)                    date: 2018-07-09 17:33:41
 (epstopdf)                    size: 3672365 bytes
@@ -1183,15 +1184,15 @@ Package epstopdf Info: Source file: <finovlp.eps>
 (epstopdf)                    size: 499962 bytes
 (epstopdf)             Command: <epstopdf --outfile=finovlp-eps-converted-to.pd
 f finovlp.eps>
-(epstopdf)             \includegraphics on input line 122.
+(epstopdf)             \includegraphics on input line 107.
 Package epstopdf Info: Output file is already uptodate.
-<finovlp-eps-converted-to.pdf, id=181, pagebox=cropbox, 602.25pt x 798.985pt>
+<finovlp-eps-converted-to.pdf, id=511, pagebox=cropbox, 602.25pt x 798.985pt>
 File: finovlp-eps-converted-to.pdf Graphic file (type pdf)
 <use finovlp-eps-converted-to.pdf>
-Package pdftex.def Info: finovlp-eps-converted-to.pdf  used on input line 122. 
-on input line 122.
+Package pdftex.def Info: finovlp-eps-converted-to.pdf  used on input line 107. 
+on input line 107.
 Package pdftex.def Info: Requested size: 383.03122pt x 508.17886pt on input lin
-e 122.
+e 107.
 Package epstopdf Info: Source file: <non-pending.eps>
 (epstopdf)                    date: 2018-07-09 18:39:55
 (epstopdf)                    size: 2817043 bytes
@@ -1200,32 +1201,31 @@ Package epstopdf Info: Source file: <non-pending.eps>
 (epstopdf)                    size: 375364 bytes
 (epstopdf)             Command: <epstopdf --outfile=non-pending-eps-converted-t
 o.pdf non-pending.eps>
-(epstopdf)             \includegraphics on input line 131.
+(epstopdf)             \includegraphics on input line 116.
 Package epstopdf Info: Output file is already uptodate.
-<non-pending-eps-converted-to.pdf, id=182, pagebox=cropbox, 601.24625pt x 711.6
+<non-pending-eps-converted-to.pdf, id=512, pagebox=cropbox, 601.24625pt x 711.6
 5875pt>
 File: non-pending-eps-converted-to.pdf Graphic file (type pdf)
 <use non-pending-eps-converted-to.pdf>
 Package pdftex.def Info: non-pending-eps-converted-to.pdf  used on input line 1
-31. on input line 131.
+16. on input line 116.
 Package pdftex.def Info: Requested size: 383.03122pt x 453.38597pt on input lin
-e 131.
-[4.4 <./ca-eps-converted-to.pdf>]
+e 116.
 \c@assumption=\count147
  [5.5 <./ofot_single-eps-converted-to.pdf>]
 [6.6 <./ofot_multi-eps-converted-to.pdf>] [7.7 <./fic-eps-converted-to.pdf>]
 [8.8 <./finovlp-eps-converted-to.pdf>]
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/sc' will be
-(Font)              scaled to size 10.0pt on input line 212.
+(Font)              scaled to size 10.0pt on input line 197.
  [9.9 <./non-pending-eps-converted-to.pdf>] [10.10]
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/n' will be
-(Font)              scaled to size 8.0pt on input line 306.
+(Font)              scaled to size 8.0pt on input line 291.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/n' will be
-(Font)              scaled to size 6.2pt on input line 306.
+(Font)              scaled to size 6.2pt on input line 291.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/n' will be
-(Font)              scaled to size 5.5pt on input line 306.
+(Font)              scaled to size 5.5pt on input line 291.
 
-Overfull \hbox (2.70097pt too wide) in paragraph at lines 323--324
+Overfull \hbox (2.70097pt too wide) in paragraph at lines 308--309
 \T1/LinuxLibertineT-TLF/m/n/10 (-20) For two faulty schemas $\OML/nxlmi/m/it/10
  c[]$\T1/LinuxLibertineT-TLF/m/n/10 (-20) , $\OML/nxlmi/m/it/10 c[]$\T1/LinuxLi
 bertineT-TLF/m/n/10 (-20) , and a fail-ing test case $\OML/nxlmi/m/it/10 t$ \T1
@@ -1238,7 +1238,7 @@ t/10 c[]; t\LMS/ntxsy/m/n/10 º \U/ntxmia/m/it/10 =
  []
 
 [11.11] [12.12]
-Overfull \hbox (4.21948pt too wide) in paragraph at lines 429--439
+Overfull \hbox (4.21948pt too wide) in paragraph at lines 414--424
  [][][] 
  []
 
@@ -1251,18 +1251,18 @@ Package epstopdf Info: Source file: <minmax.eps>
 (epstopdf)                    size: 204241 bytes
 (epstopdf)             Command: <epstopdf --outfile=minmax-eps-converted-to.pdf
  minmax.eps>
-(epstopdf)             \includegraphics on input line 481.
+(epstopdf)             \includegraphics on input line 466.
 Package epstopdf Info: Output file is already uptodate.
-<minmax-eps-converted-to.pdf, id=2175, pagebox=cropbox, 644.4075pt x 544.0325pt
+<minmax-eps-converted-to.pdf, id=2181, pagebox=cropbox, 644.4075pt x 544.0325pt
 >
 File: minmax-eps-converted-to.pdf Graphic file (type pdf)
 <use minmax-eps-converted-to.pdf>
-Package pdftex.def Info: minmax-eps-converted-to.pdf  used on input line 481. o
-n input line 481.
+Package pdftex.def Info: minmax-eps-converted-to.pdf  used on input line 466. o
+n input line 466.
 Package pdftex.def Info: Requested size: 404.71243pt x 341.68803pt on input lin
-e 481.
+e 466.
 
-Overfull \hbox (8.88994pt too wide) in paragraph at lines 481--482
+Overfull \hbox (8.88994pt too wide) in paragraph at lines 466--467
  [][] 
  []
 
@@ -1274,7 +1274,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [16.16]
 [17.17]
-Overfull \hbox (3.99635pt too wide) in paragraph at lines 628--629
+Overfull \hbox (3.99635pt too wide) in paragraph at lines 613--614
 []\T1/LinuxLibertineT-TLF/m/n/10 (-20) Let $\OML/nxlmi/m/it/10 B \U/ntxmia/m/it
 /10 =$ \T1/LinuxLibertineT-TLF/m/n/10 (-20) {$\OML/nxlmi/m/it/10 c \LMS/ntxsy/m
 /n/10 j \OML/nxlmi/m/it/10 c \LMS/ntxsy/m/n/10  \OML/nxlmi/m/it/10 t \OT1/Linu
@@ -1297,36 +1297,26 @@ LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/it' will be
 (Font)              scaled to size 8.0pt on input line 47.
  [18.18]))
 [19.19]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 134.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 134.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 138.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 138.
  (pending_schema.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 134.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 134.
-
-
-Package rerunfilecheck Warning: File `pending_schema.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `pending_schema.out':
-(rerunfilecheck)             Before: CF3E1ABD5986E12EF04E3F24DC4BA112;6877
-(rerunfilecheck)             After:  E7FAD65AC8FC28A712CC7153957F69BA;5316.
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 138.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 138.
+Package rerunfilecheck Info: File `pending_schema.out' has not changed.
+(rerunfilecheck)             Checksum: E7FAD65AC8FC28A712CC7153957F69BA;5316.
  )
 (\end occurred inside a group at level 1)
 
-### simple group (level 1) entered at line 380 ({)
+### simple group (level 1) entered at line 365 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 19352 strings out of 493312
- 292832 string characters out of 3143321
+ 19363 strings out of 493312
+ 292804 string characters out of 3143321
  417469 words of memory out of 3000000
- 21835 multiletter control sequences out of 15000+200000
- 199988 words of font info for 418 fonts, out of 3000000 for 9000
+ 21836 multiletter control sequences out of 15000+200000
+ 204784 words of font info for 430 fonts, out of 3000000 for 9000
  1302 hyphenation exceptions out of 8191
- 60i,17n,94p,1794b,612s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 60i,17n,94p,1503b,612s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/CTEX/MikTex2.9/fonts/enc/dvips/libertine/lbtn_ncsllp.enc}{C
 :/CTEX/MikTex2.9/fonts/enc/dvips/newtx/libertinealt.enc}{C:/CTEX/MikTex2.9/font
 s/enc/dvips/base/8r.enc}{C:/CTEX/MikTex2.9/fonts/enc/dvips/libertine/lbtn_oexx6
@@ -1347,9 +1337,9 @@ ic/newtx/txexs.pfb><C:/CTEX/MikTex2.9/fonts/type1/public/txfonts/txsya.pfb><C:/
 CTEX/MikTex2.9/fonts/type1/public/txfonts/txsyb.pfb><C:/CTEX/MikTex2.9/fonts/ty
 pe1/public/txfonts/txsyc.pfb><C:/CTEX/MikTex2.9/fonts/type1/public/newtx/txsys.
 pfb><C:/CTEX/MikTex2.9/fonts/type1/public/newtx/zxlri.pfb>
-Output written on pending_schema.pdf (19 pages, 3108491 bytes).
+Output written on pending_schema.pdf (19 pages, 3107937 bytes).
 PDF statistics:
- 2407 PDF objects out of 2487 (max. 8388607)
+ 2412 PDF objects out of 2487 (max. 8388607)
  104 named destinations out of 1000 (max. 500000)
- 61680 words of extra memory for PDF output out of 61914 (max. 10000000)
+ 61688 words of extra memory for PDF output out of 61914 (max. 10000000)
 
