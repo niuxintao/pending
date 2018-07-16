@@ -30,15 +30,15 @@ For all of these, a metric should be proposed to assist in evaluating the comple
 Furthermore, we theoretically analyzed the relationships among schemas by proposing nine novel propositions. Based on them, we gave three equivalent formulas, but with different complexities, to obtain the pending schemas. Among these formulas, Formula 3 helps to reduce the complexity of obtaining pending schemas from O($2^{n}$) to O($ \tau^{|FSS^{\bot}|+|HSS^{\top}|}$), where $\tau$ is the number of parameter values in the MFS, and $|FSS^{\bot}|$ and $|HSS^{\top}|$ are two relatively small numbers and independent on the number of parameters $n$ in one test case. Formula 3 is much more efficient at obtaining pending schemas when compared to the exhaustive methods which consecutively checks schemas in one failing test case, especially when $n$ is large.
 
 
-We conduct a series empirical studies on some real software systems with various number of parameters and values. We first evaluated the incompleteness of traditional covering arrays and different fault localization approaches in CT. We also compared the efficiency of three formulas in terms of obtaining pending schemas. Our results mainly shows that the incompleteness in very common in the covering arrays and  MFS identification approaches. We also observed that Formula 3 is the most efficient formula among others in most cases.
+We conducted a series empirical studies on some real software systems with various number of parameters and values. We first evaluated the incompleteness of traditional covering arrays and different fault localization approaches in CT. We also compared the efficiency of three formulas in terms of obtaining pending schemas. Our results mainly shows that the incompleteness in very common in the covering arrays and  MFS identification approaches. We also observed that Formula 3 is the most efficient formula among others in most cases.
 
 \textbf{Contributions of this paper}:
 \begin{itemize}
 
-  \item We show that the traditional covering arrays and the minimal failure-causing schema model are still incomplete in terms of the determination of schemas to be faulty or healthy.
-  \item We introduce the notion of the pending schema to evaluate the incompleteness of these models in combinatorial testing.
-  \item We propose several propositions to formulate the set of pending schemas and give three equivalent formulas to obtain the pending schemas, based on which we reduce the complexity of obtaining pending schemas from O($2^{n}$) to O($ \tau^{|FSS^{\bot}|+|HSS^{\top}|}$), where $|FSS^{\bot}|$ and $|HSS^{\top}|$ are two relatively small numbers and independent on the number of $n$.
-  \item We conducted a series of experiments to evaluate the incompleteness of traditional covering arrays and MFS identification approaches. Besides, we also evaluate the efficiency of the three formulas on obtaining pending schemas.
+  \item We showed that the traditional covering arrays and the minimal failure-causing schema model are still incomplete in terms of the determination of schemas to be faulty or healthy.
+  \item We introduced the notion of the pending schema to evaluate the incompleteness of these models in combinatorial testing.
+  \item We proposed several propositions to formulate the set of pending schemas and gave three equivalent formulas to obtain the pending schemas, based on which we reduced the complexity of obtaining pending schemas from O($2^{n}$) to O($ \tau^{|FSS^{\bot}|+|HSS^{\top}|}$), where $|FSS^{\bot}|$ and $|HSS^{\top}|$ are two relatively small numbers and independent on the number of $n$.
+  \item We conducted a series of experiments to evaluate the incompleteness of traditional covering arrays and MFS identification approaches. Besides, we also evaluated the efficiency of the three formulas on obtaining pending schemas.
 \end{itemize}
 
 The remainder of this paper is organized as follows: Section \ref{sec:motiv} describes the motivation for this work. Section \ref{sec:back} introduces some preliminary definitions and propositions. Section \ref{sec:pending} proposes several important propositions to formally identify the characteristics of the pending schemas. Section \ref{sec:emp} evaluates the incompleteness of MFS identification approaches and compares the effectiveness of different approaches for obtaining pending schemas. Section \ref{sec:discussion} discusses the findings of our research works.  Section \ref{sec:related} summarizes the related works. Section \ref{sec:conclusion} concludes this paper and discusses the future works.
@@ -46,20 +46,20 @@ The remainder of this paper is organized as follows: Section \ref{sec:motiv} des
 
 \section{Motivating examples}\label{sec:motiv}
 
-In this section, we will show that is still incompleteness. Specifically,
-
-We use the example listed in the introduction.
-
-Here to be more depictable, we use to indicate the schemas (In the latter section, we will introduce a more formal description). Also to understand the following examples, we first give two lemmas. Later we will discuss them more carefully.
+In this section, we will use several examples to show the incompleteness of traditional covering arrays and well-known MFS identification approaches, respectively. These examples are derived from the MS-Word example listed in the introduction. For simplification, we use integer 0 to represent the state \emph{On} and 1 to represent the state \emph{Off} for each option. For example, the second test case listed in Table \ref{MS_word} can be denoted as (1, 1, 0, 0). Also, we use the intuitive notation (.., $v_{n_{i}}$ -, $v_{n_{k}}$, ..., -) to represent the schemas for the system, where $v_{n_{i}}$ indicate the value that is assigned to the corresponding factor and `-' indicates that the corresponding factor is not in this schema. For example, (1, 1, -, -) represents the schema (Highlight: Off, Status Bar: Off) in this example. Note that we will introduce a more formal denotation of test case and schema in the following section.
  
-first shows that with a normal $\tau$-way covering array, it is not completeness in terms of making  all the schemas clear for each failing test case.
 
-Then we give examples shows that even with fault localization, this is also not completeness (with three most important fault localization techniques.)
+Also, to understand the following examples, we first give two rules. The first rule is that all the schemas in a passing test case are non-faulty, i.e., will not cause failure. The second rule is that any schema contain a MFS is a faulty schema, i.e., will also cause the failure. These two rules are wildly used in the MFS identification approaches \cite{nie2011minimal,zhang2011characterizing,ghandehari2012identifying,niu2013identifying}. We will discuss the justifications of these two rules later, as well as some issues if these two rules are not hold.
 
-give examples show based on two wide-used fault localization approaches in CT.
+%first shows that with a normal $\tau$-way covering array, it is not completeness in terms of making  all the schemas clear for each failing test case.
+
+%Then we give examples shows that even with fault localization, this is also not completeness (with three most important fault localization techniques.)
+
+%give examples show based on two wide-used fault localization approaches in CT.
 
 \subsection{The incompleteness of covering array}
 
+We first inspect the condition of traditional covering arrays.  
 in terms of making the failing test case clear. In this figure, which denoted what. what denoted what.
 
 
@@ -229,9 +229,6 @@ Given a healthy schema $s_{1}$, then $\forall s_{2}, s_{2} \prec s_{1}$, $s_{2}$
 \end{proposition}
 
 
-\begin{proposition}\label{pro:pending}
-Given two pending schemas $s_{1}$, $s_{2}$, and $s_{1} \prec s_{2}$. Then $\forall s_{3}, s_{1} \prec s_{3} \prec s_{2}$, $s_{3}$ is a pending schema.
-\end{proposition}
 
 
 You should give normal sentences description and examples of them (if possible, give some simple proofs)
@@ -239,12 +236,20 @@ You should give normal sentences description and examples of them (if possible, 
 \section{Pending schema}\label{sec:pending}
 In this section, we will describe our approach to identify the failure-inducing schemas in the SUT. To give a better description, we will give several propositions which provide theoretical supports for our approach. The proofs of these propositions are given in the Appendix.
 
+
+
 \subsection{What is pending schema}
 Through the motivating examples, we can learn that the pending schema is not checked to be healthy and faulty. That is,
 
 However, to emulate all the faulty schemas and all the healthy schemas is very large. By the propostios 3 and 4,
 
 More formally, we can learn that it should not be any super-schemas of existing faulty schemas, and any sub-shemas of existing healthy schemas.
+
+
+\begin{proposition}\label{pro:pending}
+Given two pending schemas $s_{1}$, $s_{2}$, and $s_{1} \prec s_{2}$. Then $\forall s_{3}, s_{1} \prec s_{3} \prec s_{2}$, $s_{3}$ is a pending schema.
+\end{proposition}
+
 
 
 \subsection{Obtaining pending schema}
@@ -541,9 +546,14 @@ Our previous work \cite{niu2013identifying} proposed an approach that utilizes t
 
 
 
-
 \section{Conclusion}\label{sec:conclusion}
+To identify the MFS in the SUT is important because it provides the additional support to find the cause of the failure. Although many efforts have been proposed to propose various algorithms to make the MFS identification approaches more efficient and effective, the existence of pending schemas make them incomplete at determining . This would be hidden dangers to the software under testing.
 
+In this paper, we studied the characteristics of the relationships among schemas, especially for the pending schemas. We also proposed several propositions to formulate the set of pending schemas and give three equivalent formulas to obtain them, based on which we reduce the complexity of obtaining pending schemas from O($2^{n}$) to O($ \tau^{|FSS^{\bot}|+|HSS^{\top}|}$), where $n$ is the number of factors in the software, while $|FSS^{\bot}|$ and $|HSS^{\top}|$ are two relatively small numbers and independent on the number of $n$.
+
+We conduct a series empirical studies on some real software systems with various number of parameters and values. Our results shows that the incompleteness in very common in the covering arrays and MFS identification approaches. We also observed that the third proposed formula is the most efficient when compared others in most cases.
+
+As a further work, we plan to take the advantages of the pending schemas to assist in the MFS identification approaches. More specifically, we would develop a new framework for MFS idnetiicaion. The whole procudure will take the pending schemas as a metric. The procedure will continued until all the schemas would be empty. It is of interest to experimet various pending schema checking sequnce, the startegy of  and so on.
 
 % Appendix
 \appendix
@@ -665,15 +675,7 @@ As we have shown B $\subseteq$ A, and A $\subseteq$ B, so A = B.
 
 \begin{acks}
 
-The authors would like to thank Dr. Maura Turolla of Telecom
-Italia for providing specifications about the application scenario.
-
-The work is supported by the \grantsponsor{GS501100001809}{National
-  Natural Science Foundation of
-  China}{http://dx.doi.org/10.13039/501100001809} under Grant
-No.:~\grantnum{GS501100001809}{61273304\_a}
-and~\grantnum[http://www.nnsf.cn/youngscientists]{GS501100001809}{Young
-  Scientists' Support Program}.
+The authors would like to thank the anonymous reviewers for their hard work and valuable comments. This work was supported by the National Key Research and Development Plan(No. 2018YFB1003800), National Science Foundation Award CNS-1748109, US Department of Homeland Security(DHS-14-ST-062-001), and US National Institute of Standards and Technologies Award(70NANB15H199).
 
 
 \end{acks}
