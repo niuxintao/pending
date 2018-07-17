@@ -59,16 +59,34 @@ Also, to understand the following examples, we first give two rules. The first r
 
 \subsection{The incompleteness of covering array}
 
-We first inspect the condition of traditional covering arrays.
-in terms of making the failing test case clear. In this figure, which denoted what. what denoted what.
+We first consider the traditional covering arrays. To understand the incompleteness of the covering array, we need to check each schema in the test case of the covering array. As we said before, we use the same MS-Word example in the first section.  Figure \ref{fig_inc_ca} lists the detail of this example. The test cases $t_{1}$ to $t_{5}$ constitute the covering array shown in Table \ref{MS_word}. The complete set of the schemas of each test case is attached at the right side of the corresponding test case.  For example, for test case $t_{1}$, i.e., (0, 0, 0, 0), all the possible schemas (0, -, -, -), (0, 0, -, -), ..., are listed at the right side of $t_{1}$. There are $2^{4}-1 = 15$ schemas in total for each test case in this example.
 
-
-\begin{figure*}[ht]
+\begin{figure*}[!ht]
  \centering
  \includegraphics[width=5.6in]{ca.eps}
  \caption{The incompleteness of Covering array }
  \label{fig_inc_ca}
 \end{figure*}
+
+In this figure, the test case with dark color represents a failing test case, while the test case with white color is a passing test case. The schema with white color is non-faulty, i.e., will not cause a failure, while the schema with dark color is faulty, i.e., any test case contain this schema would fail after testing. At last, the schema with light dark color and dashed outline is the pending schema.
+
+In this figure, we can first observe that all the schemas in the passing test case is non-faulty. This result is according to the first rule we mentioned before. The second observation is that the schema with the maximal number of factors (4 factors) in a failing test case is a faulty schema. In fact, this schema is the failing test case itself, i.e., (1, 1, 0, 1). This is because the failing test case must contain at least one MFS (otherwise, it will not fail). Hence, the schema which is the test case itself must also contain at least one MFS. As a result, it must be faulty schema according to the second rule we mentioned before. The last observation is that the other schemas in this failing test case $t_{5}$ are not guaranteed to be faulty schemas. In fact, if we assume this test case only contains one MFS (1, 1, 0, 1), then all the other schemas can be non-faulty schemas. Hence, these schemas cannot be determined to be faulty or not if we focus on this failing test case alone. As a result, we label these schemas as pending schemas initially.
+
+Combining the three observations, we can further remove some pending schemas in $t_{5}$ by elminiating the schemas that have already been appeared in the passing schemas. These schemas are 
+
+%because any schema can be the MFS in this test case. For example, if the test case itself as MFS, then no other schemas in this test case can be faulty schema.
+%Initially. The schema with light dark color and dashed outline is the pending schema. These schemas cannot be determined by these two rules in the beginning. For example, schema (0, -, 1, -) is not appear in any passing test case, neither contain not any MFS.
+%
+%Initial is pending. Combining all the information, it is non-faulty.
+
+
+%
+%and the schema with
+%
+%In terms of making the failing test case clear. In this figure, which denoted what. what denoted what.
+
+
+
 
 
 

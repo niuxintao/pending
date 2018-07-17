@@ -59,16 +59,31 @@ Also, to understand the following examples, we first give two rules. The first r
 
 \subsection{The incompleteness of covering array}
 
-We first inspect the condition of traditional covering arrays.
-in terms of making the failing test case clear. In this figure, which denoted what. what denoted what.
+We first consider the traditional covering arrays. To understand the incompleteness of the covering array, we need to check each schema in the test case of the covering array. As we said before, we use the same MS-Word example in the first section.  Figure \ref{fig_inc_ca} lists the detail of this example. The test cases $t_{1}$ to $t_{5}$ constitute the covering array shown in Table \ref{MS_word}. The complete set of the schemas of each test case is attached at the right side of the corresponding test case.  For example, for test case $t_{1}$, i.e., (0, 0, 0, 0), all the possible schemas (0, -, -, -), ..., (0, 0, 0, 0)  is listed at the right side it. s.
 
-
-\begin{figure*}[ht]
+\begin{figure*}[!ht]
  \centering
  \includegraphics[width=5.6in]{ca.eps}
  \caption{The incompleteness of Covering array }
  \label{fig_inc_ca}
 \end{figure*}
+
+In this figure, the test case with dark color is failing test case, while with white color is passing test case. 
+The schema with white color is non-faulty, i.e., will not cause a failure, while the schema with dark color is the faulty color.
+
+Note that in this figure, all the schemas in the passing test case is non-faulty. This is according to the first rule. While  the test case contains itself is faulty schema. This is because the failing test case must contain at least a MFS (otherwise, it will not fail). For this condition, the test case itself as schema must contain the MFS, hence, it must be faulty schema according to the second rule. Note that other schemas in this failing test case will not guaranteed to be the faulty schema, because any schema can be the MFS in this test case. For example, if the test case itself as MFS, then no other schemas in this test case can be faulty schema.
+
+
+The schema with light dark color and dashed outline is the pending schema. These schemas cannot be determined by these two rules in the beginning. For example, schema (0, -, 1, -) is not appear in any passing test case, neither contain not any MFS.
+
+
+%
+%and the schema with
+%
+%In terms of making the failing test case clear. In this figure, which denoted what. what denoted what.
+
+
+
 
 
 
@@ -503,24 +518,24 @@ We do not need list all the schemas, but we can figure out which one is the pend
 
 \subsection{The pending schemas for covering arrays}
 
-subjects (30 existing wildly used)
-
-generation approaches (ipog, aetg, augmented simulating?)
+%subjects (30 existing wildly used)
+%
+%generation approaches (ipog, aetg, augmented simulating?)
 
 \subsection{The existence of pending schemas for different MFS identification approaches}
 
-subjects (my , may also used from )
-
-approaches (my)
+%subjects (my , may also used from )
+%
+%approaches (my)
 
 \subsection{The characteristics of pending schemas with various types of MFS (multiple, overlapped, single, low-high degrees)}
 
-the same as the captions
+%the same as the captions
 
 
 \subsection{The effectiveness of the approach}
 
-three way: (three formulas in the propositions)
+%three way: (three formulas in the propositions)
 
 
 \subsection{Threats to validity}
@@ -547,13 +562,13 @@ Our previous work \cite{niu2013identifying} proposed an approach that utilizes t
 
 
 \section{Conclusion}\label{sec:conclusion}
-To identify the MFS in the SUT is important because it provides additional supports to find the cause of the failure. Although many efforts have been proposed to propose various algorithms to make the MFS identification approaches more efficient and effective, the existence of pending schemas make them incomplete at determining . This would be hidden dangers to the software under testing.
+To identify the MFS in the SUT is important because it provides additional supports to find the cause of the failure. Although many efforts have been proposed to make the MFS identification approaches more efficient and effective, the existence of pending schemas still make them incomplete, which would be hidden dangers to the software under testing. Hence, to identify these pending schemas is of great importance to reveal such potential risks.
 
-In this paper, we studied the characteristics of the relationships among schemas, especially for the pending schemas. We also proposed several propositions to formulate the set of pending schemas and give three equivalent formulas to obtain them, based on which we reduce the complexity of obtaining pending schemas from O($2^{n}$) to O($ \tau^{|FSS^{\bot}|+|HSS^{\top}|}$), where $n$ is the number of factors in the software, while $|FSS^{\bot}|$ and $|HSS^{\top}|$ are two relatively small numbers and independent on the number of $n$.
+In this paper, we studied the characteristics of the relationships among faulty schemas, healthy schemas, minimal failure-causing schemas, and maximal healthy schemas. The subsuming relationships among them form the basis of the methodology for pending schemas. Particulary, we proposed several propositions to formulate the set of pending schemas and give three equivalent formulas to obtain them. Among the three formulas, the last formula reduce the complexity of obtaining pending schemas from O($2^{n}$) to O($ \tau^{|FSS^{\bot}|+|HSS^{\top}|}$), where $n$ is the number of factors in the software, while $|FSS^{\bot}|$ and $|HSS^{\top}|$ are two relatively small numbers and independent on the number of $n$.
 
 We conduct a series empirical studies on some real software systems with various number of parameters and values. Our results shows that the incompleteness in very common in the covering arrays and MFS identification approaches. We also observed that the third proposed formula is the most efficient when compared others in most cases.
 
-As a further work, we plan to take the advantages of the pending schemas to assist in the MFS identification approaches. More specifically, we would develop a new framework for MFS idnetiicaion. The whole procudure will take the pending schemas as a metric. The procedure will continued until all the schemas would be empty. It is of interest to experimet various pending schema checking sequnce, the startegy of  and so on.
+As a future work, it is appealing to take the advantages of the pending schemas to assist in the MFS identification approaches. More specifically, we would like to develop a new framework for MFS identification, which take the pending schemas as a indicator. That is, any MFS identification algorithm that runs on this framework aims to empty the set of pending schemas. It is of interest to evaluate the efficiency and effectiveness of this framework with respect to various MFS identification approaches that run on it.
 
 % Appendix
 \appendix
