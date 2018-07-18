@@ -68,11 +68,11 @@ We first consider the traditional covering arrays. To understand the incompleten
  \label{fig_inc_ca}
 \end{figure*}
 
-In this figure, the test case with dark color represents a failing test case, while the test case with white color is a passing test case. The schema with white color is non-faulty, i.e., will not cause a failure, while the schema with dark color is faulty, i.e., any test case contain this schema would fail after testing. At last, the schema with light dark color and dashed outline is the pending schema.
+In this figure, the test case with dark color represents a failing test case, while the test case with white color is a passing test case. The schema with white color is non-faulty, i.e., will not cause a failure, while the schema with dark color is faulty, i.e., any test case contain this schema would fail after testing. At last, the schema with light dark color and dashed outline is the pending schema, indicating that we cannot still determine whether it is faulty or non-faulty.
 
 In this figure, we can first observe that all the schemas in the passing test case is non-faulty. This result is according to the first rule we mentioned before. The second observation is that the schema with the maximal number of factors (4 factors) in a failing test case is a faulty schema. In fact, this schema is the failing test case itself, i.e., (1, 1, 0, 1). This is because the failing test case must contain at least one MFS (otherwise, it will not fail). Hence, the schema which is the test case itself must also contain at least one MFS. As a result, it must be faulty schema according to the second rule we mentioned before. The last observation is that the other schemas in this failing test case $t_{5}$ are not guaranteed to be faulty schemas. In fact, if we assume this test case only contains one MFS (1, 1, 0, 1), then all the other schemas can be non-faulty schemas. Hence, these schemas cannot be determined to be faulty or not if we focus on this failing test case alone. As a result, we label these schemas as pending schemas initially.
 
-Combining the three observations, we can further remove some pending schemas in $t_{5}$ by elminiating the schemas that have already been appeared in the passing schemas. These schemas are 
+Combining the three observations, we can further remove some pending schemas in $t_{5}$ by selecting the schemas that have already been appeared in the passing test cases. These schemas are (1, -, -, -), (-, -, 0, -), (-, 1, -, -), and (-, -, -, 0), which are labeled as non-faulty schemas. At last, the determination results of these schemas of $t_{5}$ can be shown in the ``\emph{Status}'' row. Note that except for these schemas that have been determined to be faulty and non-faulty, there still exist some pending schemas we cannot further removed by the original two rules. For example, (1, 0, -, -) didn't appear in any passing test case, and it did not contain any identified MFS. Hence, in this example, a single covering array is incomplete because of the existence of these pending schemas.
 
 %because any schema can be the MFS in this test case. For example, if the test case itself as MFS, then no other schemas in this test case can be faulty schema.
 %Initially. The schema with light dark color and dashed outline is the pending schema. These schemas cannot be determined by these two rules in the beginning. For example, schema (0, -, 1, -) is not appear in any passing test case, neither contain not any MFS.
@@ -91,18 +91,38 @@ Combining the three observations, we can further remove some pending schemas in 
 
 
 
-\subsection{The incompleteness of error locating array}
-Since that , many approaches give a alleviation of how to compute the remaining schemas, which is called the fault localization. Error locating array is one of them. However, this time, we also give .
+%\subsection{The incompleteness of error locating array}
+%Since that , many approaches give a alleviation of how to compute the remaining schemas, which is called the fault localization. Error locating array is one of them. However, this time, we also give .
 
-\subsection{The incompleteness of OFOT and SOFOT}
-Why minimal failure-causing schema is not effective?
-This example shows that . Because there still existing pending schemas.
+\subsection{The incompleteness of OFOT}
+%SOFOT
+Since covering array alone cannot remove all the pending schema in the failing test cases, we need more information to satisfy this target.  According to the second rule, i.e., the schema that contain the MFS is faulty schema, one method to reduce the number of pending schemas is to filter out those schemas which contain the MFS. However, without knowing the specific MFS in prior, we can only guarantee that the failing test case itself is faulty schema (it must contain the MFS). In fact, with the covering array alone, this is what we can only do to utilize the second rule.
+ 
+Hence, to further reduce the set of pending schemas, we need to identify the MFS in the failing test case. One-Factor-One-Time (OFOT) \cite{nie2011minimal} is one of the most wildly used MFS identification approach. It identifies the MFS by modifying the original failing test case to see whether the modification would break the MFS in it. More specifically, at each time, it modifies one factor of the original failing test case and keeps the remaining factors to be as the same as the original failing test case. By doing this, it generates one new test case at each time. It then tests the newly generated test case. If this newly generated test case passes, it indicates the modified factor break the MFS in the original failing test case, and therefore, the original factor in the failing test case is one factor in the MFS. Otherwise, the original factor in the failing test case is not the factor in the MFS if the newly generated test case fails. 
+%Note that this conclusion is based on the newly generated MFS will not introduce new MFS, and hence, OFOT may not always obtain the accurate MFS.
+%In fact, all the MFS identification approaches suffer from the need some assumptions to identify the MFS,
+
+%which is also what we do in the covering arrays.
+% For all we know is that the schemas as the failing test cases itself contain the MFS, others we do not know. Hence, it is important to identify the MFS to further narrow down the set of pending schemas.
+
+Next, let us use OFOT to identify the MFS and help to  narrow down the set of pending schemas of $t_{5}$ in the original covering array.  To make OFOT useful, let us first assume that there is one MFS (-, -, 1, 1) in failing test case $t_{5}$. 
+Then the OFOT will generate four additional test cases $t_{6}$ to $t_{9}$ as shown in Figure \ref{fig_ofot_single}, respectively, with one factor have been mutated from $t_{5}$ at each time.  Since, $t_{8}$ and $t_{9}$ failed, then (-, -, 1, -) and (-, -, -, 1) are two factors in the MFS according to the MFS. The passing of $t_{6}$ and $t_{7}$ shows there is no other factors in this MFS. Hence, OFOT identified the Schema (-, -, 1, 1) as the MFS, which is idneitifical to our setting in prior.
+  
+%MFS identification task is to distinguish. The wildly used approach is OFOT.
 \begin{figure*}[ht]
  \centering
  \includegraphics[width=5.6in]{ofot_single.eps}
  \caption{OFOT with single MFS}
  \label{fig_ofot_single}
 \end{figure*}
+
+To analyse the pending schemas, we also list all the schemas in each test case as we did before. 
+
+Why minimal failure-causing schema is not effective?
+This example shows that . Because there still existing pending schemas.
+
+
+
 
 \begin{figure*}[ht]
  \centering
@@ -113,8 +133,9 @@ This example shows that . Because there still existing pending schemas.
 
 
 
-\subsection{The incompleteness of FIC and FIC\_BS}
+\subsection{The incompleteness of FIC}
 
+% and FIC\_BS
 
 Since we cannot obtain a completeness of . It is important to evaluate how incompleteness of covering array, fault localizaiton.
 
@@ -125,6 +146,7 @@ Since we cannot obtain a completeness of . It is important to evaluate how incom
  \label{fig_fic_multi}
 \end{figure*}
 
+\subsection{The incompleteness of Finovlp}
 
 \begin{figure*}[!htb]
  \centering
