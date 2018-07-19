@@ -169,16 +169,15 @@ Since Covering array, OFOT, FIC, and FINOLP cannot remove all the pending schema
 
 As for this example, we generated four test cases to contain these pending schemas one by one (Note that in this example, we cannot generate one test case contain more than one pending schema without including any MFS). The result is shown in Figure \ref{fig_no_pending}. In this figure, all the additional test cases, i.e., $t_{16}$ to $t_{19}$, passed after testing. Hence, all the remaining schemas are non-faulty schemas. The final status of the pending schemas of $t_{5}$ is shown in the ``\emph{Status}'' row of Figure \ref{fig_no_pending}. We can observe that all the schemas in $t_{5}$ are determined to be non-faulty or faulty. Hence, in this condition, we guarantee that the test of $t_{5}$ is complete.
 
-Note that if any of the 
+Note that if any of the test case ($t_{16}$ to $t_{19}$) failed after testing, we cannot determine the corresponding pending schema in that test case is faulty or not.  In this case, we need to generate more test cases to determine the status of this pending schema (If this schema is a faulty schema, the cost will increase exponentially according to the formal definition of faulty schema we will mention later).
 
 \subsection{A summary}
 
-Since there the approaches exist pending schemas, especally in the multiple MFS. and it is very hard to obtain them. We need to obtain new appraoch to formulate it and obtain them more efficiently. It needs a formal definiton and therotical analysis for the pending schemas with non-faulty schemas and faulty schemas.
+Since there the approaches exist pending schemas, especially in the multiple MFS. and it is very hard to obtain them. We need to obtain new appraoch to formulate it and obtain them more efficiently. It needs a formal definition and theoretical analysis for the pending schemas with non-faulty schemas and faulty schemas.
 
 
 \section{Preliminary}\label{sec:back}
 This section presents some definitions and propositions to give a formal model for CT.
-
 %\subsection{Failure-inducing interactions in CT}
 
 Assume that the Software Under Test (SUT) is influenced by a set of parameters $P$, which contains \emph{n} parameters, and each parameter $p_{i} \in P$ can take the values from the finite set $V_{i}$ ($i$ = 1,2,..n).
