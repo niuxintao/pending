@@ -152,18 +152,13 @@ One reason for this incompleteness that FIC missed anther MFS in the failing tes
  \label{fig_finovlp_multi}
 \end{figure*}
 
-In Figure \ref{fig_finovlp_multi}, test cases $t_{1}$ to $t_{9}$ are the same that of the example in Figure \ref{fig_fic_multi}. We can observe that FINOLP first generated the test case $t_{10}$ to check whether there exist other MFS than the identified (-, -, 1, 1). Since $t_{10}$ failed after testing, it repeated the FIC on $t_{10}$ to identified the remaining MFS. Hence, it genertated four additional test cases $t_{11}$ to $t_{14}$. The passings of $t_{11}$ and $t_{12}$ indicated another MFS is (1, 0, -, -). 
+In Figure \ref{fig_finovlp_multi}, test cases $t_{1}$ to $t_{9}$ are the same as those of the example in Figure \ref{fig_fic_multi}.  After identifying the MFS (-, -, 1, 1), FINOLP first generated the test case $t_{10}$ to check whether there exists other MFS in the original failing test case $t_{5}$ by mutating the values that appear in this MFS. Since $t_{10}$ failed after testing, it repeated FIC approach on $t_{10}$ to identified the remaining MFS. Therefore, it generated four additional test cases $t_{11}$ to $t_{14}$. The passings of $t_{11}$ and $t_{12}$ indicated another MFS was (1, 0, -, -). FINOLP continued to check whether there exists any other MFS by generating the test case $t_{15}$. The passing of $t_{15}$ showed that there did not exist any other MFS in the original failing test case $t_{5}$. Above all, FINOLP accurately identified all the MFS we have set in piror.
 
-FINOLP also checked whether there existed any other MFS by generating test case $t_{15}$. The passing of $t_{15}$ shows that there does not exist any other MFS in the original failing test case $t_{5}$. Above all, FINOLP identified all the MFS accurately as we have set in piror.
-
-Next, the same as before, we use the two rules to check the status of the pending schemas in the original failing test case. The result is shown in the ``\emph{Status}'' of Figure \ref{fig_finovlp_multi}. We can observe that there still exists four schemas, which are (1, -, 1, -), (1, -, -, 1), (-, 0, 1, -), and (-, 0, -, 1), respectively. It is easy to find that these four schemas neither contain any MFS nor appears in any passing test cases. 
-
-
-At last, we can learn that although FIC and FINOLP can handle the multiple MFS problem, it is still incomplete for the existence of these pending schemas. 
+Next, the same as before, we use the two rules to check the status of the pending schemas in the original failing test case $t_{5}$. The result is shown in the ``\emph{Status}'' row of Figure \ref{fig_finovlp_multi}. We can observe that there still exists four schemas, which are (1, -, 1, -), (1, -, -, 1), (-, 0, 1, -), and (-, 0, -, 1), respectively. It is easy to find that these four schemas neither contain any MFS nor appears in any passing test cases. Hence, although FIC and FINOLP can handle the multiple MFS problem, it is still incomplete for the existence of these pending schemas.
 
 \subsection{Additional efforts to remove the pending schemas}
 
-Since, FINOLP still cannot remove all the pending schemas. We 
+Since Covering array, OFOT, FIC, and FINOLP cannot remove all the pending schemas, more efforts are needed to accomplish this goal. Note that to clear all the pending schemas is important, because some of them can be potential faulty schemas and may be harmful for this system under testing. For this, we decided to check these remaining pending schemas by generating more test cases that contained them and executing these test cases. If these test cases passes, we can directly use the first rule we mentioned before to determine these schemas to be non-faulty schemas. Otherwise, we need to adopt other methods to determine these schemas to be faulty or not.
 
 \begin{figure*}[!htb]
  \centering
@@ -171,6 +166,10 @@ Since, FINOLP still cannot remove all the pending schemas. We
  \caption{Additional efforts to remove pending schemas}
  \label{fig_no_pending}
 \end{figure*}
+
+As for this example, we generated four test cases to contain these pending schemas one by one (Note that in this example, we cannot generate one test case contain more than one pending schema without including any MFS). The result is shown in Figure \ref{fig_no_pending}. In this figure, all the additional test cases, i.e., $t_{16}$ to $t_{19}$, passed after testing. Hence, all the remaining schemas are non-faulty schemas. The final status of the pending schemas of $t_{5}$ is shown in the ``\emph{Status}'' row of Figure \ref{fig_no_pending}. We can observe that all the schemas in $t_{5}$ are determined to be non-faulty or faulty. Hence, in this condition, we guarantee that the test of $t_{5}$ is complete.
+
+Note that if any of the 
 
 \subsection{A summary}
 
