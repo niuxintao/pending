@@ -78,18 +78,10 @@ Combining the three observations, we can further remove some pending schemas in 
 %Initially. The schema with light dark color and dashed outline is the pending schema. These schemas cannot be determined by these two rules in the beginning. For example, schema (0, -, 1, -) is not appear in any passing test case, neither contain not any MFS.
 %
 %Initial is pending. Combining all the information, it is non-faulty.
-
-
 %
 %and the schema with
 %
 %In terms of making the failing test case clear. In this figure, which denoted what. what denoted what.
-
-
-
-
-
-
 
 %\subsection{The incompleteness of error locating array}
 %Since that , many approaches give a alleviation of how to compute the remaining schemas, which is called the fault localization. Error locating array is one of them. However, this time, we also give .
@@ -117,7 +109,7 @@ Next, let us use OFOT to identify the MFS and help to narrow down the set of pen
 To analyse the pending schemas, we first list all the schemas in each additional test case in Figure \ref{fig_ofot_single}. The same as we observed from the covering array example, for the passing test case $t_{6}$ and $t_{7}$, all the schemas contained in it are non-faulty. For the failing test cases $t_{8}$ and $t_{9}$, we initially set the schemas which are failing test cases themselves as faulty schemas. Other schemas in these two failing test cases are all set to be pending schemas initially.
 
 With these additional information, let us re-consider the status of the schemas in the original failing test case $t_{5}$. Firstly, as the identified MFS is (-, -, 1, 1), we can remove all the pending schemas of $t_{5}$ which contain this schema. These schemas are (-, -, 1, 1), (1, -, 1, 1), (-, 0, 1, 1), and (1, 0, 1, 1), respectively, and are labeled with dark color in the  ``\emph{Status}'' row for $t_{5}$ in Figure \ref{fig_ofot_single}. Next, we remove all the pending schemas of $t_{5}$ which appeared in these two passing test case $t_{6}$ and $t_{7}$. As shown in the  ``\emph{Status}'' row of Figure \ref{fig_ofot_single}, all the remaining pending schemas are removed and labeled with white color. Hence, we can learn that in this single MFS circumstance, OFOT works perfectly to remove all the pending schemas. However, when the failing test case contains multiple MFS, it does not go that well.
- 
+
 Now let us assume there are two MFS in the failing test case $t_{5}$, which are (1, 0, -, -) and (-, -, 1, 1), respectively. At this time, OFOT still generates the same four additional test cases, i.e., $t_{6}$ to $t_{9}$,  as shown in Figure \ref{fig_ofot_multi}. But different from the example of single MFS,  all the additional test cases failed at this time. This is because, the strategy of OFOT, i.e., mutating one factor at one time, cannot break all the MFS at the same time. As a result, it cannot identify any of the MFS.
 %Why minimal failure-causing schema is not effective?
 %This example shows that . Because there still existing pending schemas.
@@ -129,43 +121,60 @@ Now let us assume there are two MFS in the failing test case $t_{5}$, which are 
 \end{figure*}
 
 There are two negative influences of this result. First, as we cannot identify the MFS by OFOT, the pending schemas in $t_{5}$ that contain the MFS also cannot be determined. Second, as all the test cases failed after testing, we cannot remove any pending schemas in $t_{5}$ that appear in the passing test case. As a result, the status of the pending schemas of $t_{5}$ will evolve to the ``\emph{Status}'' row of Figure \ref{fig_ofot_single}. We can observe that the status of the schemas of $t_{5}$ is the same as the previous example with only using covering array alone. Hence, in the condition that one failing test case contains multiple MFS, the MFS identification approach OFOT is still incomplete.
-   
+
 
 \subsection{The incompleteness of FIC}
 
-For the example of OFOT, we can learn the multiple MFS in one failing test case is the main cause of incompeletness. FIC, an mutated verison of OFOT is proposed to handle the problem. It also muate the one factor at one time. But different from the , it keeps the change of original . To do this enables the FIC get away from the multiple MFS influence.
-% and FIC\_BS
-
-Since we cannot obtain a completeness of . It is important to evaluate how incompleteness of covering array, fault localizaiton.
+From the example of OFOT, we can learn the main cause of incompleteness of OFOT is that the failing test case contains multiple MFS. For this, FIC \cite{zhang2011characterizing} (short for Faulty Interaction Characterization) augmented OFOT to handle the multiple MFS problem.
+%It also mutates each factor in the original failing test case to generate additional test cases. But different from OFOT, which does not keep the value of the last mutation factor in the next test case generation (at each time, OFOT only mutates one factor and keep the remaining factors the same as the original failing test case), FIC may keep some changes in the next test case generation.  Specifically, when last generated test case failed after testing, FIC will keep the value of the changed factor to the next generations; Otherwise, if the last generated test case passed, FIC will not keep the value of the changed factor and assign the value of the original failing test case to this factor in the next generations. The reason for this is to  make FIC focus on only one MFS at each time and forbidden the appearance of other MFS.
+FIC also mutates one factor at a time to generate one additional test case.  The only difference is that it will not always rollback to the original value of one factor it has mutated when it goes on mutating other factors (only when a passing test case appears, it will rollback to the original value). This operation will break multiple MFS in one test case and finally there remains only one MFS to identify. We still use the same example of multiple MFS used in OFOT to illustrate how FIC works and to see whether FIC satisfies the completeness criteria. The result is shown in Figure \ref{fig_fic_multi}.
 
 \begin{figure*}[!htb]
  \centering
  \includegraphics[width=5.3in]{fic.eps}
- \caption{fic with multiple MFS}
+ \caption{FIC with multiple MFS}
  \label{fig_fic_multi}
 \end{figure*}
 
-The incompleteness of Finovlp
+In Figure \ref{fig_fic_multi}, FIC also generated four additional test cases $t_{6}$ to $t_{9}$. The first case $t_{6}$ is the same as the $t_{6}$ generated by OFOT, but the second additional test case $t_{7}$ generated by FIC is different from $t_{7}$ generated by OFOT. This is because $t_{7}$ generated by FIC keeps the first value of $t_{6}$ (which is a failing test case) instead of the original first value of $t_{5}$. Note that FIC also keeps this value in the following generated test cases $t_{8}$ and $t_{9}$. By doing this, FIC forbids the appearance of the MFS (1, 0, -, -) later. The same as the first value of $t_{6}$, $t_{8}$ and $t_{9}$ keep the second value of $t_{7}$ because $t_{7}$ is also a failing test case. The failings of $t_{6}$ and $t_{7}$ indicated that there still exists other MFS in the original failing test case $t_{5}$, while the first and second factor is not in the remaining MFS.
+
+With respect to the passing test case $t_{8}$, test case $t_{9}$ did not keep the third value of $t_{8}$ but rollback to the value of the original failing test case $t_{5}$. This is because, since $t_{8}$ passed after testing, there is no MFS in this test case. FIC should rollback this value to keep this factor of the MFS and check if there exists other factor of this MFS or not. After all, the passings of $t_{8}$ and $t_{9}$ indicated that (-, -, 1, -) and (-, -, -, 1) are two the factors in the remaining MFS. Hence, the MFS identified by FIC is (-, -, 1, 1).
+
+Next, let us check status of the original failing test case $t_{5}$. The same as OFOT, we first remove the pending schemas that contain the MFS (-, -, 1, 1), and then remove the pending schemas that appear in the additional passing test case. The result is listed in the ``\emph{Status}'' row of Figure \ref{fig_fic_multi}. We can observe that there still exists 6 pending schemas, i.e., (1, 0, -, -), (1, -, 1, -), (1, -, -, 1), (1, 0, 1, -), (1, 0, -, 1), (-, 0, 1, -), and (-, 0, -, 1), respectively.
+
+One reason for this incompleteness that FIC missed anther MFS in the failing test case $t_{5}$, which is (1, 0, -, -). The iterative version of FIC \cite{zhang2011characterizing}, i.e., FINOLP is designed to handle this problem. Specifically, after identifying one MFS in the original failing test case,  FINOLP first generates one more test case by mutating the factors in the original failing test case which appear in the identified MFS. If the generated test case fails after testing, which indicates that there still exists other MFS, it will use FIC to identify the MFS in this generated test case. This process repeats until the test case which is generated by mutating all the factors in the identified MFS passes. Figure \ref{fig_finovlp_multi} shows the detail when applying FINOLP on this example.
+%The incompleteness of Finovlp
 
 \begin{figure*}[!htb]
  \centering
  \includegraphics[width=5.3in]{finovlp.eps}
- \caption{finovlp with multiple MFS}
+ \caption{FINOVLP with multiple MFS}
  \label{fig_finovlp_multi}
 \end{figure*}
 
-\subsection{A complete process}
+In Figure \ref{fig_finovlp_multi}, test cases $t_{1}$ to $t_{9}$ are the same that of the example in Figure \ref{fig_fic_multi}. We can observe that FINOLP first generated the test case $t_{10}$ to check whether there exist other MFS than the identified (-, -, 1, 1). Since $t_{10}$ failed after testing, it repeated the FIC on $t_{10}$ to identified the remaining MFS. Hence, it genertated four additional test cases $t_{11}$ to $t_{14}$. The passings of $t_{11}$ and $t_{12}$ indicated another MFS is (1, 0, -, -). 
+
+FINOLP also checked whether there existed any other MFS by generating test case $t_{15}$. The passing of $t_{15}$ shows that there does not exist any other MFS in the original failing test case $t_{5}$. Above all, FINOLP identified all the MFS accurately as we have set in piror.
+
+Next, the same as before, we use the two rules to check the status of the pending schemas in the original failing test case. The result is shown in the ``\emph{Status}'' of Figure \ref{fig_finovlp_multi}. We can observe that there still exists four schemas, which are (1, -, 1, -), (1, -, -, 1), (-, 0, 1, -), and (-, 0, -, 1), respectively. It is easy to find that these four schemas neither contain any MFS nor appears in any passing test cases. 
+
+
+At last, we can learn that although FIC and FINOLP can handle the multiple MFS problem, it is still incomplete for the existence of these pending schemas. 
+
+\subsection{Additional efforts to remove the pending schemas}
+
+Since, FINOLP still cannot remove all the pending schemas. We 
 
 \begin{figure*}[!htb]
  \centering
  \includegraphics[width=5.3in]{non-pending.eps}
- \caption{Non pending schema}
+ \caption{Additional efforts to remove pending schemas}
  \label{fig_no_pending}
 \end{figure*}
 
 \subsection{A summary}
 
-Since there the approaches exist pending schemas, especally in the multiple MFS. and it is very hard to obtain them. We need to obtain new appraoch to formulate it and obtain them more efficiently.
+Since there the approaches exist pending schemas, especally in the multiple MFS. and it is very hard to obtain them. We need to obtain new appraoch to formulate it and obtain them more efficiently. It needs a formal definiton and therotical analysis for the pending schemas with non-faulty schemas and faulty schemas.
 
 
 \section{Preliminary}\label{sec:back}
@@ -712,6 +721,8 @@ Combining them, we can get $\forall c' \in $\{$c\ |\ c \prec t\ \&\&\ \forall c_
 
 As we have shown B $\subseteq$ A, and A $\subseteq$ B, so A = B.
 \end{proof}
+
+\section{Other exmaples when applied the pending shemas}
 
 
 
