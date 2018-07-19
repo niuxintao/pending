@@ -128,7 +128,7 @@ Now let us assume there are two MFS in the failing test case $t_{5}$, which are 
  \label{fig_ofot_multi}
 \end{figure*}
 
- As a result, since there is no passing test cases, no more schemas is labeled as non-faulty. And since there is no more MFS, there is no more schemas will be identified as faulty schemas. As a result, the stats of $t_{5}$ will not change, which is the same as the original covering array. Hence, we can learn that in the multiple MFS condition, the MFS identiicaiotn appraoch OFOT is still incomplete.
+There are two negative influences of this result. First, as we cannot identify the MFS by OFOT, the pending schemas in $t_{5}$ that contain the MFS also cannot be determined. Second, as all the test cases failed after testing, we cannot remove any pending schemas in $t_{5}$ that appear in the passing test case. As a result, the status of the pending schemas of $t_{5}$ will evolve to the ``\emph{Status}'' row of Figure \ref{fig_ofot_single}. We can observe that the status of the schemas of $t_{5}$ is the same as the previous example with only using covering array alone. Hence, in the condition that one failing test case contains multiple MFS, the MFS identification approach OFOT is still incomplete.
    
 
 \subsection{The incompleteness of FIC}

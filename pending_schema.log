@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6500) (preloaded format=pdflatex 2017.12.21)  19 JUL 2018 12:01
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6500) (preloaded format=pdflatex 2017.12.21)  19 JUL 2018 12:13
 entering extended mode
 **./pending_schema.tex
 (pending_schema.tex
@@ -1168,7 +1168,7 @@ Package epstopdf Info: Source file: <fic.eps>
 c.eps>
 (epstopdf)             \includegraphics on input line 143.
 Package epstopdf Info: Output file is already uptodate.
-<fic-eps-converted-to.pdf, id=1114, pagebox=cropbox, 598.235pt x 495.8525pt>
+<fic-eps-converted-to.pdf, id=1115, pagebox=cropbox, 598.235pt x 495.8525pt>
 File: fic-eps-converted-to.pdf Graphic file (type pdf)
 <use fic-eps-converted-to.pdf>
 Package pdftex.def Info: fic-eps-converted-to.pdf  used on input line 143. on i
@@ -1185,7 +1185,7 @@ Package epstopdf Info: Source file: <finovlp.eps>
 f finovlp.eps>
 (epstopdf)             \includegraphics on input line 152.
 Package epstopdf Info: Output file is already uptodate.
-<finovlp-eps-converted-to.pdf, id=1115, pagebox=cropbox, 602.25pt x 798.985pt>
+<finovlp-eps-converted-to.pdf, id=1116, pagebox=cropbox, 602.25pt x 798.985pt>
 File: finovlp-eps-converted-to.pdf Graphic file (type pdf)
 <use finovlp-eps-converted-to.pdf>
 Package pdftex.def Info: finovlp-eps-converted-to.pdf  used on input line 152. 
@@ -1202,7 +1202,7 @@ Package epstopdf Info: Source file: <non-pending.eps>
 o.pdf non-pending.eps>
 (epstopdf)             \includegraphics on input line 161.
 Package epstopdf Info: Output file is already uptodate.
-<non-pending-eps-converted-to.pdf, id=1116, pagebox=cropbox, 601.24625pt x 711.
+<non-pending-eps-converted-to.pdf, id=1117, pagebox=cropbox, 601.24625pt x 711.
 65875pt>
 File: non-pending-eps-converted-to.pdf Graphic file (type pdf)
 <use non-pending-eps-converted-to.pdf>
@@ -1210,16 +1210,21 @@ Package pdftex.def Info: non-pending-eps-converted-to.pdf  used on input line 1
 61. on input line 161.
 Package pdftex.def Info: Requested size: 383.03122pt x 453.38597pt on input lin
 e 161.
- [8.8 <./fic-eps-converted-to.pdf>]
-\c@assumption=\count147
 
-[9.9 <./finovlp-eps-converted-to.pdf>]
-Underfull \vbox (badness 1931) has occurred while \output is active []
+Underfull \vbox (badness 2435) has occurred while \output is active []
+
+ [8.8 <./fic-eps-converted-to.pdf>]
+Underfull \vbox (badness 2951) has occurred while \output is active []
+
+ [9.9 <./finovlp-eps-converted-to.pdf>]
+Underfull \vbox (badness 3930) has occurred while \output is active []
 
  [10.10 <./non-pending-eps-converted-to.pdf>]
+\c@assumption=\count147
+ [11.11]
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/sc' will be
 (Font)              scaled to size 10.0pt on input line 246.
- [11.11] [12.12]
+ [12.12]
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/n' will be
 (Font)              scaled to size 8.0pt on input line 345.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/n' will be
@@ -1268,10 +1273,7 @@ Overfull \hbox (8.88994pt too wide) in paragraph at lines 520--521
  [][] 
  []
 
-[16.16]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [17.17 <./minmax-eps-converted-to.pdf>]
+[16.16] [17.17 <./minmax-eps-converted-to.pdf>]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [18.18]
@@ -1324,7 +1326,7 @@ Package rerunfilecheck Info: Checksums for `pending_schema.out':
 Here is how much of TeX's memory you used:
  19392 strings out of 493312
  293364 string characters out of 3143321
- 417467 words of memory out of 3000000
+ 416468 words of memory out of 3000000
  21832 multiletter control sequences out of 15000+200000
  199095 words of font info for 452 fonts, out of 3000000 for 9000
  1302 hyphenation exceptions out of 8191
@@ -1349,9 +1351,9 @@ ic/newtx/txexs.pfb><C:/CTEX/MikTex2.9/fonts/type1/public/txfonts/txsya.pfb><C:/
 CTEX/MikTex2.9/fonts/type1/public/txfonts/txsyb.pfb><C:/CTEX/MikTex2.9/fonts/ty
 pe1/public/txfonts/txsyc.pfb><C:/CTEX/MikTex2.9/fonts/type1/public/newtx/txsys.
 pfb><C:/CTEX/MikTex2.9/fonts/type1/public/newtx/zxlri.pfb>
-Output written on pending_schema.pdf (22 pages, 3125489 bytes).
+Output written on pending_schema.pdf (22 pages, 3126136 bytes).
 PDF statistics:
- 2435 PDF objects out of 2487 (max. 8388607)
+ 2436 PDF objects out of 2487 (max. 8388607)
  106 named destinations out of 1000 (max. 500000)
  62712 words of extra memory for PDF output out of 74296 (max. 10000000)
 
