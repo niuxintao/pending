@@ -44,7 +44,7 @@ We conducted a series empirical studies on some real software systems with vario
 The remainder of this paper is organized as follows: Section \ref{sec:motiv} describes the motivation for this work. Section \ref{sec:back} introduces some preliminary definitions and propositions. Section \ref{sec:pending} proposes several important propositions to formally identify the characteristics of the pending schemas. Section \ref{sec:emp} evaluates the incompleteness of MFS identification approaches and compares the effectiveness of different approaches for obtaining pending schemas. Section \ref{sec:discussion} discusses the findings of our research works.  Section \ref{sec:related} summarizes the related works. Section \ref{sec:conclusion} concludes this paper and discusses the future works.
 
 
-\section{Motivating examples}\label{sec:motiv}
+\section{Motivation}\label{sec:motiv}
 
 In this section, we will use several examples to show the incompleteness of traditional covering arrays and well-known MFS identification approaches, respectively. These examples are derived from the MS-Word example listed in the introduction. For simplification, we use integer 0 to represent the state \emph{On} and 1 to represent the state \emph{Off} for each option. For example, the second test case listed in Table \ref{MS_word} can be denoted as (1, 1, 0, 0). Also, we use the intuitive notation (.., $v_{n_{i}}$ -, $v_{n_{k}}$, ..., -) to represent the schemas for the system, where $v_{n_{i}}$ indicate the value that is assigned to the corresponding factor and `-' indicates that the corresponding factor is not in this schema. For example, (1, 1, -, -) represents the schema (Highlight: Off, Status Bar: Off) in this example. Note that we will introduce a more formal denotation of test case and schema in the following section.
 
@@ -97,17 +97,15 @@ Combining the three observations, we can further remove some pending schemas in 
 \subsection{The incompleteness of OFOT}
 %SOFOT
 Since covering array alone cannot remove all the pending schema in the failing test cases, we need more information to satisfy this target.  According to the second rule, i.e., the schema that contain the MFS is faulty schema, one method to reduce the number of pending schemas is to filter out those schemas which contain the MFS. However, without knowing the specific MFS in prior, we can only guarantee that the failing test case itself is faulty schema (it must contain the MFS). In fact, with the covering array alone, this is what we can only do to utilize the second rule.
- 
-Hence, to further reduce the set of pending schemas, we need to identify the MFS in the failing test case. One-Factor-One-Time (OFOT) \cite{nie2011minimal} is one of the most wildly used MFS identification approach. It identifies the MFS by modifying the original failing test case to see whether the modification would break the MFS in it. More specifically, at each time, it modifies one factor of the original failing test case and keeps the remaining factors to be as the same as the original failing test case. By doing this, it generates one new test case at each time. It then tests the newly generated test case. If this newly generated test case passes, it indicates the modified factor break the MFS in the original failing test case, and therefore, the original factor in the failing test case is one factor in the MFS. Otherwise, the original factor in the failing test case is not the factor in the MFS if the newly generated test case fails. 
+
+Hence, to further reduce the set of pending schemas, we need to identify the MFS in the failing test case. One-Factor-One-Time (OFOT) \cite{nie2011minimal} is one of the most wildly used MFS identification approach. It identifies the MFS by modifying the original failing test case to see whether the modification would break the MFS in it. More specifically, at each time, it modifies one factor of the original failing test case and keeps the remaining factors to be as the same as the original failing test case. By doing this, it generates one new test case at each time. It then tests the newly generated test case. If this newly generated test case passes, it indicates the modified factor break the MFS in the original failing test case, and therefore, the original factor in the failing test case is one factor in the MFS. Otherwise, the original factor in the failing test case is not the factor in the MFS if the newly generated test case fails.
 %Note that this conclusion is based on the newly generated MFS will not introduce new MFS, and hence, OFOT may not always obtain the accurate MFS.
 %In fact, all the MFS identification approaches suffer from the need some assumptions to identify the MFS,
 
 %which is also what we do in the covering arrays.
 % For all we know is that the schemas as the failing test cases itself contain the MFS, others we do not know. Hence, it is important to identify the MFS to further narrow down the set of pending schemas.
+Next, let us use OFOT to identify the MFS and help to narrow down the set of pending schemas of $t_{5}$ in the original covering array. First, we assume that there is one MFS (-, -, 1, 1) in failing test case $t_{5}$.  Then OFOT will work as follows: it generates four additional test cases $t_{6}$ to $t_{9}$ as shown in Figure \ref{fig_ofot_single}, respectively, each of which has one factor to be mutated from $t_{5}$.  Since $t_{8}$ and $t_{9}$ passed after testing, the original two factors (-, -, 1, -) and (-, -, -, 1) in $t_{5}$ are two factors in the MFS. The fails of $t_{6}$ and $t_{7}$ shows that there is no other factors in this MFS. Hence, OFOT identified the schema (-, -, 1, 1) as the MFS, which is identical to the schema (-, -, 1, 1) that we set as MFS in prior.
 
-Next, let us use OFOT to identify the MFS and help to  narrow down the set of pending schemas of $t_{5}$ in the original covering array.  To make OFOT useful, let us first assume that there is one MFS (-, -, 1, 1) in failing test case $t_{5}$. 
-Then the OFOT will generate four additional test cases $t_{6}$ to $t_{9}$ as shown in Figure \ref{fig_ofot_single}, respectively, with one factor have been mutated from $t_{5}$ at each time.  Since, $t_{8}$ and $t_{9}$ failed, then (-, -, 1, -) and (-, -, -, 1) are two factors in the MFS according to the MFS. The passing of $t_{6}$ and $t_{7}$ shows there is no other factors in this MFS. Hence, OFOT identified the Schema (-, -, 1, 1) as the MFS, which is idneitifical to our setting in prior.
-  
 %MFS identification task is to distinguish. The wildly used approach is OFOT.
 \begin{figure*}[ht]
  \centering
@@ -116,14 +114,13 @@ Then the OFOT will generate four additional test cases $t_{6}$ to $t_{9}$ as sho
  \label{fig_ofot_single}
 \end{figure*}
 
-To analyse the pending schemas, we also list all the schemas in each test case as we did before. 
+To analyse the pending schemas, we first list all the schemas in each additional test case in Figure \ref{fig_ofot_single}. The same as we observed from the covering array example, for the passing test case $t_{6}$ and $t_{7}$, all the schemas contained in it are non-faulty. For the failing test cases $t_{8}$ and $t_{9}$, we initially set the schemas which are failing test cases themselves as faulty schemas. Other schemas in these two failing test cases are all set to be pending schemas initially.
 
-Why minimal failure-causing schema is not effective?
-This example shows that . Because there still existing pending schemas.
-
-
-
-
+With these additional information, let us re-consider the status of the schemas in the original failing test case $t_{5}$. Firstly, as the identified MFS is (-, -, 1, 1), we can remove all the pending schemas of $t_{5}$ which contain this schema. These schemas are (-, -, 1, 1), (1, -, 1, 1), (-, 0, 1, 1), and (1, 0, 1, 1), respectively, and are labeled with dark color in the  ``\emph{Status}'' row for $t_{5}$ in Figure \ref{fig_ofot_single}. Next, we remove all the pending schemas of $t_{5}$ which appeared in these two passing test case $t_{6}$ and $t_{7}$. As shown in the  ``\emph{Status}'' row of Figure \ref{fig_ofot_single}, all the remaining pending schemas are removed and labeled with white color. Hence, we can learn that in this single MFS circumstance, OFOT works perfectly to remove all the pending schemas. However, when the failing test case contains multiple MFS, it does not go that well.
+ 
+Now let us assume there are two MFS in the failing test case $t_{5}$, which are (1, 0, -, -) and (-, -, 1, 1), respectively. At this time, OFOT still generates the same four additional test cases, i.e., $t_{6}$ to $t_{9}$,  as shown in Figure \ref{fig_ofot_multi}. But different from the example of single MFS,  all the additional test cases failed at this time. This is because, the strategy of OFOT, i.e., mutating one factor at one time, cannot break all the MFS at the same time. As a result, it cannot identify any of the MFS.
+%Why minimal failure-causing schema is not effective?
+%This example shows that . Because there still existing pending schemas.
 \begin{figure*}[ht]
  \centering
  \includegraphics[width=5.6in]{ofot_multi.eps}
@@ -131,10 +128,12 @@ This example shows that . Because there still existing pending schemas.
  \label{fig_ofot_multi}
 \end{figure*}
 
-
+ As a result, since there is no passing test cases, no more schemas is labeled as non-faulty. And since there is no more MFS, there is no more schemas will be identified as faulty schemas. As a result, the stats of $t_{5}$ will not change, which is the same as the original covering array. Hence, we can learn that in the multiple MFS condition, the MFS identiicaiotn appraoch OFOT is still incomplete.
+   
 
 \subsection{The incompleteness of FIC}
 
+For the example of OFOT, we can learn the multiple MFS in one failing test case is the main cause of incompeletness. FIC, an mutated verison of OFOT is proposed to handle the problem. It also muate the one factor at one time. But different from the , it keeps the change of original . To do this enables the FIC get away from the multiple MFS influence.
 % and FIC\_BS
 
 Since we cannot obtain a completeness of . It is important to evaluate how incompleteness of covering array, fault localizaiton.
@@ -146,7 +145,7 @@ Since we cannot obtain a completeness of . It is important to evaluate how incom
  \label{fig_fic_multi}
 \end{figure*}
 
-\subsection{The incompleteness of Finovlp}
+The incompleteness of Finovlp
 
 \begin{figure*}[!htb]
  \centering
@@ -163,6 +162,10 @@ Since we cannot obtain a completeness of . It is important to evaluate how incom
  \caption{Non pending schema}
  \label{fig_no_pending}
 \end{figure*}
+
+\subsection{A summary}
+
+Since there the approaches exist pending schemas, especally in the multiple MFS. and it is very hard to obtain them. We need to obtain new appraoch to formulate it and obtain them more efficiently.
 
 
 \section{Preliminary}\label{sec:back}

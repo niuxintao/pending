@@ -96,26 +96,31 @@ Combining the three observations, we can further remove some pending schemas in 
 
 \subsection{The incompleteness of OFOT}
 %SOFOT
-Since covering array alone cannot remove all the pending schema in the failing test cases, we need more information to satisfy this target.  According to the second rule, i.e., the schema that contain the MFS is faulty schema, one method to reduce the number of pending schemas is to filter those schemas which contain the MFS. However, without knowing the specific MFS in prior, we can only guarantee that the failing test case itself is faulty schema (it must contain the MFS). In fact, with the covering array alone, this is what we can only do to utilize the second rule.
- 
-Hence, to further reduce the set of pending schemas, we need to identify the MFS in the failing test case. One-Factor-One-Time (OFOT) is the wildly used MFS identification approach.
+Since covering array alone cannot remove all the pending schema in the failing test cases, we need more information to satisfy this target.  According to the second rule, i.e., the schema that contain the MFS is faulty schema, one method to reduce the number of pending schemas is to filter out those schemas which contain the MFS. However, without knowing the specific MFS in prior, we can only guarantee that the failing test case itself is faulty schema (it must contain the MFS). In fact, with the covering array alone, this is what we can only do to utilize the second rule.
+
+Hence, to further reduce the set of pending schemas, we need to identify the MFS in the failing test case. One-Factor-One-Time (OFOT) \cite{nie2011minimal} is one of the most wildly used MFS identification approach. It identifies the MFS by modifying the original failing test case to see whether the modification would break the MFS in it. More specifically, at each time, it modifies one factor of the original failing test case and keeps the remaining factors to be as the same as the original failing test case. By doing this, it generates one new test case at each time. It then tests the newly generated test case. If this newly generated test case passes, it indicates the modified factor break the MFS in the original failing test case, and therefore, the original factor in the failing test case is one factor in the MFS. Otherwise, the original factor in the failing test case is not the factor in the MFS if the newly generated test case fails.
+%Note that this conclusion is based on the newly generated MFS will not introduce new MFS, and hence, OFOT may not always obtain the accurate MFS.
+%In fact, all the MFS identification approaches suffer from the need some assumptions to identify the MFS,
 
 %which is also what we do in the covering arrays.
 % For all we know is that the schemas as the failing test cases itself contain the MFS, others we do not know. Hence, it is important to identify the MFS to further narrow down the set of pending schemas.
 
-As MFS identification task is to distinguish. The wildly used approach is OFOT.
- 
-Why minimal failure-causing schema is not effective?
-This example shows that . Because there still existing pending schemas.
+Next, let us use OFOT to identify the MFS and help to  narrow down the set of pending schemas of $t_{5}$ in the original covering array.  To make OFOT useful, let us first assume that there is one MFS (-, -, 1, 1) in failing test case $t_{5}$.
+Then the OFOT will generate four additional test cases $t_{6}$ to $t_{9}$ as shown in Figure \ref{fig_ofot_single}, respectively, with one factor have been mutated from $t_{5}$ at each time.  Since, $t_{8}$ and $t_{9}$ failed, then (-, -, 1, -) and (-, -, -, 1) are two factors in the MFS according to the MFS. The passing of $t_{6}$ and $t_{7}$ shows there is no other factors in this MFS. Hence, OFOT identified the Schema (-, -, 1, 1) as the MFS, which is identical to our setting in prior.
 
-At this time, we first assume that there is one MFS (-, -, 1, 1) in this SUT. Then the OFOT will genreate four additional test cases.
-
+%MFS identification task is to distinguish. The wildly used approach is OFOT.
 \begin{figure*}[ht]
  \centering
  \includegraphics[width=5.6in]{ofot_single.eps}
  \caption{OFOT with single MFS}
  \label{fig_ofot_single}
 \end{figure*}
+
+To analyse the pending schemas, we also list all the schemas in each test case as we did before.
+
+Why minimal failure-causing schema is not effective?
+This example shows that . Because there still existing pending schemas.
+
 
 
 
@@ -158,6 +163,9 @@ Since we cannot obtain a completeness of . It is important to evaluate how incom
  \caption{Non pending schema}
  \label{fig_no_pending}
 \end{figure*}
+
+\subsection{A summary}
+
 
 
 \section{Preliminary}\label{sec:back}
