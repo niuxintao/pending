@@ -179,7 +179,7 @@ For all of these, we need to theoretically analyze the properties of the pending
 %It needs a formal definition and theoretical analysis for the pending schemas with non-faulty schemas and faulty schemas.
 
 \section{Background}\label{sec:back}
-This section presents some definitions and propositions to give a formal model for CT.
+This section presents some definitions and propositions to give a formal model for CT and pending schemas.
 %\subsection{Failure-inducing interactions in CT}
 
 Assume that the Software Under Test (SUT) is influenced by a set of parameters $P$, which contains \emph{n} parameters, and each parameter $p_{i} \in P$ can take the values from the finite set $V_{i}$ ($i$ = 1,2,..n).
@@ -203,12 +203,11 @@ We consider any abnormally executing test case as a \emph{fault}. It can be a th
 
 \begin{definition}\label{de:schema}
 For the SUT, the $\tau$-set \{$(p_{x_{1}}, v_{x_{1}})$, $(p_{x_{2}}, v_{x_{2}})$, ..., $(p_{x_{\tau}}, v_{x_{\tau}})$\}, where $0 \leq x_{i} \leq n$, $p_{x_{i}} \in P$, and $v_{x_{i}} \in V_{x_{i}}$, is called a $\tau$-degree \emph{schema} ($0 < \tau \leq n $), when a set of $\tau$ values assigned to $\tau$ distinct parameters.
+\end{definition}
 
 For example, the interactions (Highlight: Off, Status Bar: On, Smart tags: Off) appearing in Section \ref{sec:intro} is a 3-degree schema, where three parameters are assigned to corresponding values. In effect a test case itself is a n-degree \emph{schema}, which can be described as \{$(p_{1}, v_{1})$, $(p_{2}, v_{2})$, ..., $(p_{n}, v_{n})$\}.
-%Furthermore, if a test case contains a \emph{schema}, i.e., every fixed value in the schema is in this test case, we say this test case \emph{contains} the \emph{schema}.
-%, which can be denoted as $k-value\  combination \in T$
-\end{definition}
-Note that the schema is a formal description of the interaction between parameter values we discussed before.
+
+Note that this definition of schema is a formal description of schemas we discussed in the section of \emph{Motivation}. For example, the schema (1, -, 0, -) is exactly the schema \{ $(p_{1}, 1)$, $(p_{3}, 0)$ \} here. We use this formal definition because it benefits the description of the following theoretical analysis, including these propositions and proofs.
 
 \begin{definition}\label{de:subsume}
 Let $c_{1}$ be a \emph{l}-degree schema, $c_{2}$ be an \emph{m}-degree schema in SUT and $l < m$. If $\forall e \in c_{1}$, $e \in c_{2}$, then $c_{1}$ is the $sub-schema$ of $c_{2}$, and $c_{2}$ the $super-schema$ of $c_{2}$, which can be denoted as $c_{1} \prec c_{2}$.
@@ -222,14 +221,15 @@ If for any test cases that contain a schema, say $c$, it will trigger a failure,
 %Based on this, if a test case $t$ hit such a failure-inducing combination, say $c(F)$, it should trigger the fault $F$, for which the test case can be put as $t(F)$
 \end{definition}
 
-Note that MFS is identical to the failure-inducing interaction discussed previously. In this paper, the terms \emph{failure-inducing interactions} and \emph{MFS} are used interchangeably. Figuring the MFS helps to identify the root cause of a failure and thus facilitate the debugging process.
+Note that MFS is identical to the failure-inducing interaction mentioned previously. %In this paper, the terms \emph{failure-inducing interactions} and \emph{MFS} are used interchangeably. 
+Figuring the MFS helps to identify the root cause of a failure and thus facilitate the debugging process.
 
 
 \begin{definition}\label{de:healthy:maximal}
 A schema, say, $c$, is called a \emph{healthy schema} when we find at least one passing test case that contains this schema. In addition, if none of super-schema of $c$ is the \emph{healthy schema}, we then call the schema $c$ the \emph{maximal healthy schema (MHS)}.
 \end{definition}
 
-These two type of schemas, i.e., MFS and MHS, are the keys to our approach, as they are essentially representations of the healthy schemas and faulty schemas in a test case. As shown later, other schemas can be determined to be healthy or faulty by these two type of schemas. As a result, we just need to record these two types of schemas (normally a small amount) instead of recording all the schemas in a test case (up to $2^{n}$) when identifying MFS.
+These two type of schemas, i.e., MFS and MHS, are essentially representations of the healthy schemas and faulty schemas in a test case. As shown later, other schemas can be determined to be healthy or faulty by these two type of schemas. As a result, we just need to record these two types of schemas (normally a small amount) instead of recording all the schemas in a test case (up to $2^{n}$) when identifying MFS.
 
 %Note that the MFS is based on the assumption that .
 
@@ -237,7 +237,8 @@ These two type of schemas, i.e., MFS and MHS, are the keys to our approach, as t
 A schema is called a \emph{pending} schema, if it is not yet determined to be \emph{healthy} schema or \emph{faulty} schema.
 \end{definition}
 
-The \emph{pending} schema is actually the \emph{un-determined} schema discussed in Section \ref{sec:intro}. In effect, to identify the MFS in a failing test case is to figure out all the \emph{pending} schemas, and then try to classify each of them into \emph{healthy} or \emph{faulty} schema. After that, the MFS can be selected from those \emph{faulty} schemas by definition.
+The \emph{pending} schema is actually the \emph{cannot-be-determined} schema discussed in Section \ref{sec:intro} and Section \ref{sec:motiv}, which is the key schema we focus on in this paper. To analyse the pending schemas in one failing test case is important to evaluate the completeness of the test.
+%In effect, to identify the MFS in a failing test case is to figure out all the \emph{pending} schemas, and then try to classify each of them into \emph{healthy} or \emph{faulty} schema. After that, the MFS can be selected from those \emph{faulty} schemas by definition.
 
 %\begin{definition}
 %If a schema is a \emph{faulty} schema and satisfy the followed condition:
@@ -264,26 +265,22 @@ This assumption shows that we can always observe the failure caused by the MFS. 
 
 We will later discuss the impacts on MFS identification from these two assumptions, as well as how to alleviate them. Based on these definitions and assumptions, we can get several propositions as following. These propositions are the foundation of our approach, and their proofs are omitted due to their simplicity.
 
-\begin{proposition}\label{pro:subsumetrans}
+\begin{proposition}[Transitive]\label{pro:subsumetrans}
 Given schemas $s_{1}$, $s_{2}$, and $s_{3}$, if $s_{1} \prec s_{2}$, $s_{2} \prec s_{3}$, then $s_{1} \prec s_{3}$.
 \end{proposition}
 
 
-
-
-\begin{proposition}\label{pro:superoffaulty}
+\begin{proposition}[Super of Faulty]\label{pro:superoffaulty}
 Given a faulty schema $s_{1}$, then $\forall s_{2}, s_{1} \prec s_{2}$, $s_{2}$ is a faulty schema.
 \end{proposition}
 
 
-\begin{proposition}\label{pro:subofhealthy}
+\begin{proposition}[Sub of Healthy]\label{pro:subofhealthy}
 Given a healthy schema $s_{1}$, then $\forall s_{2}, s_{2} \prec s_{1}$, $s_{2}$ is a healthy schema.
 \end{proposition}
 
 
-
-
-You should give normal sentences description and examples of them (if possible, give some simple proofs)
+%You should give normal sentences description and examples of them (if possible, give some simple proofs)
 
 \section{Pending schema}\label{sec:pending}
 In this section, we will describe our approach to identify the failure-inducing schemas in the SUT. To give a better description, we will give several propositions which provide theoretical supports for our approach. The proofs of these propositions are given in the Appendix.
@@ -298,7 +295,7 @@ However, to emulate all the faulty schemas and all the healthy schemas is very l
 More formally, we can learn that it should not be any super-schemas of existing faulty schemas, and any sub-shemas of existing healthy schemas.
 
 
-\begin{proposition}\label{pro:pending}
+\begin{proposition}[Sandwich rule]\label{pro:pending}
 Given two pending schemas $s_{1}$, $s_{2}$, and $s_{1} \prec s_{2}$. Then $\forall s_{3}, s_{1} \prec s_{3} \prec s_{2}$, $s_{3}$ is a pending schema.
 \end{proposition}
 
@@ -335,7 +332,7 @@ Note that CMXS is the set of schemas that remove one distinct factor value in c,
 With respect to the CMXS set of a single faulty schema, we can get the following proposition:
 
 
-\begin{proposition}\label{pro:subofCMXS}
+\begin{proposition}[one necessary condition]\label{pro:subofCMXS}
 Given a faulty schema $c_{1}$, a failing test case $t$, where $c_{1} \preceq t$, we have \{$c\ |\ c \prec t\ \&\&\ c_{1} \npreceq c$\} $=$  \{$ c\ |\ \exists c_{1}' \in CMXS(c_{1}, t)$, $c \preceq c_{1}'$\}.
 \end{proposition}
 
@@ -419,7 +416,7 @@ For a k-degree healthy schema c = \{$(p_{x_{1}}, v_{x_{1}})$, $(p_{x_{2}}, v_{x_
 
 Note that CMNS is the set of schemas that are assigned to one distinct factor value that is not in c, such that all these schemas will not be the sub-schema of c. For example assume the failing test case \{$(p_{1}, v_{1})$, $(p_{2}, v_{2})$, $(p_{3}, v_{3})$, $(p_{4}, v_{4})$\}, and a healthy schema \{$(p_{1}, v_{1})$, $(p_{3}, v_{3})$\}. Then the CMNS set is \{ \{$(p_{2}, v_{2})$\}, \{$(p_{4}, v_{4})$\} \}.  With respect to the CMNS set of a single healthy schema, we can get the following proposition:
 
-\begin{proposition}\label{pro:superofCMNS}
+\begin{proposition}[another necessary condition]\label{pro:superofCMNS}
 Given a healthy schema $c_{1}$, a failing test case $t$, where $c_{1} \prec t$, we have \{$c\ |\ c \prec t\ \&\&\ c \npreceq c_{1}$\} $=$  \{$ c\ |\ c \prec t \  \&\& \ \exists c_{1}' \in CMNS(c_{1}, t)$, $c_{1}' \preceq c$\}.
 \end{proposition}
 
