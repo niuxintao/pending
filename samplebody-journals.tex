@@ -167,16 +167,18 @@ Since Covering array, OFOT, FIC, and FINOLP cannot remove all the pending schema
  \label{fig_no_pending}
 \end{figure*}
 
-As for this example, we generated four test cases to contain these pending schemas one by one (Note that in this example, we cannot generate one test case contain more than one pending schema without including any MFS). The result is shown in Figure \ref{fig_no_pending}. In this figure, all the additional test cases, i.e., $t_{16}$ to $t_{19}$, passed after testing. Hence, all the remaining schemas are non-faulty schemas. The final status of the pending schemas of $t_{5}$ is shown in the ``\emph{Status}'' row of Figure \ref{fig_no_pending}. We can observe that all the schemas in $t_{5}$ are determined to be non-faulty or faulty. Hence, in this condition, we guarantee that the test of $t_{5}$ is complete.
+As for this example, we generated four test cases to contain these pending schemas one by one (Note that in this example, we cannot generate one test case contain more than one pending schema without including any MFS). The result is shown in Figure \ref{fig_no_pending}. In this figure, all the additional test cases, i.e., $t_{16}$ to $t_{19}$, passed after testing. Hence, all the remaining schemas are non-faulty schemas. The final status of the pending schemas of $t_{5}$ is shown in the ``\emph{Status}'' row of Figure \ref{fig_no_pending}. We can observe that all the schemas in $t_{5}$ are determined to be non-faulty or faulty. Hence, in this condition, we can guarantee that the test of $t_{5}$ is complete.
 
-Note that if any of the test case ($t_{16}$ to $t_{19}$) failed after testing, we cannot determine the corresponding pending schema in that test case is faulty or not.  In this case, we need to generate more test cases to determine the status of this pending schema (If this schema is a faulty schema, the cost will increase exponentially according to the formal definition of faulty schema we will mention later).
+Note that if any of the test case ($t_{16}$ to $t_{19}$) failed after testing, we cannot determine whether the corresponding pending schema in that test case is faulty or not.  In this case, we need to generate more test cases to determine the status of this pending schema (If this schema is a faulty schema, the cost will increase exponentially according to the formal definition of faulty schema which will be given later).
 
 \subsection{A summary}
 
-Since there the approaches exist pending schemas, especially in the multiple MFS. and it is very hard to obtain them. We need to obtain new appraoch to formulate it and obtain them more efficiently. It needs a formal definition and theoretical analysis for the pending schemas with non-faulty schemas and faulty schemas.
+There are two main observations from this section. First, traditional covering array and MFS identification approaches are still incomplete in terms of the existence of pending schemas which cannot be determined to faulty or non-faulty. Second, to remove all the pending schemas is time-consuming. In fact, just listing all the schemas and checking them one by one is inefficient. In this example, we need to check $2^{4} - 15$ schemas for each test case. However, with the increase of the number of factors in one test case, the cost for checking the pending schemas increase exponentially.
 
+For all of these, we need to theoretically analyze the properties of the pending schemas in the failing test cases and to give a more efficient method to obtain them.
+%It needs a formal definition and theoretical analysis for the pending schemas with non-faulty schemas and faulty schemas.
 
-\section{Preliminary}\label{sec:back}
+\section{Background}\label{sec:back}
 This section presents some definitions and propositions to give a formal model for CT.
 %\subsection{Failure-inducing interactions in CT}
 
