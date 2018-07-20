@@ -179,7 +179,7 @@ For all of these, we need to theoretically analyze the properties of the pending
 %It needs a formal definition and theoretical analysis for the pending schemas with non-faulty schemas and faulty schemas.
 
 \section{Background}\label{sec:back}
-This section presents some definitions and propositions to give a formal model for CT and pending schemas.
+This section presents some definitions and propositions to give a formal model for CT.
 %\subsection{Failure-inducing interactions in CT}
 
 Assume that the Software Under Test (SUT) is influenced by a set of parameters $P$, which contains \emph{n} parameters, and each parameter $p_{i} \in P$ can take the values from the finite set $V_{i}$ ($i$ = 1,2,..n).
@@ -214,7 +214,7 @@ Let $c_{1}$ be a \emph{l}-degree schema, $c_{2}$ be an \emph{m}-degree schema in
 \end{definition}
 
 For example,  the 2-degree schema \{(Highlight, Off), (Status Bar, On)\} is a sub-schema of the 3-degree schema \{(Highlight, Off), (Status Bar, On), (Smart tags, Off)\}. Also, since a test case itself is a schema, then if a test case $t$ contains a schema $s$, we have $s \prec t$. For example,  the 2-degree schema \{(Highlight, Off), (Status Bar, On)\} is also a sub-schema of a test case \{(Highlight, Off), (Status Bar, On), ( Bookmarks, On), (Smart tags, Off)\}
-  
+
 \begin{definition} \label{de:faulty:minimal}
 If for any test cases that contain a schema, say $c$, it will trigger a failure, then we call this schema $c$ the \emph{faulty schema}. Additionally, if none of sub-schema of $c$ is a \emph{faulty schema}, we then call the schema $c$ the \emph{minimal failure-causing schema (MFS)} \cite{nie2011minimal}.
 
@@ -229,15 +229,11 @@ Figuring the MFS helps to identify the root cause of a failure and thus facilita
 A schema, say, $c$, is called a \emph{healthy schema} when we find at least one passing test case that contains this schema. In addition, if none of super-schema of $c$ is the \emph{healthy schema}, we then call the schema $c$ the \emph{maximal healthy schema (MHS)}.
 \end{definition}
 
-These two type of schemas, i.e., MFS and MHS, are essentially representations of the healthy schemas and faulty schemas in a test case. As shown later, other schemas can be determined to be healthy or faulty by these two type of schemas. As a result, we just need to record these two types of schemas (normally a small amount) instead of recording all the schemas in a test case (up to $2^{n}$) when identifying MFS.
+The healthy schema is exactly the non-faulty schema we mentioned before. These two type of schemas, i.e., MFS and MHS, are essentially representations of the healthy schemas and faulty schemas in a test case. As shown later, other schemas can be determined to be healthy or faulty by these two type of schemas. As a result, we just need to record these two types of schemas (normally a small amount) instead of recording all the schemas in a test case (up to $2^{n}$) when identifying MFS.
 
 %Note that the MFS is based on the assumption that .
 
-\begin{definition}\label{de:pending}
-A schema is called a \emph{pending} schema, if it is not yet determined to be \emph{healthy} schema or \emph{faulty} schema.
-\end{definition}
 
-The \emph{pending} schema is actually the \emph{cannot-be-determined} schema discussed in Section \ref{sec:intro} and Section \ref{sec:motiv}, which is the key schema we focus on in this paper. To analyse the pending schemas in one failing test case is important to evaluate the completeness of the test.
 %In effect, to identify the MFS in a failing test case is to figure out all the \emph{pending} schemas, and then try to classify each of them into \emph{healthy} or \emph{faulty} schema. After that, the MFS can be selected from those \emph{faulty} schemas by definition.
 
 %\begin{definition}
@@ -279,7 +275,6 @@ Given a healthy schema $s_{1}$, then $\forall s_{2}, s_{2} \prec s_{1}$, $s_{2}$
 \end{proposition}
 
 \begin{proof}
-
 According to the definition of healthy schema,  there exists at least one test case that contains $s_{1}$ and passes. Let this test case be $t$. Obviously, $s_{1} \prec t$.  Then $\forall s_{2} \prec  s_{1}$, we have $s_{2} \prec s_{1} \prec t$ according to Proposition \ref{pro:subsumetrans}. Hence, $\forall s_{2} \prec  s_{1}$,  $t$ contains $s_{2}$ and passes. According to the definition of healthy schema, $\forall s_{2} \prec  s_{1}$, $s_{2}$ is a healthy schema.
 \end{proof}
 
@@ -299,27 +294,40 @@ This proposition shows that any super-schema of a faulty schema is also a faulty
 %You should give normal sentences description and examples of them (if possible, give some simple proofs)
 
 \section{Pending schema}\label{sec:pending}
-In this section, we will describe our approach to identify the failure-inducing schemas in the SUT. To give a better description, we will give several propositions which provide theoretical supports for our approach. The proofs of these propositions are given in the Appendix.
+In this section, we will give the formal definition of the pending schema, as well as its properties. Based on several theoretical analysis about pending schema, we will give an efficient approach to obtain them.
+%To give a better description, we will give several propositions which provide theoretical supports for our approach. The proofs of these propositions are given in the Appendix.
 
 
 
 \subsection{What is pending schema}
-Through the motivating examples, we can learn that the pending schema is not checked to be healthy and faulty. That is,
 
-However, to emulate all the faulty schemas and all the healthy schemas is very large. By the propostios 3 and 4,
+Through these motivating examples, we can learn that the pending schema is not checked to be healthy and faulty. Hence, we give the definition of the pending schema as follows.
 
-More formally, we can learn that it should not be any super-schemas of existing faulty schemas, and any sub-shemas of existing healthy schemas.
+\begin{definition}\label{de:pending}
+A schema is called a \textbf{\emph{pending} schema}, if it is not yet determined to be \emph{healthy} schema or \emph{faulty} schema.
+\end{definition}
+
+The \emph{pending} schema is actually the \emph{cannot-be-determined} schema discussed in Section \ref{sec:intro} and Section \ref{sec:motiv}, which is the key schema we focus on in this paper. To analyse the pending schemas in one failing test case is important to evaluate the completeness of the test.  Next, we will give the first property about the pending schema. 
+%However, to emulate all the faulty schemas and all the healthy schemas is very large. By the propostios 3 and 4,
+%
+%More formally, we can learn that it should not be any super-schemas of existing faulty schemas, and any sub-shemas of existing healthy schemas.
 
 
 \begin{proposition}[Sandwich rule]\label{pro:pending}
 Given two pending schemas $s_{1}$, $s_{2}$, and $s_{1} \prec s_{2}$. Then $\forall s_{3}, s_{1} \prec s_{3} \prec s_{2}$, $s_{3}$ is a pending schema.
 \end{proposition}
 
+\begin{proof}
+We give the proof by contradiction. First, we assume that $s_{3}$ is a faulty schema. Since $s_{3} \prec s_{2}$, then according to Proposition \ref{pro:superoffaulty}, $s_{2}$ is also a faulty schema. This is contradiction as $s_{2}$ is a pending schema. Hence, $s_{3}$ is not a faulty schema. Next, we assume that $s_{3}$ is a healthy schema.  Since $s_{1} \prec s_{3}$, then according to Proposition \ref{pro:subofhealthy}, $s_{1}$ is also a healthy schema. This is also contradiction as $s_{1}$ is a pending schema.  Hence, $s_{3}$ is not a healthy schema. At last, according to the definition of pending schema, $s_{3}$ is a pending schema.
+\end{proof}
 
+This proposition gives the determination of pending schemas in the presence of two subsuming pending schemas.
 
-\subsection{Obtaining pending schema}
+\subsection{Obtaining pending schema in a failing test case}
 
-To identify the MFS in a failing test case, we need to figure out all the pending schemas and then classify them into faulty or healthy schemas. For this, we firstly need to be able to find one pending schema and check it. Then, we repeat this procedure until no more pending schema can be obtained.
+Without loss of generality, we assume that .  Note that this formal is to remove the influnce of tests and MFS identification approaches, these just give schemas of which are healthy schemas and faulty schemas.
+
+%To identify the MFS in a failing test case, we need to figure out all the pending schemas and then classify them into faulty or healthy schemas. For this, we firstly need to be able to find one pending schema and check it. Then, we repeat this procedure until no more pending schema can be obtained.
 %first describe how to obtain one pending schema.
 
 To be general, we formalize the problem of obtaining one pending schema as the following problem:
@@ -348,7 +356,7 @@ Note that CMXS is the set of schemas that remove one distinct factor value in c,
 With respect to the CMXS set of a single faulty schema, we can get the following proposition:
 
 
-\begin{proposition}[one necessary condition]\label{pro:subofCMXS}
+\begin{proposition}[one necessary condition, anti faulty schema]\label{pro:subofCMXS}
 Given a faulty schema $c_{1}$, a failing test case $t$, where $c_{1} \preceq t$, we have \{$c\ |\ c \prec t\ \&\&\ c_{1} \npreceq c$\} $=$  \{$ c\ |\ \exists c_{1}' \in CMXS(c_{1}, t)$, $c \preceq c_{1}'$\}.
 \end{proposition}
 
