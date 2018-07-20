@@ -213,15 +213,15 @@ Note that this definition of schema is a formal description of schemas we discus
 Let $c_{1}$ be a \emph{l}-degree schema, $c_{2}$ be an \emph{m}-degree schema in SUT and $l < m$. If $\forall e \in c_{1}$, $e \in c_{2}$, then $c_{1}$ is the $sub-schema$ of $c_{2}$, and $c_{2}$ the $super-schema$ of $c_{2}$, which can be denoted as $c_{1} \prec c_{2}$.
 \end{definition}
 
-For example,  the 2-degree schema \{(Highlight, Off), (Status Bar, On)\} is a sub-schema of the 3-degree schema \{(Highlight, Off), (Status Bar, On), (Smart tags, Off)\}.
-
+For example,  the 2-degree schema \{(Highlight, Off), (Status Bar, On)\} is a sub-schema of the 3-degree schema \{(Highlight, Off), (Status Bar, On), (Smart tags, Off)\}. Also, since a test case itself is a schema, then if a test case $t$ contains a schema $s$, we have $s \prec t$. For example,  the 2-degree schema \{(Highlight, Off), (Status Bar, On)\} is also a sub-schema of a test case \{(Highlight, Off), (Status Bar, On), ( Bookmarks, On), (Smart tags, Off)\}
+  
 \begin{definition} \label{de:faulty:minimal}
 If for any test cases that contain a schema, say $c$, it will trigger a failure, then we call this schema $c$ the \emph{faulty schema}. Additionally, if none of sub-schema of $c$ is a \emph{faulty schema}, we then call the schema $c$ the \emph{minimal failure-causing schema (MFS)} \cite{nie2011minimal}.
 
 %Based on this, if a test case $t$ hit such a failure-inducing combination, say $c(F)$, it should trigger the fault $F$, for which the test case can be put as $t(F)$
 \end{definition}
 
-Note that MFS is identical to the failure-inducing interaction mentioned previously. %In this paper, the terms \emph{failure-inducing interactions} and \emph{MFS} are used interchangeably. 
+Note that MFS is identical to the failure-inducing interaction mentioned previously. %In this paper, the terms \emph{failure-inducing interactions} and \emph{MFS} are used interchangeably.
 Figuring the MFS helps to identify the root cause of a failure and thus facilitate the debugging process.
 
 
@@ -263,22 +263,38 @@ This assumption is a common assumption of CT\cite{zhang2011characterizing,ghande
 
 This assumption shows that we can always observe the failure caused by the MFS. In practice, some issues may prevent this observation. For example, the coincidental correctness problem \cite{Masri:2014:PCC:2582050.2559932} may happen through testing, when the faulty-code is executed but the failure doesn't propagate to the output. Masking effect \cite{yilmaz2013reducing} may also make the failure-observation difficult, as other failure may triggered and stop the program to go on discovering the remaining failures.
 
-We will later discuss the impacts on MFS identification from these two assumptions, as well as how to alleviate them. Based on these definitions and assumptions, we can get several propositions as following. These propositions are the foundation of our approach, and their proofs are omitted due to their simplicity.
+We will later discuss the impacts on MFS identification from these two assumptions, as well as how to alleviate them. Based on these definitions and assumptions, we can get several propositions as following. These propositions are the foundations of the theory of pending schemas.
+%, and their proofs are omitted due to their simplicity.
 
 \begin{proposition}[Transitive]\label{pro:subsumetrans}
 Given schemas $s_{1}$, $s_{2}$, and $s_{3}$, if $s_{1} \prec s_{2}$, $s_{2} \prec s_{3}$, then $s_{1} \prec s_{3}$.
 \end{proposition}
 
+This proposition shows the transitivity of the subsuming relationships of schemas, its proof can be directly derived from the definition of the schema.
 
-\begin{proposition}[Super of Faulty]\label{pro:superoffaulty}
-Given a faulty schema $s_{1}$, then $\forall s_{2}, s_{1} \prec s_{2}$, $s_{2}$ is a faulty schema.
-\end{proposition}
 
 
 \begin{proposition}[Sub of Healthy]\label{pro:subofhealthy}
 Given a healthy schema $s_{1}$, then $\forall s_{2}, s_{2} \prec s_{1}$, $s_{2}$ is a healthy schema.
 \end{proposition}
 
+\begin{proof}
+
+According to the definition of healthy schema,  there exists at least one test case that contains $s_{1}$ and passes. Let this test case be $t$. Obviously, $s_{1} \prec t$.  Then $\forall s_{2} \prec  s_{1}$, we have $s_{2} \prec s_{1} \prec t$ according to Proposition \ref{pro:subsumetrans}. Hence, $\forall s_{2} \prec  s_{1}$,  $t$ contains $s_{2}$ and passes. According to the definition of healthy schema, $\forall s_{2} \prec  s_{1}$, $s_{2}$ is a healthy schema.
+\end{proof}
+
+This proposition shows that any subschema of a healthy schema is also a healthy schema. In fact, this proposition can deduce the first rule in Section \ref{sec:motiv}.
+
+
+\begin{proposition}[Super of Faulty]\label{pro:superoffaulty}
+Given a faulty schema $s_{1}$, then $\forall s_{2}, s_{1} \prec s_{2}$, $s_{2}$ is a faulty schema.
+\end{proposition}
+
+\begin{proof}
+let $T_{2}$ be the set of all the test cases that contain $s_{2}$, we have $\forall t_{2} \in T_{2}$, $s_{2} \prec t_{2}$.  Since $s_{1} \prec s_{2}$, we have $\forall t_{2} \in T_{2}, s_{1} \prec s_{2} \prec t_{2}$ according to the Proposition \ref{pro:subsumetrans}. Hence, $\forall t_{2} \in T_{2}$, $t_{2}$ contains $s_{1}$. According to the definition of faulty schema, any test case which contains $s_{1}$ would fail. Hence, $\forall t_{2} \in T_{2}$, $t_{2}$ is a failing test case. According to the definition of faulty schema. $s_{2}$ is a faulty schema.
+\end{proof}
+
+This proposition shows that any super-schema of a faulty schema is also a faulty schema.  Note that his proposition can deduce the second rule in Section \ref{sec:motiv}.
 
 %You should give normal sentences description and examples of them (if possible, give some simple proofs)
 
