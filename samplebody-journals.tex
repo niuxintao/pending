@@ -210,13 +210,13 @@ For example, the interactions (Highlight: Off, Status Bar: On, Smart tags: Off) 
 Note that this definition of schema is a formal description of schemas we discussed in the section of \emph{Motivation}. For example, the schema (1, -, 0, -) is exactly the schema \{ $(p_{1}, 1)$, $(p_{3}, 0)$ \} here. We use this formal definition because it benefits the description of the following theoretical analysis, including these propositions and proofs.
 
 \begin{definition}\label{de:subsume}
-Let $c_{1}$ be a \emph{l}-degree schema, $c_{2}$ be an \emph{m}-degree schema in SUT and $l < m$. If $\forall e \in c_{1}$, $e \in c_{2}$, then $c_{1}$ is the $sub-schema$ of $c_{2}$, and $c_{2}$ the $super-schema$ of $c_{2}$, which can be denoted as $c_{1} \prec c_{2}$.
+Let $c_{1}$ be a \emph{l}-degree schema, $c_{2}$ be an \emph{m}-degree schema in SUT and $l \leq m $. If $\forall e \in c_{1}$, $e \in c_{2}$, then $c_{1}$ is the $sub-schema$ of $c_{2}$, and $c_{2}$ the $super-schema$ of $c_{2}$, which can be denoted as $c_{1} \preceq c_{2}$.
 \end{definition}
 
-For example,  the 2-degree schema \{(Highlight, Off), (Status Bar, On)\} is a sub-schema of the 3-degree schema \{(Highlight, Off), (Status Bar, On), (Smart tags, Off)\}. Also, since a test case itself is a schema, then if a test case $t$ contains a schema $s$, we have $s \prec t$. For example,  the 2-degree schema \{(Highlight, Off), (Status Bar, On)\} is also a sub-schema of a test case \{(Highlight, Off), (Status Bar, On), ( Bookmarks, On), (Smart tags, Off)\}
+For example,  the 2-degree schema \{(Highlight, Off), (Status Bar, On)\} is a sub-schema of the 3-degree schema \{(Highlight, Off), (Status Bar, On), (Smart tags, Off)\}. Also, since a test case itself is a schema, then if a test case $t$ contains a schema $s$, we have $s \preceq t$. For example,  the 2-degree schema \{(Highlight, Off), (Status Bar, On)\} is also a sub-schema of a test case \{(Highlight, Off), (Status Bar, On), ( Bookmarks, On), (Smart tags, Off)\}
 
 \begin{definition} \label{de:faulty:minimal}
-If for any test cases that contain a schema, say $c$, it will trigger a failure, then we call this schema $c$ the \emph{faulty schema}. Additionally, if none of sub-schema of $c$ is a \emph{faulty schema}, we then call the schema $c$ the \emph{minimal failure-causing schema (MFS)} \cite{nie2011minimal}.
+If for any test cases that contain a schema, say $c$, it will trigger a failure, then we call this schema $c$ the \emph{faulty schema}. Additionally, if none of the sub-schema of $c$  except itself is a \emph{faulty schema}, we then call the schema $c$ the \emph{minimal failure-causing schema (MFS)} \cite{nie2011minimal}.
 
 %Based on this, if a test case $t$ hit such a failure-inducing combination, say $c(F)$, it should trigger the fault $F$, for which the test case can be put as $t(F)$
 \end{definition}
@@ -226,7 +226,7 @@ Figuring the MFS helps to identify the root cause of a failure and thus facilita
 
 
 \begin{definition}\label{de:healthy:maximal}
-A schema, say, $c$, is called a \emph{healthy schema} when we find at least one passing test case that contains this schema. In addition, if none of super-schema of $c$ is the \emph{healthy schema}, we then call the schema $c$ the \emph{maximal healthy schema (MHS)}.
+A schema, say, $c$, is called a \emph{healthy schema} when we find at least one passing test case that contains this schema. In addition, if none of super-schema of $c$ except itself is the \emph{healthy schema}, we then call the schema $c$ the \emph{maximal healthy schema (MHS)}.
 \end{definition}
 
 The healthy schema is exactly the non-faulty schema we mentioned before. These two type of schemas, i.e., MFS and MHS, are essentially representations of the healthy schemas and faulty schemas in a test case. As shown later, other schemas can be determined to be healthy or faulty by these two type of schemas. As a result, we just need to record these two types of schemas (normally a small amount) instead of recording all the schemas in a test case (up to $2^{n}$) when identifying MFS.
@@ -263,7 +263,7 @@ We will later discuss the impacts on MFS identification from these two assumptio
 %, and their proofs are omitted due to their simplicity.
 
 \begin{proposition}[Transitive]\label{pro:subsumetrans}
-Given schemas $s_{1}$, $s_{2}$, and $s_{3}$, if $s_{1} \prec s_{2}$, $s_{2} \prec s_{3}$, then $s_{1} \prec s_{3}$.
+Given schemas $s_{1}$, $s_{2}$, and $s_{3}$, if $s_{1} \preceq s_{2}$, $s_{2} \preceq s_{3}$, then $s_{1} \preceq s_{3}$.
 \end{proposition}
 
 This proposition shows the transitivity of the subsuming relationships of schemas, its proof can be directly derived from the definition of the schema.
@@ -271,14 +271,45 @@ This proposition shows the transitivity of the subsuming relationships of schema
 
 
 \begin{proposition}[Sub of Healthy]\label{pro:subofhealthy}
-Given a healthy schema $s_{1}$, then $\forall s_{2}, s_{2} \prec s_{1}$, $s_{2}$ is a healthy schema.
+Given a healthy schema $s_{1}$, then $\forall s_{2}, s_{2} \preceq s_{1}$, $s_{2}$ is a healthy schema.
 \end{proposition}
 
 \begin{proof}
-According to the definition of healthy schema,  there exists at least one test case that contains $s_{1}$ and passes. Let this test case be $t$. Obviously, $s_{1} \prec t$.  Then $\forall s_{2} \prec  s_{1}$, we have $s_{2} \prec s_{1} \prec t$ according to Proposition \ref{pro:subsumetrans}. Hence, $\forall s_{2} \prec  s_{1}$,  $t$ contains $s_{2}$ and passes. According to the definition of healthy schema, $\forall s_{2} \prec  s_{1}$, $s_{2}$ is a healthy schema.
+According to the definition of healthy schema,  there exists at least one test case that contains $s_{1}$ and passes. Let this test case be $t$. Obviously, $s_{1} \preceq t$.  Then $\forall s_{2} \preceq  s_{1}$, we have $s_{2} \preceq s_{1} \preceq t$ according to Proposition \ref{pro:subsumetrans}. Hence, $\forall s_{2} \preceq  s_{1}$,  $t$ contains $s_{2}$ and passes. According to the definition of healthy schema, $\forall s_{2} \preceq  s_{1}$, $s_{2}$ is a healthy schema.
 \end{proof}
 
 This proposition shows that any subschema of a healthy schema is also a healthy schema. In fact, this proposition can deduce the first rule in Section \ref{sec:motiv}.
+
+
+\begin{proposition}[Necessary and sufficient condition to be Healthy]\label{pro:nshealthy}
+A schema $s_{1}$ is a healthy schema if and only if $\exists s_{2}, s_{1} \preceq s_{2}$ $\&\&$ $s_{2}$ is a healthy schema.
+\end{proposition}
+
+\begin{proof}
+Let us first prove the sufficiency. Let $s_{1}$ is a healthy schema. According to the definition, $\exists t$, $s_{1} \preceq t$ and $t$ is a passing test case. In fact, $t$ itself is a schema, and $t \preceq t$, which indicating that $t$ is a healthy schema. Hence, the statement that $\exists s_{2}, s_{1} \preceq s_{2}$ $\&\&$ $s_{2}$ is a healthy schema is true, because $t$ is such a schema.
+
+Then we prove the necessity.  Let $\exists s_{2}, s_{1} \preceq s_{2}$ $\&\&$ $s_{2}$ is a healthy schema be true.  According to Proposition \ref{pro:subofhealthy}, $s_{1}$ is a healthy schema. Hence, the statement $s_{1}$ is a healthy schema is also true.
+\end{proof}
+
+This proposition gives necessary and sufficient condition to determine a schema to be healthy or not. Based on this, we can deduce the following lemma.
+
+\begin{lemma}[Non-Healthy]\label{pro:nonhealthy}
+A schema $s_{1}$ is not a healthy healthy schema if and only if $\nexists s_{2}, s_{1} \preceq s_{1}$ $\&\&$ $s_{2}$ is a healthy schema.
+\end{lemma}
+
+The proof can be directly derived from Proposition \ref{pro:nshealthy}. 
+
+%\begin{proposition}[Necessary and sufficient condition to be Healthy]\label{pro:nonsubofhealthy}
+%Given a set of healthy schemas $HSS$, we cannot determine a schema, say, $s$, is healthy or not if $\forall s' \in HSS, s \nprec s'$ $\&\&$ $s \neq s'$, i.e., ($s \npreceq s' $).
+%\end{proposition}
+%
+%\begin{proof}
+%
+%We assume that $s$ is a healthy schema. According to the definition, there exists a passing test case $t$, and $s \prec t$. As $t$ is a passing test case, it is obviously $t \in HSS$.
+%
+%According to the definition of healthy schema,  there exists at least one test case that contains $s_{1}$ and passes. Let this test case be $t$. Obviously, $s_{1} \prec t$.  Then $\forall s_{2} \prec  s_{1}$, we have $s_{2} \prec s_{1} \prec t$ according to Proposition \ref{pro:subsumetrans}. Hence, $\forall s_{2} \prec  s_{1}$,  $t$ contains $s_{2}$ and passes. According to the definition of healthy schema, $\forall s_{2} \prec  s_{1}$, $s_{2}$ is a healthy schema.
+%\end{proof}
+
 
 
 \begin{proposition}[Super of Faulty]\label{pro:superoffaulty}
@@ -291,10 +322,28 @@ let $T_{2}$ be the set of all the test cases that contain $s_{2}$, we have $\for
 
 This proposition shows that any super-schema of a faulty schema is also a faulty schema.  Note that his proposition can deduce the second rule in Section \ref{sec:motiv}.
 
+
+\begin{proposition}[Necessary and sufficient condition to be Faulty]\label{pro:nsfaulty}
+A schema $s_{1}$ is a faulty schema if and only if $\exists s_{2}, s_{2} \preceq s_{1}$ $\&\&$ $s_{2}$ is a faulty schema.
+\end{proposition}
+
+\begin{proof}
+Let us first prove the sufficiency. Let $s_{1}$ is a faulty schema. According to the definition, $\forall t$, $s_{1} \preceq t$ and $t$ is a failing test case. In fact, $t$ itself is a schema, and $t \preceq t$, which indicating that $t$ is a faulty schema. Hence, the statement that $\exists s_{2}, s_{1} \preceq s_{2}$ $\&\&$ $s_{2}$ is a healthy schema is true, because $t$ is such a schema.
+
+Then we prove the necessity.  Let $\exists s_{2}, s_{2} \preceq s_{1}$ $\&\&$ $s_{2}$ is a faulty schema be true.  According to Proposition \ref{pro:superoffaulty}, $s_{1}$ is a faulty schema. Hence, the statement $s_{1}$ is a faulty schema is also true.
+\end{proof}
+
+
+
+\begin{proposition}[Undetermined to be Faulty]\label{pro:nonsuperoffaulty}
+Given a set of healthy schemas $HSS$, we cannot determine a schema is healthy or not if $\forall s \in HSS, s_{2} \nprec s_{1}$ $\&\&$ $s_{2} \neq s_{1}$, i.e., ($s_{2} \npreceq s_{1} $).
+\end{proposition}
+
+
 %You should give normal sentences description and examples of them (if possible, give some simple proofs)
 
 \section{Pending schema}\label{sec:pending}
-In this section, we will give the formal definition of the pending schema, as well as its properties. Based on several theoretical analysis about pending schema, we will give an efficient approach to obtain them.
+In this section, we will give the formal definition of the pending schema, as well as its properties. Based on several theoretical analysis about pending schema, we will give an efficient approach to obtain them. Then we will show how to apply this approach on identifying the pending schemas in the motivation section.
 %To give a better description, we will give several propositions which provide theoretical supports for our approach. The proofs of these propositions are given in the Appendix.
 
 
@@ -303,11 +352,15 @@ In this section, we will give the formal definition of the pending schema, as we
 
 Through these motivating examples, we can learn that the pending schema is not checked to be healthy and faulty. Hence, we give the definition of the pending schema as follows.
 
+first give the formal defition of not be detemined to be healthy.
+then give the formal definition of not be determiend ot faulty.
+
+
 \begin{definition}\label{de:pending}
 A schema is called a \textbf{\emph{pending} schema}, if it is not yet determined to be \emph{healthy} schema or \emph{faulty} schema.
 \end{definition}
 
-The \emph{pending} schema is actually the \emph{cannot-be-determined} schema discussed in Section \ref{sec:intro} and Section \ref{sec:motiv}, which is the key schema we focus on in this paper. To analyse the pending schemas in one failing test case is important to evaluate the completeness of the test.  Next, we will give the first property about the pending schema. 
+The \emph{pending} schema is actually the \emph{cannot-be-determined} schema discussed in Section \ref{sec:intro} and Section \ref{sec:motiv}, which is the key schema we focus on in this paper. To analyse the pending schemas in one failing test case is important to evaluate the completeness of the test.  Next, we will give the first property about the pending schema.
 %However, to emulate all the faulty schemas and all the healthy schemas is very large. By the propostios 3 and 4,
 %
 %More formally, we can learn that it should not be any super-schemas of existing faulty schemas, and any sub-shemas of existing healthy schemas.
@@ -323,25 +376,35 @@ We give the proof by contradiction. First, we assume that $s_{3}$ is a faulty sc
 
 This proposition gives the determination of pending schemas in the presence of two subsuming pending schemas.
 
-\subsection{Obtaining pending schema in a failing test case}
+\subsection{Obtaining the pending schemas in a failing test case}
+% in a failing test case
+Before we give specific method of how to obtain the pending schema, we should first formulate the problem of obtaining schema. Only by doing this can let our approach be general and independent on specific covering arrays or MFS identification approaches. From the motivation example, we can learn that the information offered by covering arrays and MFS identification are a set of healthy schemas (including the passing test case) and faulty schemas (including the failing test case). Based on these information alone, we can obtain the pending schemas in one specific failing test case. Hence, we actually face such a problem that to obtain the pending schema in failing test case in the presence of a set of healthy schemas and faulty schemas.
 
-Without loss of generality, we assume that .  Note that this formal is to remove the influnce of tests and MFS identification approaches, these just give schemas of which are healthy schemas and faulty schemas.
+%Without loss of generality, we assume that .  Note that this formal is to remove the influnce of tests and MFS identification approaches, these just give schemas of which are healthy schemas and faulty schemas.
+%
+%%To identify the MFS in a failing test case, we need to figure out all the pending schemas and then classify them into faulty or healthy schemas. For this, we firstly need to be able to find one pending schema and check it. Then, we repeat this procedure until no more pending schema can be obtained.
+%%first describe how to obtain one pending schema.
 
-%To identify the MFS in a failing test case, we need to figure out all the pending schemas and then classify them into faulty or healthy schemas. For this, we firstly need to be able to find one pending schema and check it. Then, we repeat this procedure until no more pending schema can be obtained.
-%first describe how to obtain one pending schema.
+Formally, the problem can be defined as follows:
 
-To be general, we formalize the problem of obtaining one pending schema as the following problem:
+\emph{Given a failing test case $t$ =\{$(p_{1}, v_{1})$, $(p_{2}, v_{2})$, ..., $(p_{n}, v_{n})$\}, a set of faulty schemas $FSS$ = \{ $c_{1}, c_{2}, ... c_{i}, ...$ \},  a set of healthy schemas $HSS$ = \{ $c_{1}, c_{2}, ... c_{i}, ...$ \}, and $FSS \bigcap HSS = \emptyset$. The goal is to find the set of pending schemas, PSS, where $\forall s \in PSS, s \prec t$.}
 
-\emph{Given a failing test case $t$ =\{$(p_{1}, v_{1})$, $(p_{2}, v_{2})$, ..., $(p_{n}, v_{n})$\}, a set of faulty schemas $FSS$ = \{ $c_{1}, c_{2}, ... c_{i}, ...$ \}, where  $c_{i} \prec t$ or $c_{i} = t$ (That is, $c_{i} \preceq t $), a set of healthy schemas $HSS$ = \{ $c_{1}, c_{2}, ... c_{i}, ...$ \}, where  $c_{i} \preceq t$, and $FSS \bigcap HSS = \emptyset$. The goal is to find one pending schema.}
 
-Note that at the beginning of MFS identification, if there is no additional information, $FSS$ will be initialized to have one element, i.e., $t$ itself, and $HSS$ is an empty set.
+%\emph{Given a failing test case $t$ =\{$(p_{1}, v_{1})$, $(p_{2}, v_{2})$, ..., $(p_{n}, v_{n})$\}, a set of faulty schemas $FSS$ = \{ $c_{1}, c_{2}, ... c_{i}, ...$ \}, where  $c_{i} \prec t$ or $c_{i} = t$ (That is, $c_{i} \preceq t $), a set of healthy schemas $HSS$ = \{ $c_{1}, c_{2}, ... c_{i}, ...$ \}, where  $c_{i} \preceq t$, and $FSS \bigcap HSS = \emptyset$. The goal is to find one pending schema.}
 
-We will settle this problem step by step. According to the Propositions \ref{pro:superoffaulty} and \ref{pro:subofhealthy}, it is easy to find that, the pending schemas set PSS should be the following set
+%Note that at the beginning of MFS identification, if there is no additional information, $FSS$ will be initialized to have one element, i.e., $t$ itself, and $HSS$ is an empty set.
+
+We will settle this problem step by step. According to the Propositions \ref{pro:subofhealthy}. $\forall s $, $s \in HSS$ or $\forall s \in HSS, s' \prec s$ is a healthy schema. That is $s \preceq s' in HSS$ is healthy schema. Note that according to these information (We cannot geneate and execute more test cases to obtain more informaiton), we can only dong this. Second, .
+
+ and \ref{pro:superoffaulty}, it is easy to find that, the pending schemas set PSS should be the following set
 \begin{equation}
 \begin{aligned}\label{eq:pssfirst}
-PSS=\{ c | c \prec t\ \&\&\ \forall c_{f} \in FSS,  c_{f} \npreceq c   \&\&\  \forall c_{h} \in HSS, c \npreceq c_{h} \} .
+PSS=\{ c | c \prec t\ \&\&\ \forall c_{f} \in FSS,  c_{f} \npreceq c  \ \&\&\  \forall c_{h} \in HSS, c \npreceq c_{h} \} .
 \end{aligned}
 \end{equation}
+
+\begin{proof}
+\end{proof}
 
 To obtain one pending schema, we just need to select one schema which satisfies $ c \in PSS$. However, to directly utilize Formula \ref{eq:pssfirst} is not practical to obtain one pending schema, because in the worst case it needs to check every schema in a test case $t$, of which the complexity is O($2^{n}$). Hence, we need to find another formula which is equivalent to Formula \ref{eq:pssfirst}, but with much lower complexity.
 
@@ -458,7 +521,7 @@ In the equation of Proposition \ref{pro:superofCMNS}, the schemas of the left si
     \hline
   \textbf{  Test case $\textbf{t}$} & \textbf{ \{$\textbf{c}\ |\ \textbf{c} \prec \textbf{t}\ \&\&\ \textbf{c} \npreceq \textbf{c}_{\textbf{h}}$\} }& \textbf{ CMNS($\textbf{c}_{\textbf{h}}$, $\textbf{t}$)} & \textbf{\{$ \textbf{c}\ |\ \textbf{c} \prec \textbf{t} \ \&\& \ \exists \textbf{c}_{\textbf{1}}' \in \textbf{CMNS}\textbf{(}\textbf{c}_{\textbf{h}}, \textbf{t}\textbf{)}$, $  \textbf{c}_{\textbf{1}}' \preceq \textbf{c}$ \}}\\\hline
     \{($p_{1}$, 1),($p_{2}$, 1),($p_{3}$, 1),($p_{4}$, 1)\}  & \{($p_{4}$, 1)\} & \{($p_{4}$, 1)\} & \{(($p_{4}$, 1)\}\\ \cline{1-1}
-      \textbf{Heathy schema $\textbf{c}_{\textbf{h}}$}  & \{($p_{1}$, 1),($p_{4}$, 1)\} &  & \{($p_{1}$, 1),($p_{4}$, 1)\} \\\cline{1-1}
+      \textbf{Healthy schema $\textbf{c}_{\textbf{h}}$}  & \{($p_{1}$, 1),($p_{4}$, 1)\} &  & \{($p_{1}$, 1),($p_{4}$, 1)\} \\\cline{1-1}
      \{($p_{1}$, 1),($p_{2}$, 1),($p_{3}$, 1)\}         &\{($p_{2}$, 1),($p_{4}$, 1)\}  &  & \{($p_{2}$, 1),($p_{4}$, 1)\}  \\
                          &\{$p_{3}$, 1),($p_{4}$, 1)\}   &  & \{$p_{3}$, 1),($p_{4}$, 1)\}  \\
                          &\{($p_{1}$, 1),($p_{2}$, 1),($p_{4}$, 1)\}   &  & \{($p_{1}$, 1),($p_{2}$, 1),($p_{4}$, 1)\}  \\
@@ -499,7 +562,7 @@ As an example, considering a failing test case $t$ -- \{($p_{1}$, 1),($p_{2}$, 1
     \hline
   \textbf{  Test case $\textbf{t}$} & \textbf{ \{$\textbf{c}\ |\ \textbf{c} \prec \textbf{t}\ \&\&\ \forall \textbf{c}_{\textbf{i}} \in \textbf{HSS}, \textbf{c} \npreceq \textbf{c}_{\textbf{i}} $\} }& \textbf{  CMNS(HSS, t)} & \textbf{\{$ \textbf{c}\ |\ \textbf{c} \prec \textbf{t} \ \&\& \ \exists \textbf{c}_{\textbf{1}}' \in \textbf{CMNS(HSS, t)}$, $\textbf{c}_{\textbf{1}}' \preceq \textbf{c}$\}}\\\hline
     \{($p_{1}$, 1),($p_{2}$, 1),($p_{3}$, 1),($p_{4}$, 1)\}  & \{($p_{1}$, 1),($p_{4}$, 1)\} & \{($p_{1}$, 1),($p_{4}$, 1)\} & \{($p_{1}$, 1),($p_{4}$, 1)\}\\ \cline{1-1}
-      \textbf{Heathy schema set HSS}  & \{($p_{2}$, 1),($p_{4}$, 1)\} & \{($p_{2}$, 1),($p_{4}$, 1)\} & \{($p_{2}$, 1),($p_{4}$, 1)\} \\\cline{1-1}
+      \textbf{Healthy schema set HSS}  & \{($p_{2}$, 1),($p_{4}$, 1)\} & \{($p_{2}$, 1),($p_{4}$, 1)\} & \{($p_{2}$, 1),($p_{4}$, 1)\} \\\cline{1-1}
      \{($p_{1}$, 1),($p_{2}$, 1),($p_{3}$, 1)\}         &\{($p_{1}$, 1),($p_{2}$, 1),($p_{4}$, 1)\}  &  &  \{($p_{1}$, 1),$p_{2}$, 1),($p_{4}$, 1)\}   \\
      \{($p_{3}$, 1),($p_{4}$, 1)\}         &\{($p_{1}$, 1),($p_{3}$, 1),($p_{4}$, 1)\}    &  &  \{($p_{1}$, 1),($p_{3}$, 1),($p_{4}$, 1)\}  \\
                          &\{($p_{2}$, 1),($p_{3}$, 1),($p_{4}$, 1)\}   &  & \{($p_{2}$, 1),($p_{3}$, 1),($p_{4}$, 1)\}   \\ \hline
@@ -585,6 +648,10 @@ We do not need list all the schemas, but we can figure out which one is the pend
 %subjects (my , may also used from )
 %
 %approaches (my)
+
+\subsection{Does the exitentce of pending schemas contain some potential MFS which may be harmful}
+In fact, this is the motivation
+
 
 \subsection{The characteristics of pending schemas with various types of MFS (multiple, overlapped, single, low-high degrees)}
 
