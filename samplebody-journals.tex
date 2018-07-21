@@ -328,16 +328,20 @@ A schema $s_{1}$ is a faulty schema if and only if $\exists s_{2}, s_{2} \preceq
 \end{proposition}
 
 \begin{proof}
-Let us first prove the sufficiency. Let $s_{1}$ is a faulty schema. According to the definition, $\forall t$, $s_{1} \preceq t$ and $t$ is a failing test case. In fact, $t$ itself is a schema, and $t \preceq t$, which indicating that $t$ is a faulty schema. Hence, the statement that $\exists s_{2}, s_{1} \preceq s_{2}$ $\&\&$ $s_{2}$ is a healthy schema is true, because $t$ is such a schema.
+Let us first prove the sufficiency. Let $s_{1}$ is a faulty schema. According to the definition, $\forall t$, $s_{1} \preceq t$ and $t$ is a failing test case. $s_{1}$ itself is a faulty schema.
 
 Then we prove the necessity.  Let $\exists s_{2}, s_{2} \preceq s_{1}$ $\&\&$ $s_{2}$ is a faulty schema be true.  According to Proposition \ref{pro:superoffaulty}, $s_{1}$ is a faulty schema. Hence, the statement $s_{1}$ is a faulty schema is also true.
 \end{proof}
 
 
+\begin{lemma}[Non-Faulty]\label{pro:nonfaulty}
+A schema $s_{1}$ is not a faulty schema if and only if $\nexists s_{2}, s_{1} \preceq s_{1}$ $\&\&$ $s_{2}$ is a healthy faulty.
+\end{lemma}
 
-\begin{proposition}[Undetermined to be Faulty]\label{pro:nonsuperoffaulty}
-Given a set of healthy schemas $HSS$, we cannot determine a schema is healthy or not if $\forall s \in HSS, s_{2} \nprec s_{1}$ $\&\&$ $s_{2} \neq s_{1}$, i.e., ($s_{2} \npreceq s_{1} $).
-\end{proposition}
+
+%\begin{lemma}[Non-Faulty]\label{pro:nonfaulty}
+%Given a set of healthy schemas $HSS$, we cannot determine a schema is healthy or not if $\forall s \in HSS, s_{2} \nprec s_{1}$ $\&\&$ $s_{2} \neq s_{1}$, i.e., ($s_{2} \npreceq s_{1} $).
+%\end{lemma}
 
 
 %You should give normal sentences description and examples of them (if possible, give some simple proofs)
@@ -352,9 +356,15 @@ In this section, we will give the formal definition of the pending schema, as we
 
 Through these motivating examples, we can learn that the pending schema is not checked to be healthy and faulty. Hence, we give the definition of the pending schema as follows.
 
-first give the formal defition of not be detemined to be healthy.
-then give the formal definition of not be determiend ot faulty.
+We first give the formal definition of a schema that cannot be determined to be healthy. 
+\begin{definition}\label{de:undeteminedhealthy}
 
+\end{definition}
+
+Then, we give the formal definition of  a schema that cannot be determined to be faulty.
+\begin{definition}\label{de:undeteminedfaulty}
+
+\end{definition}
 
 \begin{definition}\label{de:pending}
 A schema is called a \textbf{\emph{pending} schema}, if it is not yet determined to be \emph{healthy} schema or \emph{faulty} schema.
