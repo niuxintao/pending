@@ -297,7 +297,7 @@ This proposition gives necessary and sufficient condition to determine a schema 
 A schema $s_{1}$ is not a healthy healthy schema if and only if $\nexists s_{2}, s_{1} \preceq s_{1}$ $\&\&$ $s_{2}$ is a healthy schema.
 \end{lemma}
 
-The proof can be directly derived from Proposition \ref{pro:nshealthy}. 
+The proof can be directly derived from Proposition \ref{pro:nshealthy}.
 
 %\begin{proposition}[Necessary and sufficient condition to be Healthy]\label{pro:nonsubofhealthy}
 %Given a set of healthy schemas $HSS$, we cannot determine a schema, say, $s$, is healthy or not if $\forall s' \in HSS, s \nprec s'$ $\&\&$ $s \neq s'$, i.e., ($s \npreceq s' $).
@@ -323,20 +323,25 @@ let $T_{2}$ be the set of all the test cases that contain $s_{2}$, we have $\for
 This proposition shows that any super-schema of a faulty schema is also a faulty schema.  Note that his proposition can deduce the second rule in Section \ref{sec:motiv}.
 
 
-\begin{proposition}[Necessary and sufficient condition to be Healthy]\label{pro:nshealthy}
-A schema $s_{1}$ is a healthy schema if and only if $\exists s_{2}, s_{1} \preceq s_{2}$ $\&\&$ $s_{2}$ is a healthy schema.
+\begin{proposition}[Necessary and sufficient condition to be Faulty]\label{pro:nsfaulty}
+A schema $s_{1}$ is a faulty schema if and only if $\exists s_{2}, s_{2} \preceq s_{1}$ $\&\&$ $s_{2}$ is a faulty schema.
 \end{proposition}
 
 \begin{proof}
-Let us first prove the sufficiency. Let $s_{1}$ is a healthy schema. According to the definition, $\exists t$, $s_{1} \preceq t$ and $t$ is a passing test case. In fact, $t$ itself is a schema, and $t \preceq t$, which indicating that $t$ is a healthy schema. Hence, the statement that $\exists s_{2}, s_{1} \preceq s_{2}$ $\&\&$ $s_{2}$ is a healthy schema is true, because $t$ is such a schema.
+Let us first prove the sufficiency. Let $s_{1}$ is a faulty schema. According to the definition, $\forall t$, $s_{1} \preceq t$ and $t$ is a failing test case. $s_{1}$ itself is a faulty schema.
 
-Then we prove the necessity.  Let $\exists s_{2}, s_{1} \preceq s_{2}$ $\&\&$ $s_{2}$ is a healthy schema be true.  According to Proposition \ref{pro:subofhealthy}, $s_{1}$ is a healthy schema. Hence, the statement $s_{1}$ is a healthy schema is also true.
+Then we prove the necessity.  Let $\exists s_{2}, s_{2} \preceq s_{1}$ $\&\&$ $s_{2}$ is a faulty schema be true.  According to Proposition \ref{pro:superoffaulty}, $s_{1}$ is a faulty schema. Hence, the statement $s_{1}$ is a faulty schema is also true.
 \end{proof}
 
 
-\begin{proposition}[Undetermined to be Faulty]\label{pro:nonsuperoffaulty}
-Given a set of healthy schemas $HSS$, we cannot determine a schema is healthy or not if $\forall s \in HSS, s_{2} \nprec s_{1}$ $\&\&$ $s_{2} \neq s_{1}$, i.e., ($s_{2} \npreceq s_{1} $).
-\end{proposition}
+\begin{lemma}[Non-Faulty]\label{pro:nonfaulty}
+A schema $s_{1}$ is not a faulty schema if and only if $\nexists s_{2}, s_{1} \preceq s_{1}$ $\&\&$ $s_{2}$ is a healthy faulty.
+\end{lemma}
+
+
+%\begin{lemma}[Non-Faulty]\label{pro:nonfaulty}
+%Given a set of healthy schemas $HSS$, we cannot determine a schema is healthy or not if $\forall s \in HSS, s_{2} \nprec s_{1}$ $\&\&$ $s_{2} \neq s_{1}$, i.e., ($s_{2} \npreceq s_{1} $).
+%\end{lemma}
 
 
 %You should give normal sentences description and examples of them (if possible, give some simple proofs)
@@ -351,9 +356,18 @@ In this section, we will give the formal definition of the pending schema, as we
 
 Through these motivating examples, we can learn that the pending schema is not checked to be healthy and faulty. Hence, we give the definition of the pending schema as follows.
 
-first give the formal defition of not be detemined to be healthy.
-then give the formal definition of not be determiend ot faulty.
 
+if we find one is pending ? How to depend a pending ?
+
+We first give the formal definition of a schema that cannot be determined to be healthy.
+\begin{definition}\label{de:undeteminedhealthy}
+
+\end{definition}
+
+Then, we give the formal definition of  a schema that cannot be determined to be faulty.
+\begin{definition}\label{de:undeteminedfaulty}
+
+\end{definition}
 
 \begin{definition}\label{de:pending}
 A schema is called a \textbf{\emph{pending} schema}, if it is not yet determined to be \emph{healthy} schema or \emph{faulty} schema.
@@ -626,7 +640,7 @@ PSS =  \{ c\ |\ \exists c_{1}' \in CMXS(FSS^{\bot}, t), c_{2}' \in CMNS(HSS^{\to
 
 According to Formula \ref{eq:pssthird}, the complexity of obtaining one pending schema is O($ \tau^{|FSS^{\bot}|} \times \tau^{|HSS^{\top}|}$), where $|FSS^{\bot}|$ and $|HSS^{\top}|$ are two relatively small numbers during MFS identification.
 
-\subsection{Getting back to the motivation example}
+\subsection{Applying Formula \ref{eq:pssthird} on motivation example}
 When applying this analysis, we can get back to the motivation example.
 We do not need list all the schemas, but we can figure out which one is the pending schema (Covering array, OFOT, OFOT with single  MFS, FIC, FIC with multiple )
 

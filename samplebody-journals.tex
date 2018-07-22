@@ -297,7 +297,7 @@ This proposition gives necessary and sufficient condition to determine a schema 
 A schema $s_{1}$ is not a healthy healthy schema if and only if $\nexists s_{2}, s_{1} \preceq s_{1}$ $\&\&$ $s_{2}$ is a healthy schema.
 \end{lemma}
 
-The proof can be directly derived from Proposition \ref{pro:nshealthy}. 
+The proof can be directly derived from Proposition \ref{pro:nshealthy}.
 
 %\begin{proposition}[Necessary and sufficient condition to be Healthy]\label{pro:nonsubofhealthy}
 %Given a set of healthy schemas $HSS$, we cannot determine a schema, say, $s$, is healthy or not if $\forall s' \in HSS, s \nprec s'$ $\&\&$ $s \neq s'$, i.e., ($s \npreceq s' $).
@@ -347,7 +347,7 @@ A schema $s_{1}$ is not a faulty schema if and only if $\nexists s_{2}, s_{1} \p
 %You should give normal sentences description and examples of them (if possible, give some simple proofs)
 
 \section{Pending schema}\label{sec:pending}
-In this section, we will give the formal definition of the pending schema, as well as its properties. Based on several theoretical analysis about pending schema, we will give an efficient approach to obtain them. Then we will show how to apply this approach on identifying the pending schemas in the motivation section.
+In this section, we will give the formal definition of the pending schema, as well as its properties. Based on several theoretical analysis about pending schema, we will give an efficient approach to obtain them. Then we will show a case study of  how to apply this approach on identifying the pending schemas.
 %To give a better description, we will give several propositions which provide theoretical supports for our approach. The proofs of these propositions are given in the Appendix.
 
 
@@ -356,7 +356,10 @@ In this section, we will give the formal definition of the pending schema, as we
 
 Through these motivating examples, we can learn that the pending schema is not checked to be healthy and faulty. Hence, we give the definition of the pending schema as follows.
 
-We first give the formal definition of a schema that cannot be determined to be healthy. 
+
+if we find one is pending ? How to depend a pending ?
+
+We first give the formal definition of a schema that cannot be determined to be healthy.
 \begin{definition}\label{de:undeteminedhealthy}
 
 \end{definition}
@@ -637,7 +640,12 @@ PSS =  \{ c\ |\ \exists c_{1}' \in CMXS(FSS^{\bot}, t), c_{2}' \in CMNS(HSS^{\to
 
 According to Formula \ref{eq:pssthird}, the complexity of obtaining one pending schema is O($ \tau^{|FSS^{\bot}|} \times \tau^{|HSS^{\top}|}$), where $|FSS^{\bot}|$ and $|HSS^{\top}|$ are two relatively small numbers during MFS identification.
 
-\subsection{Getting back to the motivation example}
+\subsection{A case study of applying Formula \ref{eq:pssthird}}
+In this section, we will show a case study of how to obtain the pending schemas with Formula \ref{eq:pssthird}. For consistency, we use the example in the Section \ref{sec:motiv}.
+  in the FINOLP. Others are shown in the appendix in a similar way.
+From Figure , we can learn that the maximal healthy schemas are the passing test cases themselves, which are $t_{1}$ ,..., and $t_{16}$. While the minimal faulty schemas are the MFS  (Other faulty schemas are the super schemas of this one).
+Then we can learn that.  Note that we can learn that .
+ 
 When applying this analysis, we can get back to the motivation example.
 We do not need list all the schemas, but we can figure out which one is the pending schema (Covering array, OFOT, OFOT with single  MFS, FIC, FIC with multiple )
 
