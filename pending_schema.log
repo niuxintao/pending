@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6500) (preloaded format=pdflatex 2017.12.21)  23 JUL 2018 19:44
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6500) (preloaded format=pdflatex 2017.12.21)  23 JUL 2018 19:53
 entering extended mode
 **./pending_schema.tex
 (pending_schema.tex
@@ -1223,16 +1223,16 @@ LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/it' will be
 (Font)              scaled to size 10.0pt on input line 365.
  [14.14] [15.15]
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/it' will be
-(Font)              scaled to size 10.0pt on input line 479.
+(Font)              scaled to size 10.0pt on input line 482.
  [16.16]
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/n' will be
-(Font)              scaled to size 8.0pt on input line 557.
+(Font)              scaled to size 8.0pt on input line 560.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/n' will be
-(Font)              scaled to size 6.2pt on input line 557.
+(Font)              scaled to size 6.2pt on input line 560.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/n' will be
-(Font)              scaled to size 5.5pt on input line 557.
+(Font)              scaled to size 5.5pt on input line 560.
 
-Overfull \hbox (2.70097pt too wide) in paragraph at lines 574--575
+Overfull \hbox (2.70097pt too wide) in paragraph at lines 577--578
 \T1/LinuxLibertineT-TLF/m/n/10 (-20) For two faulty schemas $\OML/nxlmi/m/it/10
  c[]$\T1/LinuxLibertineT-TLF/m/n/10 (-20) , $\OML/nxlmi/m/it/10 c[]$\T1/LinuxLi
 bertineT-TLF/m/n/10 (-20) , and a fail-ing test case $\OML/nxlmi/m/it/10 t$ \T1
@@ -1245,7 +1245,7 @@ t/10 c[]; t\LMS/ntxsy/m/n/10 º \U/ntxmia/m/it/10 =
  []
 
 [17.17] [18.18]
-Overfull \hbox (4.21948pt too wide) in paragraph at lines 680--690
+Overfull \hbox (4.21948pt too wide) in paragraph at lines 683--693
  [][][] 
  []
 
@@ -1258,18 +1258,18 @@ Package epstopdf Info: Source file: <minmax.eps>
 (epstopdf)                    size: 204241 bytes
 (epstopdf)             Command: <epstopdf --outfile=minmax-eps-converted-to.pdf
  minmax.eps>
-(epstopdf)             \includegraphics on input line 732.
+(epstopdf)             \includegraphics on input line 735.
 Package epstopdf Info: Output file is already uptodate.
-<minmax-eps-converted-to.pdf, id=2280, pagebox=cropbox, 644.4075pt x 544.0325pt
+<minmax-eps-converted-to.pdf, id=2279, pagebox=cropbox, 644.4075pt x 544.0325pt
 >
 File: minmax-eps-converted-to.pdf Graphic file (type pdf)
 <use minmax-eps-converted-to.pdf>
-Package pdftex.def Info: minmax-eps-converted-to.pdf  used on input line 732. o
-n input line 732.
+Package pdftex.def Info: minmax-eps-converted-to.pdf  used on input line 735. o
+n input line 735.
 Package pdftex.def Info: Requested size: 404.71243pt x 341.68803pt on input lin
-e 732.
+e 735.
 
-Overfull \hbox (8.88994pt too wide) in paragraph at lines 732--733
+Overfull \hbox (8.88994pt too wide) in paragraph at lines 735--736
  [][] 
  []
 
@@ -1281,7 +1281,7 @@ Underfull \vbox (badness 2698) has occurred while \output is active []
 
  [22.22]
 [23.23]
-Overfull \hbox (3.99635pt too wide) in paragraph at lines 893--894
+Overfull \hbox (3.99635pt too wide) in paragraph at lines 896--897
 []\T1/LinuxLibertineT-TLF/m/n/10 (-20) Let $\OML/nxlmi/m/it/10 B \U/ntxmia/m/it
 /10 =$ \T1/LinuxLibertineT-TLF/m/n/10 (-20) {$\OML/nxlmi/m/it/10 c \LMS/ntxsy/m
 /n/10 j \OML/nxlmi/m/it/10 c \LMS/ntxsy/m/n/10  \OML/nxlmi/m/it/10 t \OT1/Linu
@@ -1309,55 +1309,54 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 134.
  (pending_schema.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 134.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 134.
+Package rerunfilecheck Info: File `pending_schema.out' has not changed.
+(rerunfilecheck)             Checksum: C074CF9F90D6862F36D820EAF0AA052D;6470.
 
-
-Package rerunfilecheck Warning: File `pending_schema.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `pending_schema.out':
-(rerunfilecheck)             Before: 7A9B35F3D9FB4CDA2A2D3A436C198CEE;8855
-(rerunfilecheck)             After:  C074CF9F90D6862F36D820EAF0AA052D;6470.
 
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  )
 (\end occurred inside a group at level 1)
 
-### simple group (level 1) entered at line 631 ({)
+### simple group (level 1) entered at line 634 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
  19490 strings out of 493312
  295574 string characters out of 3143321
- 418124 words of memory out of 3000000
+ 418267 words of memory out of 3000000
  21850 multiletter control sequences out of 15000+200000
  215432 words of font info for 489 fonts, out of 3000000 for 9000
  1302 hyphenation exceptions out of 8191
  60i,17n,94p,1804b,646s stack positions out of 5000i,500n,10000p,200000b,50000s
-{C:/CTEX/MikTex2.9/fonts/enc/dvips/libertine/lbtn_ki75ao.enc}{C
-:/CTEX/MikTex2.9/fonts/enc/dvips/libertine/lbtn_25tcsq.enc}{C:/CTEX/MikTex2.9/f
-onts/enc/dvips/libertine/lbtn_ncsllp.enc}{C:/CTEX/MikTex2.9/fonts/enc/dvips/new
-tx/libertinealt.enc}{C:/CTEX/MikTex2.9/fonts/enc/dvips/libertine/lbtn_7grukw.en
-c}{C:/CTEX/MikTex2.9/fonts/enc/dvips/libertine/lbtn_nh77jq.enc}{C:/CTEX/MikTex2
-.9/fonts/enc/dvips/libertine/lbtn_naooyc.enc}{C:/CTEX/MikTex2.9/fonts/enc/dvips
-/base/8r.enc}{C:/CTEX/MikTex2.9/fonts/enc/dvips/libertine/lbtn_oexx6f.enc}{C:/C
-TEX/MikTex2.9/fonts/enc/dvips/libertine/lbtn_76gpa5.enc}<C:/CTEX/MikTex2.9/font
-s/type1/public/libertine/LinBiolinumT.pfb><C:/CTEX/MikTex2.9/fonts/type1/public
-/libertine/LinBiolinumTB.pfb><C:/CTEX/MikTex2.9/fonts/type1/public/libertine/Li
-nBiolinumTI.pfb><C:/CTEX/MikTex2.9/fonts/type1/public/libertine/LinLibertineT.p
-fb><C:/CTEX/MikTex2.9/fonts/type1/public/libertine/LinLibertineTB.pfb><C:/CTEX/
-MikTex2.9/fonts/type1/public/libertine/LinLibertineTBI.pfb><C:/CTEX/MikTex2.9/f
-onts/type1/public/libertine/LinLibertineTI.pfb><C:/CTEX/MikTex2.9/fonts/type1/p
-ublic/newtx/fxlri-5letters.pfb><C:/CTEX/MikTex2.9/fonts/type1/public/newtx/fxlr
-i-7letters.pfb><C:/CTEX/MikTex2.9/fonts/type1/public/newtx/ntxsyralt.pfb><C:/CT
-EX/MikTex2.9/fonts/type1/public/txfonts/rtxmi.pfb><C:/CTEX/MikTex2.9/fonts/type
-1/public/newtx/rtxmi7.pfb><C:/CTEX/MikTex2.9/fonts/type1/public/txfonts/rtxr.pf
-b><C:/CTEX/MikTex2.9/fonts/type1/public/newtx/txexs.pfb><C:/CTEX/MikTex2.9/font
-s/type1/public/txfonts/txsya.pfb><C:/CTEX/MikTex2.9/fonts/type1/public/txfonts/
-txsyb.pfb><C:/CTEX/MikTex2.9/fonts/type1/public/txfonts/txsyc.pfb><C:/CTEX/MikT
-ex2.9/fonts/type1/public/newtx/txsys.pfb><C:/CTEX/MikTex2.9/fonts/type1/public/
-newtx/zxlri.pfb>
-Output written on pending_schema.pdf (26 pages, 3245936 bytes).
+pdfTeX warning (dest): name{theorem.4.24} has been referenced b
+ut does not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{theorem.4.23} has been referenced but does not exis
+t, replaced by a fixed one
+
+{C:/CTEX/MikTex2.9/fonts/enc/dvips/libertine/lbtn_ki75ao.enc}{C:/CTEX/MikTex2.9
+/fonts/enc/dvips/libertine/lbtn_25tcsq.enc}{C:/CTEX/MikTex2.9/fonts/enc/dvips/l
+ibertine/lbtn_ncsllp.enc}{C:/CTEX/MikTex2.9/fonts/enc/dvips/newtx/libertinealt.
+enc}{C:/CTEX/MikTex2.9/fonts/enc/dvips/libertine/lbtn_7grukw.enc}{C:/CTEX/MikTe
+x2.9/fonts/enc/dvips/libertine/lbtn_nh77jq.enc}{C:/CTEX/MikTex2.9/fonts/enc/dvi
+ps/libertine/lbtn_naooyc.enc}{C:/CTEX/MikTex2.9/fonts/enc/dvips/base/8r.enc}{C:
+/CTEX/MikTex2.9/fonts/enc/dvips/libertine/lbtn_oexx6f.enc}{C:/CTEX/MikTex2.9/fo
+nts/enc/dvips/libertine/lbtn_76gpa5.enc}<C:/CTEX/MikTex2.9/fonts/type1/public/l
+ibertine/LinBiolinumT.pfb><C:/CTEX/MikTex2.9/fonts/type1/public/libertine/LinBi
+olinumTB.pfb><C:/CTEX/MikTex2.9/fonts/type1/public/libertine/LinBiolinumTI.pfb>
+<C:/CTEX/MikTex2.9/fonts/type1/public/libertine/LinLibertineT.pfb><C:/CTEX/MikT
+ex2.9/fonts/type1/public/libertine/LinLibertineTB.pfb><C:/CTEX/MikTex2.9/fonts/
+type1/public/libertine/LinLibertineTBI.pfb><C:/CTEX/MikTex2.9/fonts/type1/publi
+c/libertine/LinLibertineTI.pfb><C:/CTEX/MikTex2.9/fonts/type1/public/newtx/fxlr
+i-5letters.pfb><C:/CTEX/MikTex2.9/fonts/type1/public/newtx/fxlri-7letters.pfb><
+C:/CTEX/MikTex2.9/fonts/type1/public/newtx/ntxsyralt.pfb><C:/CTEX/MikTex2.9/fon
+ts/type1/public/txfonts/rtxmi.pfb><C:/CTEX/MikTex2.9/fonts/type1/public/newtx/r
+txmi7.pfb><C:/CTEX/MikTex2.9/fonts/type1/public/txfonts/rtxr.pfb><C:/CTEX/MikTe
+x2.9/fonts/type1/public/newtx/txexs.pfb><C:/CTEX/MikTex2.9/fonts/type1/public/t
+xfonts/txsya.pfb><C:/CTEX/MikTex2.9/fonts/type1/public/txfonts/txsyb.pfb><C:/CT
+EX/MikTex2.9/fonts/type1/public/txfonts/txsyc.pfb><C:/CTEX/MikTex2.9/fonts/type
+1/public/newtx/txsys.pfb><C:/CTEX/MikTex2.9/fonts/type1/public/newtx/zxlri.pfb>
+Output written on pending_schema.pdf (26 pages, 3243603 bytes).
 PDF statistics:
  2530 PDF objects out of 2984 (max. 8388607)
  129 named destinations out of 1000 (max. 500000)
