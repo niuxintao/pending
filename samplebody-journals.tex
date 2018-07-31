@@ -304,9 +304,7 @@ Before we give a formal definition of pending schema, we need to first give the 
 A schema is determinable if and only if it is determined to be healthy schema or faulty schema according to given information.
 \end{definition}
 
-Here, the ``information'' indicates the outcomes of the execution of some test cases or the determination state of existed schemas. Note that if given full set of test cases, we can always determine which schema is faulty and which is healthy.
-
-However, if only partial information, this is not so.
+Here, the ``information'' indicates the outcomes of the execution of some test cases or the determination state of existed schemas. If given the outcomes of all the test cases in the SUT or the determination of all the possible schemas in the SUT, then for any schema in the SUT, we can easily determine it to be faulty or healthy. However, if only given partial information, not any schema is determinable.
 
 Next we discuss two conditions under which schemas are determinable.
 
