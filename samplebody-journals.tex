@@ -173,7 +173,7 @@ Note that if any of the test case ($t_{16}$ to $t_{19}$) failed after testing, w
 
 \subsection{A summary}
 
-There are two main observations from this section. First, traditional covering array and MFS identification approaches are still incomplete in terms of the existence of pending schemas which cannot be determined to faulty or non-faulty. Second, to remove all the pending schemas is time-consuming. In fact, just listing all the schemas and checking them one by one is inefficient. In this example, we need to check $2^{4} - 15$ schemas for each test case. However, with the increase of the number of factors in one test case, the cost for checking the pending schemas increase exponentially.
+There are two main observations from this section. First, traditional covering array and MFS identification approaches are still incomplete in terms of the existence of pending schemas which cannot be determined to faulty or non-faulty. Second, to remove all the pending schemas is time-consuming. In fact, just listing all the schemas and checking them one by one is inefficient. In this example, we need to check $2^{4} - 1 = 5$ schemas for each test case. However, with the increase of the number of factors in one test case, the cost for checking the pending schemas increase exponentially.
 
 For all of these, we need to theoretically analyze the properties of the pending schemas in the failing test cases and to give a more efficient method to obtain them.
 %It needs a formal definition and theoretical analysis for the pending schemas with non-faulty schemas and faulty schemas.
@@ -281,37 +281,6 @@ According to the definition of healthy schema,  there exists at least one test c
 This proposition shows that any subschema of a healthy schema is also a healthy schema. In fact, this proposition can deduce the first rule in Section \ref{sec:motiv}.
 
 
-%\begin{proposition}[Necessary and sufficient condition to be Healthy]\label{pro:nshealthy}
-%A schema $s_{1}$ is a healthy schema if and only if $\exists s_{2}, s_{1} \preceq s_{2}$ $\&\&$ $s_{2}$ is a healthy schema.
-%\end{proposition}
-%
-%\begin{proof}
-%Let us first prove the sufficiency. Let $s_{1}$ is a healthy schema. According to the definition, $\exists t$, $s_{1} \preceq t$ and $t$ is a passing test case. In fact, $t$ itself is a schema, and $t \preceq t$, which indicating that $t$ is a healthy schema. Hence, the statement that $\exists s_{2}, s_{1} \preceq s_{2}$ $\&\&$ $s_{2}$ is a healthy schema is true, because $t$ is such a schema.
-%
-%Then we prove the necessity.  Let $\exists s_{2}, s_{1} \preceq s_{2}$ $\&\&$ $s_{2}$ is a healthy schema be true.  According to Proposition \ref{pro:subofhealthy}, $s_{1}$ is a healthy schema. Hence, the statement $s_{1}$ is a healthy schema is also true.
-%\end{proof}
-%
-%This proposition gives necessary and sufficient condition to determine a schema to be healthy or not. Based on this, we can deduce the following lemma.
-%
-%\begin{lemma}[Non-Healthy]\label{pro:nonhealthy}
-%A schema $s_{1}$ is not a healthy healthy schema if and only if $\nexists s_{2}, s_{1} \preceq s_{1}$ $\&\&$ $s_{2}$ is a healthy schema.
-%\end{lemma}
-%
-%The proof can be directly derived from Proposition \ref{pro:nshealthy}.
-
-%\begin{proposition}[Necessary and sufficient condition to be Healthy]\label{pro:nonsubofhealthy}
-%Given a set of healthy schemas $HSS$, we cannot determine a schema, say, $s$, is healthy or not if $\forall s' \in HSS, s \nprec s'$ $\&\&$ $s \neq s'$, i.e., ($s \npreceq s' $).
-%\end{proposition}
-%
-%\begin{proof}
-%
-%We assume that $s$ is a healthy schema. According to the definition, there exists a passing test case $t$, and $s \prec t$. As $t$ is a passing test case, it is obviously $t \in HSS$.
-%
-%According to the definition of healthy schema,  there exists at least one test case that contains $s_{1}$ and passes. Let this test case be $t$. Obviously, $s_{1} \prec t$.  Then $\forall s_{2} \prec  s_{1}$, we have $s_{2} \prec s_{1} \prec t$ according to Proposition \ref{pro:subsumetrans}. Hence, $\forall s_{2} \prec  s_{1}$,  $t$ contains $s_{2}$ and passes. According to the definition of healthy schema, $\forall s_{2} \prec  s_{1}$, $s_{2}$ is a healthy schema.
-%\end{proof}
-
-
-
 \begin{proposition}[Super of Faulty]\label{pro:superoffaulty}
 Given a faulty schema $s_{1}$, then $\forall s_{2}, s_{1} \preceq s_{2}$, $s_{2}$ is a faulty schema.
 \end{proposition}
@@ -322,185 +291,61 @@ let $T_{2}$ be the set of all the test cases that contain $s_{2}$, we have $\for
 
 This proposition shows that any super-schema of a faulty schema is also a faulty schema.  Note that his proposition can deduce the second rule in Section \ref{sec:motiv}.
 
-
-%\begin{proposition}[Necessary and sufficient condition to be Faulty]\label{pro:nsfaulty}
-%A schema $s_{1}$ is a faulty schema if and only if $\exists s_{2}, s_{2} \preceq s_{1}$ $\&\&$ $s_{2}$ is a faulty schema.
-%\end{proposition}
-%
-%\begin{proof}
-%Let us first prove the sufficiency. Let $s_{1}$ is a faulty schema. According to the definition, $\forall t$, $s_{1} \preceq t$ and $t$ is a failing test case. $s_{1}$ itself is a faulty schema.
-%
-%Then we prove the necessity.  Let $\exists s_{2}, s_{2} \preceq s_{1}$ $\&\&$ $s_{2}$ is a faulty schema be true.  According to Proposition \ref{pro:superoffaulty}, $s_{1}$ is a faulty schema. Hence, the statement $s_{1}$ is a faulty schema is also true.
-%\end{proof}
-%
-%
-%\begin{lemma}[Non-Faulty]\label{pro:nonfaulty}
-%A schema $s_{1}$ is not a faulty schema if and only if $\nexists s_{2}, s_{1} \preceq s_{1}$ $\&\&$ $s_{2}$ is a healthy faulty.
-%\end{lemma}
-%
-
-%\begin{lemma}[Non-Faulty]\label{pro:nonfaulty}
-%Given a set of healthy schemas $HSS$, we cannot determine a schema is healthy or not if $\forall s \in HSS, s_{2} \nprec s_{1}$ $\&\&$ $s_{2} \neq s_{1}$, i.e., ($s_{2} \npreceq s_{1} $).
-%\end{lemma}
-
-
-%You should give normal sentences description and examples of them (if possible, give some simple proofs)
-
 \section{Pending schema}\label{sec:pending}
 In this section, we will give the formal definition of the pending schema, as well as its properties. Based on several theoretical analysis about pending schema, we will give an efficient approach to obtain them. Then we will show a case study of  how to apply this approach on identifying the pending schemas.
 %To give a better description, we will give several propositions which provide theoretical supports for our approach. The proofs of these propositions are given in the Appendix.
 
-\subsection{Determinable}
-Before we give a formal definition of pending schema, we need to first give the  definition of ``a determinable schema" .
+\subsection{Determinable schemas}\label{sec:pending:determinable}
+Before we give a formal definition of pending schema, we need to first give the definition of ``a determinable schema". Note that in Section \ref{sec:back}, we introduced the definition of faulty schema and healthy schema, as well as some properties of them. Based on these definitions, we can conclude that in order to determine a schemas to be healthy or faulty, we need to make sure whether the corresponding schema satisfies the specific conditions. Hence, if these conditions are given at first or can be deduced from existed information, we can determine the the schema to be healthy or faulty. Otherwise, we cannot determine the state of the schema for lack of information. Next, we will give the definition of the determinable schema.
+
+%Given the results of the test cases or some schemas. This is the information.
 
 \begin{definition}\label{de:deteminable}
-A schema, say, $s$, is determinable if and only if it must be a healthy schema or faulty schema.
+A schema is determinable if and only if it is determined to be healthy schema or faulty schema according to given information.
 \end{definition}
+
+Here, the ``information'' indicates the outcomes of the execution of some test cases or the determination state of existed schemas. Note that if given full set of test cases, we can always determine which schema is faulty and which is healthy.
+
+However, if only partial information, this is not so.
+
+Next we discuss two conditions under which schemas are determinable.
+
+First, given part of passing test cases.
+
+Second, given a set of faulty schemas, of which satisfying that no other schemas of its faulty is faulty schema (This is the definition of MFS identification).
+
 
 %According to this definition, to tell a schema is determinable or not we need to check if it is a healthy schema or faulty schema.  Next, we will discuss under which conditions does a schema is determinable.
 
-More formally, let $stat(s, pass)$  = true is the proposition that show a schema is true. This is true if and only if $\exists t, s \preceq t$, t is a passing test case.  Similarly,  let $stat(s, fail)$  = true is the proposition that show  a schema is faulty. This is true if and only if $\forall t, s \preceq t$, t is a failing test case. If we can know all the information of all the test cases in the SUT, we can easily judge the correctness of each function for any schema. However, if we have only partial information of the SUT, not all the schemas is determinable.
-
-Let us consider the general condition, when given a set of schemas of which the status is known. Formally, let $HSS$ be the set of the schemas of which the stat is determined to be healthy, i.e., $\forall s \in HSS, stat(s, pass) = true$ is solvable (can find satisfied test cases). Let $FSS$ be the set of the schemas of which the stat is determined to be faulty, i.e., $\forall s \in FSS, stat(s, fail) = true$ (can find satisfied test cases).  Then for any schema $s$, can we determined this schema to be healthy or faulty? Note that here we did not take the test cases as a knowledge, but instead of schemas, because schemas are more general (test cases themselves are schemas). Another reason is that schemas are more applicable if we obtain the information by MFS identification (they do not only offer the information of test cases, but also the schemas (MFS)).
-
-
-\begin{proposition}[Determinable to be healthy with part set]\label{pro:determinableparthealthy}
-Given $HSS$, $s$ is determined to he healthy if only if $stat(s, fail) \&\& stat(s_{i}, pass) \&\& stat(s_{j}, fail)$ is unsolvable.
-\end{proposition}
-
-Note that this formula is unsolvable, if and only if $stat(s, fail)$ is not true. Hence, it can only be $stat(s, true)$ be true. Hence, $s$ must be a healthy schema.  (can be provable.)
-
+%More formally, let $stat(s, pass)$  = true is the proposition that show a schema is true. This is true if and only if $\exists t, s \preceq t$, t is a passing test case.  Similarly,  let $stat(s, fail)$  = true is the proposition that show  a schema is faulty. This is true if and only if $\forall t, s \preceq t$, t is a failing test case. If we can know all the information of all the test cases in the SUT, we can easily judge the correctness of each function for any schema. However, if we have only partial information of the SUT, not all the schemas is determinable.
+%
+%Let us consider the general condition, when given a set of schemas of which the status is known. Formally, let $HSS$ be the set of the schemas of which the stat is determined to be healthy, i.e., $\forall s \in HSS, stat(s, pass) = true$ is solvable (can find satisfied test cases). Let $FSS$ be the set of the schemas of which the stat is determined to be faulty, i.e., $\forall s \in FSS, stat(s, fail) = true$ (can find satisfied test cases).  Then for any schema $s$, can we determined this schema to be healthy or faulty? Note that here we did not take the test cases as a knowledge, but instead of schemas, because schemas are more general (test cases themselves are schemas). Another reason is that schemas are more applicable if we obtain the information by MFS identification (they do not only offer the information of test cases, but also the schemas (MFS)).
+%
 %
 %\begin{proposition}[Determinable to be healthy with part set]\label{pro:determinableparthealthy}
-%Given $HSS$, $s$ is determined to he healthy if only if $stat(s, fail) \&\& stat(s_{1}, pass) \&\& ... \&\& stat(s_{i}, pass) \&\& stat(s_{i}, pass)$ is unsolvable. 
+%Given $HSS$, $s$ is determined to he healthy if only if $stat(s, fail) \&\& stat(s_{i}, pass) \&\& stat(s_{j}, fail)$ is unsolvable.
 %\end{proposition}
 %
 %Note that this formula is unsolvable, if and only if $stat(s, fail)$ is not true. Hence, it can only be $stat(s, true)$ be true. Hence, $s$ must be a healthy schema.  (can be provable.)
-
-\begin{proposition}[Determinable to be faulty with part set]\label{pro:determinableparthealthy}
-Given $FSS$, $s$ is determined to he faulty if only if $stat(s, pass) \&\& stat(s_{i}, pass) \&\& stat(s_{j}, fail)$ is unsolvable.
-\end{proposition}
-
-Note that this formula is unsolvable, if and only if $stat(s, pass)$ is not true. Hence, it can only be $stat(s, fail)$ be true. Hence, $s$ must be a faulty schema.  (can be provable.)
-
-
-%\subsubsection{determinable by test cases}
 %
-%At first, let us assume for a SUT, we know the results (either pass or fail) of all the test cases in the SUT. Under such condition, for any schema in this SUT, we can determine it to be faulty or healthy.  More formally,
+%%
+%%\begin{proposition}[Determinable to be healthy with part set]\label{pro:determinableparthealthy}
+%%Given $HSS$, $s$ is determined to he healthy if only if $stat(s, fail) \&\& stat(s_{1}, pass) \&\& ... \&\& stat(s_{i}, pass) \&\& stat(s_{i}, pass)$ is unsolvable.
+%%\end{proposition}
+%%
+%%Note that this formula is unsolvable, if and only if $stat(s, fail)$ is not true. Hence, it can only be $stat(s, true)$ be true. Hence, $s$ must be a healthy schema.  (can be provable.)
 %
-%\begin{proposition}[Determinable with full set]\label{pro:determinablefull}
-%Given the results of all the test cases in a set, $\forall s$ in this SUT,  $s$ can be determined to be either faulty schema or healthy schema.
+%\begin{proposition}[Determinable to be faulty with part set]\label{pro:determinableparthealthy}
+%Given $FSS$, $s$ is determined to he faulty if only if $stat(s, pass) \&\& stat(s_{i}, pass) \&\& stat(s_{j}, fail)$ is unsolvable.
 %\end{proposition}
 %
-%\begin{proof}
-%For any schema, say, $s$, we can obtain all the possible test cases contain it. Let this set of test cases be $T$.
-%
-%As we can know all the results of the test cases, we also can know the results of each test cases in $T$. Then the following problem can be decided:
-%
-%Do all the test cases in $T$ are failing test cases?
-%
-%Note that according to the outcome of this problem. We can learn that $s$ is faulty schema if the outcome is yes, otherwise it is a healthy schema.
-%
-%Hence, for any schema. We can determined it to be a healthy schema or faulty schema. Then, any schema is determinable.
-%\end{proof}
-%
-%However, if we only know the results of the part of the full set of test cases, not all the possible schemas can be determinable. This is obviously, as for some specific schemas, we cannot obtain the information of all the test cases that contain it.  More formally, when given only a set of test cases $T$, we cannot know that $s$, $\exists  t$, $s \preceq t$, while $t \notin T$.
-%
-%
-%\begin{proposition}[Determinable to be healthy with part set]\label{pro:determinableparthealthy}
-%Given the results of part of all the test cases in a set $T$, $s$ is determinable, if and only if $\exists t \in T, s \preceq t$, and $t$ is a passing test case.
-%\end{proposition}
-%
-%Note that determine to be healthy not necessary to find all the test cases contain it. Only one passing test case it the set is enough. On the contrary, if cannot find such a test case in this set. $s$ cannot be determine to be healthy.
-%
-%\begin{proposition}[Determinable to be faulty with part set]\label{pro:determinablepartfaulty}
-%Given the results of part of all the test cases in a set $T$, $s$ is determinable, if and only if $\forall t \in T, s \preceq t$, and $t$ is a failing test case.
-%\end{proposition}
-%
-%In this case, to determine a schema to be faulty schema, we need to check all the possible test cases contain it. For some cases, this costs a lot. In fact, for a schema $s$ with degree. The cost is $v^{n-t}$ possible number of test cases contain it. (This is the reason why we say in the motivation section, that to check a faulty schema is very resource consuming).  In other word, if any test case contain it is not appear in the set $T$, it cannot be determined to be faulty.
-%
-%
-%Combining these propositions, when given part of all the set of test cases, we need either find one passing test case, or find all the possible failing test cases in the part of the possible set of test cases.
-
-%
-%\subsubsection{determinable by schemas}
-%
-%Then we consider the determinable by given schemas. In fact, this condition include the previous condition (Note that all the test cases can be regarded as schemas). Hence, we should learn that which is determinable.
-
-%\subsection{Complete set of schemas}
-%
-%\begin{definition}
-%A set of schemas is healthy-complete, if and only if, $\forall s$, if $ \exists s_{2} \in T, s \preceq s_{2}$, $s \in T$.
-%\end{definition}
-%
-%Hence a set of schemas is healthy-complete is all the schemas should be in this set.
-%
-%\begin{definition}
-%A set of schemas is faulty-complete, if and only if, $\forall s$, if $ \forall s_{2} \prec s,  s_{2} \in T$, $s \in T$.
-%\end{definition}
-%
-%
-%\begin{definition}
-%A set of schemas is faulty-complete, if and only if, $\forall s$, if $ \exists s_{2} \in T,  s_{2} \preceq s$, $s \in T$.
-%\end{definition}
-%
-%
-%Hence a set of schemas is faulty-complete is all the schemas should be in this set.
-%
-%Then we have the following two propositions.
-%
-%
-%\begin{proposition}[Determinable to be healthy with schemas]\label{pro:determinableschemeashealthy}
-%Given the results of part of schemas $T$, $s$ is determinable to be healthy, if and only if $s \in T$.
-%\end{proposition}
-%
-%
-%
-%\begin{proposition}[Determinable to be faulty with schemas]\label{pro:determinableschemeasfaulty}
-%Given the results of part of schemas $T$, $s$ is determinable to be faulty, if and only if $s \in T$.
-%\end{proposition}
-%
-%
-%One step further.
-%
-%We have maximal-set of this healthy set of schemas.  $HSS^{\top}$
-%
-%We have minimal-set of this faulty set of schemas.  $FSS^{\bot}$
-%
-%Hence, we have
-%
-%
-%\begin{proposition}[Determinable to be healthy with $HSS^{\top}$ ]\label{pro:determinableschemeashealthymax}
-%Given the results of part of schemas $HSS^{\top}$, $s$ is determinable to be healthy, if and only if $\exists s_{2} \in T$, $s \preceq s_{2}$
-%\end{proposition}
-%
-%
-%
-%\begin{proposition}[Determinable to be faulty with  $FSS^{\bot}$]\label{pro:determinableschemeasfaultymin}
-%Given the results of part of schemas $FSS^{\bot}$, $s$ is determinable to be faulty, if and only if $\exists s_{2} \in T$, $s_{2} \preceq s$.
-%\end{proposition}
-%
-%
-%Given Two sets, is determinable, either satifies. Otherwise it is did not satifies.
+%Note that this formula is unsolvable, if and only if $stat(s, pass)$ is not true. Hence, it can only be $stat(s, fail)$ be true. Hence, $s$ must be a faulty schema.  (can be provable.)
 
 
-\subsection{What is pending schema}
 
-Through these motivating examples, we can learn that the pending schema is not checked to be healthy and faulty. Hence, we give the definition of the pending schema as follows. 
-%That is it does not fulfil the determinable properties.
+\subsection{What is pending schema}\label{sec:pending:pending}
 
-%Not fulfil Determinable to be healthy with $HSS^{\top}$, and not fulfil  Determinable to be healthy with $FSS^{\bot}$
-%
-%if we find one is pending ? How to depend a pending ?
-%We first give the formal definition of a schema that cannot be determined to be healthy.
-%\begin{definition}\label{de:undeteminedhealthy}
-%
-%\end{definition}
-%
-%Then, we give the formal definition of  a schema that cannot be determined to be faulty.
-%\begin{definition}\label{de:undeteminedfaulty}
-%
-%\end{definition}
+Through these motivating examples, we can learn that the pending schema is not checked to be healthy and faulty. Hence, we give the definition of the pending schema as follows.
 
 \begin{definition}\label{de:pending}
 A schema is called a \textbf{\emph{pending} schema}, if it is not yet determined to be \emph{healthy} schema or \emph{faulty} schema.
@@ -532,11 +377,31 @@ We give the proof by contradiction. First, we assume that $s_{3}$ is a faulty sc
 
 This proposition gives the determination of pending schemas in the presence of two subsuming pending schemas.
 
+Next, we prove that this proposition is hold.
+
+\begin{proposition}[pending schema]\label{pro:pendingFromtwoSets}
+Given two set of schemas $HSS$, $FSS$, and $\forall s_{1} \npreceq HSS$ and $forall FSS \npreceq s_{1}$, then $s_{1}$ is a pending schema.
+\end{proposition}
+
+Note that if it is not nessearily fulfiled, it will turn to be deteminable schemas.
+
+Let this be a possible set of pending schema.
+
+Then just use it to remove some kinds of schemas, it is possible that .
 
 %
 %Note that this formula is unsolvable, if and only if $stat(s, fail)$ is not true. Hence, it can only be $stat(s, true)$ be true. Hence, $s$ must be a healthy schema.  (can be provable.)
 
-\subsection{Obtaining the pending schemas in a failing test case}
+\subsection{Obtaining the pending schemas in a failing test case}\label{sec:pending:obtaining}
+
+
+To given a set of healthy schemas from passing test case. Given a set of MFS, and the super-schemas of these MFS. Then the quesion is to find the pending schemas.
+
+Note that any sub-schemas of the MFS is not the faulty schemas, at least by the definition. Hence, it should not be the super-schemas of the MFS. Hence, as all the healthy schemas are appeared in the passing test cases. Hence, we can learn all the healthy schemas. This is also true by definition.
+
+Hence, the future work is .
+
+
 % in a failing test case
 Before we give specific method of how to obtain the pending schema, we should first formulate the problem of obtaining schema. Only by doing this can let our approach be general and independent on specific covering arrays or MFS identification approaches. From the motivation example, we can learn that the information offered by covering arrays and MFS identification are a set of healthy schemas (including the passing test case) and faulty schemas (including the failing test case). Based on these information alone, we can obtain the pending schemas in one specific failing test case. Hence, we actually face such a problem that to obtain the pending schema in failing test case in the presence of a set of healthy schemas and faulty schemas.
 
@@ -955,6 +820,8 @@ In this paper, we studied the characteristics of the relationships among faulty 
 We conduct a series empirical studies on some real software systems with various number of parameters and values. Our results shows that the incompleteness in very common in the covering arrays and MFS identification approaches. We also observed that the third proposed formula is the most efficient when compared others in most cases.
 
 As a future work, it is appealing to take the advantages of the pending schemas to assist in the MFS identification approaches. More specifically, we would like to develop a new framework for MFS identification, which take the pending schemas as a indicator. That is, any MFS identification algorithm that runs on this framework aims to empty the set of pending schemas. It is of interest to evaluate the efficiency and effectiveness of this framework with respect to various MFS identification approaches that run on it.
+
+Another interesting futher work is to obtain a general theory of pending schemas, faulty schemas, and healthy schemas.
 
 % Appendix
 \appendix
