@@ -304,13 +304,56 @@ Before we give a formal definition of pending schema, we need to first give the 
 A schema is determinable if and only if it is determined to be healthy schema or faulty schema according to given information.
 \end{definition}
 
-Here, the ``information'' indicates the outcomes of the execution of some test cases or the determination state of existed schemas. If given the outcomes of all the test cases in the SUT or the determination of all the possible schemas in the SUT, then for any schema in the SUT, we can easily determine it to be faulty or healthy. However, if only given partial information, not any schema is determinable.
+Here, the ``information'' indicates the outcomes of the execution of some test cases or the determination state of existed schemas. If given the outcomes of all the test cases in the SUT or the determination of all the possible schemas in the SUT, then for any schema in the SUT, we can easily determine it to be faulty or healthy. However, if only given partial information, it is obvious that not all the schemas are determinable.
 
-Next we discuss two conditions under which schemas are determinable.
+Next, we will discuss the determination of schemas under two particular circumstances. These two circumstances are important to analyse the properties of schemas for MFS identification later.
 
-First, given part of passing test cases.
+First, consider the determinable schemas when given a set of passing test cases. 
+\begin{proposition}[Determinable with passing test cases]\label{pro:determinableparthealthy}
+Given a set of passing test case set $PTS$, $\forall s$ is determinable if only if $\exists t \in PTS, s \preceq t$.
+\end{proposition}
 
-Second, given a set of faulty schemas, of which satisfying that no other schemas of its faulty is faulty schema (This is the definition of MFS identification).
+\begin{proof}
+We prove by two steps. First, we prove that if $\exists t \in PTS, s \preceq t$, $s$ is determinable.
+
+Note that $\forall t \in PTS$, $t$ is a healthy schema. This is because $t \preceq t$, and $t$ is a passing test case. Hence, $t$ itself is a healthy schema according to the definition. Hence, $\forall s \preceq t$, $s$ is also a healthy schema according to Proposition \ref{pro:subofhealthy}, indicating that $s$ is determinable.
+
+Second, we prove that if $s$ is determinable, it has $\exists t \in PTS, s \preceq t$.
+
+If $s$ is determinable, then $s$ is either a healthy schema or faulty schema according to some given information. 
+
+Let us first assume that $s$ is determined to be a heathy schema. Then according to the definition, $\exists t, s \preceq t$, $t$ is a passing test case. Since the given passing test case set is $PTS$. It must have $t \in PTS$ (Other test cases do not necessary to be passing test cases). Hence, it has $\exists t \in PTS, s \preceq t$.
+
+Let us then assume that $s$ is determined to be a faulty schema.  According to the definition, $\forall t, s \preceq t$, $t$ is a failing test case. However, these is no failing test case given at first (all the test cases in $PTS$ are passing test cases, and other test cases do not necessary to be failing test case). Hence, we cannot make sure $s$ is a faulty schema. This is contradiction, indicating that $s$ cannot be determinable to be faulty schema.
+
+Combining these two conditions, we prove that if $s$ is determinable, it has $\exists t \in PTS, s \preceq t$.
+
+\end{proof}
+
+Proposition \ref{pro:determinableparthealthy} tells that if given a set of passing test cases, only the schemas that contained in these passing test cases are determinable, and these schemas must be determined to be healthy schemas.
+
+Second, consider the determinable schemas when given a set of MFS. 
+
+\begin{proposition}[Determinable with MFS]\label{pro:determinablepartfaulty}
+Given a set of Minimal Failure-causing Schemas $MFSS$, $\forall s$ is determinable if only if $\exists m \in MFSS, m \preceq s$.
+\end{proposition}
+
+\begin{proof}
+
+Similarly, we prove this proposition by two steps. First, we prove that if $\exists m \in MFSS, m \preceq s$, $s$ is determinable.
+
+Since $\forall m \in MFSS$, $m$ is faulty schema, hence according to Proposition \ref{pro:superoffaulty}, $s$ is a faulty schema. It indicates that $s$ is determinable.
+
+Second, we prove that if $s$ is determinable, it has $\exists m \in MFSS, m \preceq s$.
+
+If $s$ is determinable, then $s$ is either a healthy schema or faulty schema according to some given information.
+
+Let us first assume that $s$ is determined to be a heathy schema. Then according to the definition, $\exists t, s \preceq t$, $t$ is a passing test case. S
+
+
+\end{proof}
+
+given a set of faulty schemas, of which satisfying that no other schemas of its faulty is faulty schema (This is the definition of MFS identification).
 
 
 %According to this definition, to tell a schema is determinable or not we need to check if it is a healthy schema or faulty schema.  Next, we will discuss under which conditions does a schema is determinable.
@@ -356,7 +399,7 @@ However, we give the more general condition. We normally did not the pending sch
 Next, we give the determinable of pending
 
 
-\begin{proposition}[Pending o be healthy with part set]\label{pro:determinableparthealthy}
+\begin{proposition}[Pending o be healthy with part set]
 Given $HSS$ and $FSS$, $s$ is pending schema if and  only if $stat(s, fail) \&\& stat(s_{i}, pass) \&\&$ $stat(s_{j}, fail)$ and $stat(s, pass) \&\&$ $stat(s_{i}, pass)$ $\&\& stat(s_{j}, fail)$ are both solvable.
 \end{proposition}
 
@@ -365,7 +408,7 @@ If the first is solvable, then it is not must be a healthy schema. The second sh
 %However, to emulate all the faulty schemas and all the healthy schemas is very large. By the propostios 3 and 4,
 %
 %More formally, we can learn that it should not be any super-schemas of existing faulty schemas, and any sub-shemas of existing healthy schemas.
-\begin{proposition}[Sandwich rule]\label{pro:pending}
+\begin{proposition}[Sandwich rule]\label{pro:pendingsandwich}
 Given two pending schemas $s_{1}$, $s_{2}$, and $s_{1} \preceq s_{2}$. Then $\forall s_{3}, s_{1} \preceq s_{3} \preceq s_{2}$, $s_{3}$ is a pending schema.
 \end{proposition}
 

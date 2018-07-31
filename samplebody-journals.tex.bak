@@ -304,13 +304,18 @@ Before we give a formal definition of pending schema, we need to first give the 
 A schema is determinable if and only if it is determined to be healthy schema or faulty schema according to given information.
 \end{definition}
 
-Note that if given full set of test cases, we can always determine which schema is faulty and which is healthy.
+Here, the ``information'' indicates the outcomes of the execution of some test cases or the determination state of existed schemas. If given the outcomes of all the test cases in the SUT or the determination of all the possible schemas in the SUT, then for any schema in the SUT, we can easily determine it to be faulty or healthy. However, if only given partial information, it is obvious that not all the schemas are determinable.
 
-However, if only partial information, this is not so.
+Next, we will discuss the determination of schemas under two particular circumstances. 
 
-Next we discuss two conditions under which schemas are determinable.
+First, consider the determinable schemas when given a set of passing test cases. 
+\begin{proposition}[Determinable to be healthy with part set]\label{pro:determinableparthealthy}
+Given $HSS$, $s$ is determined to he healthy if only if $stat(s, fail) \&\& stat(s_{i}, pass) \&\& stat(s_{j}, fail)$ is unsolvable.
+\end{proposition}
 
-First, given part of passing test cases.
+\begin{proof}
+\end{proof}
+
 
 Second, given a set of faulty schemas, of which satisfying that no other schemas of its faulty is faulty schema (This is the definition of MFS identification).
 

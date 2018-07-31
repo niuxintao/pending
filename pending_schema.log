@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6500) (preloaded format=pdflatex 2017.12.21)  31 JUL 2018 12:47
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6500) (preloaded format=pdflatex 2017.12.21)  31 JUL 2018 15:35
 entering extended mode
 **./pending_schema.tex
 (pending_schema.tex
@@ -1218,18 +1218,18 @@ ted-to.pdf>]
  [12.12]
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/sc' will be
 (Font)              scaled to size 10.0pt on input line 252.
- [13.13]
+ [13.13] [14.14]
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/it' will be
-(Font)              scaled to size 10.0pt on input line 351.
- [14.14] [15.15] [16.16]
+(Font)              scaled to size 10.0pt on input line 392.
+ [15.15] [16.16]
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/n' will be
-(Font)              scaled to size 8.0pt on input line 485.
+(Font)              scaled to size 8.0pt on input line 526.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/n' will be
-(Font)              scaled to size 6.2pt on input line 485.
+(Font)              scaled to size 6.2pt on input line 526.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/n' will be
-(Font)              scaled to size 5.5pt on input line 485.
+(Font)              scaled to size 5.5pt on input line 526.
 
-Overfull \hbox (2.70097pt too wide) in paragraph at lines 502--503
+Overfull \hbox (2.70097pt too wide) in paragraph at lines 543--544
 \T1/LinuxLibertineT-TLF/m/n/10 (-20) For two faulty schemas $\OML/nxlmi/m/it/10
  c[]$\T1/LinuxLibertineT-TLF/m/n/10 (-20) , $\OML/nxlmi/m/it/10 c[]$\T1/LinuxLi
 bertineT-TLF/m/n/10 (-20) , and a fail-ing test case $\OML/nxlmi/m/it/10 t$ \T1
@@ -1241,8 +1241,8 @@ bertineT-TLF/m/n/10 (-20) , and a fail-ing test case $\OML/nxlmi/m/it/10 t$ \T1
 t/10 c[]; t\LMS/ntxsy/m/n/10 º \U/ntxmia/m/it/10 =
  []
 
-[17.17] [18.18]
-Overfull \hbox (3.99635pt too wide) in paragraph at lines 632--633
+[17.17] [18.18] [19.19]
+Overfull \hbox (3.99635pt too wide) in paragraph at lines 673--674
 []\T1/LinuxLibertineT-TLF/m/n/10 (-20) Let $\OML/nxlmi/m/it/10 B \U/ntxmia/m/it
 /10 =$ \T1/LinuxLibertineT-TLF/m/n/10 (-20) {$\OML/nxlmi/m/it/10 c \LMS/ntxsy/m
 /n/10 j \OML/nxlmi/m/it/10 c \LMS/ntxsy/m/n/10  \OML/nxlmi/m/it/10 t \OT1/Linu
@@ -1257,11 +1257,11 @@ mi/m/it/10 c[]; t\LMS/ntxsy/m/n/10 º [] \OML/nxlmi/m/it/10 CMXS\LMS/ntxsy/m/n/1
  []
 
 
-Overfull \hbox (4.21948pt too wide) in paragraph at lines 653--663
+Overfull \hbox (4.21948pt too wide) in paragraph at lines 694--704
  [][][] 
  []
 
-[19.19] [20.20]
+[20.20] [21.21]
 Package epstopdf Info: Source file: <minmax.eps>
 (epstopdf)                    date: 2016-12-16 16:29:44
 (epstopdf)                    size: 2932942 bytes
@@ -1270,36 +1270,32 @@ Package epstopdf Info: Source file: <minmax.eps>
 (epstopdf)                    size: 204241 bytes
 (epstopdf)             Command: <epstopdf --outfile=minmax-eps-converted-to.pdf
  minmax.eps>
-(epstopdf)             \includegraphics on input line 734.
+(epstopdf)             \includegraphics on input line 775.
 Package epstopdf Info: Output file is already uptodate.
-<minmax-eps-converted-to.pdf, id=2266, pagebox=cropbox, 644.4075pt x 544.0325pt
+<minmax-eps-converted-to.pdf, id=2276, pagebox=cropbox, 644.4075pt x 544.0325pt
 >
 File: minmax-eps-converted-to.pdf Graphic file (type pdf)
 <use minmax-eps-converted-to.pdf>
-Package pdftex.def Info: minmax-eps-converted-to.pdf  used on input line 734. o
-n input line 734.
+Package pdftex.def Info: minmax-eps-converted-to.pdf  used on input line 775. o
+n input line 775.
 Package pdftex.def Info: Requested size: 404.71243pt x 341.68803pt on input lin
-e 734.
+e 775.
 
-Overfull \hbox (8.88994pt too wide) in paragraph at lines 734--735
+Overfull \hbox (8.88994pt too wide) in paragraph at lines 775--776
  [][] 
  []
 
-[21.21 <./minmax-eps-converted-to.pdf>] [22.22] Processing 'acks' comment.
+[22.22 <./minmax-eps-converted-to.pdf>]
+Underfull \vbox (badness 2698) has occurred while \output is active []
+
+ [23.23]
+Processing 'acks' comment.
 \openout4 = `comment.cut'.
 
-
-Comment 'acks' writing to comment.cut. Straight input of comment.cut.
-(comment.cut
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [23.23])
-(pending_schema.bbl
+ Comment 'acks' writing to comment.cut.
+Straight input of comment.cut. (comment.cut) (pending_schema.bbl
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/it' will be
 (Font)              scaled to size 8.0pt on input line 47.
-
-Underfull \vbox (badness 1270) has occurred while \output is active []
-
  [24.24]))
 [25.25]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 134.
@@ -1309,19 +1305,23 @@ Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 134.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 134.
 Package rerunfilecheck Info: File `pending_schema.out' has not changed.
 (rerunfilecheck)             Checksum: 4B401DB0C81952FDEF5812D026872D97;5916.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
  )
 (\end occurred inside a group at level 1)
 
-### simple group (level 1) entered at line 589 ({)
+### simple group (level 1) entered at line 630 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 19433 strings out of 493312
- 294303 string characters out of 3143321
- 421006 words of memory out of 3000000
- 21841 multiletter control sequences out of 15000+200000
- 206903 words of font info for 469 fonts, out of 3000000 for 9000
+ 19448 strings out of 493312
+ 294681 string characters out of 3143321
+ 418059 words of memory out of 3000000
+ 21842 multiletter control sequences out of 15000+200000
+ 208153 words of font info for 477 fonts, out of 3000000 for 9000
  1302 hyphenation exceptions out of 8191
- 60i,17n,94p,1804b,652s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 60i,17n,94p,1804b,610s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/CTEX/MikTex2.9/fonts/enc/dvips/libertine/lbtn_ki75ao.enc}{C
 :/CTEX/MikTex2.9/fonts/enc/dvips/libertine/lbtn_ncsllp.enc}{C:/CTEX/MikTex2.9/f
 onts/enc/dvips/newtx/libertinealt.enc}{C:/CTEX/MikTex2.9/fonts/enc/dvips/libert
@@ -1344,9 +1344,9 @@ ikTex2.9/fonts/type1/public/txfonts/txsya.pfb><C:/CTEX/MikTex2.9/fonts/type1/pu
 blic/txfonts/txsyb.pfb><C:/CTEX/MikTex2.9/fonts/type1/public/txfonts/txsyc.pfb>
 <C:/CTEX/MikTex2.9/fonts/type1/public/newtx/txsys.pfb><C:/CTEX/MikTex2.9/fonts/
 type1/public/newtx/zxlri.pfb>
-Output written on pending_schema.pdf (25 pages, 3203119 bytes).
+Output written on pending_schema.pdf (25 pages, 3206225 bytes).
 PDF statistics:
- 2490 PDF objects out of 2984 (max. 8388607)
- 113 named destinations out of 1000 (max. 500000)
+ 2496 PDF objects out of 2984 (max. 8388607)
+ 115 named destinations out of 1000 (max. 500000)
  63232 words of extra memory for PDF output out of 74296 (max. 10000000)
 
