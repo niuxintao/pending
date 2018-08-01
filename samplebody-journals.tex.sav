@@ -350,6 +350,7 @@ If $s$ is determinable, then $s$ is either a healthy schema or faulty schema acc
 
 Let us first assume that $s$ is determined to be a heathy schema. Then according to the definition, $\exists t, s \preceq t$, $t$ is a passing test case. Since, it does not have to be passing test cases in this condition (in fact, all the failing test cases possible to be). Hence, $s$ cannot to be a healthy schema.
 
+Then we assume that $s$ is determined to be a faulty schema. 
 
 \end{proof}
 

@@ -308,7 +308,7 @@ Here, the ``information'' indicates the outcomes of the execution of some test c
 
 Next, we will discuss the determination of schemas under two particular circumstances. These two circumstances are important to analyse the properties of schemas for MFS identification later.
 
-First, consider the determinable schemas when given a set of passing test cases. 
+First, consider the determinable schemas when given a set of passing test cases.
 \begin{proposition}[Determinable with passing test cases]\label{pro:determinableparthealthy}
 Given a set of passing test case set $PTS$, $\forall s$ is determinable if only if $\exists t \in PTS, s \preceq t$.
 \end{proposition}
@@ -320,7 +320,7 @@ Note that $\forall t \in PTS$, $t$ is a healthy schema. This is because $t \prec
 
 Second, we prove that if $s$ is determinable, it has $\exists t \in PTS, s \preceq t$.
 
-If $s$ is determinable, then $s$ is either a healthy schema or faulty schema according to some given information. 
+If $s$ is determinable, then $s$ is either a healthy schema or faulty schema according to some given information.
 
 Let us first assume that $s$ is determined to be a heathy schema. Then according to the definition, $\exists t, s \preceq t$, $t$ is a passing test case. Since the given passing test case set is $PTS$. It must have $t \in PTS$ (Other test cases do not necessary to be passing test cases). Hence, it has $\exists t \in PTS, s \preceq t$.
 
@@ -332,7 +332,7 @@ Combining these two conditions, we prove that if $s$ is determinable, it has $\e
 
 Proposition \ref{pro:determinableparthealthy} tells that if given a set of passing test cases, only the schemas that contained in these passing test cases are determinable, and these schemas must be determined to be healthy schemas.
 
-Second, consider the determinable schemas when given a set of MFS. 
+Second, consider the determinable schemas when given a set of MFS.
 
 \begin{proposition}[Determinable with MFS]\label{pro:determinablepartfaulty}
 Given a set of Minimal Failure-causing Schemas $MFSS$, $\forall s$ is determinable if only if $\exists m \in MFSS, m \preceq s$.
@@ -348,12 +348,24 @@ Second, we prove that if $s$ is determinable, it has $\exists m \in MFSS, m \pre
 
 If $s$ is determinable, then $s$ is either a healthy schema or faulty schema according to some given information.
 
-Let us first assume that $s$ is determined to be a heathy schema. Then according to the definition, $\exists t, s \preceq t$, $t$ is a passing test case. S
+Let us first assume that $s$ is determined to be a heathy schema. Then according to the definition, $\exists t, s \preceq t$, $t$ is a passing test case. Since, it does not have to be passing test cases in this condition (in fact, all the failing test cases possible to be). Hence, $s$ cannot to be a healthy schema.
 
+Then we assume that $s$ is determined to be a faulty schema. We need to prove it has $\exists m \in MFSS, m \preceq s$.
+We also prove by contradiction. We assume that $\nexists m \in MFSS, m \preceq s$. There are two conditions. First, $\exists m \in MFSS, s \preceq m$. This is not possible, as all the schemas are minimal. Second $\forall m \in MFSS$, $s \npreceq m$ and $m \npreceq s$. This is also not possible (We prove it in the Appendix). Since, these two conditions are all not possible. Hence, $\exists m \in MFSS, m \preceq s$. 
 
+Combining these two conditions, we prove that if $s$ is determinable, it has $\exists m \in MFSS, m \preceq s$.
 \end{proof}
 
-given a set of faulty schemas, of which satisfying that no other schemas of its faulty is faulty schema (This is the definition of MFS identification).
+Proposition \ref{pro:determinableparthealthy} tells that if given a set of minimal faulty schemas, only the schemas that are the super-schemas of these faulty schemas  are determinable, and these schemas must be determined to be faulty schemas.
+
+
+Next, we consider the combination of the two particular circumstances. 
+
+\begin{proposition}[Determinable with passing test cases and MFS]\label{pro:determinableparthealthyfaulty}
+Given a set of passing test case set $PTS$, and a set of minimal faulty schemas $MFSS$, $\forall s$ is determinable if only if either $\exists t \in PTS, s \preceq t$ or $\exists m \in MFSS, m \preceq s$.
+\end{proposition}
+
+%given a set of faulty schemas, of which satisfying that no other schemas of its faulty is faulty schema (This is the definition of MFS identification).
 
 
 %According to this definition, to tell a schema is determinable or not we need to check if it is a healthy schema or faulty schema.  Next, we will discuss under which conditions does a schema is determinable.
