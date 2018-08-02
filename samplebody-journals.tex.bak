@@ -481,7 +481,7 @@ A schema is called a \textbf{\emph{pending} schema}, if and only if it cannot be
 %\begin{definition}\label{de:deteminable}
 %A schema is determinable if and only if it is determined to be healthy schema or faulty schema according to given information.
 %\end{definition}
-
+From this defnition, we can easily figure that 
 The \emph{pending} schema is actually the \emph{cannot-be-determined} schema discussed in Section \ref{sec:intro} and Section \ref{sec:motiv}, which is the key schema we focus on in this paper. To analyse the pending schemas in one failing test case is important to evaluate the completeness of the test.  Next, we will give the first property about the pending schema.
 
 
@@ -536,7 +536,6 @@ It is obviously $PSS$ and $DSS$ are complemented.
 %Note that this formula is unsolvable, if and only if $stat(s, fail)$ is not true. Hence, it can only be $stat(s, true)$ be true. Hence, $s$ must be a healthy schema.  (can be provable.)
 
 \subsection{Obtaining the pending schemas in a failing test case}\label{sec:pending:obtaining}
-
 
 %To given a set of healthy schemas from passing test case. Given a set of MFS, and the super-schemas of these MFS. Then the quesion is to find the pending schemas.
 

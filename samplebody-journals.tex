@@ -481,8 +481,7 @@ A schema is called a \textbf{\emph{pending} schema}, if and only if it cannot be
 %\begin{definition}\label{de:deteminable}
 %A schema is determinable if and only if it is determined to be healthy schema or faulty schema according to given information.
 %\end{definition}
-
-The \emph{pending} schema is actually the \emph{cannot-be-determined} schema discussed in Section \ref{sec:intro} and Section \ref{sec:motiv}, which is the key schema we focus on in this paper. To analyse the pending schemas in one failing test case is important to evaluate the completeness of the test.  Next, we will give the first property about the pending schema.
+From this definition, it is obvious that the pending schema is the converse of determinable schema. That is, with given information, if a schema is determinable, then it is not a pending schema; and if it is not determinable, it must be a pending schema. The \emph{pending} schema is actually the \emph{cannot-be-determined} schema discussed in Section \ref{sec:intro} and Section \ref{sec:motiv}, which is the key schema we focus on in this paper. To analyse the pending schemas in one failing test case is important to evaluate the completeness of the test.  Next, we will give the first property about the pending schema.
 
 
 %However, we give the more general condition. We normally did not the pending schemas, but the faulty schemas and healthy schemas.
@@ -516,7 +515,7 @@ Similarly as the determinable schemas, we will discuss the pending schemas for t
 Given a set of passing test case set $PTS$, and a set of minimal faulty schemas $MFSS$, for any schema, say, $s$, is pending schemas if only if $\forall t \in PTS, s \npreceq t$ and $\forall m \in MFSS, m \npreceq s$.
 \end{proposition}
 
-The proof of this proposition is omitted. Proposition \ref{pro:pendingparthealthyfaulty} tells that if given a set of passing test cases $PTS$ and minimal faulty schemas $MFSS$, only the schemas that are neither the super-schemas of these faulty schemas nor subschemas in the passing test cases are pending schemas.  More formally, the set of the pending schemas are
+The proof of this proposition is omitted (can be easily deduced based on Proposition \ref{pro:determinableparthealthyfaulty}). Proposition \ref{pro:pendingparthealthyfaulty} tells that if given a set of passing test cases $PTS$ and minimal faulty schemas $MFSS$, only the schemas that are neither the super-schemas of these faulty schemas nor subschemas in the passing test cases are pending schemas.  More formally, the set of the pending schemas are
 
 \begin{equation}
 \begin{aligned}\label{eq:pss}
