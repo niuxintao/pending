@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6500) (preloaded format=pdflatex 2017.12.21)  1 AUG 2018 22:28
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6500) (preloaded format=pdflatex 2017.12.21)  2 AUG 2018 18:15
 entering extended mode
 **./pending_schema.tex
 (pending_schema.tex
@@ -1087,21 +1087,21 @@ LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/n' will be
 
 [2.2] [3.3]
 Package epstopdf Info: Source file: <ca.eps>
-(epstopdf)                    date: 2018-07-09 13:02:55
-(epstopdf)                    size: 1574127 bytes
+(epstopdf)                    date: 2018-08-02 14:02:22
+(epstopdf)                    size: 1745770 bytes
 (epstopdf)             Output file: <ca-eps-converted-to.pdf>
-(epstopdf)                    date: 2018-07-09 13:04:52
-(epstopdf)                    size: 219314 bytes
+(epstopdf)                    date: 2018-08-02 14:02:30
+(epstopdf)                    size: 242051 bytes
 (epstopdf)             Command: <epstopdf --outfile=ca-eps-converted-to.pdf ca.
 eps>
 (epstopdf)             \includegraphics on input line 66.
 Package epstopdf Info: Output file is already uptodate.
-<ca-eps-converted-to.pdf, id=193, pagebox=cropbox, 599.23875pt x 470.75874pt>
+<ca-eps-converted-to.pdf, id=193, pagebox=cropbox, 598.235pt x 471.7625pt>
 File: ca-eps-converted-to.pdf Graphic file (type pdf)
 <use ca-eps-converted-to.pdf>
 Package pdftex.def Info: ca-eps-converted-to.pdf  used on input line 66. on inp
 ut line 66.
-Package pdftex.def Info: Requested size: 404.71243pt x 317.94957pt on input lin
+Package pdftex.def Info: Requested size: 404.71243pt x 319.16019pt on input lin
 e 66.
 
 Overfull \hbox (8.88994pt too wide) in paragraph at lines 66--67
@@ -1110,22 +1110,22 @@ Overfull \hbox (8.88994pt too wide) in paragraph at lines 66--67
 
 [4.4] [5.5 <./ca-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <ofot_single.eps>
-(epstopdf)                    date: 2018-07-09 13:42:13
-(epstopdf)                    size: 2565054 bytes
+(epstopdf)                    date: 2018-08-02 14:59:13
+(epstopdf)                    size: 1716375 bytes
 (epstopdf)             Output file: <ofot_single-eps-converted-to.pdf>
-(epstopdf)                    date: 2018-07-09 13:43:23
-(epstopdf)                    size: 353901 bytes
+(epstopdf)                    date: 2018-08-02 14:59:23
+(epstopdf)                    size: 230435 bytes
 (epstopdf)             Command: <epstopdf --outfile=ofot_single-eps-converted-t
 o.pdf ofot_single.eps>
 (epstopdf)             \includegraphics on input line 104.
 Package epstopdf Info: Output file is already uptodate.
-<ofot_single-eps-converted-to.pdf, id=525, pagebox=cropbox, 600.2425pt x 500.87
-125pt>
+<ofot_single-eps-converted-to.pdf, id=538, pagebox=cropbox, 598.235pt x 494.848
+75pt>
 File: ofot_single-eps-converted-to.pdf Graphic file (type pdf)
 <use ofot_single-eps-converted-to.pdf>
 Package pdftex.def Info: ofot_single-eps-converted-to.pdf  used on input line 1
 04. on input line 104.
-Package pdftex.def Info: Requested size: 404.71243pt x 337.72192pt on input lin
+Package pdftex.def Info: Requested size: 404.71243pt x 334.77867pt on input lin
 e 104.
 
 Overfull \hbox (8.88994pt too wide) in paragraph at lines 104--105
@@ -1133,24 +1133,23 @@ Overfull \hbox (8.88994pt too wide) in paragraph at lines 104--105
  []
 
 [6.6 <./ofot_single-eps-converted-to.pdf>]
-
-LaTeX Warning: File `ofot_multi.eps' not found on input line 118.
-
 Package epstopdf Info: Source file: <ofot_multi.eps>
+(epstopdf)                    date: 2018-08-02 15:39:25
+(epstopdf)                    size: 1746501 bytes
 (epstopdf)             Output file: <ofot_multi-eps-converted-to.pdf>
-(epstopdf)                    date: 2018-07-16 15:57:07
-(epstopdf)                    size: 366333 bytes
+(epstopdf)                    date: 2018-08-02 15:39:49
+(epstopdf)                    size: 222182 bytes
 (epstopdf)             Command: <epstopdf --outfile=ofot_multi-eps-converted-to
 .pdf ofot_multi.eps>
 (epstopdf)             \includegraphics on input line 118.
 Package epstopdf Info: Output file is already uptodate.
-<ofot_multi-eps-converted-to.pdf, id=823, pagebox=cropbox, 598.235pt x 494.8487
-5pt>
+<ofot_multi-eps-converted-to.pdf, id=831, pagebox=cropbox, 603.25375pt x 498.86
+375pt>
 File: ofot_multi-eps-converted-to.pdf Graphic file (type pdf)
 <use ofot_multi-eps-converted-to.pdf>
 Package pdftex.def Info: ofot_multi-eps-converted-to.pdf  used on input line 11
 8. on input line 118.
-Package pdftex.def Info: Requested size: 404.71243pt x 334.77867pt on input lin
+Package pdftex.def Info: Requested size: 404.71243pt x 334.67848pt on input lin
 e 118.
 
 Overfull \hbox (8.88994pt too wide) in paragraph at lines 118--119
@@ -1159,16 +1158,16 @@ Overfull \hbox (8.88994pt too wide) in paragraph at lines 118--119
 
 [7.7 <./ofot_multi-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <fic.eps>
-(epstopdf)                    date: 2018-07-09 15:04:07
-(epstopdf)                    size: 2590557 bytes
+(epstopdf)                    date: 2018-08-02 17:30:38
+(epstopdf)                    size: 1727148 bytes
 (epstopdf)             Output file: <fic-eps-converted-to.pdf>
-(epstopdf)                    date: 2018-07-09 17:34:42
-(epstopdf)                    size: 368344 bytes
+(epstopdf)                    date: 2018-08-02 17:30:49
+(epstopdf)                    size: 232700 bytes
 (epstopdf)             Command: <epstopdf --outfile=fic-eps-converted-to.pdf fi
 c.eps>
 (epstopdf)             \includegraphics on input line 134.
 Package epstopdf Info: Output file is already uptodate.
-<fic-eps-converted-to.pdf, id=1121, pagebox=cropbox, 598.235pt x 495.8525pt>
+<fic-eps-converted-to.pdf, id=1116, pagebox=cropbox, 598.235pt x 495.8525pt>
 File: fic-eps-converted-to.pdf Graphic file (type pdf)
 <use fic-eps-converted-to.pdf>
 Package pdftex.def Info: fic-eps-converted-to.pdf  used on input line 134. on i
@@ -1177,39 +1176,45 @@ Package pdftex.def Info: Requested size: 383.03122pt x 317.4807pt on input line
  134.
  [8.8 <./fic-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <finovlp.eps>
-(epstopdf)                    date: 2018-07-09 17:33:41
-(epstopdf)                    size: 3672365 bytes
+(epstopdf)                    date: 2018-08-02 18:00:53
+(epstopdf)                    size: 2472220 bytes
 (epstopdf)             Output file: <finovlp-eps-converted-to.pdf>
-(epstopdf)                    date: 2018-07-09 17:35:42
-(epstopdf)                    size: 499962 bytes
+(epstopdf)                    date: 2018-08-02 18:01:03
+(epstopdf)                    size: 325203 bytes
 (epstopdf)             Command: <epstopdf --outfile=finovlp-eps-converted-to.pd
 f finovlp.eps>
 (epstopdf)             \includegraphics on input line 150.
 Package epstopdf Info: Output file is already uptodate.
-<finovlp-eps-converted-to.pdf, id=1419, pagebox=cropbox, 602.25pt x 798.985pt>
+<finovlp-eps-converted-to.pdf, id=1411, pagebox=cropbox, 600.2425pt x 798.985pt
+>
 File: finovlp-eps-converted-to.pdf Graphic file (type pdf)
 <use finovlp-eps-converted-to.pdf>
 Package pdftex.def Info: finovlp-eps-converted-to.pdf  used on input line 150. 
 on input line 150.
-Package pdftex.def Info: Requested size: 383.03122pt x 508.17886pt on input lin
-e 150.
+Package pdftex.def Info: Requested size: 383.03122pt x 509.8613pt on input line
+ 150.
 Package epstopdf Info: Source file: <non-pending.eps>
-(epstopdf)                    date: 2018-07-19 12:59:08
-(epstopdf)                    size: 2806915 bytes
+(epstopdf)                    date: 2018-08-02 18:15:18
+(epstopdf)                    size: 1963635 bytes
 (epstopdf)             Output file: <non-pending-eps-converted-to.pdf>
 (epstopdf)                    date: 2018-07-19 12:59:36
 (epstopdf)                    size: 388751 bytes
 (epstopdf)             Command: <epstopdf --outfile=non-pending-eps-converted-t
 o.pdf non-pending.eps>
 (epstopdf)             \includegraphics on input line 165.
-Package epstopdf Info: Output file is already uptodate.
-<non-pending-eps-converted-to.pdf, id=1423, pagebox=cropbox, 602.25pt x 696.602
-5pt>
+runsystem(epstopdf --outfile=non-pending-eps-converted-to.pdf non-pending.eps).
+..executed (allowed).
+
+Package epstopdf Info: Result file: <non-pending-eps-converted-to.pdf>
+(epstopdf)                    date: 2018-08-02 18:15:30
+(epstopdf)                    size: 257804 bytes.
+<non-pending-eps-converted-to.pdf, id=1415, pagebox=cropbox, 602.25pt x 687.568
+76pt>
 File: non-pending-eps-converted-to.pdf Graphic file (type pdf)
 <use non-pending-eps-converted-to.pdf>
 Package pdftex.def Info: non-pending-eps-converted-to.pdf  used on input line 1
 65. on input line 165.
-Package pdftex.def Info: Requested size: 383.03122pt x 443.06047pt on input lin
+Package pdftex.def Info: Requested size: 383.03122pt x 437.31473pt on input lin
 e 165.
 
 [9.9] [10.10 <./finovlp-eps-converted-to.pdf>] [11.11 <./non-pending-eps-conver
@@ -1223,13 +1228,13 @@ LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/it' will be
 (Font)              scaled to size 10.0pt on input line 477.
  [15.15] [16.16] [17.17]
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/n' will be
-(Font)              scaled to size 8.0pt on input line 628.
+(Font)              scaled to size 8.0pt on input line 627.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/n' will be
-(Font)              scaled to size 6.2pt on input line 628.
+(Font)              scaled to size 6.2pt on input line 627.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/n' will be
-(Font)              scaled to size 5.5pt on input line 628.
+(Font)              scaled to size 5.5pt on input line 627.
 
-Overfull \hbox (2.70097pt too wide) in paragraph at lines 645--646
+Overfull \hbox (2.70097pt too wide) in paragraph at lines 644--645
 \T1/LinuxLibertineT-TLF/m/n/10 (-20) For two faulty schemas $\OML/nxlmi/m/it/10
  c[]$\T1/LinuxLibertineT-TLF/m/n/10 (-20) , $\OML/nxlmi/m/it/10 c[]$\T1/LinuxLi
 bertineT-TLF/m/n/10 (-20) , and a fail-ing test case $\OML/nxlmi/m/it/10 t$ \T1
@@ -1242,7 +1247,7 @@ t/10 c[]; t\LMS/ntxsy/m/n/10 º \U/ntxmia/m/it/10 =
  []
 
 [18.18] [19.19]
-Overfull \hbox (3.99635pt too wide) in paragraph at lines 775--776
+Overfull \hbox (3.99635pt too wide) in paragraph at lines 774--775
 []\T1/LinuxLibertineT-TLF/m/n/10 (-20) Let $\OML/nxlmi/m/it/10 B \U/ntxmia/m/it
 /10 =$ \T1/LinuxLibertineT-TLF/m/n/10 (-20) {$\OML/nxlmi/m/it/10 c \LMS/ntxsy/m
 /n/10 j \OML/nxlmi/m/it/10 c \LMS/ntxsy/m/n/10  \OML/nxlmi/m/it/10 t \OT1/Linu
@@ -1257,7 +1262,7 @@ mi/m/it/10 c[]; t\LMS/ntxsy/m/n/10 º [] \OML/nxlmi/m/it/10 CMXS\LMS/ntxsy/m/n/1
  []
 
 
-Overfull \hbox (4.21948pt too wide) in paragraph at lines 796--806
+Overfull \hbox (4.21948pt too wide) in paragraph at lines 795--805
  [][][] 
  []
 
@@ -1270,18 +1275,18 @@ Package epstopdf Info: Source file: <minmax.eps>
 (epstopdf)                    size: 204241 bytes
 (epstopdf)             Command: <epstopdf --outfile=minmax-eps-converted-to.pdf
  minmax.eps>
-(epstopdf)             \includegraphics on input line 877.
+(epstopdf)             \includegraphics on input line 876.
 Package epstopdf Info: Output file is already uptodate.
-<minmax-eps-converted-to.pdf, id=2279, pagebox=cropbox, 644.4075pt x 544.0325pt
+<minmax-eps-converted-to.pdf, id=2257, pagebox=cropbox, 644.4075pt x 544.0325pt
 >
 File: minmax-eps-converted-to.pdf Graphic file (type pdf)
 <use minmax-eps-converted-to.pdf>
-Package pdftex.def Info: minmax-eps-converted-to.pdf  used on input line 877. o
-n input line 877.
+Package pdftex.def Info: minmax-eps-converted-to.pdf  used on input line 876. o
+n input line 876.
 Package pdftex.def Info: Requested size: 404.71243pt x 341.68803pt on input lin
-e 877.
+e 876.
 
-Overfull \hbox (8.88994pt too wide) in paragraph at lines 877--878
+Overfull \hbox (8.88994pt too wide) in paragraph at lines 876--877
  [][] 
  []
 
@@ -1314,12 +1319,12 @@ Package rerunfilecheck Warning: File `pending_schema.out' has changed.
 (rerunfilecheck)                or use package `bookmark'.
 
 Package rerunfilecheck Info: Checksums for `pending_schema.out':
-(rerunfilecheck)             Before: A448A81F3AA10362B13786D1835B7636;8232
+(rerunfilecheck)             Before: 646B117C692B25CE6CA252071F3A7BAD;8232
 (rerunfilecheck)             After:  4865BCB657C5ACAF1535DBA830B2E60F;6000.
  )
 (\end occurred inside a group at level 1)
 
-### simple group (level 1) entered at line 732 ({)
+### simple group (level 1) entered at line 731 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
  19464 strings out of 493312
@@ -1351,9 +1356,9 @@ ikTex2.9/fonts/type1/public/txfonts/txsya.pfb><C:/CTEX/MikTex2.9/fonts/type1/pu
 blic/txfonts/txsyb.pfb><C:/CTEX/MikTex2.9/fonts/type1/public/txfonts/txsyc.pfb>
 <C:/CTEX/MikTex2.9/fonts/type1/public/newtx/txsys.pfb><C:/CTEX/MikTex2.9/fonts/
 type1/public/newtx/zxlri.pfb>
-Output written on pending_schema.pdf (26 pages, 3216981 bytes).
+Output written on pending_schema.pdf (26 pages, 2530314 bytes).
 PDF statistics:
- 2504 PDF objects out of 2984 (max. 8388607)
+ 2482 PDF objects out of 2487 (max. 8388607)
  118 named destinations out of 1000 (max. 500000)
  63232 words of extra memory for PDF output out of 74296 (max. 10000000)
 

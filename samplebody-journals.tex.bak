@@ -291,11 +291,39 @@ let $T_{2}$ be the set of all the test cases that contain $s_{2}$, we have $\for
 
 This proposition shows that any super-schema of a faulty schema is also a faulty schema.  Note that his proposition can deduce the second rule in Section \ref{sec:motiv}.
 
-\section{Pending schema}\label{sec:pending}
+
+Some notations used later are listed below for ease of reference:
+\begin{itemize}
+\item $T$: A set of test cases. (Similarly for $T_{i},\ T_{j}, ...$. )
+\item $\bar{T}$: The complementary test set of T, i.e., $\bar{T} \bigcup T = T^{*},\ \bar{T} \bigcap T = \varnothing$.
+\item $A \backslash B$:  The set of elements that belong to set $A$ but not to $B$. For example, $T_{i} \backslash T_{j}$ indicates the set of test cases that belong to set $T_{i}$, but not to $T_{j}$.
+\item $\mathcal{T}(c)$:  All the test cases that contain the schema $c$ in the SUT.
+\item $\mathcal{I}(t)$:  All the schemas that are contained in the test case $t$, e.g., $\mathcal{I}$ (\ (1, 1, 1)\ ) = \{(1, -, -), (-, 1, -), (-, -, 1), (1, 1, -), (1, -, 1), (-, 1, 1), (1, 1, 1)\}.
+\item $\mathcal{I}(T)$:  All the schemas that are contained in test set $T$, i.e., $\mathcal{I}(T) = \bigcup_{t\in T} \mathcal{I}(t)$.
+\item  $\mathcal{S}(T)$:  All the schemas that are only contained in test set $T$ (Referred to as \emph{Special schemas}); $\mathcal{S}(T) =  \mathcal{I}(T) \backslash \mathcal{I}(\bar{T}) $.
+\item  $\mathcal{C}(T)$: A set of the minimal schemas that are only contained in test set $T$ (Referred to as \emph{Minimal schemas}); $\mathcal{C}(T) =  \{c | c \in \mathcal{S}(T)\ and\ \not\exists c' \prec c, s.t., c' \in \mathcal{S}(T)\}$.
+\end{itemize}
+
+The following two propositions are proposed in our previous study [multi].
+
+\begin{proposition}[Property of minimal schema set of test Set T]\label{pro:ash}
+For any test set $T$ of the SUT, $\bigcup_{c \in \mathcal{C}(T)} \mathcal{T}(c) = T$.
+\end{proposition}
+
+
+\begin{proposition}[{minimal schemas in the smaller test set}]\label{pro:ssp}
+For two sets of test cases $T_{1}$ and $T_{2}$ of the SUT with $T_{2} \subseteq T_{1}$, $\forall c_{2} \in \mathcal{C}(T_{2})$, $\exists c_{1} \in \mathcal{C}(T_{1}), s.t., c_{1} \preceq c_{2}$.
+\end{proposition}
+
+%\begin{proof}
+%$\forall c_{2} \in \mathcal{C}(T_{2})$,  $\mathcal{T}(c_{2}) \subseteq T_{2} \subseteq T_{1}$. According to Proposition \ref{pro:sbS}, $c_{2} \in \mathcal{S}(T_{1})$. By definitions of $\mathcal{S}(T)$ and $\mathcal{C}(T)$, $\exists c_{1} \in \mathcal{C}(T_{1}), s.t., c_{1} = c_{2},\ or\ c_{1} \prec c_{2}$.
+%\end{proof}
+
+\section{The theory of pending schema}\label{sec:pending}
 In this section, we will give the formal definition of the pending schema, as well as its properties. Based on several theoretical analysis about pending schema, we will give an efficient approach to obtain them. Then we will show a case study of  how to apply this approach on identifying the pending schemas.
 %To give a better description, we will give several propositions which provide theoretical supports for our approach. The proofs of these propositions are given in the Appendix.
 
-\subsection{Determinable schemas}\label{sec:pending:determinable}
+\subsection{The determinable schemas}\label{sec:pending:determinable}
 Before we give a formal definition of pending schema, we need to first give the definition of ``a determinable schema". Note that in Section \ref{sec:back}, we introduced the definition of faulty schema and healthy schema, as well as some properties of them. Based on these definitions, we can conclude that in order to determine a schemas to be healthy or faulty, we need to make sure whether the corresponding schema satisfies the specific conditions. For example, if we find the condition that a schema appears in one passing test case holds, then this schema is a healthy schema. Hence, if these conditions hold by given information or can be deduced from given information, we can determine the the schema to be healthy or faulty. Otherwise, we cannot determine the state of the schema for lack of information. Next, we will give the definition of the determinable schema.
 
 %Given the results of the test cases or some schemas. This is the information.
@@ -385,8 +413,8 @@ Next, we prove that if $s$ is determinable, then either $\exists t \in PTS, s \p
 
 Let us first assume that $s$ is determined to be a heathy schema. Then according to the definition, $\exists t, s \preceq t$, $t$ is a passing test case. Since the given passing test case set is $PTS$, and the minimal faulty schema set $MFSS$ cannot guarantee any test case to be passing (It can only guarantee the test cases contain the schemas in $MFSS$ to be failing test csaes). It must have $t \in PTS$, because other test cases do not necessary to be passing test cases (In fact, it is possible that all these remaining test cases are failing test cases). Hence, if $s$ is determined to be a heathy schema it has $\exists t \in PTS, s \preceq t$.
 
-Let us then assume that $s$ is determined to be a faulty schema.  According to the definition, $\forall t, s \preceq t$, $t$ is a failing test case. However, all the test cases in $PTS$ are passing test cases, $MFSS$ can guarantee a set of failing test cases, which are $T_{MFSS}$ = $\{ t | \exists m \in MFSS, m \preceq t \}$. Besides, other test cases do not necessary to be failing test cases.  Hence, it must have $\forall t, s \preceq t$, $t \in T_{MFSS}$. According to Proposition , we have $\exists m \in MFSS$, $m \preceq s$. Hence,  if $s$ is determined to be a faulty schema it has  $\exists m \in MFSS$, $m \preceq s$.
- 
+Let us then assume that $s$ is determined to be a faulty schema.  According to the definition, $\forall t, s \preceq t$, $t$ is a failing test case. However, all the test cases in $PTS$ are passing test cases, $MFSS$ can guarantee a set of failing test cases, which are $T(MFSS)$ = $\{ t | \exists m \in MFSS, m \preceq t \}$. Besides, other test cases do not necessary to be failing test cases.  Hence, it must have $\forall t, s \preceq t$, $t \in T(MFSS)$. That is, $T(s) \subseteq T(MFSS)$. According to Proposition \ref{pro:ssp}, we have $\exists m \in \mathcal{C}(T(MFSS))$, $m \preceq s$, which is equal to  $\exists m \in MFSS$, $m \preceq s$. Hence,  if $s$ is determined to be a faulty schema it has  $\exists m \in MFSS$, $m \preceq s$.
+
  %cannot make sure $s$ is a faulty schema. This is contradiction, indicating that $s$ cannot be determinable to be faulty schema.
 
 %Then we assume that $s$ is determined to be a faulty schema. We need to prove it has $\exists m \in MFSS, m \preceq s$.
@@ -440,9 +468,9 @@ DSS=\{ s | \exists t \in PTS,  s \preceq t  \ || \  \exists m \in MFSS, m \prece
 
 
 
-\subsection{What is pending schema}\label{sec:pending:pending}
+\subsection{The pending schemas}\label{sec:pending:pending}
 
-After the introduction of determinable schemas and their properties, we can easily define the undetermined schemas, i.e., the pending schemas. 
+After the introduction of determinable schemas and their properties, we can easily define the undetermined schemas, i.e., the pending schemas.
 %Through these motivating examples, we can learn that the pending schema is not checked to be healthy and faulty. Hence, we give the definition of the pending schema as follows.
 
 \begin{definition}\label{de:pending}
@@ -480,11 +508,23 @@ We give the proof by contradiction. First, we assume that $s_{3}$ is a faulty sc
 
 This proposition gives the determination of pending schemas in the presence of two subsuming pending schemas.
 
-Next, we prove that this proposition is hold.
+Similarly as the determinable schemas, we will discuss the pending schemas for the circumstance with a given set of passing test case and a set of minimal faulty schemas.
 
-\begin{proposition}[pending schema]\label{pro:pendingFromtwoSets}
-Given two set of schemas $HSS$, $FSS$, and $\forall s_{1} \npreceq HSS$ and $forall FSS \npreceq s_{1}$, then $s_{1}$ is a pending schema.
+%This circumstance is important to analyse the properties of schemas for MFS identification later.
+
+\begin{proposition}[pending schemas with passing test cases and minimal faulty schemas]\label{pro:pendingparthealthyfaulty}
+Given a set of passing test case set $PTS$, and a set of minimal faulty schemas $MFSS$, for any schema, say, $s$, is pending schemas if only if $\forall t \in PTS, s \npreceq t$ and $\forall m \in MFSS, m \npreceq s$.
 \end{proposition}
+
+The proof of this proposition is omitted. Proposition \ref{pro:pendingparthealthyfaulty} tells that if given a set of passing test cases $PTS$ and minimal faulty schemas $MFSS$, only the schemas that are neither the super-schemas of these faulty schemas nor subschemas in the passing test cases are pending schemas.  More formally, the set of the pending schemas are
+
+\begin{equation}
+\begin{aligned}\label{eq:pss}
+PSS=\{ s | \forall t \in PTS,  s \npreceq t  \ \&\& \  \forall m \in MFSS, m \npreceq s \}.
+\end{aligned}
+\end{equation}
+
+It is obviously $PSS$ and $DSS$ are complemented.
 
 %Note that if it is not nessearily fulfiled, it will turn to be deteminable schemas.
 %
@@ -498,7 +538,7 @@ Given two set of schemas $HSS$, $FSS$, and $\forall s_{1} \npreceq HSS$ and $for
 \subsection{Obtaining the pending schemas in a failing test case}\label{sec:pending:obtaining}
 
 
-To given a set of healthy schemas from passing test case. Given a set of MFS, and the super-schemas of these MFS. Then the quesion is to find the pending schemas.
+%To given a set of healthy schemas from passing test case. Given a set of MFS, and the super-schemas of these MFS. Then the quesion is to find the pending schemas.
 
 Note that any sub-schemas of the MFS is not the faulty schemas, at least by the definition. Hence, it should not be the super-schemas of the MFS. Hence, as all the healthy schemas are appeared in the passing test cases. Hence, we can learn all the healthy schemas. This is also true by definition.
 
