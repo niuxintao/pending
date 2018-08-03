@@ -474,7 +474,7 @@ After the introduction of determinable schemas and their properties, we can easi
 %Through these motivating examples, we can learn that the pending schema is not checked to be healthy and faulty. Hence, we give the definition of the pending schema as follows.
 
 \begin{definition}\label{de:pending}
-A schema is called a \textbf{\emph{pending} schema}, if and only if it cannot be determined neither to be healthy schema nor faulty schema according to given information.
+A schema is called a \textbf{\emph{pending} schema}, if and only if it cannot be determined to be healthy schema or faulty schema according to given information.
 \end{definition}
 
 
@@ -534,45 +534,31 @@ It is obviously $PSS$ and $DSS$ are complemented.
 %
 %Note that this formula is unsolvable, if and only if $stat(s, fail)$ is not true. Hence, it can only be $stat(s, true)$ be true. Hence, $s$ must be a healthy schema.  (can be provable.)
 
-\subsection{Obtaining the pending schemas in a failing test case}\label{sec:pending:obtaining}
+\subsection{Obtaining the pending schemas in one failing test case}\label{sec:pending:obtaining}
 
-%To given a set of healthy schemas from passing test case. Given a set of MFS, and the super-schemas of these MFS. Then the quesion is to find the pending schemas.
+In the previous section, we have already obtained the formula to describe the set of pending schemas for given information. However, this set is usually too large and many schemas in this set are beyond the focus. For example, the schema that never appears in any generated test case is evidently pending schema, but we didn't even cover them, these schemas are the task of test generation. As an alternative, it is more important to focus on these schemas that have already appeared in these generated test cases. This is because after testing and MFS idnetificaiton, we may have a false condendce that we have already known all the schemas, but the fact is the extences of the pending schemas in these test cases, the testing and MFS identiicaiton is still not complete. Consequently, we only focus the pending schemas that appeared in the geenrated test cases.
+ 
+%Since all the schemas in the passing test cases are determinable (healthy), what we focus is the pending schemas in the failing test cases.
 
-Note that any sub-schemas of the MFS is not the faulty schemas, at least by the definition. Hence, it should not be the super-schemas of the MFS. Hence, as all the healthy schemas are appeared in the passing test cases. Hence, we can learn all the healthy schemas. This is also true by definition.
-
-Hence, the future work is .
-
-
-% in a failing test case
-Before we give specific method of how to obtain the pending schema, we should first formulate the problem of obtaining schema. Only by doing this can let our approach be general and independent on specific covering arrays or MFS identification approaches. From the motivation example, we can learn that the information offered by covering arrays and MFS identification are a set of healthy schemas (including the passing test case) and faulty schemas (including the failing test case). Based on these information alone, we can obtain the pending schemas in one specific failing test case. Hence, we actually face such a problem that to obtain the pending schema in failing test case in the presence of a set of healthy schemas and faulty schemas.
-
-%Without loss of generality, we assume that .  Note that this formal is to remove the influnce of tests and MFS identification approaches, these just give schemas of which are healthy schemas and faulty schemas.
-%
-%%To identify the MFS in a failing test case, we need to figure out all the pending schemas and then classify them into faulty or healthy schemas. For this, we firstly need to be able to find one pending schema and check it. Then, we repeat this procedure until no more pending schema can be obtained.
-%%first describe how to obtain one pending schema.
-
-Formally, the problem can be defined as follows:
-
-\emph{Given a failing test case $t$ =\{$(p_{1}, v_{1})$, $(p_{2}, v_{2})$, ..., $(p_{n}, v_{n})$\}, a set of faulty schemas $FSS$ = \{ $c_{1}, c_{2}, ... c_{i}, ...$ \},  a set of healthy schemas $HSS$ = \{ $c_{1}, c_{2}, ... c_{i}, ...$ \}, and $FSS \bigcap HSS = \emptyset$. The goal is to find the set of pending schemas, PSS, where $\forall s \in PSS, s \prec t$.}
+More formally,  given a failing test case $t$ =\{$(p_{1}, v_{1})$, $(p_{2}, v_{2})$, ..., $(p_{n}, v_{n})$\},  a set of passing test cases $PSS$ = \{ $t_{1}, t_{2}, ... t_{i}, ...$\}, and a set of minimal faulty schemas $MFSS$ = \{ $m_{1}, m_{2}, ... m_{i}, ...$ \}, the goal is to find the set of pending schemas in test case $t$.
 
 
-%\emph{Given a failing test case $t$ =\{$(p_{1}, v_{1})$, $(p_{2}, v_{2})$, ..., $(p_{n}, v_{n})$\}, a set of faulty schemas $FSS$ = \{ $c_{1}, c_{2}, ... c_{i}, ...$ \}, where  $c_{i} \prec t$ or $c_{i} = t$ (That is, $c_{i} \preceq t $), a set of healthy schemas $HSS$ = \{ $c_{1}, c_{2}, ... c_{i}, ...$ \}, where  $c_{i} \preceq t$, and $FSS \bigcap HSS = \emptyset$. The goal is to find one pending schema.}
+We will settle this problem step by step.  According to Formula \ref{eq:pss}, we can easily obtain the pending schemas in the failing test case are in the following set.
 
-%Note that at the beginning of MFS identification, if there is no additional information, $FSS$ will be initialized to have one element, i.e., $t$ itself, and $HSS$ is an empty set.
+%the $\forall s $, $s \in HSS$ or $\forall s \in HSS, s' \prec s$ is a healthy schema. That is $s \preceq s' in HSS$ is healthy schema. Note that according to these information (We cannot generate and execute more test cases to obtain more information), we can only dong this. Second, .
 
-We will settle this problem step by step. According to the Propositions \ref{pro:subofhealthy}. $\forall s $, $s \in HSS$ or $\forall s \in HSS, s' \prec s$ is a healthy schema. That is $s \preceq s' in HSS$ is healthy schema. Note that according to these information (We cannot generate and execute more test cases to obtain more information), we can only dong this. Second, .
-
- and \ref{pro:superoffaulty}, it is easy to find that, the pending schemas set PSS should be the following set
+% and \ref{pro:superoffaulty}, it is easy to find that, the pending schemas set PSS should be the following set
 \begin{equation}
 \begin{aligned}\label{eq:pssfirst}
-PSS=\{ c | c \preceq t\ \&\&\ \forall c_{f} \in FSS,  c_{f} \npreceq c  \ \&\&\  \forall c_{h} \in HSS, c \npreceq c_{h} \} .
+PSS=\{ c | c \preceq t\ \&\&\ \forall c_{f} \in MFSS,  c_{f} \npreceq c  \ \&\&\  \forall c_{h} \in DSS, c \npreceq c_{h} \} .
 \end{aligned}
 \end{equation}
 
-\begin{proof}
-\end{proof}
+%\begin{proof}
+%\end{proof}
 
-To obtain one pending schema, we just need to select one schema which satisfies $ c \in PSS$. However, to directly utilize Formula \ref{eq:pssfirst} is not practical to obtain one pending schema, because in the worst case it needs to check every schema in a test case $t$, of which the complexity is O($2^{n}$). Hence, we need to find another formula which is equivalent to Formula \ref{eq:pssfirst}, but with much lower complexity.
+%To obtain one pending schema, we just need to select one schema which satisfies $ c \in PSS$. 
+However, to directly utilize Formula \ref{eq:pssfirst} is not practical to obtain the pending schemas, because in the worst case it needs to check every schema in a test case $t$, of which the complexity is O($2^{n}$), where $n$ is the number of factors in this test case. Hence, we need to find another formula which is equivalent to Formula \ref{eq:pssfirst}, but with much lower complexity.
 
 For this purpose, we defined the following two sets, i.e. CMXS and CMNS.
 

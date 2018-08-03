@@ -481,8 +481,7 @@ A schema is called a \textbf{\emph{pending} schema}, if and only if it cannot be
 %\begin{definition}\label{de:deteminable}
 %A schema is determinable if and only if it is determined to be healthy schema or faulty schema according to given information.
 %\end{definition}
-From this defnition, we can easily figure that 
-The \emph{pending} schema is actually the \emph{cannot-be-determined} schema discussed in Section \ref{sec:intro} and Section \ref{sec:motiv}, which is the key schema we focus on in this paper. To analyse the pending schemas in one failing test case is important to evaluate the completeness of the test.  Next, we will give the first property about the pending schema.
+From this definition, it is obvious that the pending schema is the converse of determinable schema. That is, with given information, if a schema is determinable, then it is not a pending schema; and if it is not determinable, it must be a pending schema. The \emph{pending} schema is actually the \emph{cannot-be-determined} schema discussed in Section \ref{sec:intro} and Section \ref{sec:motiv}, which is the key schema we focus on in this paper. To analyse the pending schemas in one failing test case is important to evaluate the completeness of the test.  Next, we will give the first property about the pending schema.
 
 
 %However, we give the more general condition. We normally did not the pending schemas, but the faulty schemas and healthy schemas.
@@ -516,7 +515,7 @@ Similarly as the determinable schemas, we will discuss the pending schemas for t
 Given a set of passing test case set $PTS$, and a set of minimal faulty schemas $MFSS$, for any schema, say, $s$, is pending schemas if only if $\forall t \in PTS, s \npreceq t$ and $\forall m \in MFSS, m \npreceq s$.
 \end{proposition}
 
-The proof of this proposition is omitted. Proposition \ref{pro:pendingparthealthyfaulty} tells that if given a set of passing test cases $PTS$ and minimal faulty schemas $MFSS$, only the schemas that are neither the super-schemas of these faulty schemas nor subschemas in the passing test cases are pending schemas.  More formally, the set of the pending schemas are
+The proof of this proposition is omitted (can be easily deduced based on Proposition \ref{pro:determinableparthealthyfaulty}). Proposition \ref{pro:pendingparthealthyfaulty} tells that if given a set of passing test cases $PTS$ and minimal faulty schemas $MFSS$, only the schemas that are neither the super-schemas of these faulty schemas nor subschemas in the passing test cases are pending schemas.  More formally, the set of the pending schemas are
 
 \begin{equation}
 \begin{aligned}\label{eq:pss}
@@ -535,17 +534,13 @@ It is obviously $PSS$ and $DSS$ are complemented.
 %
 %Note that this formula is unsolvable, if and only if $stat(s, fail)$ is not true. Hence, it can only be $stat(s, true)$ be true. Hence, $s$ must be a healthy schema.  (can be provable.)
 
-\subsection{Obtaining the pending schemas in a failing test case}\label{sec:pending:obtaining}
+\subsection{Obtaining the pending schemas in one failing test case}\label{sec:pending:obtaining}
 
-%To given a set of healthy schemas from passing test case. Given a set of MFS, and the super-schemas of these MFS. Then the quesion is to find the pending schemas.
+We have already give a formula to describe the set of pending schemas when given infomration, we have already given the formula to describe the set of pending schemas. However, this set is too wild and contain many schemas that we don't focus (for example, the schema that never appear in any existed test case is surely pending schema, but we didn't even cover them, these schemas are the task of test generation). As an aleternative, it is more important to focus on these schemas that have already appeared in these test cases. Since all the schemas in the passing test cases are determinable (healthy), what we focus is the pending schemas in the failing test cases.
 
-Note that any sub-schemas of the MFS is not the faulty schemas, at least by the definition. Hence, it should not be the super-schemas of the MFS. Hence, as all the healthy schemas are appeared in the passing test cases. Hence, we can learn all the healthy schemas. This is also true by definition.
+More formally, 
 
-Hence, the future work is .
-
-
-% in a failing test case
-Before we give specific method of how to obtain the pending schema, we should first formulate the problem of obtaining schema. Only by doing this can let our approach be general and independent on specific covering arrays or MFS identification approaches. From the motivation example, we can learn that the information offered by covering arrays and MFS identification are a set of healthy schemas (including the passing test case) and faulty schemas (including the failing test case). Based on these information alone, we can obtain the pending schemas in one specific failing test case. Hence, we actually face such a problem that to obtain the pending schema in failing test case in the presence of a set of healthy schemas and faulty schemas.
+%Before we give specific method of how to obtain the pending schema, we should first formulate the problem of obtaining schema. Only by doing this can let our approach be general and independent on specific covering arrays or MFS identification approaches. From the motivation example, we can learn that the information offered by covering arrays and MFS identification are a set of healthy schemas (including the passing test case) and faulty schemas (including the failing test case). Based on these information alone, we can obtain the pending schemas in one specific failing test case. Hence, we actually face such a problem that to obtain the pending schema in failing test case in the presence of a set of healthy schemas and faulty schemas.
 
 %Without loss of generality, we assume that .  Note that this formal is to remove the influnce of tests and MFS identification approaches, these just give schemas of which are healthy schemas and faulty schemas.
 %
