@@ -536,11 +536,12 @@ It is obviously $PSS$ and $DSS$ are complemented.
 
 \subsection{Obtaining the pending schemas in one failing test case}\label{sec:pending:obtaining}
 
-In the previous section, we have already obtained the formula to describe the set of pending schemas for given information. However, this set is usually too large and many schemas in this set are beyond the focus. For example, the schema that never appears in any generated test case is evidently pending schema, but we didn't even cover them, these schemas are the task of test generation. As an alternative, it is more important to focus on these schemas that have already appeared in these generated test cases. This is because after testing and MFS idnetificaiton, we may have a false condendce that we have already known all the schemas, but the fact is the extences of the pending schemas in these test cases, the testing and MFS identiicaiton is still not complete. Consequently, we only focus the pending schemas that appeared in the geenrated test cases.
+In the previous section, we have already obtained the formula to describe the set of pending schemas for given information. However, this set is usually too large and contains many schemas that never appear in any generated test cases (These schemas are evidently pending schemas). In this paper, we only focus on these schemas that have already appeared in the generated test cases. This is because after testing and MFS identification, testers may have a false confidence on the fact that all the schemas appeared in these test cases are determinable, which may result in hidden dangers to the system under testing if the fact is not true (some of them are not determinable).
+% but the fact is the extences of the pending schemas in these test cases, the testing and MFS identification is still not complete. Consequently, we only focus the pending schemas that appeared in the generated test cases.
  
 %Since all the schemas in the passing test cases are determinable (healthy), what we focus is the pending schemas in the failing test cases.
 
-More formally,  given a failing test case $t$ =\{$(p_{1}, v_{1})$, $(p_{2}, v_{2})$, ..., $(p_{n}, v_{n})$\},  a set of passing test cases $PSS$ = \{ $t_{1}, t_{2}, ... t_{i}, ...$\}, and a set of minimal faulty schemas $MFSS$ = \{ $m_{1}, m_{2}, ... m_{i}, ...$ \}, the goal is to find the set of pending schemas in test case $t$.
+More formally,  given a failing test case $t$ =\{$(p_{1}, v_{1})$, $(p_{2}, v_{2})$, ..., $(p_{n}, v_{n})$\},  a set of passing test cases $PSS$ = \{ $t_{1}, t_{2}, ... t_{i}, ...$\}, and a set of minimal faulty schemas $MFSS$ = \{ $m_{1}, m_{2}, ... m_{i}, ...$ \}, our goal is to find the set of pending schemas in test case $t$.
 
 
 We will settle this problem step by step.  According to Formula \ref{eq:pss}, we can easily obtain the pending schemas in the failing test case are in the following set.
@@ -550,7 +551,7 @@ We will settle this problem step by step.  According to Formula \ref{eq:pss}, we
 % and \ref{pro:superoffaulty}, it is easy to find that, the pending schemas set PSS should be the following set
 \begin{equation}
 \begin{aligned}\label{eq:pssfirst}
-PSS=\{ c | c \preceq t\ \&\&\ \forall c_{f} \in MFSS,  c_{f} \npreceq c  \ \&\&\  \forall c_{h} \in DSS, c \npreceq c_{h} \} .
+PSS=\{ s | s \preceq t\ \&\&\ \forall m \in MFSS,  m \npreceq c  \ \&\&\  \forall t_{i} \in DSS, s \npreceq t_{i} \} .
 \end{aligned}
 \end{equation}
 
@@ -558,7 +559,7 @@ PSS=\{ c | c \preceq t\ \&\&\ \forall c_{f} \in MFSS,  c_{f} \npreceq c  \ \&\&\
 %\end{proof}
 
 %To obtain one pending schema, we just need to select one schema which satisfies $ c \in PSS$. 
-However, to directly utilize Formula \ref{eq:pssfirst} is not practical to obtain the pending schemas, because in the worst case it needs to check every schema in a test case $t$, of which the complexity is O($2^{n}$), where $n$ is the number of factors in this test case. Hence, we need to find another formula which is equivalent to Formula \ref{eq:pssfirst}, but with much lower complexity.
+However, to directly utilize Formula \ref{eq:pssfirst} is not practical to obtain the pending schemas, because in the worst case it needs to check every schema in a test case $t$. Note that the number of schemas in $t$ is $2^{n} - 1$, where $n$ is the number of factors in this test case. For each schema we need to check whether it is the sub-schemas of any test case in $DSS$ (the number of the test cases in $DSS$ is |$DSS$|). We also need to check whether it is the super-schemas of any faulty schemas in $MFSS$ (the number of the faulty schemas in $MFSS$ is |$MFSS$|). As a result, the complexity of directly utilizing Formula \ref{eq:pssfirst} is $2^{n} \times |DSS| \times |MFSS|$. Hence, we need to find another formula which is equivalent to Formula \ref{eq:pssfirst}, but with much lower complexity.
 
 For this purpose, we defined the following two sets, i.e. CMXS and CMNS.
 
