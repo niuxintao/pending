@@ -561,13 +561,15 @@ PSS=\{ s | s \preceq t\ \&\&\ \forall m \in MFSS,  m \npreceq c  \ \&\&\  \foral
 %To obtain one pending schema, we just need to select one schema which satisfies $ c \in PSS$.
 However, to directly utilize Formula \ref{eq:pssfirst} is not practical to obtain the pending schemas, because in the worst case it needs to check every schema in a test case $t$. Note that the number of schemas in $t$ is $2^{n} - 1$, where $n$ is the number of factors in this test case. For each schema we need to check whether it is the sub-schemas of any test case in $PSS$ (the number of the test cases in $PTS$ is |$PTS$|). We also need to check whether it is the super-schemas of any faulty schemas in $MFSS$ (the number of the faulty schemas in $MFSS$ is |$MFSS$|). As a result, the complexity of directly utilizing Formula \ref{eq:pssfirst} is $2^{n} \times |PTS| \times |MFSS|$, which is infeasible to handle when $n$ is large. Hence, we need to find another formula which is equivalent to Formula \ref{eq:pssfirst}, but with much lower complexity.
 
-The first step is to reduce the space of checking faulty schemas and passing test cases. Let $MFSS_{t}$ be the minimal faulty schemas that are the subschemas of test case $t$. That is, $MFSS^{t}$ = $\{ s\ | \ s \in MFSS, s \preceq t \}$. Let $MFSS^{t\circ}$ = $MFSS \backslash MFSS^{t}$. It is obvious that the complexity of obtaining $MFSS^{t}$ from $MFSS$ is $O(|MFSS|)$. 
+The first step is to reduce the space of checking faulty schemas and passing test cases. Let $MFSS_{t}$ be the minimal faulty schemas that are the subschemas of test case $t$. That is, $MFSS^{t}$ = $\{ s\ | \ s \in MFSS, s \preceq t \}$. Let $MFSS^{t\circ}$ = $MFSS \backslash MFSS^{t}$. It is obvious that the complexity of obtaining $MFSS^{t}$ from $MFSS$ is $O(|MFSS|)$.
 
-Let $PTS^{t}$ be the schemas that are both the subschemas of test case $t$ and the subschemas of at least one schema in $PTS$. That is, $PTS^{t}$ = $\{ s\ | \exists s' \in PTS, s \preceq s' \&\& s \preceq t \}$. Let $PTS^{t\}$
- 
+Let $PTS^{t}$ be the schemas that are intersection subschemas between each test case in $PTS$ and test case $t$ and the subschemas of at least one schema in $PTS$. That is, $PTS^{t}$ = $\{ s\ | \exists s' \in PTS, s \preceq s' \&\& s \preceq t \}$. Note that to obtain $PTS^{t}$ from $PTS$, the complexity is $O(|PTS|)$.
+
+ Let $PTS^{t\bigtriangleup}$ be the maximal schemas that are both the subschemas of test case $t$ and the subschemas of at least one schema in $PTS$. That is, $PTS^{t\bigtriangleup}$ = $\{ s\ |  s \in PTS^{t} \&\& \nexists s'  \in PTS^{t}, s \prec s' \}$.
+
 \begin{equation}
 \begin{aligned}\label{eq:pssfirst_mutated}
-PSS=\{ s | s \preceq t\ \&\&\ \forall m \in MFSS^{t},  m \npreceq c  \ \&\&\  \forall t_{i} \in DSS, s \npreceq t_{i} \} .
+PSS=\{ s | s \preceq t\ \&\&\ \forall m \in MFSS^{t},  m \npreceq c  \ \&\&\  \forall p \in PTS^{t\bigtriangleup}, s \npreceq p \} .
 \end{aligned}
 \end{equation}
 
