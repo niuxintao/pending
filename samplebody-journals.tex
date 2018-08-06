@@ -511,7 +511,7 @@ Similarly as the determinable schemas, we will discuss the pending schemas for t
 
 %This circumstance is important to analyse the properties of schemas for MFS identification later.
 
-\begin{proposition}[pending schemas with passing test cases and minimal faulty schemas]\label{pro:pendingparthealthyfaulty}
+\begin{proposition}[pending with passing test cases and minimal faulty schemas]\label{pro:pendingparthealthyfaulty}
 Given a set of passing test case set $PTS$, and a set of minimal faulty schemas $MFSS$, for any schema, say, $s$, is pending schemas if only if $\forall t \in PTS, s \npreceq t$ and $\forall m \in MFSS, m \npreceq s$.
 \end{proposition}
 
@@ -538,10 +538,10 @@ It is obviously $PSS$ and $DSS$ are complemented.
 
 In the previous section, we have already obtained the formula to describe the set of pending schemas for given information. However, this set is usually too large and contains many schemas that never appear in any generated test cases (These schemas are evidently pending schemas). In this paper, we only focus on these schemas that have already appeared in the generated test cases. This is because after testing and MFS identification, testers may have a false confidence on the fact that all the schemas appeared in these test cases are determinable, which may result in hidden dangers to the system under testing if the fact is not true (some of them are not determinable).
 % but the fact is the extences of the pending schemas in these test cases, the testing and MFS identification is still not complete. Consequently, we only focus the pending schemas that appeared in the generated test cases.
- 
+
 %Since all the schemas in the passing test cases are determinable (healthy), what we focus is the pending schemas in the failing test cases.
 
-More formally,  given a failing test case $t$ =\{$(p_{1}, v_{1})$, $(p_{2}, v_{2})$, ..., $(p_{n}, v_{n})$\},  a set of passing test cases $PSS$ = \{ $t_{1}, t_{2}, ... t_{i}, ...$\}, and a set of minimal faulty schemas $MFSS$ = \{ $m_{1}, m_{2}, ... m_{i}, ...$ \}, our goal is to find the set of pending schemas in test case $t$.
+More formally,  given a failing test case $t$ =\{$(p_{1}, v_{1})$, $(p_{2}, v_{2})$, ..., $(p_{n}, v_{n})$\},  a set of passing test cases $PTS$ = \{ $t_{1}, t_{2}, ... t_{i}, ...$\}, and a set of minimal faulty schemas $MFSS$ = \{ $m_{1}, m_{2}, ... m_{i}, ...$ \}, our goal is to find the set of pending schemas in test case $t$.
 
 
 We will settle this problem step by step.  According to Formula \ref{eq:pss}, we can easily obtain the pending schemas in the failing test case are in the following set.
@@ -551,56 +551,70 @@ We will settle this problem step by step.  According to Formula \ref{eq:pss}, we
 % and \ref{pro:superoffaulty}, it is easy to find that, the pending schemas set PSS should be the following set
 \begin{equation}
 \begin{aligned}\label{eq:pssfirst}
-PSS=\{ s | s \preceq t\ \&\&\ \forall m \in MFSS,  m \npreceq c  \ \&\&\  \forall t_{i} \in DSS, s \npreceq t_{i} \} .
+PSS=\{ s | s \preceq t\ \&\&\ \forall m \in MFSS,  m \npreceq c  \ \&\&\  \forall t_{i} \in PTS, s \npreceq t_{i} \} .
 \end{aligned}
 \end{equation}
 
 %\begin{proof}
 %\end{proof}
 
-%To obtain one pending schema, we just need to select one schema which satisfies $ c \in PSS$. 
-However, to directly utilize Formula \ref{eq:pssfirst} is not practical to obtain the pending schemas, because in the worst case it needs to check every schema in a test case $t$. Note that the number of schemas in $t$ is $2^{n} - 1$, where $n$ is the number of factors in this test case. For each schema we need to check whether it is the sub-schemas of any test case in $DSS$ (the number of the test cases in $DSS$ is |$DSS$|). We also need to check whether it is the super-schemas of any faulty schemas in $MFSS$ (the number of the faulty schemas in $MFSS$ is |$MFSS$|). As a result, the complexity of directly utilizing Formula \ref{eq:pssfirst} is $2^{n} \times |DSS| \times |MFSS|$. Hence, we need to find another formula which is equivalent to Formula \ref{eq:pssfirst}, but with much lower complexity.
+%To obtain one pending schema, we just need to select one schema which satisfies $ c \in PSS$.
+However, to directly utilize Formula \ref{eq:pssfirst} is not practical to obtain the pending schemas, because in the worst case it needs to check every schema in a test case $t$. Note that the number of schemas in $t$ is $2^{n} - 1$, where $n$ is the number of factors in this test case. For each schema we need to check whether it is the sub-schemas of any test case in $PSS$ (the number of the test cases in $PTS$ is |$PTS$|). We also need to check whether it is the super-schemas of any faulty schemas in $MFSS$ (the number of the faulty schemas in $MFSS$ is |$MFSS$|). As a result, the complexity of directly utilizing Formula \ref{eq:pssfirst} is $2^{n} \times |PTS| \times |MFSS|$, which is infeasible to handle when $n$ is large. Hence, we need to find another formula which is equivalent to Formula \ref{eq:pssfirst}, but with much lower complexity.
 
-For this purpose, we defined the following two sets, i.e. CMXS and CMNS.
+The first step is to reduce the space of checking faulty schemas and passing test cases. Let $MFSS_{t}$ be the minimal faulty schemas that are the subschemas of test case $t$. That is, $MFSS^{t}$ = $\{ s\ | \ s \in MFSS, s \preceq t \}$. Let $MFSS^{t\circ}$ = $MFSS \backslash MFSS^{t}$. It is obvious that the complexity of obtaining $MFSS^{t}$ from $MFSS$ is $O(|MFSS|)$. 
+
+Let $PTS^{t}$ be the schemas that are both the subschemas of test case $t$ and the subschemas of at least one schema in $PTS$. That is, $PTS^{t}$ = $\{ s\ | \exists s' \in PTS, s \preceq s' \&\& s \preceq t \}$. Note that to obtain $PTS^{t}$ from $PTS$, the complexity is $O(|PTS|)$.
+ 
+ Let $PTS^{t\bigtriangleup}$ be the maximal schemas that are both the subschemas of test case $t$ and the subschemas of at least one schema in $PTS$. That is, $PTS^{t\bigtriangleup}$ = $\{ s\ |  s \in PTS^{t} \&\& \nexists s'  \in PTS^{t}, s \prec s' \}$.
+ 
+\begin{equation}
+\begin{aligned}\label{eq:pssfirst_mutated}
+PSS=\{ s | s \preceq t\ \&\&\ \forall m \in MFSS^{t},  m \npreceq c  \ \&\&\  \forall p \in PTS^{t\bigtriangleup}, s \npreceq p \} .
+\end{aligned}
+\end{equation}
+
+
+
+For this purpose, we defined the following two sets, i.e. $CMXS$ and $CMNS$.
 
 \begin{definition}
-For a k-degree faulty schema c = \{$(p_{x_{1}}, v_{x_{1}})$, $(p_{x_{2}}, v_{x_{2}})$, ..., $(p_{x_{k}}, v_{x_{k}})$\}, a failing test case t = \{$(p_{1}, v_{1})$, $(p_{2}, v_{2})$, ..., $(p_{n}, v_{n})$\}, and $c \preceq t$. We denote the candidate maximal pending schema set as CMXS(c,t)= \{$t \backslash (p_{x_{i}}, v_{x_{i}})$ | $(p_{x_{i}}, v_{x_{i}}) \in c $\}.
+For a $k$-degree schema $s$ = \{$(p_{x_{1}}, v_{x_{1}})$, $(p_{x_{2}}, v_{x_{2}})$, ..., $(p_{x_{k}}, v_{x_{k}})$\}, a test case $t$ = \{$(p_{1}, v_{1})$, $(p_{2}, v_{2})$, ..., $(p_{n}, v_{n})$\}, and $s \preceq t$. We denote the candidate maximal non-super schema set as $CMXS(s,t)$ = \{$t \backslash (p_{x_{i}}, v_{x_{i}})$ | $(p_{x_{i}}, v_{x_{i}}) \in s $\}.
 \end{definition}
 
-Note that CMXS is the set of schemas that remove one distinct factor value in c, such that all these schemas will not be the super-schema of c. For example assume the failing test case \{$(p_{1}, v_{1})$, $(p_{2}, v_{2})$, $(p_{3}, v_{3})$, $(p_{4}, v_{4})$\}, and a faulty schema \{$(p_{1}, v_{1})$, $(p_{3}, v_{3})$\}. Then the CMXS set is \{ \{$(p_{2}, v_{2})$,  $(p_{3}, v_{3})$, $(p_{4}, v_{4})$\}, \{$(p_{1}, v_{1})$,  $(p_{2}, v_{2})$, $(p_{4}, v_{4})$\} \}. Obviously, the complexity of obtaining CMXS of one faulty schema is O($\tau$), where $\tau$ is the number of parameter values in this faulty schema, i.e., the degree of this schema.
+Note that $CMXS$ is the set of schemas that remove one distinct factor value in $s$, such that all these schemas will not be the super-schema of $s$. For example assume the test case \{$(p_{1}, v_{1})$, $(p_{2}, v_{2})$, $(p_{3}, v_{3})$, $(p_{4}, v_{4})$\}, and a schema \{$(p_{1}, v_{1})$, $(p_{3}, v_{3})$\}. Then the CMXS set is \{ \{$(p_{2}, v_{2})$,  $(p_{3}, v_{3})$, $(p_{4}, v_{4})$\}, \{$(p_{1}, v_{1})$,  $(p_{2}, v_{2})$, $(p_{4}, v_{4})$\} \}. Obviously, the complexity of obtaining $CMXS$ with respect to one schema and one test case is O($\tau$), where $\tau$ is the number of parameter values in this faulty schema, i.e., the degree of this schema.
 
-With respect to the CMXS set of a single faulty schema, we can get the following proposition:
+With respect to the $CMXS$ set of a single schema, we can get the following proposition:
 
 
-\begin{proposition}[No to be faulty schema]\label{pro:subofCMXS}
-Given a faulty schema $c_{1}$, a failing test case $t$, where $c_{1} \preceq t$, we have \{$c\ |\ c \prec t\ \&\&\ c_{1} \npreceq c$\} $=$  \{$ c\ |\ \exists c_{1}' \in CMXS(c_{1}, t)$, $c \preceq c_{1}'$\}.
+\begin{proposition}[No to be super schema of one schema]\label{pro:subofCMXS}
+Given a schema $s_{1}$, a test case $t$, where $s_{1} \preceq t$, we have \{$s\ |\ s \preceq t\ \&\&\ s_{1} \npreceq s$\} $=$  \{$ s\ |\ \exists s_{1}' \in CMXS(s_{1}, t)$, $s \preceq s_{1}'$\}.
 \end{proposition}
 
 \begin{proof}
 
-Let A =  \{$c\ |\ c \prec t\ \&\&\ c_{1} \npreceq c$\}, and B = \{$ c\ |\ \exists c_{1}' \in CMXS(c_{1}, t)$, $c \preceq c_{1}'$\}.
+Let A =  \{$s\ |\ s \preceq t\ \&\&\ s_{1} \npreceq s$\}, and B = \{$ s\ |\ \exists s_{1}' \in CMXS(s_{1}, t)$, $s \preceq s_{1}'$\}.
 
 
 
-Let $c_{1}$ = \{$(p_{x_{1}}, v_{x_{1}})$, $(p_{x_{2}}, v_{x_{2}})$, ..., $(p_{x_{k}}, v_{x_{k}})$\},  t = \{$(p_{1}, v_{1})$, $(p_{2}, v_{2})$, ..., $(p_{n}, v_{n})$\}, and CMXS($c_{1}$,$t$)= \{$t \backslash (p_{x_{i}}, v_{x_{i}})$ | $(p_{x_{i}},$ $v_{x_{i}})$ $ \in c_{1} $\}.
+Let $s_{1}$ = \{$(p_{x_{1}}, v_{x_{1}})$, $(p_{x_{2}}, v_{x_{2}})$, ..., $(p_{x_{k}}, v_{x_{k}})$\},  t = \{$(p_{1}, v_{1})$, $(p_{2}, v_{2})$, ..., $(p_{n}, v_{n})$\}, and CMXS($s_{1}$,$t$)= \{$t \backslash (p_{x_{i}}, v_{x_{i}})$ | $(p_{x_{i}},$ $v_{x_{i}})$ $ \in s_{1} $\}.
 
 First we will show A $\subseteq$ B.
 
-With respect to set A, $\forall c' \in A$, it has $c' \prec t$ and $ c_{1} \npreceq c'$. That is, $\forall e \in c', e \in t$, and  $\exists e' \in c_{1}, e' \not\in c'$. As $c_{1} \preceq t$, $e' \in t$. Hence, we have $\forall e \in c', e \in t \backslash e'$, i.e., $c' \preceq t \backslash e'$.
+With respect to set A, $\forall s' \in A$, it has $s' \preceq t$ and $ s_{1} \npreceq s'$. That is, $\forall e \in s', e \in t$, and  $\exists e' \in s_{1}, e' \not\in s'$. As $s_{1} \preceq t$, $e' \in t$. Hence, we have $\forall e \in s', e \in t \backslash e'$, i.e., $s' \preceq t \backslash e'$.
 
-Since $t \backslash e' \in CMXS(c_{1}, t)$,  $c' \in $ \{$ c\ |\ \exists c_{1}' \in CMXS(c_{1}, t)$, $c \preceq c_{1}'$\} = B. Hence, A $\subseteq$ B.
+Since $t \backslash e' \in CMXS(s_{1}, t)$,  $s' \in $ \{$ s\ |\ \exists s_{1}' \in CMXS(s_{1}, t)$, $s \preceq s_{1}'$\} = B. Hence, A $\subseteq$ B.
 
 Second we will show B $\subseteq$ A.
 
-With respect to set B, $\forall c' \in B$, it has $\exists c_{1}' \in CMXS(c_{1}, t), c'$ $ \preceq c_{1}'$. Since $c_{1}' \in CMXS(c_{1}, t)$, $\exists e' \in c_{1}, c_{1}' =  t \backslash e'$. Consequently, $c' \preceq t \backslash e'$. Hence, $c_{1} \npreceq c'$. Also, $c' \preceq t \backslash e' \prec t$. Consequently, $c \in $  \{$c\ |\ c \prec t\ \&\&\ c_{1} \npreceq c$\} = A, which indicates that B $\subseteq$ A.
+With respect to set B, $\forall s' \in B$, it has $\exists s_{1}' \in CMXS(s_{1}, t), s'$ $ \preceq s_{1}'$. Since $s_{1}' \in CMXS(s_{1}, t)$, $\exists e' \in s_{1}, s_{1}' =  t \backslash e'$. Consequently, $s' \preceq t \backslash e'$. Hence, $s_{1} \npreceq s'$. Also, $s' \preceq t \backslash e' \prec t$. Consequently, $s \in $  \{$s\ |\ s \prec t\ \&\&\ s_{1} \npreceq s$\} = A, which indicates that B $\subseteq$ A.
 
 As we have shown B $\subseteq$ A, and A $\subseteq$ B, so A = B.
 
 \end{proof}
 
-This proposition means that the pending schema must be the sub-schema or equal to the schemas in CMXS, otherwise, it is a faulty schema.
+%This proposition indicates for one specific schema $s$ and test case $t$, the schemas in one test case that are not $s$ and per-schemas of one specific schema, it must be the sub-schema or equal to the schemas in CMXS.
 
-In the equation of Proposition \ref{pro:subofCMXS}, the schemas of the left side, i.e., \{$c\ |\ c \preceq t\ \&\&\ c_{1} \npreceq c$\}, are the sub-schemas of test case $t$, but not the super-schemas of faulty schema $c_{1}$ nor equal to $c_{1}$.  Note that the pending schemas can only appear in this set, because any schema that is not belong to this set is faulty schema according to Proposition \ref{pro:superoffaulty}. The right side set in this equation, i.e., \{$ c\ |\ \exists c_{1}' \in CMXS(c_{1}, t)$, $c \preceq c_{1}'$\}, are schemas which are sub-schemas of or equal to at least one schema in $CMXS(c_{1}, t)$. Proposition \ref{pro:subofCMXS} indicates that these two schema sets are equivalent. As an example, considering a failing test case $t$ -- \{($p_{1}$, 1),($p_{2}$, 1),($p_{3}$, 1),($p_{4}$, 1)\}, and a faulty schema $c_{f}$ --  \{($p_{3}$, 1)\}. Table \ref{examleOfCMXSPro} shows the schema set  \{$c\ |\ c \prec t\ \&\&\ c_{f} \npreceq c$\}, $CMXS(c_{f}, t)$ and \{$ c\ |\ \exists c_{1}' \in CMXS(c_{f}, t)$, $c \preceq c_{1}'$\}.
+In the equation of Proposition \ref{pro:subofCMXS}, the schemas of the left side, i.e., \{$s\ |\ s \preceq t\ \&\&\ s_{1} \npreceq s$\}, are the sub-schemas of test case $t$, but not the super-schemas of  schema $s_{1}$.  The right side set in this equation, i.e., \{$ s\ |\ \exists s_{1}' \in CMXS(s_{1}, t)$, $s \preceq s_{1}'$\}, are schemas which are sub-schemas of at least one schema in $CMXS(s_{1}, t)$. Proposition \ref{pro:subofCMXS} indicates that these two schema sets are equivalent. As an example, considering a test case $t$ -- \{($p_{1}$, 1),($p_{2}$, 1),($p_{3}$, 1),($p_{4}$, 1)\}, and a schema $s_{f}$ --  \{($p_{3}$, 1)\}. Table \ref{examleOfCMXSPro} shows the schema set  \{$s\ |\ s \prec t\ \&\&\ s_{f} \npreceq s$\}, $CMXS(s_{f}, t)$ and \{$ s\ |\ \exists s_{1}' \in CMXS(s_{f}, t)$, $s \preceq s_{1}'$\}.
 
 % Table generated by Excel2LaTeX from sheet 'Sheet3'
 \begin{table*}[ht]
@@ -610,9 +624,9 @@ In the equation of Proposition \ref{pro:subofCMXS}, the schemas of the left side
   {\footnotesize
     \begin{tabular}{|c|c|c|c|}
     \hline
-  \textbf{  Test case $\textbf{t}$} & \textbf{ \{$\textbf{c}\ |\ \textbf{c} \prec \textbf{t}\ \&\&\ \textbf{c}_{\textbf{f}} \npreceq \textbf{c}$\} }& \textbf{ CMXS($\textbf{c}_{\textbf{f}}, $\textbf{t}$ $)} & \textbf{\{$ \textbf{c}\ |\ \exists \textbf{c}_{\textbf{1}}' \in \textbf{CMXS}\textbf{(}\textbf{c}_{\textbf{f}}, \textbf{t}\textbf{)}$, $\textbf{c} \preceq \textbf{c}_{\textbf{1}}'$ \}}\\\hline
+  \textbf{  Test case $\textbf{t}$} & \textbf{ \{$\textbf{s}\ |\ \textbf{s} \prec \textbf{t}\ \&\&\ \textbf{s}_{\textbf{f}} \npreceq \textbf{s}$\} }& \textbf{ CMXS($\textbf{s}_{\textbf{f}}, $\textbf{t}$ $)} & \textbf{\{$ \textbf{s}\ |\ \exists \textbf{s}_{\textbf{1}}' \in \textbf{CMXS}\textbf{(}\textbf{s}_{\textbf{f}}, \textbf{t}\textbf{)}$, $\textbf{s} \preceq \textbf{s}_{\textbf{1}}'$ \}}\\\hline
     \{($p_{1}$, 1),($p_{2}$, 1),($p_{3}$, 1),($p_{4}$, 1)\}  & \{($p_{1}$, 1),($p_{2}$, 1),($p_{4}$, 1)\} & \{($p_{1}$, 1),($p_{2}$, 1),($p_{4}$, 1)\} & \{($p_{1}$, 1),($p_{2}$, 1),($p_{4}$, 1)\}\\ \cline{1-1}
-      \textbf{Faulty schema $\textbf{c}_{\textbf{f}}$}  & \{($p_{1}$, 1),($p_{2}$, 1)\} &  & \{($p_{1}$, 1),($p_{2}$, 1)\} \\\cline{1-1}
+      \textbf{Schema $\textbf{s}_{\textbf{f}}$}  & \{($p_{1}$, 1),($p_{2}$, 1)\} &  & \{($p_{1}$, 1),($p_{2}$, 1)\} \\\cline{1-1}
      \{($p_{3}$, 1)\}         & \{($p_{1}$, 1),($p_{4}$, 1)\}&  &\{($p_{1}$, 1),($p_{4}$, 1)\}\\
           &       \{($p_{2}$, 1),($p_{4}$, 1)\} &  &\{($p_{2}$, 1), ($p_{4}$, 1)\}\\
           &       \{($p_{1}$, 1)\} &  &\{($p_{1}$, 1)\}\\
@@ -627,38 +641,38 @@ In the equation of Proposition \ref{pro:subofCMXS}, the schemas of the left side
 
 %when given a faulty schema $c_{1}$ and a failing test case $t$, the pending schemas can only appeared in set \{$c\ |\ \exists c_{1}' \in CMXS(c_{1}, t), c \preceq c_{1}'$\}.
 
-We can extend this conclusion to a set of faulty schemas. For this, we need the following notation: For two faulty schemas $c_{1}$, $c_{2}$, and a failing test case $t$ ($c_{1} \preceq t$, $c_{2} \preceq t$), let $CMXS(c_{1}, t) \bigwedge CMXS(c_{2}, t)  = \{ c\ |\ c = c_{1}' \cap c_{2}',\ where\ c_{1}' \in CMXS(c_{1}, t),\ and\ c_{2}' \in CMXS(c_{2}, t) \}$.
+We can extend this conclusion to a set of schemas. For this, we need the following notation: For two schemas $s_{1}$, $s_{2}$, and a test case $t$ ($s_{1} \preceq t$ and $s_{2} \preceq t$), let $CMXS(s_{1}, t) \bigwedge CMXS(s_{2}, t)  = \{ s\ |\ s = s_{1}' \cap s_{2}',\ where\ s_{1}' \in CMXS(s_{1}, t),\ and\ s_{2}' \in CMXS(s_{2}, t) \}$.
 
-For example, let $t$ = \{$(p_{1},v_{1}), (p_{2}, v_{2}), (p_{3}, v_{3})$\}, $c_{1}$ = \{$(p_{1}$ $, v_{1}), (p_{2}, v_{2})$\}, $c_{2}$ = \{$(p_{2}, v_{2}), (p_{3}, v_{3})$\}. Then we have $CMXS$ $(c_{1}, t)$ = \{ \{$(p_{1}, v_{1}), (p_{3}, v_{3})$\}, \{$(p_{2}, v_{2}), (p_{3}, v_{3})$\} \}, $CMXS(c_{2},$ $ t)$ = \{ \{$(p_{1}, v_{1}), (p_{2}, v_{2})$\}, \{$(p_{1}, v_{1}), (p_{3}, v_{3})$\} \}, and  $CMXS(c_{1},$ $ t) \bigwedge CMXS(c_{2}, t) = \{ \{(p_{1}, v_{1})\},$ $ \{(p_{1}, v_{1}), $ $(p_{3}, v_{3})\}, $ $ \{(p_{2}, v_{2})\}, $ $\{(p_{3}, v_{3})\} \} $. It is easy to know the complexity of obtaining CMXS of two faulty schemas is O($\tau^{2}$), where $\tau$ is the number of parameter values in the faulty schema. Based on this, we denote $CMXS(FSS,t)$ for a set of faulty schemas.
+For example, let $t$ = \{$(p_{1},v_{1}), (p_{2}, v_{2}), (p_{3}, v_{3})$\}, $s_{1}$ = \{$(p_{1}$ $, v_{1}), (p_{2}, v_{2})$\}, $c_{2}$ = \{$(p_{2}, v_{2}), (p_{3}, v_{3})$\}. Then we have $CMXS$ $(s_{1}, t)$ = \{ \{$(p_{1}, v_{1}), (p_{3}, v_{3})$\}, \{$(p_{2}, v_{2}), (p_{3}, v_{3})$\} \}, $CMXS(s_{2},$ $ t)$ = \{ \{$(p_{1}, v_{1}), (p_{2}, v_{2})$\}, \{$(p_{1}, v_{1}), (p_{3}, v_{3})$\} \}, and  $CMXS(s_{1},$ $ t) \bigwedge CMXS(s_{2}, t) = \{ \{(p_{1}, v_{1})\},$ $ \{(p_{1}, v_{1}), $ $(p_{3}, v_{3})\}, $ $ \{(p_{2}, v_{2})\}, $ $\{(p_{3}, v_{3})\} \} $. It is easy to know the complexity of obtaining $CMXS$ of two schemas is O($\tau^{2}$), where $\tau$ is the number of parameter values in the faulty schema. Based on this, we denote $CMXS(FSS,t)$ for a set of schemas.
 
 \begin{definition}
-Given a failing test case t = \{$(p_{1}, v_{1})$, $(p_{2}, v_{2})$, ..., $(p_{n}, v_{n})$\}, and a set of faulty schemas FSS = \{$c_{1} , c_{2}, ... c_{i}, ...$\}, where $ c_{i} \preceq t$,  we denote the candidate maximal pending schema of this set as CMXS(FSS,t)= $\bigwedge_{c_{i}\in FSS} CMXS(c_{i}, t)$.
+Given a test case $t$ = \{$(p_{1}, v_{1})$, $(p_{2}, v_{2})$, ..., $(p_{n}, v_{n})$\}, and a set of schemas $FSS$ = \{$s_{1} , s_{2}, ... s_{i}, ...$\}, where $ s_{i} \preceq t$,  we denote the candidate maximal non-super schemas of this set as $CMXS(FSS,t)$= $\bigwedge_{s_{i}\in FSS} CMXS(s_{i}, t)$.
 \end{definition}
 
-Note to compute the CMXS of a set of faulty schema, we just need to sequentially compute the CMXS of two faulty schemas until the last schema in this set is computed. Hence, the complexity of obtaining CMXS of a set of faulty schema is O($\tau^{|FSS|}$), where |FSS| is the number of faulty schemas in the schema set, and $\tau$ is the degree of the schema. According to Proposition \ref{pro:subofCMXS}, we have:
+Note to compute the $CMXS$ of a set of schema, we just need to sequentially compute the $CMXS$ of two faulty schemas until the last schema in this set is computed. Hence, the complexity of obtaining $CMXS$ of a set of schemas is O($\tau^{|FSS|}$), where $|FSS|$ is the number of schemas in the schema set, and $\tau$ is the degree of the schema. According to Proposition \ref{pro:subofCMXS}, we have:
 
-\begin{proposition}\label{pro:subofCMXSfor2}
-Given a failing test case t = \{$(p_{1}, v_{1})$, $(p_{2}, v_{2})$, ..., $(p_{n}, v_{n})$\}, and a set of faulty schemas FSS = \{$c_{1} , c_{2}, ... c_{i}, ...$\}, where $ c_{i} \preceq t$,  we have \{$c\ |\ c \preceq t\ \&\&\ \forall c_{i} \in FSS, c_{i} \npreceq c $\} $=$  \{$ c\ |\ \exists c_{1}' \in CMXS(FSS, t)$, $c \preceq c_{1}'$\}.
+\begin{proposition}[No to be super schema of a set of schemas]\label{pro:subofCMXSfor2}
+Given a test case t = \{$(p_{1}, v_{1})$, $(p_{2}, v_{2})$, ..., $(p_{n}, v_{n})$\}, and a set of schemas FSS = \{$s_{1} , s_{2}, ... s_{i}, ...$\}, where $ s_{i} \preceq t$,  we have \{$s\ |\ s \preceq t\ \&\&\ \forall s_{i} \in FSS, s_{i} \npreceq s $\} $=$  \{$ s\ |\ \exists s_{1}' \in CMXS(FSS, t)$, $s \preceq s_{1}'$\}.
 \end{proposition}
 
 \begin{proof}
 
-We just need to prove that for two faulty schemas $c_{1}$, $c_{2}$, and a failing test case $t$ ($c_{1} \preceq t$, $c_{2} \preceq t$), we have \{$c\ |\ c \prec t\ \&\&\ \forall c_{i} \in \{c_{1}, c_{2}\}, c_{i} \npreceq c $\} $=$  \{$ c\ |\ \exists c_{1}' \in CMXS(c_{1}, t)$ $\bigwedge CMXS(c_{2}, t)$, $c \preceq c_{1}'$\}.
+We just need to prove that for two schemas $s_{1}$, $s_{2}$, and a test case $t$ ($s_{1} \preceq t$, $s_{2} \preceq t$), we have \{$s\ |\ s \prec t\ \&\&\ \forall s_{i} \in \{s_{1}, s_{2}\}, s_{i} \npreceq s $\} $=$  \{$ s\ |\ \exists s_{1}' \in CMXS(s_{1}, t)$ $\bigwedge CMXS(s_{2}, t)$, $s \preceq s_{1}'$\}.
 
-Let $A = $ \{$c\ |\ c \prec t\ \&\&\ \forall c_{i} \in \{c_{1}, c_{2}\}, c_{i} \npreceq c $\}, $A_{1}$ = \{$c\ |\ c \prec t\ \&\&\  c_{1} \npreceq c $\}, $A_{2}$ = \{$c\ |\ c \prec t\ \&\&\  c_{2} \npreceq c $\}. It is easily to get $A = A_{1} \bigcap A_{2}$.
+Let $A = $ \{$s\ |\ s \prec t\ \&\&\ \forall s_{i} \in \{s_{1}, s_{2}\}, s_{i} \npreceq s $\}, $A_{1}$ = \{$s\ |\ s \prec t\ \&\&\  s_{1} \npreceq s $\}, $A_{2}$ = \{$s\ |\ s \prec t\ \&\&\  s_{2} \npreceq s $\}. It is easily to get $A = A_{1} \bigcap A_{2}$.
 
-Let $B = $ \{$ c\ |\ \exists c_{1}' \in CMXS(c_{1}, t)$ $\bigwedge CMXS(c_{2}, t)$, $c \preceq c_{1}'$\}. Here,  $ CMXS(c_{1}, t) \bigwedge CMXS(c_{2}, t) = \{ c\ |\ c = c_{1}' \cap c_{2}',\ where\ c_{1}' \in CMXS(c_{1}, t),\ and\ c_{2}' \in CMXS(c_{2}, t) \}$.
+Let $B = $ \{$ s\ |\ \exists s_{1}' \in CMXS(s_{1}, t)$ $\bigwedge CMXS(s_{2}, t)$, $s \preceq s_{1}'$\}. Here,  $ CMXS(s_{1}, t) \bigwedge CMXS(s_{2}, t) = \{ s\ |\ s = s_{1}' \cap s_{2}',\ where\ s_{1}' \in CMXS(s_{1}, t),\ and\ s_{2}' \in CMXS(s_{2}, t) \}$.
 
-Let $B_{1} = $ \{$ c\ |\ \exists c_{1}' \in CMXS(c_{1}, t)$, $c \preceq c_{1}'$\}, and $B_{2} = $ \{$ c\ |\ \exists c_{2}' \in CMXS(c_{2}, t)$, $c \preceq c_{2}'$\}. $B_{1} \bigcap B_{2} = $ \{$ c\ |\ \exists c_{1}' \in CMXS(c_{1}, t)$, $c \preceq c_{1}'$ \&\& $\exists c_{2}' \in CMXS(c_{2}, t)$, $c \preceq c_{2}'$\}. Note that, $c \preceq c_{1}'$ \&\& $c \preceq c_{2}'$ $\equiv$ $c \preceq c_{1}' \cap c_{2}'$. Hence, $B_{1} \bigcap B_{2} = $ \{$ c\ |\ \exists c_{1}', c_{2}',\  c_{1}' \in CMXS(c_{1}, t)$, and $c_{2}' \in CMXS(c_{2}, t)$, $c \preceq c_{1}' \cap c_{2}'$ \} = B.
+Let $B_{1} = $ \{$ s\ |\ \exists s_{1}' \in CMXS(s_{1}, t)$, $s \preceq s_{1}'$\}, and $B_{2} = $ \{$ s\ |\ \exists s_{2}' \in CMXS(s_{2}, t)$, $s \preceq s_{2}'$\}. $B_{1} \bigcap B_{2} = $ \{$ s\ |\ \exists s_{1}' \in CMXS(s_{1}, t)$, $s \preceq s_{1}'$ \&\& $\exists s_{2}' \in CMXS(s_{2}, t)$, $s \preceq s_{2}'$\}. Note that, $s \preceq s_{1}'$ \&\& $s \preceq s_{2}'$ $\equiv$ $s \preceq s_{1}' \cap s_{2}'$. Hence, $B_{1} \bigcap B_{2} = $ \{$ s\ |\ \exists s_{1}', s_{2}',\  s_{1}' \in CMXS(s_{1}, t)$, and $s_{2}' \in CMXS(s_{2}, t)$, $s \preceq s_{1}' \cap s_{2}'$ \} = B.
 
 Based on Proposition \ref{pro:subofCMXS}, $A_{1} = B_{1}$, $A_{2} = B_{2}$. Consequently,
 $A = A_{1} \bigcap A_{2}$ = $B_{1} \bigcap B_{2}$  = B.
 
 \end{proof}
 
-Proposition \ref{pro:subofCMXSfor2} extends Proposition \ref{pro:subofCMXS} from a single faulty schema to a set of faulty schemas.
+Proposition \ref{pro:subofCMXSfor2} extends Proposition \ref{pro:subofCMXS} from a single schema to a set of schemas.
 
-As an example, considering a failing test case $t$ -- \{($p_{1}$, 1),($p_{2}$, 1),($p_{3}$, 1),($p_{4}$, 1)\}, and a set of faulty schemas  $FSS$ -- \{ \{($p_{3}$, 1)\},  \{($p_{1}$, 1), ($p_{2}$, 1)\} \}. Table \ref{examleOfCMXSPro2} shows the schema set \{$c\ |\ c \prec t\ \&\&\ \forall c_{i} \in FSS, c_{i} \npreceq c $\}, $CMXS(FSS, t)$ and \{$ c\ |\ \exists c_{1}' \in CMXS(FSS, t)$, $c \preceq c_{1}'$\}.
+As an example, considering a test case $t$ -- \{($p_{1}$, 1),($p_{2}$, 1),($p_{3}$, 1),($p_{4}$, 1)\}, and a set of schemas  $FSS$ -- \{ \{($p_{3}$, 1)\},  \{($p_{1}$, 1), ($p_{2}$, 1)\} \}. Table \ref{examleOfCMXSPro2} shows the schema set \{$s\ |\ s \preceq t\ \&\&\ \forall s_{i} \in FSS, s_{i} \npreceq s $\}, $CMXS(FSS, t)$ and \{$ s\ |\ \exists s_{1}' \in CMXS(FSS, t)$, $s \preceq s_{1}'$\}.
 
 % Table generated by Excel2LaTeX from sheet 'Sheet3'
 
@@ -669,9 +683,9 @@ As an example, considering a failing test case $t$ -- \{($p_{1}$, 1),($p_{2}$, 1
   {\footnotesize
     \begin{tabular}{|c|c|c|c|}
     \hline
-  \textbf{  Test case $\textbf{t}$} & \textbf{ \{$\textbf{c}\ |\ \textbf{c} \prec \textbf{t}\ \&\&\ \forall \textbf{c}_{\textbf{i}} \in FSS, \textbf{c}_{\textbf{i}} \npreceq \textbf{c}$\} }& \textbf{  CMXS(FSS, t)} & \textbf{\{$ \textbf{c}\ |\ \exists \textbf{c}_{\textbf{1}}' \in \textbf{ CMXS(FSS, t)} $ , $\textbf{c} \preceq \textbf{c}_{\textbf{1}}'$ \}}\\\hline
+  \textbf{  Test case $\textbf{t}$} & \textbf{ \{$\textbf{s}\ |\ \textbf{s} \preceq \textbf{t}\ \&\&\ \forall \textbf{s}_{\textbf{i}} \in FSS, \textbf{s}_{\textbf{i}} \npreceq \textbf{s}$\} }& \textbf{  CMXS(FSS, t)} & \textbf{\{$ \textbf{s}\ |\ \exists \textbf{s}_{\textbf{1}}' \in \textbf{ CMXS(FSS, t)} $ , $\textbf{s} \preceq \textbf{s}_{\textbf{1}}'$ \}}\\\hline
     \{($p_{1}$, 1),($p_{2}$, 1),($p_{3}$, 1),($p_{4}$, 1)\}  & \{($p_{1}$, 1),($p_{4}$, 1)\} & \{($p_{1}$, 1),($p_{4}$, 1)\} & \{($p_{1}$, 1),($p_{4}$, 1)\}\\ \cline{1-1}
-      \textbf{Faulty schema set FSS}  & \{($p_{2}$, 1),($p_{4}$, 1)\} &  \{($p_{2}$, 1),($p_{4}$, 1)\} & \{($p_{2}$, 1),($p_{4}$, 1)\} \\\cline{1-1}
+      \textbf{Schema set FSS}  & \{($p_{2}$, 1),($p_{4}$, 1)\} &  \{($p_{2}$, 1),($p_{4}$, 1)\} & \{($p_{2}$, 1),($p_{4}$, 1)\} \\\cline{1-1}
      \{($p_{3}$, 1)\}         & \{($p_{1}$, 1)\}&  &\{($p_{1}$, 1)\}\\
      \{($p_{1}$, 1),($p_{2}$, 1)\}  &       \{($p_{2}$, 1)\} &  &\{($p_{2}$, 1)\}\\
           &       \{($p_{4}$, 1)\} &  & \{($p_{4}$, 1)\}\\\hline
@@ -685,36 +699,36 @@ As an example, considering a failing test case $t$ -- \{($p_{1}$, 1),($p_{2}$, 1
 %Based on previous propositions, we can get that the pending schemas can only appeared in set $P_{up}$ = \{$c\ |\ \exists c_{1}' \in CMXS(FSS,t), c \preceq c_{1}'$\}.
 
 
-Next, we give the definition of \emph{CMNS}.
+Next, we give the definition of $CMNS$.
 
 \begin{definition}
-For a k-degree healthy schema c = \{$(p_{x_{1}}, v_{x_{1}})$, $(p_{x_{2}}, v_{x_{2}})$, ..., $(p_{x_{k}}, v_{x_{k}})$\}, a failing test case t = \{$(p_{1}, v_{1})$, $(p_{2}, v_{2})$, ..., $(p_{n}, v_{n})$\}, and $c \prec t$. We denote the candidate minimal pending schema set as CMNS(c,t)=\{$\{(p_{x_{i}}, v_{x_{i}})\}$ | $(p_{x_{i}}, v_{x_{i}}) \in t \backslash c $\}.
+For a $k$-degree schema $s$ = \{$(p_{x_{1}}, v_{x_{1}})$, $(p_{x_{2}}, v_{x_{2}})$, ..., $(p_{x_{k}}, v_{x_{k}})$\}, a test case $t$ = \{$(p_{1}, v_{1})$, $(p_{2}, v_{2})$, ..., $(p_{n}, v_{n})$\}, and $s \preceq t$. We denote the candidate minimal non-sub schema set as $CMNS(s,t)$=\{$\{(p_{x_{i}}, v_{x_{i}})\}$ | $(p_{x_{i}}, v_{x_{i}}) \in t \backslash s $\}.
 \end{definition}
 
-Note that CMNS is the set of schemas that are assigned to one distinct factor value that is not in c, such that all these schemas will not be the sub-schema of c. For example assume the failing test case \{$(p_{1}, v_{1})$, $(p_{2}, v_{2})$, $(p_{3}, v_{3})$, $(p_{4}, v_{4})$\}, and a healthy schema \{$(p_{1}, v_{1})$, $(p_{3}, v_{3})$\}. Then the CMNS set is \{ \{$(p_{2}, v_{2})$\}, \{$(p_{4}, v_{4})$\} \}.  With respect to the CMNS set of a single healthy schema, we can get the following proposition:
+Note that $CMNS$ is the set of schemas that are assigned to one distinct factor value that is not in $s$, such that all these schemas will not be the sub-schema of $s$. For example assume the test case \{$(p_{1}, v_{1})$, $(p_{2}, v_{2})$, $(p_{3}, v_{3})$, $(p_{4}, v_{4})$\}, and a schema \{$(p_{1}, v_{1})$, $(p_{3}, v_{3})$\}. Then the $CMNS$ set is \{ \{$(p_{2}, v_{2})$\}, \{$(p_{4}, v_{4})$\} \}.  With respect to the CMNS set of a single schema, we can get the following proposition:
 
-\begin{proposition}[another necessary condition]\label{pro:superofCMNS}
-Given a healthy schema $c_{1}$, a failing test case $t$, where $c_{1} \prec t$, we have \{$c\ |\ c \prec t\ \&\&\ c \npreceq c_{1}$\} $=$  \{$ c\ |\ c \prec t \  \&\& \ \exists c_{1}' \in CMNS(c_{1}, t)$, $c_{1}' \preceq c$\}.
+\begin{proposition}[Not to be subschema of one schema]\label{pro:superofCMNS}
+Given a schema $s_{1}$, a test case $t$, where $s_{1} \preceq t$, we have \{$s\ |\ s \preceq t\ \&\&\ s \npreceq s_{1}$\} $=$  \{$ s\ |\ s \preceq t \  \&\& \ \exists s_{1}' \in CMNS(s_{1}, t)$, $s_{1}' \preceq s$\}.
 \end{proposition}
 
 \begin{proof}
-Let A = \{$c\ |\ c \prec t\ \&\&\ c \npreceq c_{1}$\}. B = \{$ c\ |\ c \prec t \ \&\&\  \exists c_{1}' \in CMNS(c_{1}, t)$, $c_{1}' \preceq c$\}. $CMNS(c_{1},t)$=\{$(p_{x_{i}}, v_{x_{i}})$ | $(p_{x_{i}}, v_{x_{i}}) \in t \backslash c_{1} $\}.
+Let A = \{$s\ |\ s \preceq t\ \&\&\ s \npreceq s_{1}$\}. B = \{$ s\ |\ s \preceq t \ \&\&\  \exists s_{1}' \in CMNS(s_{1}, t)$, $s_{1}' \preceq s$\}. $CMNS(s_{1},t)$=\{$(p_{x_{i}}, v_{x_{i}})$ | $(p_{x_{i}}, v_{x_{i}}) \in t \backslash s_{1} $\}.
 
 First we will show A $\subseteq$ B.
 
-With respect to set A, $\forall c' \in A$, it has $c' \prec t$ and $c' \npreceq c_{1}$. That is, $\forall e \in c', e \in t$, and  $\exists e' \in c', e' \not\in c_{1}$. Hence, $\{e'\}\ \preceq c',\  e' \in t \backslash c_{1}$, which indicates that $c' \in $ \{$ c\ |\ c \prec t \ \&\&\  \exists c_{1}' \in CMNS(c_{1}, t)$, $c_{1}' \preceq c$\} = B, so A $\subseteq$ B.
+With respect to set A, $\forall s' \in A$, it has $s' \preceq t$ and $s' \npreceq s_{1}$. That is, $\forall e \in s', e \in t$, and  $\exists e' \in s', e' \not\in s_{1}$. Hence, $\{e'\}\ \preceq s',\  e' \in t \backslash s_{1}$, which indicates that $s' \in $ \{$ s\ |\ s \preceq t \ \&\&\  \exists s_{1}' \in CMNS(s_{1}, t)$, $s_{1}' \preceq s$\} = B. So, A $\subseteq$ B.
 
 
 Second we will show B $\subseteq$ A.
 
-With respect to set B, $\forall c' \in B$, it has $c' \prec t$  and $\exists c_{1}' \in CMNS(c_{1}, t), c_{1}' \preceq c'$. As $c_{1}' \in CMNS(c_{1}, t)$, $\exists e' \in  t \backslash c_{1}, c_{1}' = \{ e' \}$. Hence, $\{e'\} \preceq c'$. Hence, $c' \npreceq c_{1}$. Consequently, $c' \in $  \{$c\ |\ c \prec t\ \&\&\ c \npreceq c_{1}$\} = A, which indicates that B $\subseteq$ A.
+With respect to set B, $\forall s' \in B$, it has $s' \preceq t$  and $\exists s_{1}' \in CMNS(s_{1}, t), s_{1}' \preceq s'$. As $s_{1}' \in CMNS(s_{1}, t)$, $\exists e' \in  t \backslash s_{1}, s_{1}' = \{ e' \}$. Hence, $\{e'\} \preceq s'$. Hence, $s' \npreceq s_{1}$. Consequently, $s' \in $  \{$s\ |\ s \preceq t\ \&\&\ s \npreceq s_{1}$\} = A, which indicates that B $\subseteq$ A.
 
 \end{proof}
 
 
-This proposition means that the pending schema must be the super-schema or equal to the schemas in CMNS, otherwise, it is a healthy schema.
+%This proposition means that the pending schema must be the super-schema or equal to the schemas in CMNS, otherwise, it is a healthy schema.
 
-In the equation of Proposition \ref{pro:superofCMNS}, the schemas of the left side, i.e., \{$c\ |\ c \preceq t\ \&\&\ c \npreceq c_{1}$\}, are the sub-schemas of test case $t$, but not the sub-schemas of healthy schema $c_{1}$ nor equal to $c_{1}$.  It is obvious that the pending schemas can also only appear in this set, because they cannot be the sub-schema of any healthy schema nor equal to them. The right side set in this equation, i.e.,\{$ c\ |\ c \preceq t \  \&\& \ \exists c_{1}' \in CMNS(c_{1}, t)$, $c_{1}' \preceq c$\}, are sub-schemas of test case $t$, and also are the super-schemas of or equal to at least one schema in $CMXS(c_{1}, t)$. Proposition \ref{pro:superofCMNS} indicates that these two schema sets are equivalent. As an example, considering a failing test case $t$ -- \{($p_{1}$, 1),($p_{2}$, 1),($p_{3}$, 1),($p_{4}$, 1)\}, and a healthy schema $c_{h}$ --  \{($p_{1}$, 1),($p_{2}$, 1),($p_{3}$, 1)\}. Table \ref{examleOfCMNSPro} shows the schema set  \{$c\ |\ c \prec t\ \&\&\ c_{h} \npreceq c$\}, $CMNS(c_{h}, t)$ and {$ c\ |\ c \prec t\ \&\& \ \exists c_{1}' \in CMXS(c_{h}, t)$, $c_{1}' \preceq c$\}.
+In the equation of Proposition \ref{pro:superofCMNS}, the schemas of the left side, i.e., \{$s\ |\ s \preceq t\ \&\&\ s \npreceq s_{1}$\}, are the sub-schemas of test case $t$, but not the sub-schemas of schema $s_{1}$. The right side set in this equation, i.e.,\{$ s\ |\ s \preceq t \  \&\& \ \exists s_{1}' \in CMNS(s_{1}, t)$, $s_{1}' \preceq s$\}, are sub-schemas of test case $t$, and also are the super-schemas of at least one schema in $CMNS(s_{1}, t)$. Proposition \ref{pro:superofCMNS} indicates that these two schema sets are equivalent. As an example, considering a test case $t$ -- \{($p_{1}$, 1),($p_{2}$, 1),($p_{3}$, 1),($p_{4}$, 1)\}, and a schema $c_{h}$ --  \{($p_{1}$, 1),($p_{2}$, 1),($p_{3}$, 1)\}. Table \ref{examleOfCMNSPro} shows the schema set  \{$s\ |\ s \preceq t\ \&\&\ s_{h} \npreceq s$\}, $CMNS(s_{h}, t)$ and {$ s\ |\ s \preceq t\ \&\& \ \exists s_{1}' \in CMNS(s_{h}, t)$, $s_{1}' \preceq s$\}.
 
 % Table generated by Excel2LaTeX from sheet 'Sheet3'
 \begin{table*}[ht]
@@ -724,9 +738,9 @@ In the equation of Proposition \ref{pro:superofCMNS}, the schemas of the left si
   {\footnotesize
     \begin{tabular}{|c|c|c|c|}
     \hline
-  \textbf{  Test case $\textbf{t}$} & \textbf{ \{$\textbf{c}\ |\ \textbf{c} \prec \textbf{t}\ \&\&\ \textbf{c} \npreceq \textbf{c}_{\textbf{h}}$\} }& \textbf{ CMNS($\textbf{c}_{\textbf{h}}$, $\textbf{t}$)} & \textbf{\{$ \textbf{c}\ |\ \textbf{c} \prec \textbf{t} \ \&\& \ \exists \textbf{c}_{\textbf{1}}' \in \textbf{CMNS}\textbf{(}\textbf{c}_{\textbf{h}}, \textbf{t}\textbf{)}$, $  \textbf{c}_{\textbf{1}}' \preceq \textbf{c}$ \}}\\\hline
+  \textbf{  Test case $\textbf{t}$} & \textbf{ \{$\textbf{s}\ |\ \textbf{s} \preceq \textbf{t}\ \&\&\ \textbf{s} \npreceq \textbf{s}_{\textbf{h}}$\} }& \textbf{ CMNS($\textbf{s}_{\textbf{h}}$, $\textbf{t}$)} & \textbf{\{$ \textbf{s}\ |\ \textbf{s} \preceq \textbf{t} \ \&\& \ \exists \textbf{s}_{\textbf{1}}' \in \textbf{CMNS}\textbf{(}\textbf{s}_{\textbf{h}}, \textbf{t}\textbf{)}$, $  \textbf{s}_{\textbf{1}}' \preceq \textbf{s}$ \}}\\\hline
     \{($p_{1}$, 1),($p_{2}$, 1),($p_{3}$, 1),($p_{4}$, 1)\}  & \{($p_{4}$, 1)\} & \{($p_{4}$, 1)\} & \{(($p_{4}$, 1)\}\\ \cline{1-1}
-      \textbf{Healthy schema $\textbf{c}_{\textbf{h}}$}  & \{($p_{1}$, 1),($p_{4}$, 1)\} &  & \{($p_{1}$, 1),($p_{4}$, 1)\} \\\cline{1-1}
+      \textbf{Schema $\textbf{s}_{\textbf{h}}$}  & \{($p_{1}$, 1),($p_{4}$, 1)\} &  & \{($p_{1}$, 1),($p_{4}$, 1)\} \\\cline{1-1}
      \{($p_{1}$, 1),($p_{2}$, 1),($p_{3}$, 1)\}         &\{($p_{2}$, 1),($p_{4}$, 1)\}  &  & \{($p_{2}$, 1),($p_{4}$, 1)\}  \\
                          &\{$p_{3}$, 1),($p_{4}$, 1)\}   &  & \{$p_{3}$, 1),($p_{4}$, 1)\}  \\
                          &\{($p_{1}$, 1),($p_{2}$, 1),($p_{4}$, 1)\}   &  & \{($p_{1}$, 1),($p_{2}$, 1),($p_{4}$, 1)\}  \\
@@ -737,29 +751,29 @@ In the equation of Proposition \ref{pro:superofCMNS}, the schemas of the left si
 \end{table*}%
 
 
-Similarly, for two healthy schemas $c_{1}$, $c_{2}$, and a failing test case $t$ ($c_{1} \preceq t$, $c_{2} \preceq t$), let $CMNS(c_{1}, t) \bigvee $ $CMNS(c_{2}, t)  = \{ c\ |\ c = c_{1}' \cup c_{2}',\ where\ c_{1}' \in CMXS(c_{1}, t),\ and\ c_{2}' \in CMXS(c_{2}, t) \}$.
+Similarly, for two healthy schemas $s_{1}$, $s_{2}$, and a test case $t$ ($s_{1} \preceq t$, $s_{2} \preceq t$), let $CMNS(s_{1}, t) \bigvee $ $CMNS(s_{2}, t)  = \{ s\ |\ s = s_{1}' \cup s_{2}',\ where\ s_{1}' \in CMNS(s_{1}, t),\ and\ s_{2}' \in CMNS(s_{2}, t) \}$.
 
-For example, let $t$ = \{$(p_{1},v_{1}), (p_{2}, v_{2}), (p_{3}, v_{3})$\}, $c_{1}$ = \{$(p_{1}$ $, v_{1}), (p_{2}, v_{2})$\}, $c_{2}$ = \{$(p_{2}, v_{2}), (p_{3}, v_{3})$\}. Then we have $CMNS$ $(c_{1}, t)$ = \{ \{$(p_{3}, v_{3})$\} \}, $CMNS(c_{2},$ $ t)$ = \{ \{$(p_{1}, v_{1})$\} \}, and  $CMNS(c_{1},$ $ t) \bigvee CMNS(c_{2}, t) = \{ \{(p_{1}, v_{1}), (p_{3}, v_{3})\} \} $. Based on this, we denote $CMNS(HSS,t)$ for a set of faulty schemas.
+For example, let $t$ = \{$(p_{1},v_{1}), (p_{2}, v_{2}), (p_{3}, v_{3})$\}, $s_{1}$ = \{$(p_{1}$ $, v_{1}), (p_{2}, v_{2})$\}, $s_{2}$ = \{$(p_{2}, v_{2}), (p_{3}, v_{3})$\}. Then we have $CMNS$ $(s_{1}, t)$ = \{ \{$(p_{3}, v_{3})$\} \}, $CMNS(s_{2},$ $ t)$ = \{ \{$(p_{1}, v_{1})$\} \}, and  $CMNS(s_{1},$ $ t) \bigvee CMNS(s_{2}, t) = \{ \{(p_{1}, v_{1}), (p_{3}, v_{3})\} \} $. Based on this, we denote $CMNS(HSS,t)$ for a set of faulty schemas.
 
 
 \begin{definition}
-Given a failing test case t = \{$(p_{1}, v_{1})$, $(p_{2}, $ $v_{2})$, ..., $(p_{n}, v_{n})$\}, and a set of healthy schemas HSS = \{$c_{1} , c_{2},$ $  ...c_{i}, ...$\}, where $ c_{i} \preceq t$, we denote the candidate minimal pending schema of this set as CMNS(HSS,t)= $ $ $\bigvee_{c_{i}\in HSS}$ $ CMNS(c_{i}, t)$.
+Given a test case $t$ = \{$(p_{1}, v_{1})$, $(p_{2}, $ $v_{2})$, ..., $(p_{n}, v_{n})$\}, and a set of schemas $HSS$ = \{$s_{1} , s_{2},$ $  ...s_{i}, ...$\}, where $ s_{i} \preceq t$, we denote the candidate minimal non-sub schema of this set as $CMNS(HSS,t)$=  $\bigvee_{s_{i}\in HSS}$ $ CMNS(s_{i}, t)$.
 \end{definition}
 
-Similar to CMXS(FSS,t), the complexity to obtain CMNS(HSS,t) is O($\tau^{|HSS|}$), where |HSS| is the number of healthy schemas in the schema set, and $\tau$ is the degree of the schema. With respect to CMNS(HSS,t), we have:
+Similar to $CMXS(FSS,t)$, the complexity to obtain $CMNS(HSS,t)$ is O($\tau^{|HSS|}$), where $|HSS|$ is the number of schemas in the schema set, and $\tau$ is the degree of the schema. With respect to $CMNS(HSS,t)$, we have:
 
-\begin{proposition}\label{pro:superofCMNS2}
-Given a failing test case t = \{$(p_{1}, v_{1})$, $(p_{2}, v_{2})$, ..., $(p_{n}, v_{n})$\}, and a set of healthy schemas HSS = \{$c_{1} , c_{2}, ... c_{i}, ...$\}, where $ c_{i} \preceq t$,  we have \{$c\ |\ c \prec t\ \&\&\ \forall c_{i} \in HSS, c \npreceq c_{i} $\} $=$  \{$ c\ |\ c \prec t \ \&\& \ \exists c_{1}' \in CMNS(HSS, t)$, $c_{1}' \preceq c$\}.
+\begin{proposition}[Not to be subschema of a set of schemas]\label{pro:superofCMNS2}
+Given a test case t = \{$(p_{1}, v_{1})$, $(p_{2}, v_{2})$, ..., $(p_{n}, v_{n})$\}, and a set of schemas $HSS$ = \{$s_{1} , s_{2}, ... s_{i}, ...$\}, where $s_{i} \preceq t$,  we have \{$s\ |\ s \preceq t\ \&\&\ \forall s_{i} \in HSS, s \npreceq s_{i} $\} $=$  \{$ s\ |\ s \preceq t \ \&\& \ \exists s_{1}' \in CMNS(HSS, t)$, $s_{1}' \preceq s$\}.
 \end{proposition}
 
 \begin{proof}
-We just need to prove that for two healthy schemas $c_{1}$, $c_{2}$, and a failing test case $t$ ($c_{1} \prec t$, $c_{2} \prec t$), we have \{$c\ |\ c \prec t\ \&\&\ \forall c_{i} \in \{c_{1}, c_{2}\}, c \npreceq c_{i} $\} $=$  \{$ c\ |\ c \prec t \ \&\&\  \exists c_{1}' \in CHFS(c_{1}, t)$ $ \bigvee CHFS(c_{2}, t)$, $c_{1}' \preceq c$\}.
+We just need to prove that for two schemas $s_{1}$, $s_{2}$, and a test case $t$ ($s_{1} \preceq t$, $s_{2} \preceq t$), we have \{$s\ |\ s \preceq t\ \&\&\ \forall s_{i} \in \{s_{1}, s_{2}\}, s \npreceq s_{i} $\} $=$  \{$ s\ |\ s \preceq t \ \&\&\  \exists s_{1}' \in CMNS(s_{1}, t)$ $ \bigvee CMNS(s_{2}, t)$, $s_{1}' \preceq s$\}.
 
-Let $A = $ \{$c\ |\ c \prec t\ \&\&\ \forall c_{i} \in \{c_{1}, c_{2}\}, c \npreceq c_{i} $\}, $A_{1}$ = \{$c\ |\ c \prec t\ \&\&\  c \npreceq c_{1} $\}, $A_{2}$ = \{$c\ |\ c \prec t\ \&\&\  c \npreceq c_{2} $\}. It is easily to get $A = A_{1} \bigcap A_{2}$.
+Let $A = $ \{$s\ |\ s \preceq t\ \&\&\ \forall s_{i} \in \{s_{1}, s_{2}\}, s \npreceq s_{i} $\}, $A_{1}$ = \{$s\ |\ s \preceq t\ \&\&\  s \npreceq s_{1} $\}, $A_{2}$ = \{$s\ |\ s \preceq t\ \&\&\  s \npreceq s_{2} $\}. It is easily to get $A = A_{1} \bigcap A_{2}$.
 
-Let $B = $ \{$ c\ |\ c \prec t \ \&\&\  \exists c_{1}' \in CHFS(c_{1}, t)$ $ \bigvee CHFS(c_{2}, t)$, $c \preceq c_{1}'$\}. Here,    $ CMXS(c_{1}, t) \bigvee CMXS(c_{2}, t) = \{ c\ |\ c = c_{1}' \cup c_{2}',\ where\ c_{1}' \in CMXS(c_{1}, t),\ and\ c_{2}' \in CMXS(c_{2}, t) \}$.
+Let $B = $ \{$ s\ |\ s \preceq t \ \&\&\  \exists s_{1}' \in CMNS(s_{1}, t)$ $ \bigvee CMNS(s_{2}, t)$, $s \preceq s_{1}'$\}. Here,    $ CMNS(s_{1}, t) \bigvee CMNS(s_{2}, t) = \{ s\ |\ s = s_{1}' \cup s_{2}',\ where\ s_{1}' \in CMNS(s_{1}, t),\ and\ s_{2}' \in CMNS(c_{2}, t) \}$.
 
-Let $B_{1} = $ \{$ c\ |\ c \prec t \ \&\&\  \exists c_{1}' \in CHFS(c_{1}, t)$, $c_{1}' \preceq c$\}, and $B_{2} = $ \{$ c\ |\ c \prec t \ \&\&\  \exists c_{2}' \in CHFS(c_{2}, t)$, $c_{2}' \preceq c$\}. $B_{1} \bigcap B_{2} = $ \{$ c\ |\ c \prec t \ \&\&\  \exists c_{1}' \in CHFS(c_{1}, t)$, $c_{1}' \preceq c$ \&\& $\exists c_{2}' \in CHFS(c_{2}, t)$, $c_{2}' \preceq c$\}. Note that, $c_{1}' \preceq c $ \&\& $c_{2}' \preceq c$ $\equiv$ $c_{1}' \cup c_{2}' \preceq c$. Hence, $B_{1} \bigcap B_{2} = $ \{$ c\ |\ c \preceq t \ \&\&\  \exists c_{1}', c_{2}',\  c_{1}' \in CHFS(c_{1}, t)$, and $c_{2}' \in CHFS(c_{2}, t)$, $ c_{1}' \cup c_{2}' \preceq c$ \} = B.
+Let $B_{1} = $ \{$ s\ |\ s \preceq t \ \&\&\  \exists s_{1}' \in CMNS(s_{1}, t)$, $s_{1}' \preceq s$\}, and $B_{2} = $ \{$ s\ |\ s \preceq t \ \&\&\  \exists s_{2}' \in CMNS(s_{2}, t)$, $s_{2}' \preceq s$\}. $B_{1} \bigcap B_{2} = $ \{$ s\ |\ s \preceq t \ \&\&\  \exists s_{1}' \in CMNS(s_{1}, t)$, $s_{1}' \preceq s$ \&\& $\exists s_{2}' \in CMNS(s_{2}, t)$, $s_{2}' \preceq s$\}. Note that, $s_{1}' \preceq s $ \&\& $s_{2}' \preceq s$ $\equiv$ $s_{1}' \cup s_{2}' \preceq s$. Hence, $B_{1} \bigcap B_{2} = $ \{$ s\ |\ s \preceq t \ \&\&\  \exists s_{1}', s_{2}',\  s_{1}' \in CMNS(s_{1}, t)$, and $s_{2}' \in CMNS(s_{2}, t)$, $ s_{1}' \cup s_{2}' \preceq s$ \} = B.
 
 Based on Proposition \ref{pro:superofCMNS}, $A_{1} = B_{1}$, $A_{2} = B_{2}$. Consequently,
 $A = A_{1} \bigcap A_{2}$ = $B_{1} \bigcap B_{2}$  = B.
@@ -767,9 +781,9 @@ $A = A_{1} \bigcap A_{2}$ = $B_{1} \bigcap B_{2}$  = B.
 
 \end{proof}
 
-Similar to Proposition \ref{pro:subofCMXS} and \ref{pro:subofCMXSfor2},  Proposition \ref{pro:superofCMNS2} extends Proposition \ref{pro:superofCMNS} from a single healthy schema to a set of healthy schemas.
+Similar to Proposition \ref{pro:subofCMXS} and \ref{pro:subofCMXSfor2},  Proposition \ref{pro:superofCMNS2} extends Proposition \ref{pro:superofCMNS} from a single  schema to a set of schemas.
 
-As an example, considering a failing test case $t$ -- \{($p_{1}$, 1),($p_{2}$, 1),($p_{3}$, 1),($p_{4}$, 1)\}, and a set of schema schemas  $HSS$ -- \{ \{($p_{1}$, 1),($p_{2}$, 1),($p_{3}$, 1)\},  \{($p_{3}$, 1),($p_{4}$, 1)\} \}. Table \ref{examleOfCMNSPro2} shows the schema set \{$c\ |\ c \prec t\ \&\&\ \forall c_{i} \in HSS, c \npreceq c_{i} $\}, $CMNS(HSS, t)$ and \{$ c\ |\ c \prec t \ \&\& \ \exists c_{1}' \in CMNS(HSS, t)$, $c_{1}' \preceq c$\}.
+As an example, considering a test case $t$ -- \{($p_{1}$, 1),($p_{2}$, 1),($p_{3}$, 1),($p_{4}$, 1)\}, and a set of schemas  $HSS$ -- \{ \{($p_{1}$, 1),($p_{2}$, 1),($p_{3}$, 1)\},  \{($p_{3}$, 1),($p_{4}$, 1)\} \}. Table \ref{examleOfCMNSPro2} shows the schema set \{$s\ |\ s \preceq t\ \&\&\ \forall s_{i} \in HSS, s \npreceq s_{i} $\}, $CMNS(HSS, t)$ and \{$ s\ |\ s \preceq t \ \&\& \ \exists s_{1}' \in CMNS(HSS, t)$, $s_{1}' \preceq s$\}.
 
 % Table generated by Excel2LaTeX from sheet 'Sheet3'
 
@@ -780,9 +794,9 @@ As an example, considering a failing test case $t$ -- \{($p_{1}$, 1),($p_{2}$, 1
   {\footnotesize
     \begin{tabular}{|c|c|c|c|}
     \hline
-  \textbf{  Test case $\textbf{t}$} & \textbf{ \{$\textbf{c}\ |\ \textbf{c} \prec \textbf{t}\ \&\&\ \forall \textbf{c}_{\textbf{i}} \in \textbf{HSS}, \textbf{c} \npreceq \textbf{c}_{\textbf{i}} $\} }& \textbf{  CMNS(HSS, t)} & \textbf{\{$ \textbf{c}\ |\ \textbf{c} \prec \textbf{t} \ \&\& \ \exists \textbf{c}_{\textbf{1}}' \in \textbf{CMNS(HSS, t)}$, $\textbf{c}_{\textbf{1}}' \preceq \textbf{c}$\}}\\\hline
+  \textbf{  Test case $\textbf{t}$} & \textbf{ \{$\textbf{s}\ |\ \textbf{s} \preceq \textbf{t}\ \&\&\ \forall \textbf{s}_{\textbf{i}} \in \textbf{HSS}, \textbf{s} \npreceq \textbf{s}_{\textbf{i}} $\} }& \textbf{  CMNS(HSS, t)} & \textbf{\{$ \textbf{s}\ |\ \textbf{s} \preceq \textbf{t} \ \&\& \ \exists \textbf{s}_{\textbf{1}}' \in \textbf{CMNS(HSS, t)}$, $\textbf{s}_{\textbf{1}}' \preceq \textbf{s}$\}}\\\hline
     \{($p_{1}$, 1),($p_{2}$, 1),($p_{3}$, 1),($p_{4}$, 1)\}  & \{($p_{1}$, 1),($p_{4}$, 1)\} & \{($p_{1}$, 1),($p_{4}$, 1)\} & \{($p_{1}$, 1),($p_{4}$, 1)\}\\ \cline{1-1}
-      \textbf{Healthy schema set HSS}  & \{($p_{2}$, 1),($p_{4}$, 1)\} & \{($p_{2}$, 1),($p_{4}$, 1)\} & \{($p_{2}$, 1),($p_{4}$, 1)\} \\\cline{1-1}
+      \textbf{Schema set HSS}  & \{($p_{2}$, 1),($p_{4}$, 1)\} & \{($p_{2}$, 1),($p_{4}$, 1)\} & \{($p_{2}$, 1),($p_{4}$, 1)\} \\\cline{1-1}
      \{($p_{1}$, 1),($p_{2}$, 1),($p_{3}$, 1)\}         &\{($p_{1}$, 1),($p_{2}$, 1),($p_{4}$, 1)\}  &  &  \{($p_{1}$, 1),$p_{2}$, 1),($p_{4}$, 1)\}   \\
      \{($p_{3}$, 1),($p_{4}$, 1)\}         &\{($p_{1}$, 1),($p_{3}$, 1),($p_{4}$, 1)\}    &  &  \{($p_{1}$, 1),($p_{3}$, 1),($p_{4}$, 1)\}  \\
                          &\{($p_{2}$, 1),($p_{3}$, 1),($p_{4}$, 1)\}   &  & \{($p_{2}$, 1),($p_{3}$, 1),($p_{4}$, 1)\}   \\ \hline
@@ -791,11 +805,13 @@ As an example, considering a failing test case $t$ -- \{($p_{1}$, 1),($p_{2}$, 1
 \end{table*}%
 
 
-Based on Proposition \ref{pro:subofCMXSfor2} and \ref{pro:superofCMNS2}, we can easily learn that \{$c\ |\ c \prec t\ \&\&\ \forall c_{i} \in FSS, c_{i} \npreceq c $\} $\bigcap$ \{$c\ |\ c \prec t\ \&\&\ \forall c_{i} \in HSS, c \npreceq c_{i} $\}  $=$  \{$ c\ |\ \exists c_{1}' \in CMXS(FSS, t)$, $c \preceq c_{1}'$\} $\bigcap$  \{$ c\ |\ c \prec t \ \&\& \ \exists c_{1}' \in CMNS(HSS, t)$, $c_{1}' \preceq c$\}. Considering $\forall c \in $\{$ c\ |\ \exists c_{1}' \in CMXS(FSS, t)$, $c \preceq c_{1}'$\}, $c \prec t$, we can transform the aforementioned formula into the following equation.
+Based on Proposition \ref{pro:subofCMXSfor2} and \ref{pro:superofCMNS2}, we can easily learn that \{$s\ |\ s \preceq t\ \&\&\ \forall s_{i} \in FSS, s_{i} \npreceq s $\} $\bigcap$ \{$s\ |\ s \preceq t\ \&\&\ \forall s_{i} \in HSS, s \npreceq s_{i} $\}  $=$  \{$ s\ |\ \exists s_{1}' \in CMXS(FSS, t)$, $s \preceq s_{1}'$\} $\bigcap$  \{$ s\ |\ s \preceq t \ \&\& \ \exists s_{1}' \in CMNS(HSS, t)$, $s_{1}' \preceq s$\}.  Considering $\forall s \in $\{$ s\ |\ \exists s_{1}' \in CMXS(FSS, t)$, $s \preceq s_{1}'$\}, $s \preceq t$, we have  \{$ s\ |\ \exists s_{1}' \in CMXS(FSS, t)$, $s \preceq s_{1}'$\} $\bigcap$  \{$ s\ |\ s \preceq t \ \&\& \ \exists s_{1}' \in CMNS(HSS, t)$, $s_{1}' \preceq s$\} =  \{$ s\ |\ \exists s_{1}' \in CMXS(FSS, t)$, $s \preceq s_{1}'$\} $\bigcap$  \{$ s\ | \exists s_{1}' \in CMNS(HSS, t)$, $s_{1}' \preceq s$\}.
 
-\{$c\ |\ c \prec t\ \&\&\ \forall c_{i} \in FSS, c _{i} \npreceq c \&\&\ \forall c_{i} \in HSS, c \npreceq c_{i}  $\} $=$  \{$ c\ |\ \exists c_{1}' \in CMXS(FSS, t)$, $c \preceq c_{1}'$ $\&\&$ $\exists c_{1}' \in CMNS(HSS, t)$, $c_{1}' \preceq c$\} $=$  \{$ c\ |\ \exists c_{1}' \in CMXS(FSS, t), c_{2}' \in CMXS(FSS, t)$, $c_{2}' \preceq c \preceq c_{1}'$ \}.
+Let $t$ be the failing test case, the passing test case set $PTS$ be the set of schemas $HSS$, the minimal faulty schemas $MFSS$ be the set of schemas $FSS$. Then we transform the aforementioned formula (Formula \ref{eq:pssfirst}) to be the following equation.
 
-Note that the leftmost side of this equation is identical to Formula \ref{eq:pssfirst}, hence, we can learn that
+\{$s\ |\ s \preceq t\ \&\&\ \forall t_{i} \in PTS, s \npreceq t_{i} \&\&\ \forall m \in MFSS, m \npreceq s   $\} $=$  \{$ s\ |\ $ $\exists s_{1}' \in CMNS(PTS, t)$, $s_{1}' \preceq s$  $\&\&$ $\exists s_{1}' \in CMXS(MFSS, t)$, $s \preceq s_{1}'$  \} $=$  \{$ s\ |\ \exists s_{1}' \in CMNS(PTS, t), s_{2}' \in CMXS(MFSS, t)$, $s_{1}' \preceq s \preceq s_{2}'$ \}.
+
+At last, we can learn that the pending schemas set is equal to the following formula.
 
 %\begin{equation}\label{eq:psssecond}
 %\begin{aligned}
@@ -809,7 +825,7 @@ Note that the leftmost side of this equation is identical to Formula \ref{eq:pss
 
 \begin{equation}\label{eq:psssecond}
 \begin{aligned}
-PSS =  \{ c\ |\ \exists c_{1}' \in CMXS(FSS, t), c_{2}' \in CMNS(HSS, t),  c_{2}' \preceq c \preceq c_{1}' \}.
+PSS =  \{ s\ |\ \exists s_{1}' \in CMNS(PTS, t), s_{2}' \in CMXS(MFSS, t),  s_{1}' \preceq s \preceq s_{2}' \}.
 \end{aligned}
 %PSS = \{ c\ |\ \exists c_{1}' \in CMNS(HSS, t), c_{1}' \preceq c \&\& \exists c_{1}' \in CMNS(HSS, t), c_{1}' \preceq c\}.
 \end{equation}
