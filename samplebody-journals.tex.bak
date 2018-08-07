@@ -430,7 +430,7 @@ Proposition \ref{pro:determinableparthealthyfaulty} tells that if given a set of
 
 \begin{equation}
 \begin{aligned}\label{eq:dss}
-DSS=\{ s | \exists t \in PTS,  s \preceq t  \ || \  \exists m \in MFSS, m \preceq s \} .
+DSS=\{ s\ |\ \exists t \in PTS,  s \preceq t  \ || \  \exists m \in MFSS, m \preceq s \} .
 \end{aligned}
 \end{equation}
 %
@@ -519,7 +519,7 @@ The proof of this proposition is omitted (can be easily deduced based on Proposi
 
 \begin{equation}
 \begin{aligned}\label{eq:pss}
-PSS=\{ s | \forall t \in PTS,  s \npreceq t  \ \&\& \  \forall m \in MFSS, m \npreceq s \}.
+PSS=\{ s\ |\ \forall t \in PTS,  s \npreceq t  \ \&\& \  \forall m \in MFSS, m \npreceq s \}.
 \end{aligned}
 \end{equation}
 
@@ -551,7 +551,7 @@ We will settle this problem step by step.  According to Formula \ref{eq:pss}, we
 % and \ref{pro:superoffaulty}, it is easy to find that, the pending schemas set PSS should be the following set
 \begin{equation}
 \begin{aligned}\label{eq:pssfirst}
-PSS=\{ s | s \preceq t\ \&\&\ \forall m \in MFSS,  m \npreceq c  \ \&\&\  \forall t_{i} \in PTS, s \npreceq t_{i} \} .
+PSS=\{ s\ |\ s \preceq t\ \&\&\ \forall m \in MFSS,  m \npreceq s  \ \&\&\  \forall t_{i} \in PTS, s \npreceq t_{i} \} .
 \end{aligned}
 \end{equation}
 
@@ -563,15 +563,87 @@ However, to directly utilize Formula \ref{eq:pssfirst} is not practical to obtai
 
 The first step is to reduce the space of checking faulty schemas and passing test cases. Let $MFSS_{t}$ be the minimal faulty schemas that are the subschemas of test case $t$. That is, $MFSS^{t}$ = $\{ s\ | \ s \in MFSS, s \preceq t \}$. Let $MFSS^{t\circ}$ = $MFSS \backslash MFSS^{t}$. It is obvious that the complexity of obtaining $MFSS^{t}$ from $MFSS$ is $O(|MFSS|)$.
 
-Let $PTS^{t}$ be the schemas that are intersection subschemas between each test case in $PTS$ and test case $t$ and the subschemas of at least one schema in $PTS$. That is, $PTS^{t}$ = $\{ s\ | \exists s' \in PTS, s \preceq s' \&\& s \preceq t \}$. Note that to obtain $PTS^{t}$ from $PTS$, the complexity is $O(|PTS|)$.
+Let $PTS^{t}$ be the schemas that are intersection subschemas between each test case in $PTS$ and test case $t$. That is, $PTS^{t}$ = $\{ s\ | t' \cap t, t' \in PTS \}$. Note that to obtain $PTS^{t}$ from $PTS$, the complexity is $O(|PTS|)$.  Let $PTS^{t\bigtriangleup}$ be the maximal schemas in $PTS^{t}$. That is, $PTS^{t\bigtriangleup}$ = $\{ s\ |  s \in PTS^{t} \&\& \nexists s'  \in PTS^{t}, s \prec s' \}$.  It is also easy to obtain $PTS^{t\bigtriangleup}$ from $PTS$ with complexity of $O(|PTS|^{2})$.
 
- Let $PTS^{t\bigtriangleup}$ be the maximal schemas that are both the subschemas of test case $t$ and the subschemas of at least one schema in $PTS$. That is, $PTS^{t\bigtriangleup}$ = $\{ s\ |  s \in PTS^{t} \&\& \nexists s'  \in PTS^{t}, s \prec s' \}$.
+We have the following propositions.
+
+\begin{proposition}\label{pro:mfssintequal}
+Let schema set $A$ = $\{ s\ |\ s \preceq t\ \&\&\ \forall m \in MFSS,  m \npreceq s \}$,  schema set $B$ = $\{ s\ |\ s \preceq t\ \&\&\ \forall m \in MFSS^{t},  m \npreceq s \}$. Then we have $A = B$.
+\end{proposition}
+
+\begin{proof}
+
+A = $\{ s\ |\  s \preceq t\ \&\&\ \forall m \in MFSS,  m \npreceq s \}$
+ =
+$\{ s\ |\  s \preceq t\ \&\&\ \forall m \in MFSS^{t},  m \npreceq s \&\&\   \forall m \in MFSS^{\circ},  m \npreceq s  \}$
+
+Since $MFSS^{t\circ}$ = $MFSS \backslash MFSS^{t}$ = $\{ m \ | \ m \in MFSS, m \npreceq t \}$.
+Hence, $\forall s \preceq t, m \in MFSS^{t\circ},  m \npreceq s$ (Otherwise, $m \preceq s \preceq t$, which is contradiction).
+
+Since the condition $\forall s \preceq t, \forall m \in MFSS^{\circ},  m \npreceq s $ always hold, hence,  A =
+$\{ s\ |\  s \preceq t\ \&\&\ \forall m \in MFSS^{t},  m \npreceq s \&\&\   \forall m \in MFSS^{\circ},  m \npreceq s  \}$  =
+$\{ s\ |\  s \preceq t\ \&\&\ \forall m \in MFSS^{t},  m \npreceq s \}$ = B.
+\end{proof}
+
+\begin{proposition}\label{pro:healthysintequal}
+Let schema set $A$ = $\{ s\ |\ s \preceq t\ \&\&\  \forall t_{i} \in PTS, s \npreceq t_{i} \} $,  schema set $B$ = $\{ s\ |\ s \preceq t\ \&\&\ \forall p \in PTS^{t}, s \npreceq p \}$. Then we have $A = B$.
+\end{proposition}
+
+\begin{proof}
+Note that $PTS^{t}$ = $\{ s\ |\exists t' \in PTS, s =  t' \cap t \}$, and we have $\forall s \in PTS^{t}, s \preceq t \&\& \exists t' \in PTS, s \preceq t'$.
+
+We first prove that $A \subseteq B$. Note for each $s \in A$, we have $s \preceq t \&\& \forall t_{i} \in PTS, s \npreceq t_{i}$. We assume that $\exists s \in A, \exists s' \in PTS^{t}, s \preceq s'$. For $s'$, $\exists t' \in PTS, s' \preceq t'$. Hence, $s  \preceq s' \preceq t'$. This is contradiction. Hence the assumption does not hold, indicating that $\forall s \in A, \forall s' \in PTS^{t}, s \npreceq s' \&\& s \preceq t$. That is $\forall s \in A$, $s \in B$. Hence, $A \subseteq B$.
+
+Next we prove that $B \subseteq A$. Since $\forall s \in B$, we have $s \preceq t \&\& \forall t_{i} \in  PTS^{t}, s \npreceq t_{i}$. We assume that $\exists s \in B, \exists t' \in PTS, s \preceq t'$. Also $s \preceq t$, which indicates that $s \preceq (t \cap t')$.  Since $(t \cap t') \in PTS^{t} $, $\exists s \in B, \exists t_{i} \in PTS^{t}, s \preceq t_{i}$. This is contradiction, indicating that  $\forall s \in B, \forall t' \in PTS, s \npreceq t' \&\& s \preceq t$. That is, $\forall s \in B$, $s \in A$. Hence, $B \subseteq A$.
+
+Since we have $A \subseteq B$ and $B \subseteq A$, we have $A = B$.
+\end{proof}
+
+\begin{proposition}\label{pro:healthysintequal2}
+Let schema set $A$ = $\{ s\ |\ s \preceq t\ \&\&\ \forall p \in PTS^{t}, s \npreceq p \}$, schema set $B$ = $\{ s\ |\ s \preceq t\ \&\&\ \forall p \in PTS^{t\bigtriangleup}, s \npreceq p \}$. Then we have $A = B$.
+\end{proposition}
+
+\begin{proof}
+
+\end{proof}
+
+
+
+With these two set of schemas, we can obtain the second formula to compute the pending schemas in a failing test case $t$, which is listed in the following.
 
 \begin{equation}
 \begin{aligned}\label{eq:pssfirst_mutated}
-PSS=\{ s | s \preceq t\ \&\&\ \forall m \in MFSS^{t},  m \npreceq c  \ \&\&\  \forall p \in PTS^{t\bigtriangleup}, s \npreceq p \} .
+PSS=\{ s\ |\ s \preceq t\ \&\&\ \forall m \in MFSS^{t},  m \npreceq s  \ \&\&\  \forall p \in PTS^{t\bigtriangleup}, s \npreceq p \} .
 \end{aligned}
 \end{equation}
+
+%\begin{proof}
+%
+%Let A = $\{ s\ |\  s \preceq t\ \&\&\ \forall m \in MFSS,  m \npreceq s \}$, B = $ \{ s\ |\ s \preceq t\ \&\&  \forall t_{i} \in PTS, s \npreceq t_{i} \} $. Obviously, PSS = A $\cap$ B.
+%
+%A = $\{ s\ |\  s \preceq t\ \&\&\ \forall m \in MFSS,  m \npreceq s \}$
+% =
+%$\{ s\ |\  s \preceq t\ \&\&\ \forall m \in MFSS^{t},  m \npreceq s \&\&\   \forall m \in MFSS^{\circ},  m \npreceq s  \}$
+%
+%Since $MFSS^{t\circ}$ = $MFSS \backslash MFSS^{t}$ = $\{ m \ | \ m \in MFSS, m \npreceq t \}$.
+%Hence, $\forall s \preceq t, m \in MFSS^{t\circ},  m \npreceq s$ (Otherwise, $m \preceq s \preceq t$, which is contradiction).
+%
+%Since the condition $\forall s \preceq t, \forall m \in MFSS^{\circ},  m \npreceq s $ always hold, hence,  A =
+%$\{ s\ |\  s \preceq t\ \&\&\ \forall m \in MFSS^{t},  m \npreceq s \&\&\   \forall m \in MFSS^{\circ},  m \npreceq s  \}$  =
+%$\{ s\ |\  s \preceq t\ \&\&\ \forall m \in MFSS^{t},  m \npreceq s \}$
+%
+%Next, we will prove the set B equals to the set B' = $ \{ s\ |\ s \preceq t\ \&\&  \forall t_{i} \in  PTS^{t\bigtriangleup}, s \npreceq t_{i} \} $. Note that $PTS^{t}$ = $\{ s\ | t' \cap t, t' \in PTS \}$, and we have $\forall s \in PTS^{t}, s \preceq t \&\& \exists t' \in PTS, s \preceq t'$.
+%
+%We first prove that $B \subseteq B'$. Note for each $s \in B$, we have $s \preceq t \&\& \forall t_{i} \in PTS, s \npreceq t_{i}$. We assume that $\exists s \in B, \exists s' \in PTS^{t}, s \preceq s'$. For $s'$, $\exists t' \in PTS, s' \preceq t'$. Hence, $s  \preceq s' \preceq t'$. This is contradiction. Hence the assumption does not hold, indicating that $\forall s \in B, \forall s' \in PTS^{t}, s \npreceq s' \&\& s \preceq t$. That is $\forall s \in B$, $s \in B'$. Hence, $B \subseteq B'$.
+%
+%Next we prove that $B' \subseteq B$. Since $\forall s \in B'$, we have $s \preceq t \&\& \forall t_{i} \in  PTS^{t}, s \npreceq t_{i}$. We assume that $\exists s \in B', \exists t' \in PTS, s \preceq t'$. Also $s \preceq t$, which indicates that $s \preceq (t \cap t')$.  Since $(t \cap t') \in PTS^{t} $, $\exists s \in B', \exists t_{i} \in PTS^{t}, s \preceq t_{i}$. This is contradiction, indicating that  $\forall s \in B', \forall t' \in PTS, s \npreceq t' \&\& s \preceq t$. That is, $\forall s \in B'$, $s \in B$. Hence, $B' \subseteq B$.
+%
+%Since we have $B \subseteq B'$ and $B' \subseteq B$, we have $B = B'$.
+%
+%At last, PSS = $A \cap B$ = $\{ s\ |\  s \preceq t\ \&\&\ \forall m \in MFSS^{t},  m \npreceq s \}$ $\cap$  $ \{ s\ |\ s \preceq t\ \&\&  \forall t_{i} \in  PTS^{t\bigtriangleup}, s \npreceq t_{i} \} $ =
+% $ \{ s\ |\ s \preceq t\ \&\&  \forall m \in MFSS^{t},  m \npreceq s  \ \&\&\  \forall t_{i} \in  PTS^{t\bigtriangleup}, s \npreceq t_{i} \} $
+%
+%\end{proof}
 
 
 
