@@ -561,11 +561,11 @@ PSS=\{ s\ |\ s \preceq t\ \&\&\ \forall m \in MFSS,  m \npreceq s  \ \&\&\  \for
 %To obtain one pending schema, we just need to select one schema which satisfies $ c \in PSS$.
 However, to directly utilize Formula \ref{eq:pssfirst} is not practical to obtain the pending schemas, because in the worst case it needs to check every schema in a test case $t$. Note that the number of schemas in $t$ is $2^{n} - 1$, where $n$ is the number of factors in this test case. For each schema we need to check whether it is the sub-schemas of any test case in $PSS$ (the number of the test cases in $PTS$ is |$PTS$|). We also need to check whether it is the super-schemas of any faulty schemas in $MFSS$ (the number of the faulty schemas in $MFSS$ is |$MFSS$|). As a result, the complexity of directly utilizing Formula \ref{eq:pssfirst} is $2^{n} \times |PTS| \times |MFSS|$, which is infeasible to handle when $n$ is large. Hence, we need to find another formula which is equivalent to Formula \ref{eq:pssfirst}, but with much lower complexity.
 
-The first step is to reduce the space of checking faulty schemas and passing test cases. Let $MFSS_{t}$ be the minimal faulty schemas that are the subschemas of test case $t$. That is, $MFSS^{t}$ = $\{ s\ | \ s \in MFSS, s \preceq t \}$. Let $MFSS^{t\circ}$ = $MFSS \backslash MFSS^{t}$. It is obvious that the complexity of obtaining $MFSS^{t}$ from $MFSS$ is $O(|MFSS|)$.
+Our first step is to reduce the number of minimal faulty schemas to be checked for a pending schemas.  For this, let $MFSS_{t}$ be the minimal faulty schemas that are the subschemas of test case $t$. That is, $MFSS^{t}$ = $\{ s\ | \ s \in MFSS, s \preceq t \}$.  It is obvious that the complexity of obtaining $MFSS^{t}$ from $MFSS$ is $O(|MFSS|)$.
 
-Let $PTS^{t}$ be the schemas that are intersection subschemas between each test case in $PTS$ and test case $t$. That is, $PTS^{t}$ = $\{ s\ | t' \cap t, t' \in PTS \}$. Note that to obtain $PTS^{t}$ from $PTS$, the complexity is $O(|PTS|)$.  Let $PTS^{t\bigtriangleup}$ be the maximal schemas in $PTS^{t}$. That is, $PTS^{t\bigtriangleup}$ = $\{ s\ |  s \in PTS^{t} \&\& \nexists s'  \in PTS^{t}, s \prec s' \}$.  It is also easy to obtain $PTS^{t\bigtriangleup}$ from $PTS$ with complexity of $O(|PTS|^{2})$.
+%Let $MFSS^{t\circ}$ = $MFSS \backslash MFSS^{t}$.
 
-We have the following propositions.
+%We have the following propositions.
 
 \begin{proposition}\label{pro:mfssintequal}
 Let schema set $A$ = $\{ s\ |\ s \preceq t\ \&\&\ \forall m \in MFSS,  m \npreceq s \}$,  schema set $B$ = $\{ s\ |\ s \preceq t\ \&\&\ \forall m \in MFSS^{t},  m \npreceq s \}$. Then we have $A = B$.
@@ -575,15 +575,23 @@ Let schema set $A$ = $\{ s\ |\ s \preceq t\ \&\&\ \forall m \in MFSS,  m \nprece
 
 A = $\{ s\ |\  s \preceq t\ \&\&\ \forall m \in MFSS,  m \npreceq s \}$
  =
-$\{ s\ |\  s \preceq t\ \&\&\ \forall m \in MFSS^{t},  m \npreceq s \&\&\   \forall m \in MFSS^{\circ},  m \npreceq s  \}$
+$\{ s\ |\  s \preceq t\ \&\&\ \forall m \in MFSS^{t},  m \npreceq s \&\&\   \forall m \in MFSS \backslash MFSS^{t},  m \npreceq s  \}$
 
-Since $MFSS^{t\circ}$ = $MFSS \backslash MFSS^{t}$ = $\{ m \ | \ m \in MFSS, m \npreceq t \}$.
-Hence, $\forall s \preceq t, m \in MFSS^{t\circ},  m \npreceq s$ (Otherwise, $m \preceq s \preceq t$, which is contradiction).
+Since $MFSS \backslash MFSS^{t}$ = $\{ m \ | \ m \in MFSS, m \npreceq t \}$.
 
-Since the condition $\forall s \preceq t, \forall m \in MFSS^{\circ},  m \npreceq s $ always hold, hence,  A =
-$\{ s\ |\  s \preceq t\ \&\&\ \forall m \in MFSS^{t},  m \npreceq s \&\&\   \forall m \in MFSS^{\circ},  m \npreceq s  \}$  =
+Hence, $\forall s \preceq t, m \in MFSS \backslash MFSS^{t},  m \npreceq s$ (Otherwise, $m \preceq s \preceq t$, which is contradiction).
+
+Since the condition $\forall s \preceq t, \forall m \in MFSS \backslash MFSS^{t},  m \npreceq s $ does always hold, therefore, A =
+$\{ s\ |\  s \preceq t\ \&\&\ \forall m \in MFSS^{t},  m \npreceq s \&\&\   \forall m \in MFSS \backslash MFSS^{t},  m \npreceq s  \}$  =
 $\{ s\ |\  s \preceq t\ \&\&\ \forall m \in MFSS^{t},  m \npreceq s \}$ = B.
 \end{proof}
+
+With this proposition, we only need to focus on the minimal faulty schemas that only contained in the failing test case $t$ instead of all the possible minimal faulty schemas to obtain the pending schemas. %hence, reduce the number of faulty schemas.
+
+Next, we consider to reduce the checking number of passing test cases.
+
+Let $PTS^{t}$ be the schemas that are intersection subschemas between each test case in $PTS$ and test case $t$. That is, $PTS^{t}$ = $\{ s\ | t' \cap t, t' \in PTS \}$. Note that to obtain $PTS^{t}$ from $PTS$, the complexity is $O(|PTS|)$.  Let $PTS^{t\bigtriangleup}$ be the maximal schemas in $PTS^{t}$. That is, $PTS^{t\bigtriangleup}$ = $\{ s\ |  s \in PTS^{t} \&\& \nexists s'  \in PTS^{t}, s \prec s' \}$.  It is also easy to obtain $PTS^{t\bigtriangleup}$ from $PTS$ with complexity of $O(|PTS|^{2})$.
+
 
 \begin{proposition}\label{pro:healthysintequal}
 Let schema set $A$ = $\{ s\ |\ s \preceq t\ \&\&\  \forall t_{i} \in PTS, s \npreceq t_{i} \} $,  schema set $B$ = $\{ s\ |\ s \preceq t\ \&\&\ \forall p \in PTS^{t}, s \npreceq p \}$. Then we have $A = B$.

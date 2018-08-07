@@ -585,6 +585,8 @@ $\{ s\ |\  s \preceq t\ \&\&\ \forall m \in MFSS^{t},  m \npreceq s \&\&\   \for
 $\{ s\ |\  s \preceq t\ \&\&\ \forall m \in MFSS^{t},  m \npreceq s \}$ = B.
 \end{proof}
 
+This proposition helps to focus on the minimaly faulty schemas that only contained in the failing test case $t$.
+
 \begin{proposition}\label{pro:healthysintequal}
 Let schema set $A$ = $\{ s\ |\ s \preceq t\ \&\&\  \forall t_{i} \in PTS, s \npreceq t_{i} \} $,  schema set $B$ = $\{ s\ |\ s \preceq t\ \&\&\ \forall p \in PTS^{t}, s \npreceq p \}$. Then we have $A = B$.
 \end{proposition}
@@ -605,6 +607,15 @@ Let schema set $A$ = $\{ s\ |\ s \preceq t\ \&\&\ \forall p \in PTS^{t}, s \npre
 
 \begin{proof}
 
+First, we will prove $A \subseteq B$.
+
+Since $PTS^{t\bigtriangleup} \subseteq PTS^{t}$, we have $  \{ s | \forall p \in PTS^{t}, s \npreceq p \} =  \{ s | \forall p \in PTS^{t\bigtriangleup}, s \npreceq p \ \&\& \  \forall p \in PTS^{t} \backslash PTS^{t\bigtriangleup}, s \npreceq p \} \subseteq \{ s | \forall p \in PTS^{t\bigtriangleup}, s \npreceq p \}$. Hence,  $\{ s\ |\ s \preceq t\ \&\&\ \forall p \in PTS^{t}, s \npreceq p \} \subseteq  \{ s\ |\ s \preceq t\ \&\&\ \forall p \in PTS^{t\bigtriangleup}, s \npreceq p \}$. That is,  $A \subseteq B$.
+
+Next, we will prove $B \subseteq A$.
+
+We assume that  $\exists s \in  \{ s | \forall p \in PTS^{t\bigtriangleup}, s \npreceq p \}$, $ s \notin \{ s | \forall p \in PTS^{t}, s \npreceq p \}$. It indicates that $\exists p' \in PTS^{t}, s \preceq p'$. Since $p' \in PTS^{t}$, $\exists p'' \in PTS^{t\bigtriangleup}, p' \preceq p''$. It has $s \preceq p' \preceq p''$. This is contradiction.  Hence, the assumption does not hold, indicating that $\forall s \in  \{ s | \forall p \in PTS^{t\bigtriangleup}$, $s \in  \{ s | \forall p \in PTS^{t}, s \npreceq p \}$. Hence, $\{ s | \forall p \in PTS^{t\bigtriangleup}$ $\subseteq$ $\{ s | \forall p \in PTS^{t}, s \npreceq p \}$. Therefore, $\{ s\ |\ s \preceq t\ \&\&\ \forall p \in PTS^{t\bigtriangleup}, s \npreceq p \}$ $\subseteq$ $\{ s\ |\ s \preceq t\ \&\&\ \forall p \in PTS^{t}, s \npreceq p \} $. That is $B \subseteq A$.
+
+As we have shown B $\subseteq$ A, and A $\subseteq$ B, so A = B.
 \end{proof}
 
 
@@ -617,33 +628,15 @@ PSS=\{ s\ |\ s \preceq t\ \&\&\ \forall m \in MFSS^{t},  m \npreceq s  \ \&\&\  
 \end{aligned}
 \end{equation}
 
-%\begin{proof}
-%
-%Let A = $\{ s\ |\  s \preceq t\ \&\&\ \forall m \in MFSS,  m \npreceq s \}$, B = $ \{ s\ |\ s \preceq t\ \&\&  \forall t_{i} \in PTS, s \npreceq t_{i} \} $. Obviously, PSS = A $\cap$ B.
-%
-%A = $\{ s\ |\  s \preceq t\ \&\&\ \forall m \in MFSS,  m \npreceq s \}$
-% =
-%$\{ s\ |\  s \preceq t\ \&\&\ \forall m \in MFSS^{t},  m \npreceq s \&\&\   \forall m \in MFSS^{\circ},  m \npreceq s  \}$
-%
-%Since $MFSS^{t\circ}$ = $MFSS \backslash MFSS^{t}$ = $\{ m \ | \ m \in MFSS, m \npreceq t \}$.
-%Hence, $\forall s \preceq t, m \in MFSS^{t\circ},  m \npreceq s$ (Otherwise, $m \preceq s \preceq t$, which is contradiction).
-%
-%Since the condition $\forall s \preceq t, \forall m \in MFSS^{\circ},  m \npreceq s $ always hold, hence,  A =
-%$\{ s\ |\  s \preceq t\ \&\&\ \forall m \in MFSS^{t},  m \npreceq s \&\&\   \forall m \in MFSS^{\circ},  m \npreceq s  \}$  =
-%$\{ s\ |\  s \preceq t\ \&\&\ \forall m \in MFSS^{t},  m \npreceq s \}$
-%
-%Next, we will prove the set B equals to the set B' = $ \{ s\ |\ s \preceq t\ \&\&  \forall t_{i} \in  PTS^{t\bigtriangleup}, s \npreceq t_{i} \} $. Note that $PTS^{t}$ = $\{ s\ | t' \cap t, t' \in PTS \}$, and we have $\forall s \in PTS^{t}, s \preceq t \&\& \exists t' \in PTS, s \preceq t'$.
-%
-%We first prove that $B \subseteq B'$. Note for each $s \in B$, we have $s \preceq t \&\& \forall t_{i} \in PTS, s \npreceq t_{i}$. We assume that $\exists s \in B, \exists s' \in PTS^{t}, s \preceq s'$. For $s'$, $\exists t' \in PTS, s' \preceq t'$. Hence, $s  \preceq s' \preceq t'$. This is contradiction. Hence the assumption does not hold, indicating that $\forall s \in B, \forall s' \in PTS^{t}, s \npreceq s' \&\& s \preceq t$. That is $\forall s \in B$, $s \in B'$. Hence, $B \subseteq B'$.
-%
-%Next we prove that $B' \subseteq B$. Since $\forall s \in B'$, we have $s \preceq t \&\& \forall t_{i} \in  PTS^{t}, s \npreceq t_{i}$. We assume that $\exists s \in B', \exists t' \in PTS, s \preceq t'$. Also $s \preceq t$, which indicates that $s \preceq (t \cap t')$.  Since $(t \cap t') \in PTS^{t} $, $\exists s \in B', \exists t_{i} \in PTS^{t}, s \preceq t_{i}$. This is contradiction, indicating that  $\forall s \in B', \forall t' \in PTS, s \npreceq t' \&\& s \preceq t$. That is, $\forall s \in B'$, $s \in B$. Hence, $B' \subseteq B$.
-%
-%Since we have $B \subseteq B'$ and $B' \subseteq B$, we have $B = B'$.
-%
-%At last, PSS = $A \cap B$ = $\{ s\ |\  s \preceq t\ \&\&\ \forall m \in MFSS^{t},  m \npreceq s \}$ $\cap$  $ \{ s\ |\ s \preceq t\ \&\&  \forall t_{i} \in  PTS^{t\bigtriangleup}, s \npreceq t_{i} \} $ =
-% $ \{ s\ |\ s \preceq t\ \&\&  \forall m \in MFSS^{t},  m \npreceq s  \ \&\&\  \forall t_{i} \in  PTS^{t\bigtriangleup}, s \npreceq t_{i} \} $
-%
-%\end{proof}
+\begin{proof}
+
+Let A = $\{ s\ |\  s \preceq t\ \&\&\ \forall m \in MFSS,  m \npreceq s \}$, B = $ \{ s\ |\ s \preceq t\ \&\&  \forall p \in PTS, s \npreceq p \} $. Obviously, PSS = $A \cap B$.
+
+According to Proposition \ref{pro:mfssintequal}, A = $\{ s\ |\  s \preceq t\ \&\&\ \forall m \in MFSS^{t},  m \npreceq s \}$.
+According to Proposition \ref{pro:healthysintequal} and Proposition \ref{pro:healthysintequal2}, B = $\{ s\ |\  s \preceq t\ \&\&\ \forall p \in PTS^{t},  s \npreceq p \}$ = $\{ s\ |\  s \preceq t\ \&\&\ \forall p \in PTS^{t\bigtriangleup},  s \npreceq p \}$.
+
+Hence, $PSS$ = $A \cap B$ = $\{ s\ |\  s \preceq t\ \&\&\ \forall m \in MFSS^{t},  m \npreceq s \}$ $\cap$ $\{ s\ |\  s \preceq t\ \&\&\ \forall p \in PTS^{t\bigtriangleup},  s \npreceq p \}$ = $\{ s\ |\ s \preceq t\ \&\&\ \forall m \in MFSS^{t},  m \npreceq s  \ \&\&\  \forall p \in PTS^{t\bigtriangleup}, s \npreceq p \}$.
+\end{proof}
 
 
 
@@ -904,67 +897,67 @@ PSS =  \{ s\ |\ \exists s_{1}' \in CMNS(PTS, t), s_{2}' \in CMXS(MFSS, t),  s_{1
 
 According to Formula \ref{eq:psssecond}, the complexity of obtaining one pending schema is O($ \tau^{|FSS|} \times \tau^{|HSS|}$). This is because to obtain one pending schema, we only need to search the schemas in $CMXS(FSS, t)$ and $CMNS(HSS, t)$, of which the complexity are O($\tau^{|FSS|}$) and O($\tau^{|HSS|}$), respectively. Then we need to check each pair of schemas in these two sets, to find whether exists $c_{1} \in CMXS(FSS, t)$, $c_{2} \in CMNS(HSS, t)$, such that $c_{2} \preceq c_{1}$. If so, then both $c_{2}$ and $c_{1}$ satisfy Formula \ref{eq:psssecond}. Furthermore, $\forall c_{3}, c_{2} \preceq c_{3} \preceq c_{1}$, $c_{3}$ also satisfy Formula \ref{eq:psssecond}. Hence, the complexity of obtaining one pending schema is O($\tau^{|FSS|} \times \tau^{|HSS|}$).
 
-In fact, we can further reduce the complexity of obtaining pending schemas. When given a set of schemas $S$, let the minimal schemas as $S^{\bot } = \{ c | c \in S, \nexists c' \in S, c' \prec c \}$ and the maximal schemas as $S^{\top } = \{ c | c \in S, \nexists c' \in S, c \prec c' \}$. Based on this, we can have the following proposition:
-
-\begin{proposition}\label{pro:identicialPending}
-Given a failing test case $t$, a set of faulty schemas $FSS$, and a set of healthy schemas $HSS$, we have \{$ c\ |\ \exists c_{1}' \in CMXS(FSS^{\bot}, t)$, $ c_{2}' \in CMNS($ $HSS^{\top}, t)$, $c_{2}' \preceq c \preceq c_{1}'$ \} $=$  \{$ c\ |\ \exists c_{1}' \in CMXS(FSS, t)$, $c_{1}' \in CMNS(HSS, t)$, $c_{2}' \preceq c \preceq c_{1}'$ \}.
-\end{proposition}
-
-\begin{proof}
-Let A = \{$ c\ |\ \exists c_{1}' \in CMXS(FSS^{\bot}, t)$, $c_{2}' \in $ $CMNS$ $(HSS^{\top}, t)$, $c_{2}' \preceq c \preceq c_{1}'$\}.
-
-
-Let B =  \{$ c\ |\ \exists c_{1}' \in CMXS(FSS, t)$, $c_{2}' \in CMNS($ $HSS, t)$, $c_{2}' \preceq c \preceq c_{1}'$ \}.
-
-
-Based on Proposition \ref{pro:subofCMXSfor2} and \ref{pro:superofCMNS2}:
-
-A = \{$c\ |\ c \prec t\ \&\&\ \forall c_{i} \in FSS^{\bot}, c _{i} \npreceq c \ \&\&\  \forall c_{i} \in HSS^{\top}, c \npreceq c_{i}  $\}.
-
-B = \{$c\ |\ c \prec t\ \&\&\ \forall c_{i} \in FSS, c _{i} \npreceq c \ \&\&\  \forall c_{i} \in HSS, c \npreceq c_{i}  $\}.
-
-
-First we will prove B $\subseteq$ A.
-
-As $FSS^{\bot} \subseteq FSS,\ HSS^{\top} \subseteq HSS$, \{ $c\ |\ \forall c_{i} \in FSS, c_{i} \npreceq c $\}  $\subseteq$  \{ $c\ |\ \forall c_{i} \in FSS^{\bot}, c_{i} \npreceq c $\} and \{ $c\ |\ \forall c_{i} \in HSS, c \npreceq c_{i} $\}  $\subseteq$  \{ $c\ |\ \forall c_{i} \in HSS^{\top}, c \npreceq c_{i} $\}. Hence, \{$c\ |\ c \prec t\ \&\&\ \forall c_{i} \in FSS, c _{i} \npreceq c \ \&\&\  \forall c_{i} \in HSS, c \npreceq c_{i}  $\}  $\subseteq$ \{$c\ |\ c \prec t\ \&\&\ \forall c_{i} \in FSS^{\bot}, c _{i} \npreceq c \ \&\&\  \forall c_{i} \in HSS^{\top}, c \npreceq c_{i}  $\}. That is  $B \subseteq A$.
-
-Next we will prove A $\subseteq$ B.
-
-Note that  $\forall c \prec t$, if $\forall c_{i} \in FSS^{\bot}, c_{i} \npreceq c$, it must have $\forall c_{i}' \in FSS, c_{i}' \npreceq c$. Because if not so, then $\exists c_{i}' \in FSS, c_{i}' \preceq c$. As $\exists c_{i} \in FSS^{\bot}, c_{i}' \in FSS, c_{i} \preceq c_{i}'$, hence, $c_{i} \preceq c_{i}' \preceq c$,  which is contradiction.
-
-Similarly, $\forall c \prec t$, if $\forall c_{i} \in HSS^{\top}, c \npreceq c_{i}$, it must have $\forall c_{i}' \in HSS, c \npreceq c_{i}'$. Because if not so, then $\exists c_{i}' \in HSS, c \preceq c_{i}'$. As $\exists c_{i} \in HSS^{\top}, c_{i}' \in HSS, c_{i}' \preceq c_{i}$, hence, $c \preceq c_{i}' \preceq c_{i}$,  which is contradiction.
-
-Combining them, we can get $\forall c' \in $\{$c\ |\ c \prec t\ \&\&\ \forall c_{i} \in FSS^{\bot}, c _{i} \npreceq c \ \&\&\  \forall c_{i} \in HSS^{\top}, c \npreceq c_{i}  $\}, $c' \in $ \{$c\ |\ c \prec t\ \&\&\ \forall c_{i} \in FSS, c _{i} \npreceq c \ \&\&\  \forall c_{i} \in HSS, c \npreceq c_{i}  $\}. That is, A $\subseteq$ B.
-
-As we have shown B $\subseteq$ A, and A $\subseteq$ B, so A = B.
-\end{proof}
+%In fact, we can further reduce the complexity of obtaining pending schemas. When given a set of schemas $S$, let the minimal schemas as $S^{\bot } = \{ c | c \in S, \nexists c' \in S, c' \prec c \}$ and the maximal schemas as $S^{\top } = \{ c | c \in S, \nexists c' \in S, c \prec c' \}$. Based on this, we can have the following proposition:
+%
+%\begin{proposition}\label{pro:identicialPending}
+%Given a failing test case $t$, a set of faulty schemas $FSS$, and a set of healthy schemas $HSS$, we have \{$ c\ |\ \exists c_{1}' \in CMXS(FSS^{\bot}, t)$, $ c_{2}' \in CMNS($ $HSS^{\top}, t)$, $c_{2}' \preceq c \preceq c_{1}'$ \} $=$  \{$ c\ |\ \exists c_{1}' \in CMXS(FSS, t)$, $c_{1}' \in CMNS(HSS, t)$, $c_{2}' \preceq c \preceq c_{1}'$ \}.
+%\end{proposition}
+%
+%\begin{proof}
+%Let A = \{$ c\ |\ \exists c_{1}' \in CMXS(FSS^{\bot}, t)$, $c_{2}' \in $ $CMNS$ $(HSS^{\top}, t)$, $c_{2}' \preceq c \preceq c_{1}'$\}.
+%
+%
+%Let B =  \{$ c\ |\ \exists c_{1}' \in CMXS(FSS, t)$, $c_{2}' \in CMNS($ $HSS, t)$, $c_{2}' \preceq c \preceq c_{1}'$ \}.
+%
+%
+%Based on Proposition \ref{pro:subofCMXSfor2} and \ref{pro:superofCMNS2}:
+%
+%A = \{$c\ |\ c \prec t\ \&\&\ \forall c_{i} \in FSS^{\bot}, c _{i} \npreceq c \ \&\&\  \forall c_{i} \in HSS^{\top}, c \npreceq c_{i}  $\}.
+%
+%B = \{$c\ |\ c \prec t\ \&\&\ \forall c_{i} \in FSS, c _{i} \npreceq c \ \&\&\  \forall c_{i} \in HSS, c \npreceq c_{i}  $\}.
+%
+%
+%First we will prove B $\subseteq$ A.
+%
+%As $FSS^{\bot} \subseteq FSS,\ HSS^{\top} \subseteq HSS$, \{ $c\ |\ \forall c_{i} \in FSS, c_{i} \npreceq c $\}  $\subseteq$  \{ $c\ |\ \forall c_{i} \in FSS^{\bot}, c_{i} \npreceq c $\} and \{ $c\ |\ \forall c_{i} \in HSS, c \npreceq c_{i} $\}  $\subseteq$  \{ $c\ |\ \forall c_{i} \in HSS^{\top}, c \npreceq c_{i} $\}. Hence, \{$c\ |\ c \prec t\ \&\&\ \forall c_{i} \in FSS, c _{i} \npreceq c \ \&\&\  \forall c_{i} \in HSS, c \npreceq c_{i}  $\}  $\subseteq$ \{$c\ |\ c \prec t\ \&\&\ \forall c_{i} \in FSS^{\bot}, c _{i} \npreceq c \ \&\&\  \forall c_{i} \in HSS^{\top}, c \npreceq c_{i}  $\}. That is  $B \subseteq A$.
+%
+%Next we will prove A $\subseteq$ B.
+%
+%Note that  $\forall c \prec t$, if $\forall c_{i} \in FSS^{\bot}, c_{i} \npreceq c$, it must have $\forall c_{i}' \in FSS, c_{i}' \npreceq c$. Because if not so, then $\exists c_{i}' \in FSS, c_{i}' \preceq c$. As $\exists c_{i} \in FSS^{\bot}, c_{i}' \in FSS, c_{i} \preceq c_{i}'$, hence, $c_{i} \preceq c_{i}' \preceq c$,  which is contradiction.
+%
+%Similarly, $\forall c \prec t$, if $\forall c_{i} \in HSS^{\top}, c \npreceq c_{i}$, it must have $\forall c_{i}' \in HSS, c \npreceq c_{i}'$. Because if not so, then $\exists c_{i}' \in HSS, c \preceq c_{i}'$. As $\exists c_{i} \in HSS^{\top}, c_{i}' \in HSS, c_{i}' \preceq c_{i}$, hence, $c \preceq c_{i}' \preceq c_{i}$,  which is contradiction.
+%
+%Combining them, we can get $\forall c' \in $\{$c\ |\ c \prec t\ \&\&\ \forall c_{i} \in FSS^{\bot}, c _{i} \npreceq c \ \&\&\  \forall c_{i} \in HSS^{\top}, c \npreceq c_{i}  $\}, $c' \in $ \{$c\ |\ c \prec t\ \&\&\ \forall c_{i} \in FSS, c _{i} \npreceq c \ \&\&\  \forall c_{i} \in HSS, c \npreceq c_{i}  $\}. That is, A $\subseteq$ B.
+%
+%As we have shown B $\subseteq$ A, and A $\subseteq$ B, so A = B.
+%\end{proof}
 
 As an example, consider a failing test case $t = \{(p_{1}, 1),$ $ (p_{2}, 1), (p_{3}, 1), (p_{4}, 1)\}$, the faulty schema set $FSS =$ \{ $\{(p_{1}, $ $1), (p_{2}, 1), (p_{3}, 1)\}$, $\{(p_{1}, 1), (p_{2}, 1)\}$ \}, and the healthy schema set $HSS =$  \{ $\{(p_{2}, 1),$ $(p_{3}, 1),$ $(p_{4}, 1)\}$, $\{(p_{2}, 1), (p_{3}, 1)\}$ \}. It is easy to learn that the minimal faulty schema set $FSS^{\bot} = \{\{(p_{1}, 1), (p_{2}, 1)\}\}$, and the maximal healthy schema set $HSS^{\top}$ $= \{\{ (p_{2}, 1), (p_{3}, 1), (p_{4}, 1) \}\}$.
 
 Fig \ref{fig_minmax} lists all the faulty schemas, healthy schemas, and pending schemas of test case $t$. At the second part, it lists the $CMXS(FSS, t)$, $CMNS(HSS, t)$, and the schema set \{$ c\ |\ \exists c_{1}' \in CMXS(FSS, t)$, $c_{1}' \in CMNS(HSS, t)$, $c_{2}' \preceq c \preceq c_{1}'$ \}. At last it shows $CMXS(FSS^{\bot}, t)$, $CMNS(HSS^{\top}, t)$ and  \{$ c\ |\ \exists c_{1}' \in CMXS(FSS^{\bot}, t)$, $ c_{2}' \in CMNS($ $HSS^{\top}, t)$, $c_{2}' \preceq c \preceq c_{1}'$ \}.
 
-We can learn that these two schema set mentioned in Proposition \ref{pro:identicialPending} are identical in Fig \ref{fig_minmax}, but the schema set based on $CMXS(FSS^{\bot}, t)$, $CMNS(HSS^{\top}, t)$ used much fewer schemas (3 in total) to obtain the result than the schema set based on $CMXS(FSS, t)$, $CMNS(HSS, t)$ (7 in total). Another observation from this figure is that these two schema set are both identical to the pending schemas. It suggests that using CMXS and CMNS can effectively and efficiently to get the pending schemas, when compared to list all the schemas in a test case and find the pending schema one by one according to Formula \ref{eq:pssfirst}.
+%We can learn that these two schema set mentioned in Proposition \ref{pro:identicialPending} are identical in Fig \ref{fig_minmax}, but the schema set based on $CMXS(FSS^{\bot}, t)$, $CMNS(HSS^{\top}, t)$ used much fewer schemas (3 in total) to obtain the result than the schema set based on $CMXS(FSS, t)$, $CMNS(HSS, t)$ (7 in total). Another observation from this figure is that these two schema set are both identical to the pending schemas. It suggests that using CMXS and CMNS can effectively and efficiently to get the pending schemas, when compared to list all the schemas in a test case and find the pending schema one by one according to Formula \ref{eq:pssfirst}.
 
 \begin{figure*}[ht]
  \centering
  \includegraphics[width=5.6in]{minmax.eps}
- \caption{The example of Proposition \ref{pro:identicialPending}}
+ \caption{The example of Proposition }
  \label{fig_minmax}
 \end{figure*}
 
 
-At last, according to Proposition \ref{pro:identicialPending}, we have the third formula to compute pending schemas as follow:
+%At last, according to Proposition \ref{pro:identicialPending}, we have the third formula to compute pending schemas as follow:
+%
+%\begin{equation}\label{eq:pssthird}
+%\begin{aligned}
+%PSS =  \{ c\ |\ \exists c_{1}' \in CMXS(FSS^{\bot}, t), c_{2}' \in CMNS(HSS^{\top}, t), c_{2}' \preceq c \preceq c_{1}' \}.
+%\end{aligned}
+%%PSS = \{ c\ |\ \exists c_{1}' \in CMNS(HSS, t), c_{1}' \preceq c \&\& \exists c_{1}' \in CMNS(HSS, t), c_{1}' \preceq c\}.
+%\end{equation}
+%
+%According to Formula \ref{eq:pssthird}, the complexity of obtaining one pending schema is O($ \tau^{|FSS^{\bot}|} \times \tau^{|HSS^{\top}|}$), where $|FSS^{\bot}|$ and $|HSS^{\top}|$ are two relatively small numbers during MFS identification.
 
-\begin{equation}\label{eq:pssthird}
-\begin{aligned}
-PSS =  \{ c\ |\ \exists c_{1}' \in CMXS(FSS^{\bot}, t), c_{2}' \in CMNS(HSS^{\top}, t), c_{2}' \preceq c \preceq c_{1}' \}.
-\end{aligned}
-%PSS = \{ c\ |\ \exists c_{1}' \in CMNS(HSS, t), c_{1}' \preceq c \&\& \exists c_{1}' \in CMNS(HSS, t), c_{1}' \preceq c\}.
-\end{equation}
-
-According to Formula \ref{eq:pssthird}, the complexity of obtaining one pending schema is O($ \tau^{|FSS^{\bot}|} \times \tau^{|HSS^{\top}|}$), where $|FSS^{\bot}|$ and $|HSS^{\top}|$ are two relatively small numbers during MFS identification.
-
-\subsection{A case study of applying Formula \ref{eq:pssthird}}
+\subsection{A case study of applying Formula }
 In this section, we will show a case study of how to obtain the pending schemas with Formula \ref{eq:pssthird}. For consistency, we use the example in the Section \ref{sec:motiv}. Next, we will show how to  apply Formula \ref{eq:pssthird} to obtain the pending schemas of the failing test case $t_{5}$ after using FINOLP. Note that other approaches can be obtained in the same way.
 %  in the FINOLP. Others are shown in the appendix in a similar way.
 From Figure , we can learn that the maximal healthy schemas are the passing test cases themselves, which are $t_{1}$ ,..., and $t_{16}$. While the minimal faulty schemas are the MFS  (Other faulty schemas are the super schemas of this one).
