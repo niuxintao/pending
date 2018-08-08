@@ -126,7 +126,7 @@ Combinatorial testing (CT) aims to detect the failures which are triggered by th
 \maketitle
 
 % The default list of authors is too long for headers.
-\renewcommand{\shortauthors}{G. Zhou et al.}
+\renewcommand{\shortauthors}{Xintao Niu et al.}
 
 \input{samplebody-journals}
 
