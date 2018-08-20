@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6500) (preloaded format=pdflatex 2017.12.21)  8 AUG 2018 15:01
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6500) (preloaded format=pdflatex 2017.12.21)  20 AUG 2018 17:13
 entering extended mode
 **./pending_schema.tex
 (pending_schema.tex
@@ -1217,20 +1217,20 @@ ted-to.pdf>]
 \c@assumption=\count147
  [12.12]
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/sc' will be
-(Font)              scaled to size 10.0pt on input line 252.
- [13.13] [14.14]
+(Font)              scaled to size 10.0pt on input line 262.
+ [13.13] [14.14] [15.15]
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/it' will be
-(Font)              scaled to size 10.0pt on input line 477.
- [15.15] [16.16] [17.17] [18.18]
+(Font)              scaled to size 10.0pt on input line 487.
+ [16.16] [17.17] [18.18]
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/n' will be
-(Font)              scaled to size 8.0pt on input line 706.
+(Font)              scaled to size 8.0pt on input line 716.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/n' will be
-(Font)              scaled to size 6.2pt on input line 706.
+(Font)              scaled to size 6.2pt on input line 716.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/n' will be
-(Font)              scaled to size 5.5pt on input line 706.
+(Font)              scaled to size 5.5pt on input line 716.
  [19.19]
-[20.20]
-Overfull \hbox (9.46637pt too wide) in paragraph at lines 853--854
+[20.20] [21.21]
+Overfull \hbox (9.46637pt too wide) in paragraph at lines 863--864
 []\T1/LinuxLibertineT-TLF/m/n/10 (-20) Let $\OML/nxlmi/m/it/10 B \U/ntxmia/m/it
 /10 =$ \T1/LinuxLibertineT-TLF/m/n/10 (-20) {$\OML/nxlmi/m/it/10 s \LMS/ntxsy/m
 /n/10 j \OML/nxlmi/m/it/10 s \LMS/ntxsy/m/n/10  \OML/nxlmi/m/it/10 t \OT1/Linu
@@ -1244,11 +1244,12 @@ mi/m/it/10 s[]; t\LMS/ntxsy/m/n/10 º [] \OML/nxlmi/m/it/10 CMNS\LMS/ntxsy/m/n/1
 0 ¹\OML/nxlmi/m/it/10 s[]; t\LMS/ntxsy/m/n/10 º \U/ntxmia/m/it/10 =
  []
 
-[21.21]
-Overfull \hbox (2.21951pt too wide) in paragraph at lines 874--884
+
+Overfull \hbox (2.21951pt too wide) in paragraph at lines 884--894
  [][][] 
  []
 
+[22.22]
 Package epstopdf Info: Source file: <minmax.eps>
 (epstopdf)                    date: 2016-12-16 16:29:44
 (epstopdf)                    size: 2932942 bytes
@@ -1257,32 +1258,28 @@ Package epstopdf Info: Source file: <minmax.eps>
 (epstopdf)                    size: 204241 bytes
 (epstopdf)             Command: <epstopdf --outfile=minmax-eps-converted-to.pdf
  minmax.eps>
-(epstopdf)             \includegraphics on input line 956.
+(epstopdf)             \includegraphics on input line 966.
 Package epstopdf Info: Output file is already uptodate.
-<minmax-eps-converted-to.pdf, id=2252, pagebox=cropbox, 644.4075pt x 544.0325pt
+<minmax-eps-converted-to.pdf, id=2258, pagebox=cropbox, 644.4075pt x 544.0325pt
 >
 File: minmax-eps-converted-to.pdf Graphic file (type pdf)
 <use minmax-eps-converted-to.pdf>
-Package pdftex.def Info: minmax-eps-converted-to.pdf  used on input line 956. o
-n input line 956.
+Package pdftex.def Info: minmax-eps-converted-to.pdf  used on input line 966. o
+n input line 966.
 Package pdftex.def Info: Requested size: 404.71243pt x 341.68803pt on input lin
-e 956.
+e 966.
 
-Overfull \hbox (8.88994pt too wide) in paragraph at lines 956--957
+Overfull \hbox (8.88994pt too wide) in paragraph at lines 966--967
  [][] 
  []
 
-[22.22]
 
-LaTeX Warning: Reference `eq:pssthird' on page 23 undefined on input line 974.
-
-
-LaTeX Warning: Reference `eq:pssthird' on page 23 undefined on input line 974.
+LaTeX Warning: Reference `eq:pssthird' on page 23 undefined on input line 984.
 
 
-Underfull \vbox (badness 5008) has occurred while \output is active []
+LaTeX Warning: Reference `eq:pssthird' on page 23 undefined on input line 984.
 
- [23.23 <./minmax-eps-converted-to.pdf>] [24.24] Processing 'acks' comment.
+[23.23 <./minmax-eps-converted-to.pdf>] [24.24] Processing 'acks' comment.
 \openout4 = `comment.cut'.
 
 
@@ -1291,7 +1288,7 @@ Comment 'acks' writing to comment.cut. Straight input of comment.cut.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/it' will be
 (Font)              scaled to size 8.0pt on input line 47.
 
-Underfull \vbox (badness 2080) has occurred while \output is active []
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [25.25]))
 [26.26]
@@ -1312,19 +1309,22 @@ Package rerunfilecheck Info: Checksums for `pending_schema.out':
 
 LaTeX Warning: There were undefined references.
 
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
  )
 (\end occurred inside a group at level 1)
 
-### simple group (level 1) entered at line 810 ({)
+### simple group (level 1) entered at line 820 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 19475 strings out of 493312
- 295216 string characters out of 3143321
- 417461 words of memory out of 3000000
+ 19471 strings out of 493312
+ 295123 string characters out of 3143321
+ 419461 words of memory out of 3000000
  21849 multiletter control sequences out of 15000+200000
- 209695 words of font info for 487 fonts, out of 3000000 for 9000
+ 209355 words of font info for 484 fonts, out of 3000000 for 9000
  1302 hyphenation exceptions out of 8191
- 60i,17n,94p,1804b,615s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 60i,17n,94p,1804b,606s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/CTEX/MikTex2.9/fonts/enc/dvips/libertine/lbtn_ki75ao.enc}{C
 :/CTEX/MikTex2.9/fonts/enc/dvips/libertine/lbtn_ncsllp.enc}{C:/CTEX/MikTex2.9/f
 onts/enc/dvips/newtx/libertinealt.enc}{C:/CTEX/MikTex2.9/fonts/enc/dvips/libert
@@ -1347,7 +1347,7 @@ ikTex2.9/fonts/type1/public/txfonts/txsya.pfb><C:/CTEX/MikTex2.9/fonts/type1/pu
 blic/txfonts/txsyb.pfb><C:/CTEX/MikTex2.9/fonts/type1/public/txfonts/txsyc.pfb>
 <C:/CTEX/MikTex2.9/fonts/type1/public/newtx/txsys.pfb><C:/CTEX/MikTex2.9/fonts/
 type1/public/newtx/zxlri.pfb>
-Output written on pending_schema.pdf (26 pages, 2527136 bytes).
+Output written on pending_schema.pdf (26 pages, 2528308 bytes).
 PDF statistics:
  2471 PDF objects out of 2487 (max. 8388607)
  120 named destinations out of 1000 (max. 500000)

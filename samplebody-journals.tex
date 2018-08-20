@@ -213,11 +213,38 @@ Note that this definition of schema is a formal description of schemas we discus
 Let $c_{1}$ be a \emph{l}-degree schema, $c_{2}$ be an \emph{m}-degree schema in SUT and $l \leq m $. If $\forall e \in c_{1}$, $e \in c_{2}$, then $c_{1}$ is the $sub-schema$ of $c_{2}$, and $c_{2}$ the $super-schema$ of $c_{2}$, which can be denoted as $c_{1} \preceq c_{2}$.
 \end{definition}
 
-For example,  the 2-degree schema \{(Highlight, Off), (Status Bar, On)\} is a sub-schema of the 3-degree schema \{(Highlight, Off), (Status Bar, On), (Smart tags, Off)\}. Also, since a test case itself is a schema, then if a test case $t$ contains a schema $s$, we have $s \preceq t$. For example,  the 2-degree schema \{(Highlight, Off), (Status Bar, On)\} is also a sub-schema of a test case \{(Highlight, Off), (Status Bar, On), ( Bookmarks, On), (Smart tags, Off)\}
+For example,  the 2-degree schema \{(Highlight, Off), (Status Bar, On)\} is a sub-schema of the 3-degree schema \{(Highlight, Off), (Status Bar, On), (Smart tags, Off)\}. Also, since a test case itself is a schema, then if a test case $t$ contains a schema $s$, we have $s \preceq t$. For example,  the 2-degree schema \{(Highlight, Off), (Status Bar, On)\} is also a sub-schema of a test case \{(Highlight, Off), (Status Bar, On), ( Bookmarks, On), (Smart tags, Off)\}.
+
+Some notations used later are listed below for ease of reference:
+\begin{itemize}
+%\item $deg(c)$: The degree of the schema $c$ (number of factors in schema $c$.
+\item $\mathcal{T}(c)$:  All the test cases that contain the schema $c$ in the SUT. 
+%Since each test case is also a schema, it is easy to obtain that $\mathcal{T}(c)$ = $\{ c' | c \preceq c', deg(c') = n \}$, where $n$ is the number of parameters in the SUT.
+\item $\mathcal{I}(t)$:  All the schemas that are contained in the test case $t$. That is, $\mathcal{I}(t)$ = $\{ c' | c' \preceq t \}$. For example, $\mathcal{I}$ (\ (1, 1, 1)\ ) = \{(1, -, -), (-, 1, -), (-, -, 1), (1, 1, -), (1, -, 1), (-, 1, 1), (1, 1, 1)\}.
+\item $\mathcal{I}(T)$:  All the schemas that are contained in test set $T$, i.e., $\mathcal{I}(T) = \bigcup_{t\in T} \mathcal{I}(t)$.
+\item  $\mathcal{S}(T)$:  All the schemas that are \textbf{only} contained in test set $T$ (Referred to as \emph{Special schemas}); $\mathcal{S}(T) =  \mathcal{I}(T) \backslash \mathcal{I}(\bar{T}) $, where $\bar{T}$ is the complementary test set of $T$.
+\item  $\mathcal{M}(T)$: A set of the minimal schemas that are only contained in test set $T$ (Referred to as \emph{Minimal schemas}); $\mathcal{M}(T) =  \{c | c \in \mathcal{S}(T)\ and\ \not\exists c' \prec c, s.t., c' \in \mathcal{S}(T)\}$.
+\end{itemize}
+
+
+\begin{definition}\label{de:healthy}
+A schema, say, $c$, is \emph{healthy schema} if and only if $\exists t \in \mathcal{T}(c)$, $t$ is a passing test case.% In addition, if none of super-schema of $c$ except itself is the \emph{healthy schema}, we then call the schema $c$ the \emph{maximal healthy schema (MHS)}.
+\end{definition}
+
+This definition tells that a schema is called a healthy schema if we can find at least one passing test case that contains this schema. Note that the healthy schema is the non-faulty schema we introduced in the previous section.
+
+\begin{definition}\label{de:faulty}
+A schema, say, $c$, is \emph{faulty schema} if and only if $\forall t \in \mathcal{T}(c)$, $t$ is a failing test case.
+\end{definition}
+
+This definition tells that a schema is called a faulty schema if for any test cases that contain a schema, say $c$, it will trigger a failure. Based on these two definitions, we conclude the first proposition in this paper. 
+
+\begin{proposition}[Faulty schema]\label{pro:subofhealthy}
+Given a set of failing test cases  $T_{fail}$, the faulty schema is then $\forall s_{2}, s_{2} \preceq s_{1}$, $s_{2}$ is a healthy schema.
+\end{proposition}
 
 \begin{definition} \label{de:faulty:minimal}
 If for any test cases that contain a schema, say $c$, it will trigger a failure, then we call this schema $c$ the \emph{faulty schema}. Additionally, if none of the sub-schema of $c$  except itself is a \emph{faulty schema}, we then call the schema $c$ the \emph{minimal failure-causing schema (MFS)} \cite{nie2011minimal}.
-
 %Based on this, if a test case $t$ hit such a failure-inducing combination, say $c(F)$, it should trigger the fault $F$, for which the test case can be put as $t(F)$
 \end{definition}
 
@@ -608,7 +635,7 @@ Next we prove that $B \subseteq A$. Since $\forall s \in B$, we have $s \preceq 
 Since we have $A \subseteq B$ and $B \subseteq A$, we have $A = B$.
 \end{proof}
 
-With this proposition, we do not need to check each passing test case. Instead, we only need to focus on the intersection part of passing test cases and the failing test case. 
+With this proposition, we do not need to check each passing test case. Instead, we only need to focus on the intersection part of passing test cases and the failing test case.
 
 We can further reduce the number of schemas need to checked. Let $PTS^{t\bigtriangleup}$ be the maximal schemas in $PTS^{t}$. That is, $PTS^{t\bigtriangleup}$ = $\{ s\ |  s \in PTS^{t} \&\& \nexists s'  \in PTS^{t}, s \prec s' \}$.  To obtain $PTS^{t\bigtriangleup}$ from $PTS$ with complexity of $O(|PTS|^{2})$. It is easy to know that $\forall s \in PTS^{t}, \exists s' \in PTS^{t\bigtriangleup},  s \preceq s'$.
 
