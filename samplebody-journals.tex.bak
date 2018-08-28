@@ -188,6 +188,8 @@ Without loss of generality, assume that the Software Under Test (SUT) is influen
 
 %\newdef{definition}{Definition}
 \subsection{Test cases and schemas}\label{sec:back:testandschema}
+In this subsection, we will formally define the test case and schema. We will also give the properties to reveal the relationships between them. In these propoertations, Propoertin   are origined from our previous work .
+
 \begin{definition}\label{de:testcase}
 A \emph{test case} of the SUT is a tuple of \emph{n} values, one for each parameter of the SUT. It is denoted as  ($v_{1}$, $v_{2}$,...,$v_{n}$), where $v_{1}\in V_{1}$, $v_{2} \in V_{2}$ ... $v_{n} \in V_{n}$.
 \end{definition}
@@ -205,7 +207,7 @@ In practice, these parameters in the test case can represent many factors, such 
 For the SUT, the $\tau$-set \{$(p_{x_{1}}, v_{x_{1}})$, $(p_{x_{2}}, v_{x_{2}})$, ..., $(p_{x_{\tau}}, v_{x_{\tau}})$\}, where $0 \leq x_{i} \leq n$, $p_{x_{i}} \in P$, and $v_{x_{i}} \in V_{x_{i}}$, is called a $\tau$-degree \emph{schema} ($0 < \tau \leq n $), when a set of $\tau$ values assigned to $\tau$ distinct parameters.
 \end{definition}
 
-For example, the interactions (Highlight: Off, Status Bar: On, Smart tags: Off) appearing in Section \ref{sec:intro} is a 3-degree schema, where three parameters are assigned to corresponding values. In effect a test case itself is a n-degree \emph{schema}, which can be described as \{$(p_{1}, v_{1})$, $(p_{2}, v_{2})$, ..., $(p_{n}, v_{n})$\}.
+For example, the interactions (Highlight: Off, Status Bar: On, Smart tags: Off) appearing in Section \ref{sec:intro} is a 3-degree schema, where three parameters are assigned to corresponding values. In effect a test case itself is a n-degree \emph{schema}, which can be described as \{$(p_{1}, v_{1})$, $(p_{2}, v_{2})$, ..., $(p_{n}, v_{n})$\}. Also, for any schema, say, $s$, its degree can be denoted as $|s|$ because a schema is essentially  a set of parameter values.
 
 Note that this definition of schema is a formal description of schemas we discussed in the section of \emph{Motivation}. For example, the schema (1, -, 0, -) is exactly the schema \{ $(p_{1}, 1)$, $(p_{3}, 0)$ \} here. We use this formal definition because it benefits the description of the following theoretical analysis, including these propositions and proofs.
 
@@ -253,22 +255,107 @@ This proposition shows the transitivity of the subsuming relationships of schema
 These three propositions together show that the schema set $(s, \preceq)$ is a partial order set. Next, we will introduce the relationships between schemas and tests.
 
 \begin{definition}\label{de:containorhit}
-For any schema $s$, if there exists one test case $t$, such that all the parameter value in the $s$ is also in the test case $t$, then 
+For a schema $s$, if there exists one test case $t$, such that each parameter value in the schema $s$ is also in the test case $t$, i.e., $\forall (p_{x_{i}}, v_{x_{i}}) \in s, (p_{x_{i}}, v_{x_{i}}) \in t$, then we call the test case $t$ \emph{hits} or \emph{contains} the schema $s$, and test case $t$ is one \emph{container} of schema $s$.
 \end{definition}
 
+Note that test case is also a $n$-degree schema, hence when a test case $t$ hits one schema $s$, we call denote this relationship simply as $s \preceq t, |t| = n$. As an example, test case \{(Highlight, Off), (Status Bar, On), (Bookmarks, Off), (Smart tags, On)\} hits the 2-degree schema \{(Highlight, Off), (Status Bar, On)\}.
 
 \begin{definition} \label{de:alltests}
-
+ For a schema $s$, the set of all the possible containers of it, i.e., the set of all the possible test cases that contain this schema, is called the \emph{whole set} of containers of this schema $s$, which is denoted as $\mathcal{T}(s)$.
 \end{definition}
 
-\begin{definition} \label{de:containschemas}
+Formally,$\mathcal{T}(s) = \{ t | s \preceq t, |t| = n\}$. As an example, $\mathcal{T}($\{(Highlight, Off), (Status Bar, On)\}$)$ are the set of four test cases \{ \{(Highlight, Off), (Status Bar, On), (Bookmarks, On), (Smart tags, On)\}, \{(Highlight, Off), (Status Bar, On), (Bookmarks, On), (Smart tags, Off)\} ,  \{(Highlight, Off), (Status Bar, On), (Bookmarks, Off), (Smart tags, On)\}, \{(Highlight, Off), (Status Bar, On), (Bookmarks, Off), (Smart tags, Off)\}  \}.
 
+With respect the the whole set of containers of one schema, we have the following property.
+
+\begin{proposition}[{smaller schema $s$ has a larger $\mathcal{T}(s)$}] \label{pro:shl}
+For schemas $s_{1}$ and $s_{2}$, if $s_{1} \preceq s_{2}$, then $\mathcal{T}(s_{2}) \subseteq \mathcal{T}(s_{1})$.
+\end{proposition}
+
+\begin{proof}
+$\forall t \in \mathcal{T}(s_{2})$, 
+% \{ t | s_{2} \preceq t, |t| = n\}$, and $\mathcal{T}(s_{1}) \{ t | s_{1} \preceq t, |t| = n\}$.
+
+\end{proof}
+
+
+\begin{definition} \label{de:allschemas}
+For a test case $t$, all the schemas that it can hit is called the \emph{whole set} of hit schemas of $t$, which is denoted as $\mathcal{I}(t)$.
 \end{definition}
+
+Formally,$\mathcal{I}(t) = \{ s | s \preceq t \}$. As an example, $\mathcal{I}$ ( \{(Highlight, Off), (Status Bar, On), (Bookmarks, On), (Smart tags, On)\}\ ) is a set of $2^{4} - 1 = 15$ schemas, which is \{ \{(Highlight, Off)\}, \{(Status Bar, Off)\},  \{(Bookmarks, Off)\}, \{(Smart tags, Off)\},  \{(Highlight, Off), (Status Bar, Off)\}, ... , \{(Highlight, Off), (Status Bar, On), (Bookmarks, On), (Smart tags, On)\} \}.
+
+
+
+\begin{definition} \label{de:allschemasoft}
+For a set of test case $T$, all the schemas that these test cases can hit is called the \emph{whole set} of hit schemas of $T$, which is denoted as $\mathcal{I}(T)$.
+\end{definition}
+
+$\mathcal{I}(T)$ extends $\mathcal{I}(t)$ to a set of test cases. Formally, $\mathcal{I}(T) = \bigcup_{t \in T} \mathcal{I}(t)$.
 
 
 \begin{definition} \label{de:specialschema}
-
+All the schemas that are \textbf{only} contained in test set $T$ is called the \emph{special schemas} of test case set $T$, which is denoted as  $\mathcal{S}(T)$. 
 \end{definition}
+
+Formally, $\mathcal{S}(T) =  \mathcal{I}(T) \backslash \mathcal{I}(\bar{T}) $, where $\bar{T}$ is the complementary test set of $T$, i.e., $T \bigcup \bar{T} = T^{*}, T \bigcup \bar{T} = \emptyset$. Here, $T^{*}$ indicates all the possible test cases in the SUT. Based on this formula, we can learn that the special schemas are essentially the whole set of hit schemas of test case $T$, except for those hit schemas of other test cases.
+
+As an example, let test set $T$ be \{ \{(Highlight, Off), (Status Bar, On), (Bookmarks, On), (Smart tags, On)\}, \{(Highlight, Off), (Status Bar, On), (Bookmarks, On), (Smart tags, Off)\} \}. $\mathcal{S}(T)$ = \{ \{(Highlight, Off), (Status Bar, On), (Bookmarks, On)\}, \{(Highlight, Off), (Status Bar, On), (Bookmarks, On), (Smart tags, On)\}, \{(Highlight, Off), (Status Bar, On), (Bookmarks, On), (Smart tags, Off)\} \}. Other hit schemas of $T$ can appear in other test cases besides those in $T$. For example, \{(Highlight, Off), (Status Bar, On)\} can appear in the test case \{(Highlight, Off), (Status Bar, On), (Bookmarks, Off), (Smart tags, Off)\}, which is not in $T$. 
+
+With respect to the special schema set of test case $T$, we can obtain the following property.
+
+\begin{proposition}[Property of special schema set of test set T]\label{pro:stct}
+For any test set $T$ of the SUT,  $\bigcup_{s \in \mathcal{S}(T)}\mathcal{T}(s) = T$.
+\end{proposition}
+\begin{proof}
+As $\mathcal{S}(T) =  \mathcal{I}(T) \backslash \mathcal{I}(\bar{T}) $,  $\forall s \in \mathcal{S}(T),\ s \in \mathcal{I}(T)\ and\ s \not\in \mathcal{I}(\bar{T})$. Then $\forall t \in \mathcal{T}(s), t \ contains\ s$, indicating that $t \in T$.  Hence, $\mathcal{T}(s) \subseteq T$.  Then $\bigcup_{s \in \mathcal{S}(T)}\mathcal{T}(s) \subseteq T$.
+
+On the other hand, $\forall t \in T$,  $\exists s' \in \mathcal{I}(t)$, such that $s' \not\in \mathcal{I}(\bar{T})$ (at least it holds when $s' = t$). Hence, $s' \in \mathcal{S}(T)$.  Obviously $t \in \mathcal{T}(s') \subseteq \bigcup_{s \in \mathcal{S}(T)} \mathcal{T}(s)$. Therefore,  $ T \subseteq \bigcup_{s \in \mathcal{S}(T)}\mathcal{T}(s)$.
+
+Since $\bigcup_{s \in \mathcal{S}(T)}\mathcal{T}(s) \subseteq T$ and $T \subseteq \bigcup_{s \in \mathcal{S}(T)}\mathcal{T}(s)$, we have $\bigcup_{s \in \mathcal{S}(T)}\mathcal{T}(s) =  T$.
+\end{proof}
+
+
+\begin{definition} \label{de:minimalschema}
+ A set of the \textbf{minimal} schemas that are only contained in test set $T$ is called the \emph{minimal special schemas} of test set $T$, which is denoted as $\mathcal{C}(T)$.
+\end{definition}
+
+Formally, $\mathcal{C}(T)  =  \{s | s \in \mathcal{S}(T)\ and\ \not\exists s' \prec s, s.t., s' \in \mathcal{S}(T)\}$. As an example, let test set $T$ still be \{ \{(Highlight, Off), (Status Bar, On), (Bookmarks, On), (Smart tags, On)\}, \{(Highlight, Off), (Status Bar, On), (Bookmarks, On), (Smart tags, Off)\} \}. $\mathcal{C}(T)$ = \{ \{(Highlight, Off), (Status Bar, On), (Bookmarks, On)\} \}. Note that other two schemas in $\mathcal{S}(T)$ are the super-schemas of this schema, therefore, they are eliminated from this set.
+
+With respect to the minimal special schema set of test case $T$, we can obtain the following property.
+
+\begin{proposition}[Property of minimal special schema set of test Set T]\label{pro:ash}
+For any test set $T$ of the SUT, $\bigcup_{s \in \mathcal{C}(T)} \mathcal{T}(s) = T$.
+\end{proposition}
+
+\begin{proof}
+As $\mathcal{C}(T) = \{s | s \in \mathcal{S}(T)\ and\ \not\exists s' \prec s, s.t., s' \in \mathcal{S}(T)\}$, indicating that $\mathcal{C}(T) \subseteq \mathcal{S}(T)$.  It is then obviously $\bigcup_{s \in \mathcal{C}(T)} \mathcal{T}(s) \subseteq \bigcup_{s \in \mathcal{S}(T)} \mathcal{T}(s)$. Hence, we just need to prove that $\bigcup_{s \in \mathcal{S}(T)} \mathcal{T}(s) \subseteq \bigcup_{s \in \mathcal{C}(T)} \mathcal{T}(s)$.
+
+$\forall t \in \bigcup_{s \in \mathcal{S}(T)} \mathcal{T}(s) $, $\exists s \in \mathcal{S}(T),\ s.t., t \in \mathcal{T}(s)$. According to the definition of $\mathcal{C}(T)$, $\exists s' \in \mathcal{C}(T), s.t.,\ s' \preceq s$. Correspondingly $\mathcal{T}(s) \subseteq \mathcal{T}(s')$ by Proposition \ref{pro:shl}. Hence, $t \in \mathcal{T}(s') \subseteq \bigcup_{s \in \mathcal{C}(T)} \mathcal{T}(s)$.
+
+Therefore, $\bigcup_{s \in \mathcal{C}(T)} \mathcal{T}(s) = \bigcup_{s \in \mathcal{S}(T)} \mathcal{T}(s) = T$.
+\end{proof}
+
+
+According to the definition of $\mathcal{C}(T)$, one observation is  $\mathcal{C}(T) \subseteq \mathcal{S}(T)$, and for any schema in $\mathcal{S}(T)$, it either belongs to $\mathcal{C}(T)$, or is the super schema of one element of $\mathcal{C}(T)$, i.e., $\forall c \in \mathcal{S}(T), \exists c' \in \mathcal{C}(T), s.t., c' = c,\ or\ c' \prec c$.
+% Another obvious observation is that
+%Then, we have the following proposition.
+\begin{proposition} [Minimal schema of the subset of test set $T$]\label{pro:sbS}
+ For any test set $T$ and schema $s$ of the  SUT, if $\mathcal{T}(c) \subseteq T$, then  $c \in \mathcal{S}(T) $.
+\end{proposition}
+\begin{proof}
+ Assume $c \not\in \mathcal{S}(T)$, i.e., $c \not\in \mathcal{I}(T) \backslash \mathcal{I}(\bar{T})$, then $c \in \mathcal{I}(\bar{T})$. It indicates that $\exists t \in \bar{T}, t \in \mathcal{T}(c)$, which contradicts that $\mathcal{T}(c) \subseteq T$. Therefore, $c \in \mathcal{S}(T)$.
+\end{proof}
+
+
+
+\begin{proposition}[{minimal schemas in the smaller test set}]\label{pro:ssp}
+For $T_{1}$ and $T_{2}$ of the SUT with $T_{2} \subseteq T_{1}$, $\forall c_{2} \in \mathcal{C}(T_{2})$, $\exists c_{1} \in \mathcal{C}(T_{1}), s.t.,\ either\ c_{1} = c_{2} \ or\  c_{1} \prec c_{2}.$
+\end{proposition}
+
+\begin{proof}
+$\forall c_{2} \in \mathcal{C}(T_{2})$,  $\mathcal{T}(c_{2}) \subseteq T_{2} \subseteq T_{1}$. According to Proposition \ref{pro:sbS}, $c_{2} \in \mathcal{S}(T_{1})$. By definitions of $\mathcal{S}(T)$ and $\mathcal{C}(T)$, $\exists c_{1} \in \mathcal{C}(T_{1}), s.t., c_{1} = c_{2},\ or\ c_{1} \prec c_{2}$.
+\end{proof}
 
 
 \subsection{Failure and healthy}\label{sec:back:failureandhealthy}
@@ -306,22 +393,7 @@ A schema, say, $c$, is called a \emph{healthy schema} when we find at least one 
 
 The healthy schema is exactly the non-faulty schema we mentioned before. These two type of schemas, i.e., MFS and MHS, are essentially representations of the healthy schemas and faulty schemas in a test case. As shown later, other schemas can be determined to be healthy or faulty by these two type of schemas. As a result, we just need to record these two types of schemas (normally a small amount) instead of recording all the schemas in a test case (up to $2^{n}$) when identifying MFS.
 
-%Note that the MFS is based on the assumption that .
 
-
-%In effect, to identify the MFS in a failing test case is to figure out all the \emph{pending} schemas, and then try to classify each of them into \emph{healthy} or \emph{faulty} schema. After that, the MFS can be selected from those \emph{faulty} schemas by definition.
-
-%\begin{definition}
-%If a schema is a \emph{faulty} schema and satisfy the followed condition:
-%1. None of its subschemas is \emph{faulty} schema; 2. At least one of its subschemas is \emph{pending} schema. We then call the schema a \emph{candidate minimal faulty schema} (\emph{CMXS}).
-%\end{definition}
-%
-%\begin{definition}
-%If a schema is a \emph{healthy} schema and satisfy the followed condition:
-%1. None of its super-schemas are healthy schemas; 2. at least one of its subschemas is pending schema. We then call this schema a \emph{candidate maximum healthy schema} (\emph{CMNS}).
-%\end{definition}
-
-%Note that failures discussed are assumed to be deterministic in this paper.
 To facilitate our discussion, we introduce the following assumptions that will be used throughout this paper:
 
 \begin{assumption}  The execution result of a test case is deterministic.
@@ -362,33 +434,17 @@ let $T_{2}$ be the set of all the test cases that contain $s_{2}$, we have $\for
 
 This proposition shows that any super-schema of a faulty schema is also a faulty schema.  Note that his proposition can deduce the second rule in Section \ref{sec:motiv}.
 
+%The following two propositions are proposed in our previous study [multi].
+%
+%\begin{proposition}[Property of minimal schema set of test Set T]\label{pro:ash}
+%For any test set $T$ of the SUT, $\bigcup_{c \in \mathcal{C}(T)} \mathcal{T}(c) = T$.
+%\end{proposition}
+%
+%
+%\begin{proposition}[{minimal schemas in the smaller test set}]\label{pro:ssp}
+%For two sets of test cases $T_{1}$ and $T_{2}$ of the SUT with $T_{2} \subseteq T_{1}$, $\forall c_{2} \in \mathcal{C}(T_{2})$, $\exists c_{1} \in \mathcal{C}(T_{1}), s.t., c_{1} \preceq c_{2}$.
+%\end{proposition}
 
-Some notations used later are listed below for ease of reference:
-\begin{itemize}
-\item $T$: A set of test cases. (Similarly for $T_{i},\ T_{j}, ...$. )
-\item $\bar{T}$: The complementary test set of T, i.e., $\bar{T} \bigcup T = T^{*},\ \bar{T} \bigcap T = \varnothing$.
-\item $A \backslash B$:  The set of elements that belong to set $A$ but not to $B$. For example, $T_{i} \backslash T_{j}$ indicates the set of test cases that belong to set $T_{i}$, but not to $T_{j}$.
-\item $\mathcal{T}(c)$:  All the test cases that contain the schema $c$ in the SUT.
-\item $\mathcal{I}(t)$:  All the schemas that are contained in the test case $t$, e.g., $\mathcal{I}$ (\ (1, 1, 1)\ ) = \{(1, -, -), (-, 1, -), (-, -, 1), (1, 1, -), (1, -, 1), (-, 1, 1), (1, 1, 1)\}.
-\item $\mathcal{I}(T)$:  All the schemas that are contained in test set $T$, i.e., $\mathcal{I}(T) = \bigcup_{t\in T} \mathcal{I}(t)$.
-\item  $\mathcal{S}(T)$:  All the schemas that are only contained in test set $T$ (Referred to as \emph{Special schemas}); $\mathcal{S}(T) =  \mathcal{I}(T) \backslash \mathcal{I}(\bar{T}) $.
-\item  $\mathcal{C}(T)$: A set of the minimal schemas that are only contained in test set $T$ (Referred to as \emph{Minimal schemas}); $\mathcal{C}(T) =  \{c | c \in \mathcal{S}(T)\ and\ \not\exists c' \prec c, s.t., c' \in \mathcal{S}(T)\}$.
-\end{itemize}
-
-The following two propositions are proposed in our previous study [multi].
-
-\begin{proposition}[Property of minimal schema set of test Set T]\label{pro:ash}
-For any test set $T$ of the SUT, $\bigcup_{c \in \mathcal{C}(T)} \mathcal{T}(c) = T$.
-\end{proposition}
-
-
-\begin{proposition}[{minimal schemas in the smaller test set}]\label{pro:ssp}
-For two sets of test cases $T_{1}$ and $T_{2}$ of the SUT with $T_{2} \subseteq T_{1}$, $\forall c_{2} \in \mathcal{C}(T_{2})$, $\exists c_{1} \in \mathcal{C}(T_{1}), s.t., c_{1} \preceq c_{2}$.
-\end{proposition}
-
-%\begin{proof}
-%$\forall c_{2} \in \mathcal{C}(T_{2})$,  $\mathcal{T}(c_{2}) \subseteq T_{2} \subseteq T_{1}$. According to Proposition \ref{pro:sbS}, $c_{2} \in \mathcal{S}(T_{1})$. By definitions of $\mathcal{S}(T)$ and $\mathcal{C}(T)$, $\exists c_{1} \in \mathcal{C}(T_{1}), s.t., c_{1} = c_{2},\ or\ c_{1} \prec c_{2}$.
-%\end{proof}
 
 \section{The determination of schemas}\label{sec:pending}
 In this section, we will give the formal definition of the pending schema, as well as its properties. Based on several theoretical analysis about pending schema, we will give an efficient approach to obtain them. Then we will show a case study of  how to apply this approach on identifying the pending schemas.
