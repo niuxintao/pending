@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6500) (preloaded format=pdflatex 2017.12.21)  27 AUG 2018 19:45
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6500) (preloaded format=pdflatex 2017.12.21)  28 AUG 2018 11:45
 entering extended mode
 **./pending_schema.tex
 (pending_schema.tex
@@ -1222,17 +1222,17 @@ LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/sc' will be
 (Font)              scaled to size 10.0pt on input line 221.
  [12.12] [13.13] [14.14] [15.15]
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/it' will be
-(Font)              scaled to size 10.0pt on input line 548.
+(Font)              scaled to size 10.0pt on input line 533.
  [16.16] [17.17] [18.18] [19.19]
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/n' will be
-(Font)              scaled to size 8.0pt on input line 777.
+(Font)              scaled to size 8.0pt on input line 762.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/n' will be
-(Font)              scaled to size 6.2pt on input line 777.
+(Font)              scaled to size 6.2pt on input line 762.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/n' will be
-(Font)              scaled to size 5.5pt on input line 777.
+(Font)              scaled to size 5.5pt on input line 762.
 
 [20.20] [21.21]
-Overfull \hbox (9.46637pt too wide) in paragraph at lines 924--925
+Overfull \hbox (9.46637pt too wide) in paragraph at lines 909--910
 []\T1/LinuxLibertineT-TLF/m/n/10 (-20) Let $\OML/nxlmi/m/it/10 B \U/ntxmia/m/it
 /10 =$ \T1/LinuxLibertineT-TLF/m/n/10 (-20) {$\OML/nxlmi/m/it/10 s \LMS/ntxsy/m
 /n/10 j \OML/nxlmi/m/it/10 s \LMS/ntxsy/m/n/10  \OML/nxlmi/m/it/10 t \OT1/Linu
@@ -1247,7 +1247,7 @@ mi/m/it/10 s[]; t\LMS/ntxsy/m/n/10 º [] \OML/nxlmi/m/it/10 CMNS\LMS/ntxsy/m/n/1
  []
 
 [22.22]
-Overfull \hbox (2.21951pt too wide) in paragraph at lines 945--955
+Overfull \hbox (2.21951pt too wide) in paragraph at lines 930--940
  [][][] 
  []
 
@@ -1259,28 +1259,28 @@ Package epstopdf Info: Source file: <minmax.eps>
 (epstopdf)                    size: 204241 bytes
 (epstopdf)             Command: <epstopdf --outfile=minmax-eps-converted-to.pdf
  minmax.eps>
-(epstopdf)             \includegraphics on input line 1027.
+(epstopdf)             \includegraphics on input line 1012.
 Package epstopdf Info: Output file is already uptodate.
-<minmax-eps-converted-to.pdf, id=2276, pagebox=cropbox, 644.4075pt x 544.0325pt
+<minmax-eps-converted-to.pdf, id=2277, pagebox=cropbox, 644.4075pt x 544.0325pt
 >
 File: minmax-eps-converted-to.pdf Graphic file (type pdf)
 <use minmax-eps-converted-to.pdf>
-Package pdftex.def Info: minmax-eps-converted-to.pdf  used on input line 1027. 
-on input line 1027.
+Package pdftex.def Info: minmax-eps-converted-to.pdf  used on input line 1012. 
+on input line 1012.
 Package pdftex.def Info: Requested size: 404.71243pt x 341.68803pt on input lin
-e 1027.
+e 1012.
 
-Overfull \hbox (8.88994pt too wide) in paragraph at lines 1027--1028
+Overfull \hbox (8.88994pt too wide) in paragraph at lines 1012--1013
  [][] 
  []
 
 [23.23]
 
-LaTeX Warning: Reference `eq:pssthird' on page 24 undefined on input line 1045.
+LaTeX Warning: Reference `eq:pssthird' on page 24 undefined on input line 1030.
 
 
 
-LaTeX Warning: Reference `eq:pssthird' on page 24 undefined on input line 1045.
+LaTeX Warning: Reference `eq:pssthird' on page 24 undefined on input line 1030.
 
 
 
@@ -1316,14 +1316,14 @@ LaTeX Warning: There were multiply-defined labels.
  )
 (\end occurred inside a group at level 1)
 
-### simple group (level 1) entered at line 881 ({)
+### simple group (level 1) entered at line 866 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 19489 strings out of 493312
- 295318 string characters out of 3143321
- 417769 words of memory out of 3000000
- 21861 multiletter control sequences out of 15000+200000
- 208711 words of font info for 480 fonts, out of 3000000 for 9000
+ 19495 strings out of 493312
+ 295441 string characters out of 3143321
+ 417859 words of memory out of 3000000
+ 21863 multiletter control sequences out of 15000+200000
+ 209082 words of font info for 482 fonts, out of 3000000 for 9000
  1302 hyphenation exceptions out of 8191
  60i,17n,94p,1804b,615s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/CTEX/MikTex2.9/fonts/enc/dvips/libertine/lbtn_ki75ao.enc}{C
@@ -1348,9 +1348,9 @@ ikTex2.9/fonts/type1/public/txfonts/txsya.pfb><C:/CTEX/MikTex2.9/fonts/type1/pu
 blic/txfonts/txsyb.pfb><C:/CTEX/MikTex2.9/fonts/type1/public/txfonts/txsyc.pfb>
 <C:/CTEX/MikTex2.9/fonts/type1/public/newtx/txsys.pfb><C:/CTEX/MikTex2.9/fonts/
 type1/public/newtx/zxlri.pfb>
-Output written on pending_schema.pdf (27 pages, 2532465 bytes).
+Output written on pending_schema.pdf (27 pages, 2531866 bytes).
 PDF statistics:
- 2497 PDF objects out of 2984 (max. 8388607)
- 132 named destinations out of 1000 (max. 500000)
+ 2499 PDF objects out of 2984 (max. 8388607)
+ 133 named destinations out of 1000 (max. 500000)
  63248 words of extra memory for PDF output out of 74296 (max. 10000000)
 

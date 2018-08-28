@@ -213,7 +213,7 @@ Note that this definition of schema is a formal description of schemas we discus
 Let $s_{1}$, $s_{2}$ be two schemas in SUT. If $\forall (p_{x_{1}}, v_{x_{1}}) \in s_{1}$, $(p_{x_{1}}, v_{x_{1}}) \in s_{2}$, then $s_{1}$ is the $sub-schema$ of $s_{2}$, and $s_{2}$ the $super-schema$ of $s_{1}$, which can be denoted as $s_{1} \preceq s_{2}$.
 \end{definition}
 
-For example,  the 2-degree schema \{(Highlight, Off), (Status Bar, On)\} is a sub-schema of the 3-degree schema \{(Highlight, Off), (Status Bar, On), (Smart tags, Off)\}. 
+For example,  the 2-degree schema \{(Highlight, Off), (Status Bar, On)\} is a sub-schema of the 3-degree schema \{(Highlight, Off), (Status Bar, On), (Smart tags, Off)\}.
 %Also, since a test case itself is a schema, then if a test case $t$ contains a schema $s$, we have $s \preceq t$. For example,  the 2-degree schema \{(Highlight, Off), (Status Bar, On)\} is also a sub-schema of a test case \{(Highlight, Off), (Status Bar, On), ( Bookmarks, On), (Smart tags, Off)\}.
 
 According to the definition of schemas, it is easy to find the following three properties of schemas.
@@ -247,29 +247,42 @@ Given schemas $s_{1}$, $s_{2}$, and $s_{3}$, if $s_{1} \preceq s_{2}$, $s_{2} \p
 As $s_{1} \preceq s_{2}$, then $\forall (p_{x_{i}}, v_{x_{i}})\in s_{1}, (p_{x_{i}}, v_{x_{i}}) \in s_{2}$. Also, $s_{2} \preceq s_{3}$, then $\forall (p_{x_{i}}, v_{x_{i}})\in s_{2}, (p_{x_{i}}, v_{x_{i}}) \in s_{3}$. Hence, $\forall (p_{x_{i}}, v_{x_{i}})\in s_{1}, (p_{x_{i}}, v_{x_{i}}) \in s_{3}$. According to definition \ref{de:subsume}, $s_{1} \preceq s_{3}$.
 \end{proof}
 
-This proposition shows the transitivity of the subsuming relationships of schemas. For example, the 1-degree schema \{(Highlight, Off)\} is a sub-schema of the 2-degree schema \{(Highlight, Off), (Status Bar, On)\}, and this 2-degree schema is a sub-schema of the 3-degree schema \{(Highlight, Off), (Status Bar, On), (Smart tags, Off)\}. Therefore, the 1-degree schema \{(Highlight, Off)\} is also a sub-schema of the 3-degree schema \{(Highlight, Off), (Status Bar, On), (Smart tags, Off)\}. 
+This proposition shows the transitivity of the subsuming relationships of schemas. For example, the 1-degree schema \{(Highlight, Off)\} is a sub-schema of the 2-degree schema \{(Highlight, Off), (Status Bar, On)\}, and this 2-degree schema is a sub-schema of the 3-degree schema \{(Highlight, Off), (Status Bar, On), (Smart tags, Off)\}. Therefore, the 1-degree schema \{(Highlight, Off)\} is also a sub-schema of the 3-degree schema \{(Highlight, Off), (Status Bar, On), (Smart tags, Off)\}.
 
 
 These three propositions together show that the schema set $(s, \preceq)$ is a partial order set. Next, we will introduce the relationships between schemas and tests.
 
 \begin{definition}\label{de:containorhit}
-
+For any schema $s$, if there exists one test case $t$, such that each parameter value in the schema $s$ is also in the test case $t$, i.e., $\forall (p_{x_{i}}, v_{x_{i}}) \in s, (p_{x_{i}}, v_{x_{i}}) \in t$, then we call the test case $t$ \emph{hits} or \emph{contains} the schema $s$, and 
 \end{definition}
 
+Note that test case is also a schema, hence when we call.
 
 \begin{definition} \label{de:alltests}
-
+ All the test cases that contain the schema $c$ in the SUT, denoted as $\mathcal{T}(c)$
 \end{definition}
 
-\begin{definition} \label{de:containschemas}
+For example,
 
+
+\begin{definition} \label{de:allschemas}
+For a test case $t$, all the schemas contained in this test case is called $d$, denoted as $\mathcal{I}(t)$. 
 \end{definition}
+
+For example, $\mathcal{I}$ (\ (1, 1, 1)\ ) = \{(1, -, -), (-, 1, -), (-, -, 1), (1, 1, -), (1, -, 1), (-, 1, 1), (1, 1, 1)\}.
 
 
 \begin{definition} \label{de:specialschema}
-
+All the schemas that are only contained in test set $T$ (Referred to as \emph{Special schemas}); $\mathcal{S}(T) =  \mathcal{I}(T) \backslash \mathcal{I}(\bar{T}) $.
 \end{definition}
 
+For example,
+
+\begin{definition} \label{de:minimalschema}
+ A set of the minimal schemas that are only contained in test set $T$ (Referred to as \emph{Minimal schemas}); $\mathcal{C}(T) =  \{c | c \in \mathcal{S}(T)\ and\ \not\exists c' \prec c, s.t., c' \in \mathcal{S}(T)\}$.
+\end{definition}
+
+For example,
 
 \subsection{Failure and healthy}\label{sec:back:failureandhealthy}
 
@@ -306,22 +319,7 @@ A schema, say, $c$, is called a \emph{healthy schema} when we find at least one 
 
 The healthy schema is exactly the non-faulty schema we mentioned before. These two type of schemas, i.e., MFS and MHS, are essentially representations of the healthy schemas and faulty schemas in a test case. As shown later, other schemas can be determined to be healthy or faulty by these two type of schemas. As a result, we just need to record these two types of schemas (normally a small amount) instead of recording all the schemas in a test case (up to $2^{n}$) when identifying MFS.
 
-%Note that the MFS is based on the assumption that .
 
-
-%In effect, to identify the MFS in a failing test case is to figure out all the \emph{pending} schemas, and then try to classify each of them into \emph{healthy} or \emph{faulty} schema. After that, the MFS can be selected from those \emph{faulty} schemas by definition.
-
-%\begin{definition}
-%If a schema is a \emph{faulty} schema and satisfy the followed condition:
-%1. None of its subschemas is \emph{faulty} schema; 2. At least one of its subschemas is \emph{pending} schema. We then call the schema a \emph{candidate minimal faulty schema} (\emph{CMXS}).
-%\end{definition}
-%
-%\begin{definition}
-%If a schema is a \emph{healthy} schema and satisfy the followed condition:
-%1. None of its super-schemas are healthy schemas; 2. at least one of its subschemas is pending schema. We then call this schema a \emph{candidate maximum healthy schema} (\emph{CMNS}).
-%\end{definition}
-
-%Note that failures discussed are assumed to be deterministic in this paper.
 To facilitate our discussion, we introduce the following assumptions that will be used throughout this paper:
 
 \begin{assumption}  The execution result of a test case is deterministic.
@@ -361,19 +359,6 @@ let $T_{2}$ be the set of all the test cases that contain $s_{2}$, we have $\for
 \end{proof}
 
 This proposition shows that any super-schema of a faulty schema is also a faulty schema.  Note that his proposition can deduce the second rule in Section \ref{sec:motiv}.
-
-
-Some notations used later are listed below for ease of reference:
-\begin{itemize}
-\item $T$: A set of test cases. (Similarly for $T_{i},\ T_{j}, ...$. )
-\item $\bar{T}$: The complementary test set of T, i.e., $\bar{T} \bigcup T = T^{*},\ \bar{T} \bigcap T = \varnothing$.
-\item $A \backslash B$:  The set of elements that belong to set $A$ but not to $B$. For example, $T_{i} \backslash T_{j}$ indicates the set of test cases that belong to set $T_{i}$, but not to $T_{j}$.
-\item $\mathcal{T}(c)$:  All the test cases that contain the schema $c$ in the SUT.
-\item $\mathcal{I}(t)$:  All the schemas that are contained in the test case $t$, e.g., $\mathcal{I}$ (\ (1, 1, 1)\ ) = \{(1, -, -), (-, 1, -), (-, -, 1), (1, 1, -), (1, -, 1), (-, 1, 1), (1, 1, 1)\}.
-\item $\mathcal{I}(T)$:  All the schemas that are contained in test set $T$, i.e., $\mathcal{I}(T) = \bigcup_{t\in T} \mathcal{I}(t)$.
-\item  $\mathcal{S}(T)$:  All the schemas that are only contained in test set $T$ (Referred to as \emph{Special schemas}); $\mathcal{S}(T) =  \mathcal{I}(T) \backslash \mathcal{I}(\bar{T}) $.
-\item  $\mathcal{C}(T)$: A set of the minimal schemas that are only contained in test set $T$ (Referred to as \emph{Minimal schemas}); $\mathcal{C}(T) =  \{c | c \in \mathcal{S}(T)\ and\ \not\exists c' \prec c, s.t., c' \in \mathcal{S}(T)\}$.
-\end{itemize}
 
 The following two propositions are proposed in our previous study [multi].
 
