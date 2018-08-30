@@ -184,24 +184,15 @@ This section presents some definitions and propositions to give a formal model f
 Without loss of generality, assume that the Software Under Test (SUT) is influenced by a set of parameters $P$, which contains \emph{n} parameters, and each parameter $p_{i} \in P$ can take the values from the finite set $V_{i}$ ($i$ = 1,2,..n).
 
 \newtheorem{assumption}{Assumption}
-%\newtheorem{proposition}{Proposition}
 
-%\newdef{definition}{Definition}
 \subsection{Test cases and schemas}\label{sec:back:testandschema}
-In this subsection, we will formally define the test case and schema. We will also give the properties to reveal the relationships between them. In these propoertations, Propoertin   are origined from our previous work .
+In this subsection, we will formally define the test case and schema. We will also give the properties to reveal the relationships between them. In these propositions, Proposition   are originated from our previous work .
 
 \begin{definition}\label{de:testcase}
 A \emph{test case} of the SUT is a tuple of \emph{n} values, one for each parameter of the SUT. It is denoted as  ($v_{1}$, $v_{2}$,...,$v_{n}$), where $v_{1}\in V_{1}$, $v_{2} \in V_{2}$ ... $v_{n} \in V_{n}$.
 \end{definition}
-%a \emph{n}-tuple
 
 In practice, these parameters in the test case can represent many factors, such as input variables, run-time options, building options or various combination of them. We need to execute the SUT with these test cases to ensure the correctness of the behaviour of the SUT.
-
-%\begin{definition}
-
-%Some subsets of these test cases should be analysed.
-%\end{definition}
-
 
 \begin{definition}\label{de:schema}
 For the SUT, the $\tau$-set \{$(p_{x_{1}}, v_{x_{1}})$, $(p_{x_{2}}, v_{x_{2}})$, ..., $(p_{x_{\tau}}, v_{x_{\tau}})$\}, where $0 \leq x_{i} \leq n$, $p_{x_{i}} \in P$, and $v_{x_{i}} \in V_{x_{i}}$, is called a $\tau$-degree \emph{schema} ($0 < \tau \leq n $), when a set of $\tau$ values assigned to $\tau$ distinct parameters.
@@ -212,10 +203,10 @@ For example, the interactions (Highlight: Off, Status Bar: On, Smart tags: Off) 
 Note that this definition of schema is a formal description of schemas we discussed in the section of \emph{Motivation}. For example, the schema (1, -, 0, -) is exactly the schema \{ $(p_{1}, 1)$, $(p_{3}, 0)$ \} here. We use this formal definition because it benefits the description of the following theoretical analysis, including these propositions and proofs.
 
 \begin{definition}\label{de:subsume}
-Let $s_{1}$, $s_{2}$ be two schemas in SUT. If $\forall (p_{x_{1}}, v_{x_{1}}) \in s_{1}$, $(p_{x_{1}}, v_{x_{1}}) \in s_{2}$, then $s_{1}$ is the $sub-schema$ of $s_{2}$, and $s_{2}$ the $super-schema$ of $s_{1}$, which can be denoted as $s_{1} \preceq s_{2}$.
+Let $s_{1}$, $s_{2}$ be two schemas in SUT. If $\forall (p_{x_{1}}, v_{x_{1}}) \in s_{1}$, $(p_{x_{1}}, v_{x_{1}}) \in s_{2}$, then $s_{1}$ is the $sub-schema$ of $s_{2}$, and $s_{2}$ the $super-schema$ of $s_{1}$, which can be denoted as $s_{1} \preceq s_{2}$. Further, if $|s_{1}| < |s_{2}|$, we call $s_{1}$ the $real-sub-schema$ of $s_{2}$, which is denoted as $s_{1} \prec s_{2}$.
 \end{definition}
 
-For example,  the 2-degree schema \{(Highlight, Off), (Status Bar, On)\} is a sub-schema of the 3-degree schema \{(Highlight, Off), (Status Bar, On), (Smart tags, Off)\}.
+For example,  the 2-degree schema \{(Highlight, Off), (Status Bar, On)\} is a sub-schema (also is a real-sub-schema) of the 3-degree schema \{(Highlight, Off), (Status Bar, On), (Smart tags, Off)\}.
 %Also, since a test case itself is a schema, then if a test case $t$ contains a schema $s$, we have $s \preceq t$. For example,  the 2-degree schema \{(Highlight, Off), (Status Bar, On)\} is also a sub-schema of a test case \{(Highlight, Off), (Status Bar, On), ( Bookmarks, On), (Smart tags, Off)\}.
 
 According to the definition of schemas, it is easy to find the following three properties of schemas.
@@ -258,7 +249,7 @@ These three propositions together show that the schema set $(s, \preceq)$ is a p
 For a schema $s$, if there exists one test case $t$, such that each parameter value in the schema $s$ is also in the test case $t$, i.e., $\forall (p_{x_{i}}, v_{x_{i}}) \in s, (p_{x_{i}}, v_{x_{i}}) \in t$, then we call the test case $t$ \emph{hits} or \emph{contains} the schema $s$, and test case $t$ is one \emph{container} of schema $s$.
 \end{definition}
 
-Note that test case is also a $n$-degree schema, hence when a test case $t$ hits one schema $s$, we call denote this relationship simply as $s \preceq t, |t| = n$. As an example, test case \{(Highlight, Off), (Status Bar, On), (Bookmarks, Off), (Smart tags, On)\} hits the 2-degree schema \{(Highlight, Off), (Status Bar, On)\}.
+Note that test case is also a $n$-degree schema, hence when a test case $t$ hits one schema $s$, we can denote this relationship simply as $s \preceq t, |t| = n$. As an example, test case \{(Highlight, Off), (Status Bar, On), (Bookmarks, Off), (Smart tags, On)\} hits the 2-degree schema \{(Highlight, Off), (Status Bar, On)\}.
 
 \begin{definition} \label{de:alltests}
  For a schema $s$, the set of all the possible containers of it, i.e., the set of all the possible test cases that contain this schema, is called the \emph{whole set} of containers of this schema $s$, which is denoted as $\mathcal{T}(s)$.
@@ -283,8 +274,6 @@ For a test case $t$, all the schemas that it can hit is called the \emph{whole s
 
 Formally,$\mathcal{I}(t) = \{ s | s \preceq t \}$. As an example, $\mathcal{I}$ ( \{(Highlight, Off), (Status Bar, On), (Bookmarks, On), (Smart tags, On)\}\ ) is a set of $2^{4} - 1 = 15$ schemas, which is \{ \{(Highlight, Off)\}, \{(Status Bar, Off)\},  \{(Bookmarks, Off)\}, \{(Smart tags, Off)\},  \{(Highlight, Off), (Status Bar, Off)\}, ... , \{(Highlight, Off), (Status Bar, On), (Bookmarks, On), (Smart tags, On)\} \}.
 
-
-
 \begin{definition} \label{de:allschemasoft}
 For a set of test case $T$, all the schemas that these test cases can hit is called the \emph{whole set} of hit schemas of $T$, which is denoted as $\mathcal{I}(T)$.
 \end{definition}
@@ -293,16 +282,16 @@ $\mathcal{I}(T)$ extends $\mathcal{I}(t)$ to a set of test cases. Formally, $\ma
 
 
 \begin{definition} \label{de:specialschema}
-All the schemas that are \textbf{only} contained in test set $T$ is called the \emph{special schemas} of test case set $T$, which is denoted as  $\mathcal{S}(T)$. 
+All the schemas that are \textbf{only} contained in test set $T$ is called the \emph{special schemas} of test case set $T$, which is denoted as  $\mathcal{S}(T)$.
 \end{definition}
 
 Formally, $\mathcal{S}(T) =  \mathcal{I}(T) \backslash \mathcal{I}(\bar{T}) $, where $\bar{T}$ is the complementary test set of $T$, i.e., $T \bigcup \bar{T} = T^{*}, T \bigcup \bar{T} = \emptyset$. Here, $T^{*}$ indicates all the possible test cases in the SUT. Based on this formula, we can learn that the special schemas are essentially the whole set of hit schemas of test case $T$, except for those hit schemas of other test cases.
 
-As an example, let test set $T$ be \{ \{(Highlight, Off), (Status Bar, On), (Bookmarks, On), (Smart tags, On)\}, \{(Highlight, Off), (Status Bar, On), (Bookmarks, On), (Smart tags, Off)\} \}. $\mathcal{S}(T)$ = \{ \{(Highlight, Off), (Status Bar, On), (Bookmarks, On)\}, \{(Highlight, Off), (Status Bar, On), (Bookmarks, On), (Smart tags, On)\}, \{(Highlight, Off), (Status Bar, On), (Bookmarks, On), (Smart tags, Off)\} \}. Other hit schemas of $T$ can appear in other test cases besides those in $T$. For example, \{(Highlight, Off), (Status Bar, On)\} can appear in the test case \{(Highlight, Off), (Status Bar, On), (Bookmarks, Off), (Smart tags, Off)\}, which is not in $T$. 
+As an example, let test set $T$ be \{ \{(Highlight, Off), (Status Bar, On), (Bookmarks, On), (Smart tags, On)\}, \{(Highlight, Off), (Status Bar, On), (Bookmarks, On), (Smart tags, Off)\} \}. $\mathcal{S}(T)$ = \{ \{(Highlight, Off), (Status Bar, On), (Bookmarks, On)\}, \{(Highlight, Off), (Status Bar, On), (Bookmarks, On), (Smart tags, On)\}, \{(Highlight, Off), (Status Bar, On), (Bookmarks, On), (Smart tags, Off)\} \}. Other hit schemas of $T$ can appear in other test cases besides those in $T$. For example, \{(Highlight, Off), (Status Bar, On)\} can appear in the test case \{(Highlight, Off), (Status Bar, On), (Bookmarks, Off), (Smart tags, Off)\}, which is not in $T$.
 
 With respect to the special schema set of test case $T$, we can obtain the following property.
 
-\begin{proposition}[Property of special schema set of test set T]\label{pro:stct}
+\begin{proposition}[Whole container of special schema set]\label{pro:stct}
 For any test set $T$ of the SUT,  $\bigcup_{s \in \mathcal{S}(T)}\mathcal{T}(s) = T$.
 \end{proposition}
 \begin{proof}
@@ -320,14 +309,16 @@ Since $\bigcup_{s \in \mathcal{S}(T)}\mathcal{T}(s) \subseteq T$ and $T \subsete
 
 Formally, $\mathcal{C}(T)  =  \{s | s \in \mathcal{S}(T)\ and\ \not\exists s' \prec s, s.t., s' \in \mathcal{S}(T)\}$. As an example, let test set $T$ still be \{ \{(Highlight, Off), (Status Bar, On), (Bookmarks, On), (Smart tags, On)\}, \{(Highlight, Off), (Status Bar, On), (Bookmarks, On), (Smart tags, Off)\} \}. $\mathcal{C}(T)$ = \{ \{(Highlight, Off), (Status Bar, On), (Bookmarks, On)\} \}. Note that other two schemas in $\mathcal{S}(T)$ are the super-schemas of this schema, therefore, they are eliminated from this set.
 
-With respect to the minimal special schema set of test case $T$, we can obtain the following property.
+According to the definition of $\mathcal{C}(T)$, one obvious property is  $\mathcal{C}(T) \subseteq \mathcal{S}(T)$. The second property is that for any schema in $\mathcal{S}(T)$, it must be the super schema of one element of $\mathcal{C}(T)$, i.e., $\forall s \in \mathcal{S}(T), \exists s' \in \mathcal{C}(T), s.t., s' \preceq s$.
 
-\begin{proposition}[Property of minimal special schema set of test Set T]\label{pro:ash}
+We have the following relationship between  minimal special schema set and test case set $T$.
+
+\begin{proposition}[Whole container of minimal special schema set ]\label{pro:ash}
 For any test set $T$ of the SUT, $\bigcup_{s \in \mathcal{C}(T)} \mathcal{T}(s) = T$.
 \end{proposition}
 
 \begin{proof}
-As $\mathcal{C}(T) = \{s | s \in \mathcal{S}(T)\ and\ \not\exists s' \prec s, s.t., s' \in \mathcal{S}(T)\}$, indicating that $\mathcal{C}(T) \subseteq \mathcal{S}(T)$.  It is then obviously $\bigcup_{s \in \mathcal{C}(T)} \mathcal{T}(s) \subseteq \bigcup_{s \in \mathcal{S}(T)} \mathcal{T}(s)$. Hence, we just need to prove that $\bigcup_{s \in \mathcal{S}(T)} \mathcal{T}(s) \subseteq \bigcup_{s \in \mathcal{C}(T)} \mathcal{T}(s)$.
+As $\mathcal{C}(T) \subseteq \mathcal{S}(T)$,  it is then obviously $\bigcup_{s \in \mathcal{C}(T)} \mathcal{T}(s) \subseteq \bigcup_{s \in \mathcal{S}(T)} \mathcal{T}(s)$. Hence, we just need to prove that $\bigcup_{s \in \mathcal{S}(T)} \mathcal{T}(s) \subseteq \bigcup_{s \in \mathcal{C}(T)} \mathcal{T}(s)$.
 
 $\forall t \in \bigcup_{s \in \mathcal{S}(T)} \mathcal{T}(s) $, $\exists s \in \mathcal{S}(T),\ s.t., t \in \mathcal{T}(s)$. According to the definition of $\mathcal{C}(T)$, $\exists s' \in \mathcal{C}(T), s.t.,\ s' \preceq s$. Correspondingly $\mathcal{T}(s) \subseteq \mathcal{T}(s')$ by Proposition \ref{pro:shl}. Hence, $t \in \mathcal{T}(s') \subseteq \bigcup_{s \in \mathcal{C}(T)} \mathcal{T}(s)$.
 
@@ -335,81 +326,70 @@ Therefore, $\bigcup_{s \in \mathcal{C}(T)} \mathcal{T}(s) = \bigcup_{s \in \math
 \end{proof}
 
 
-According to the definition of $\mathcal{C}(T)$, one observation is  $\mathcal{C}(T) \subseteq \mathcal{S}(T)$, and for any schema in $\mathcal{S}(T)$, it either belongs to $\mathcal{C}(T)$, or is the super schema of one element of $\mathcal{C}(T)$, i.e., $\forall c \in \mathcal{S}(T), \exists c' \in \mathcal{C}(T), s.t., c' = c,\ or\ c' \prec c$.
 % Another obvious observation is that
 %Then, we have the following proposition.
-\begin{proposition} [Minimal schema of the subset of test set $T$]\label{pro:sbS}
- For any test set $T$ and schema $s$ of the  SUT, if $\mathcal{T}(c) \subseteq T$, then  $c \in \mathcal{S}(T) $.
-\end{proposition}
+Next, we consider the minimal special schemas for a subset of test case set $T$.
+
+\begin{lemma} [Minimal special schema of the subset of test set $T$]\label{pro:sbS}
+ For any test set $T$ and schema $s$ of the  SUT, if $\mathcal{T}(s) \subseteq T$, then  $s \in \mathcal{S}(T) $.
+\end{lemma}
 \begin{proof}
- Assume $c \not\in \mathcal{S}(T)$, i.e., $c \not\in \mathcal{I}(T) \backslash \mathcal{I}(\bar{T})$, then $c \in \mathcal{I}(\bar{T})$. It indicates that $\exists t \in \bar{T}, t \in \mathcal{T}(c)$, which contradicts that $\mathcal{T}(c) \subseteq T$. Therefore, $c \in \mathcal{S}(T)$.
+ Assume $s \not\in \mathcal{S}(T)$, i.e., $s \not\in \mathcal{I}(T) \backslash \mathcal{I}(\bar{T})$, then $s \in \mathcal{I}(\bar{T})$. It indicates that $\exists t \in \bar{T}, t \in \mathcal{T}(s)$, which contradicts that $\mathcal{T}(s) \subseteq T$. Therefore, $s \in \mathcal{S}(T)$.
 \end{proof}
 
 
+One step further, for two subsuming test case set, we have the relationship between their minimal special schemas as the following.
 
-\begin{proposition}[{minimal schemas in the smaller test set}]\label{pro:ssp}
-For $T_{1}$ and $T_{2}$ of the SUT with $T_{2} \subseteq T_{1}$, $\forall c_{2} \in \mathcal{C}(T_{2})$, $\exists c_{1} \in \mathcal{C}(T_{1}), s.t.,\ either\ c_{1} = c_{2} \ or\  c_{1} \prec c_{2}.$
+\begin{proposition}[{Minimal special schemas in the smaller test set}]\label{pro:ssp}
+For $T_{1}$ and $T_{2}$ of the SUT with $T_{2} \subseteq T_{1}$, $\forall s_{2} \in \mathcal{C}(T_{2})$, $\exists s_{1} \in \mathcal{C}(T_{1}), s.t.,  s_{1} \preceq s_{2}.$
 \end{proposition}
 
 \begin{proof}
-$\forall c_{2} \in \mathcal{C}(T_{2})$,  $\mathcal{T}(c_{2}) \subseteq T_{2} \subseteq T_{1}$. According to Proposition \ref{pro:sbS}, $c_{2} \in \mathcal{S}(T_{1})$. By definitions of $\mathcal{S}(T)$ and $\mathcal{C}(T)$, $\exists c_{1} \in \mathcal{C}(T_{1}), s.t., c_{1} = c_{2},\ or\ c_{1} \prec c_{2}$.
+$\forall s_{2} \in \mathcal{C}(T_{2})$,  $\mathcal{T}(s_{2}) \subseteq T_{2} \subseteq T_{1}$. According to Lemma \ref{pro:sbS}, $s_{2} \in \mathcal{S}(T_{1})$. By definitions of $\mathcal{S}(T)$ and $\mathcal{C}(T)$, $\exists s_{1} \in \mathcal{C}(T_{1}), s.t., s_{1} \preceq s_{2}$.
 \end{proof}
 
-
-\subsection{Failure and healthy}\label{sec:back:failureandhealthy}
-
-We consider any abnormally executing test case as a \emph{fault}. It can be a thrown exception, compilation error, assertion failure or constraint violation. When faults are triggered by some test cases, it is desired to figure out the cause of these faults.
-
-\begin{definition}\label{de:healthy}
-A schema, say, $c$, is \emph{healthy schema} if and only if $\exists t \in \mathcal{T}(c)$, $t$ is a passing test case.% In addition, if none of super-schema of $c$ except itself is the \emph{healthy schema}, we then call the schema $c$ the \emph{maximal healthy schema (MHS)}.
-\end{definition}
-
-This definition tells that a schema is called a healthy schema if we can find at least one passing test case that contains this schema. Note that the healthy schema is the non-faulty schema we introduced in the previous section.
-
-\begin{definition}\label{de:faulty}
-A schema, say, $c$, is \emph{faulty schema} if and only if $\forall t \in \mathcal{T}(c)$, $t$ is a failing test case.
-\end{definition}
-
-This definition tells that a schema is called a faulty schema if for any test cases that contain a schema, say $c$, it will trigger a failure. Based on these two definitions, we conclude the first proposition in this paper.
-
-\begin{proposition}[Faulty schema]\label{pro:subofhealthy}
-Given a set of failing test cases  $T_{fail}$, the faulty schema is then $\forall s_{2}, s_{2} \preceq s_{1}$, $s_{2}$ is a healthy schema.
-\end{proposition}
-
-\begin{definition} \label{de:faulty:minimal}
-If for any test cases that contain a schema, say $c$, it will trigger a failure, then we call this schema $c$ the \emph{faulty schema}. Additionally, if none of the sub-schema of $c$  except itself is a \emph{faulty schema}, we then call the schema $c$ the \emph{minimal failure-causing schema (MFS)} \cite{nie2011minimal}.
-%Based on this, if a test case $t$ hit such a failure-inducing combination, say $c(F)$, it should trigger the fault $F$, for which the test case can be put as $t(F)$
-\end{definition}
-
-Note that MFS is identical to the failure-inducing interaction mentioned previously. %In this paper, the terms \emph{failure-inducing interactions} and \emph{MFS} are used interchangeably.
-Figuring the MFS helps to identify the root cause of a failure and thus facilitate the debugging process.
+These propositions build the foundation for the analysis of minimal failure-causing schemas we will discuss later.
 
 
-\begin{definition}\label{de:healthy:maximal}
-A schema, say, $c$, is called a \emph{healthy schema} when we find at least one passing test case that contains this schema. In addition, if none of super-schema of $c$ except itself is the \emph{healthy schema}, we then call the schema $c$ the \emph{maximal healthy schema (MHS)}.
-\end{definition}
+\subsection{Faulty and healthy}\label{sec:back:failureandhealthy}
 
-The healthy schema is exactly the non-faulty schema we mentioned before. These two type of schemas, i.e., MFS and MHS, are essentially representations of the healthy schemas and faulty schemas in a test case. As shown later, other schemas can be determined to be healthy or faulty by these two type of schemas. As a result, we just need to record these two types of schemas (normally a small amount) instead of recording all the schemas in a test case (up to $2^{n}$) when identifying MFS.
+We consider any abnormally executing a test case as a \emph{failure}. It can be triggered by a thrown exception, compilation error, assertion failure or constraint violation. Such a test case is called a \emph{failing} case. Otherwise, a test case is a \emph{passing} test case if the execution normally works without triggering any failure. In this paper, we only discuss the failure that are triggered by schemas.
 
-
-To facilitate our discussion, we introduce the following assumptions that will be used throughout this paper:
+To facilitate our discussion, we introduce the following two assumptions that will be used throughout this paper:
 
 \begin{assumption}  The execution result of a test case is deterministic.
 \end{assumption}
 
-This assumption is a common assumption of CT\cite{zhang2011characterizing,ghandehari2012identifying,niu2013identifying}. It indicates that the outcome of executing a test case is reproducible and will not be affected by some random events. Some approaches have already proposed measures to handle this problem, e.g., studies in \cite{yilmaz2006covering,fouche2009incremental} use multiple covering arrays to avoid this problem.
+This assumption is a common assumption of CT\cite{zhang2011characterizing,ghandehari2012identifying,niu2013identifying}. It indicates that the outcome of executing a test case is reproducible and will not be affected by some random events. Some approaches have already proposed measures to handle this problem, e.g., studies in \cite{yilmaz2006covering,fouche2009incremental} use multiple covering arrays to avoid this problem, while our previous study gives the multiple execution to alleviate such problem.
 
-\begin{assumption} If a test case contains a MFS, it must fail as expected.
+
+\begin{assumption} A failure would always be detected by testers.
 \end{assumption}
 
-This assumption shows that we can always observe the failure caused by the MFS. In practice, some issues may prevent this observation. For example, the coincidental correctness problem \cite{Masri:2014:PCC:2582050.2559932} may happen through testing, when the faulty-code is executed but the failure doesn't propagate to the output. Masking effect \cite{yilmaz2013reducing} may also make the failure-observation difficult, as other failure may triggered and stop the program to go on discovering the remaining failures.
+This assumption shows that we can always observe the failure by failing test case. In practice, some issues may prevent this observation. For example, the coincidental correctness problem \cite{Masri:2014:PCC:2582050.2559932} may happen through testing, when the faulty-code is executed but the failure doesn't propagate to the output. Masking effect \cite{yilmaz2013reducing} may also make the failure-observation difficult, as other failure may triggered and stop the program to go on discovering the remaining failures. Our previous study discussed the problem and some related consequences caused if this assumption does not hold. In this paper, we later will also discuss the impacts on caused by these two assumptions, as well as how to alleviate them.
 
-We will later discuss the impacts on MFS identification from these two assumptions, as well as how to alleviate them. Based on these definitions and assumptions, we can get several propositions as following. These propositions are the foundations of the theory of pending schemas.
-%, and their proofs are omitted due to their simplicity.
+%Based on these definitions and assumptions, we can get several propositions as following. These propositions are the foundations of the theory of pending schemas.
 
+%When faults are triggered by some test cases, it is desired to figure out the cause of these faults.
 
+Next, let us discuss the relationships between schemas and failures.
 
+\begin{definition}\label{de:healthy}
+A schema is \emph{healthy schema} if and only if at least one passing test case containing this schema.
+ %$\exists t \in \mathcal{T}(c)$, $t$ is a passing test case.% In addition,
+\end{definition}
 
+Formally, a schema $s$ is healthy schema if and only if $\exists t \in \mathcal{T}(s)$, s.t., $t$ is a passing test case. This definition tells that a healthy schema will not cause the failure of test case because there is at least one passing test case contains it. Note that the healthy schema is the non-faulty schema we introduced in the previous section.
+
+%if we can find at least one passing test case that contains this schema. 
+
+\begin{definition}\label{de:faulty}
+A schema is \emph{faulty schema} if and only if any test case containing this schema is a failing test case.
+\end{definition}
+
+Formally, a schema $s$ is a faulty schema if and only if $\forall t \in \mathcal{T}(c)$, $t$ is a failing test case.
+%This definition tells that a schema is called a faulty schema if for any test cases that contain a schema, say $c$, it will trigger a failure. 
+With respect to healthy schemas and faulty schemas, we conclude the  propositions in this paper.
 
 \begin{proposition}[Sub of Healthy]\label{pro:subofhealthy}
 Given a healthy schema $s_{1}$, then $\forall s_{2}, s_{2} \preceq s_{1}$, $s_{2}$ is a healthy schema.
@@ -426,18 +406,71 @@ This proposition shows that any subschema of a healthy schema is also a healthy 
 Given a faulty schema $s_{1}$, then $\forall s_{2}, s_{1} \preceq s_{2}$, $s_{2}$ is a faulty schema.
 \end{proposition}
 
+
 \begin{proof}
 let $T_{2}$ be the set of all the test cases that contain $s_{2}$, we have $\forall t_{2} \in T_{2}$, $s_{2} \preceq t_{2}$.  Since $s_{1} \preceq s_{2}$, we have $\forall t_{2} \in T_{2}, s_{1} \preceq s_{2} \preceq t_{2}$ according to the Proposition \ref{pro:subsumetrans}. Hence, $\forall t_{2} \in T_{2}$, $t_{2}$ contains $s_{1}$. According to the definition of faulty schema, any test case which contains $s_{1}$ would fail. Hence, $\forall t_{2} \in T_{2}$, $t_{2}$ is a failing test case. According to the definition of faulty schema. $s_{2}$ is a faulty schema.
 \end{proof}
 
 This proposition shows that any super-schema of a faulty schema is also a faulty schema.  Note that his proposition can deduce the second rule in Section \ref{sec:motiv}.
 
+
+We let the set of failing test cases in the SUT be $T_{fail}$, and the passing test cases in the SUT be $T_{pass}$. Obviously, $T_{pass} = \overline{T_{failing}}$. We can further obtain the relationships between faulty schemas and test cases.
+
+\begin{proposition}[Faulty schemas and failing test set]\label{pro:faultyschemastests}
+Given  $T_{fail}$ in the SUT, all the faulty schemas is $\mathcal{S}(T_{fail})$.
+%then $\forall s_{2}, s_{1} \preceq s_{2}$, $s_{2}$ is a faulty schema.
+\end{proposition}
+
+\begin{proof}
+We first prove that, for any schema in $\mathcal{S}(T_{fail})$, it must be a faulty schema.
+Obviously $\forall s \in \mathcal{S}(T_{fail})$, $\mathcal{T}(s) \subseteq T_{fail}$ according to Proposition \ref{pro:stct}, indicating that $s$ is a faulty schema according to the definition of faulty schema.
+
+We second prove that, for any other schema that does not belong to $\mathcal{S}(T_{fail})$, it must be a healthy schema.
+Since $s \notin \mathcal{S}(T_{fail})$, i.e., $s \notin \mathcal{I}(T_{fail}) \backslash \mathcal{I}(T_{pass})$, then $s \in \mathcal{I}(T_{pass})$. Consequently, $\exists t \in T_{pass}, s \preceq t$. Hence, $s$ is a healthy schema according to the definition.
+% $\mathcal{T}(s) \subset T_{fail}$
+\end{proof}
+
+\begin{proposition}[Healty schemas and passing test set]\label{pro:healthyschemastests}
+Given  $T_{pass}$ in the SUT, all the healthy schemas is $\mathcal{I}(T_{pass})$.
+\end{proposition}
+
+%
+%
+%\begin{proposition}[Faulty schema]\label{pro:faultyschema}
+%Given a set of failing test cases  $T_{fail}$, the faulty schema is then $\forall s_{2}, s_{2} \preceq s_{1}$, $s_{2}$ is a healthy schema.
+%\end{proposition}
+
+\begin{definition} \label{de:faulty:minimal}
+The minimal set of schemas of the faulty schemas are called \emph{minimal failure-causing schema (MFS)} \cite{nie2011minimal}.
+%Based on this, if a test case $t$ hit such a failure-inducing combination, say $c(F)$, it should trigger the fault $F$, for which the test case can be put as $t(F)$
+\end{definition}
+
+\begin{proposition}[Minimal failure-causing schemas and failing test set]\label{pro:faultyschemastests}
+Given  $T_{fail}$ in the SUT, all the MFS is $\mathcal{C}(T_{fail})$.
+%then $\forall s_{2}, s_{1} \preceq s_{2}$, $s_{2}$ is a faulty schema.
+\end{proposition}
+
+%Note that MFS is identical to the failure-inducing interaction mentioned previously. %In this paper, the terms \emph{failure-inducing interactions} and \emph{MFS} are used interchangeably.
+Figuring the MFS helps to identify the root cause of a failure and thus facilitate the debugging process.
+
+
+%\begin{definition}\label{de:healthy:maximal}
+%A schema, say, $c$, is called a \emph{healthy schema} when we find at least one passing test case that contains this schema. In addition, if none of super-schema of $c$ except itself is the \emph{healthy schema}, we then call the schema $c$ the \emph{maximal healthy schema (MHS)}.
+%\end{definition}
+%
+%The healthy schema is exactly the non-faulty schema we mentioned before. These two type of schemas, i.e., MFS and MHS, are essentially representations of the healthy schemas and faulty schemas in a test case. As shown later, other schemas can be determined to be healthy or faulty by these two type of schemas. As a result, we just need to record these two types of schemas (normally a small amount) instead of recording all the schemas in a test case (up to $2^{n}$) when identifying MFS.
+
+
+%, and their proofs are omitted due to their simplicity.
+
+
 %The following two propositions are proposed in our previous study [multi].
 %
-%\begin{proposition}[Property of minimal schema set of test Set T]\label{pro:ash}
-%For any test set $T$ of the SUT, $\bigcup_{c \in \mathcal{C}(T)} \mathcal{T}(c) = T$.
-%\end{proposition}
-%
+%\begin{corollary}[Minimal failure-causing schemas]\label{pro:mfsinthesut}
+%Minimal failure-causing schemas must be $\mathcal{C}(T_{fail})$.
+%%For any test set $T$ of the SUT, $\bigcup_{c \in \mathcal{C}(T)} \mathcal{T}(c) = T$.
+%\end{corollary}
+
 %
 %\begin{proposition}[{minimal schemas in the smaller test set}]\label{pro:ssp}
 %For two sets of test cases $T_{1}$ and $T_{2}$ of the SUT with $T_{2} \subseteq T_{1}$, $\forall c_{2} \in \mathcal{C}(T_{2})$, $\exists c_{1} \in \mathcal{C}(T_{1}), s.t., c_{1} \preceq c_{2}$.
