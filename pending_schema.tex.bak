@@ -54,6 +54,8 @@
   \postcode{210023}
   \country{China}}
 \email{niuxintao@gmail.com}
+\author{Huayao Wu}
+
 \author{Changhai Nie}
 \affiliation{%
     \institution{State Key Laboratory for Novel Software Technology, Nanjing University}
@@ -64,7 +66,7 @@
   \country{China}
 }
 \email{changhainie@nju.edu.cn}
-\author{Jeff Y. Lei}
+\author{Yu Lei}
 \affiliation{%
  \institution{Department of Computer Science and Engineering, The University of Texas at Arlington}
  %\streetaddress{Rono-Hills}
