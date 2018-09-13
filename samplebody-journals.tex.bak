@@ -187,6 +187,7 @@ Without loss of generality, assume that the Software Under Test (SUT) is influen
 
 \subsection{Test cases and schemas}\label{sec:back:testandschema}
 In this subsection, we will formally define the test case and schema. We will also give the properties to reveal the relationships between them. In these propositions, Proposition   are originated from our previous work .
+ %Moreover, we will use the same SUT in the motivation (the MS-WORD example that has four factors may influnence  ) to show the definitions and propositions.
 
 \begin{definition}\label{de:testcase}
 A \emph{test case} of the SUT is a tuple of \emph{n} values, one for each parameter of the SUT. It is denoted as  ($v_{1}$, $v_{2}$,...,$v_{n}$), where $v_{1}\in V_{1}$, $v_{2} \in V_{2}$ ... $v_{n} \in V_{n}$.
@@ -255,7 +256,7 @@ Note that test case is also a $n$-degree schema, hence when a test case $t$ hits
  For a schema $s$, the set of all the possible containers of it, i.e., the set of all the possible test cases that contain this schema, is called the \emph{whole set} of containers of this schema $s$, which is denoted as $\mathcal{T}(s)$.
 \end{definition}
 
-Formally,$\mathcal{T}(s) = \{ t | s \preceq t, |t| = n\}$. As an example, Table \ref{ex:wholecontainer} shows $\mathcal{T}($\{($p_{1}, 1$), ($p_{2}, 0$)\}$)$.  It can be observed that each possible test case contains  \{($p_{1}, 1$), ($p_{2}, 0$)\} is listed in Table \ref{ex:wholecontainer}.
+Formally, $\mathcal{T}(s) = \{ t | s \preceq t, |t| = n\}$. As an example, let us consider the SUT that has four parameters and each parameter has two values (All the following examples are based on the same SUT). Table \ref{ex:wholecontainer} shows $\mathcal{T}($\{($p_{1}, 1$), ($p_{2}, 0$)\}$)$.  It can be observed that each possible test case contains  \{($p_{1}, 1$), ($p_{2}, 0$)\} is listed in Table \ref{ex:wholecontainer}.
  %are the set of four test cases \{ \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 0$)\}, \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 1$)\} ,  \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 1$), ($p_{4}, 0$)\}, \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 1$), ($p_{4}, 1$)\}  \}.
 
 
@@ -296,10 +297,10 @@ Table \ref{ex:smallerschemahaslarger} shows the whose set of containers of  \{($
   \caption{Comparison of the whole set of containers of two subsuming schemas}
  %   {\footnotesize
       \label{ex:smallerschemahaslarger}
-    \begin{tabular}{|c|c|} \hline
+    \begin{tabular}{|c|} \hline
    \textbf{Schema} \\ \hline
     \{($p_{1}, 1$), ($p_{2}, 0$)\} \\ \hline
-   $\mathcal{T}(s)$ \\ \hline
+   \textbf{ $\mathcal{T}(s)$ }\\ \hline
     \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 0$)\} \\
     \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 1$)\} \\
     \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 1$), ($p_{4}, 0$)\} \\
@@ -319,7 +320,36 @@ Table \ref{ex:smallerschemahaslarger} shows the whose set of containers of  \{($
 For a test case $t$, all the schemas that it can hit is called the \emph{whole set} of hit schemas of $t$, which is denoted as $\mathcal{I}(t)$.
 \end{definition}
 
-Formally,$\mathcal{I}(t) = \{ s | s \preceq t \}$. As an example, $\mathcal{I}$ ( \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 0$)\}\ ) is a set of $2^{4} - 1 = 15$ schemas, which is \{ \{($p_{1}, 1$)\}, \{(Status Bar, Off)\},  \{($p_{3}, 1$)\}, \{($p_{4}, 1$)\},  \{($p_{1}, 1$), (Status Bar, Off)\}, ... , \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 0$)\} \}.
+Formally,$\mathcal{I}(t) = \{ s | s \preceq t \}$. As an example, Table \ref{ex:wholesetofhitschemas} shows $\mathcal{I}$ ( \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 0$)\}\ ). We can find it is a set of $2^{4} - 1 = 15$ schemas.
+
+\begin{table}[htbp]
+  \centering
+  \caption{An example of whole set of hit schemas of one test case}
+ %   {\footnotesize
+      \label{ex:wholesetofhitschemas}
+    \begin{tabular}{|c|} \hline
+   \textbf{Test Case} \\ \hline
+    \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 0$)\} \\ \hline
+   \textbf{ $\mathcal{I}(t)$ }\\ \hline
+    \{($p_{1}, 1$)\} \\
+    \{($p_{2}, 0$)\} \\
+    \{($p_{3}, 0$)\} \\
+    \{($p_{4}, 0$)\} \\
+    \{($p_{1}, 1$),($p_{2}, 0$)\} \\
+    \{($p_{1}, 1$),($p_{3}, 0$)\} \\
+    \{($p_{1}, 1$),($p_{4}, 0$)\} \\
+    \{($p_{2}, 0$),($p_{3}, 0$)\} \\
+    \{($p_{2}, 0$),($p_{4}, 0$)\} \\
+    \{($p_{3}, 0$),($p_{4}, 0$)\} \\
+    \{($p_{1}, 1$),($p_{2}, 0$),($p_{3}, 0$)\} \\
+    \{($p_{1}, 1$),($p_{2}, 0$),($p_{4}, 0$)\} \\
+    \{($p_{1}, 1$),($p_{3}, 0$),($p_{4}, 0$)\} \\
+    \{($p_{2}, 0$),($p_{3}, 0$),($p_{4}, 0$)\} \\
+    \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 0$)\} \\ \hline
+    \end{tabular}%
+   % }
+\end{table}%
+
 
 \begin{definition} \label{de:allschemasoft}
 For a set of test case $T$, all the schemas that these test cases can hit is called the \emph{whole set} of hit schemas of $T$, which is denoted as $\mathcal{I}(T)$.
@@ -334,7 +364,25 @@ All the schemas that are \textbf{only} contained in test set $T$ is called the \
 
 Formally, $\mathcal{S}(T) =  \mathcal{I}(T) \backslash \mathcal{I}(\bar{T}) $, where $\bar{T}$ is the complementary test set of $T$, i.e., $T \bigcup \bar{T} = T^{*}, T \bigcup \bar{T} = \emptyset$. Here, $T^{*}$ indicates all the possible test cases in the SUT. Based on this formula, we can learn that the special schemas are essentially the whole set of hit schemas of test case $T$, except for those hit schemas of other test cases.
 
-As an example, let test set $T$ be \{ \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 0$)\}, \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 1$)\} \}. $\mathcal{S}(T)$ = \{ \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 0$)\}, \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 0$)\}, \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 1$)\} \}. Other hit schemas of $T$ can appear in other test cases besides those in $T$. For example, \{($p_{1}, 1$), ($p_{2}, 0$)\} can appear in the test case \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 1$), ($p_{4}, 1$)\}, which is not in $T$.
+As an example, let test set $T$ be \{ \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 0$)\}, \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 1$)\} \}. Table \ref{ex:specialschemasoftestset} shows the schemas of $\mathcal{S}(T)$.  Other hit schemas of $T$ that can appear in other test cases do not belong to $\mathcal{S}(T)$. For example, \{($p_{1}, 1$), ($p_{2}, 0$)\} can appear in the test case \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 1$), ($p_{4}, 1$)\}, which is not in $T$. Hence, \{($p_{1}, 1$), ($p_{2}, 0$)\} is only one hit schema of $T$, but not the special schema of $T$.
+
+\begin{table}[htbp]
+  \centering
+  \caption{An example of special schemas of test case set}
+ %   {\footnotesize
+      \label{ex:specialschemasoftestset}
+    \begin{tabular}{|c|} \hline
+   \textbf{Test Case set} \\ \hline
+   \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 0$)\}\\
+   \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 1$)\}\\ \hline
+   \textbf{ $\mathcal{S}(T)$ }\\ \hline
+  \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 0$)\}  \\
+  \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 0$)\} \\
+  \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 1$)\} \\ \hline
+    \end{tabular}%
+   % }
+\end{table}%
+
 
 With respect to the special schema set of test case $T$, we can obtain the following property.
 
@@ -348,6 +396,34 @@ On the other hand, $\forall t \in T$,  $\exists s' \in \mathcal{I}(t)$, such tha
 
 Since $\bigcup_{s \in \mathcal{S}(T)}\mathcal{T}(s) \subseteq T$ and $T \subseteq \bigcup_{s \in \mathcal{S}(T)}\mathcal{T}(s)$, we have $\bigcup_{s \in \mathcal{S}(T)}\mathcal{T}(s) =  T$.
 \end{proof}
+
+
+Proposition \ref{pro:stct} revels the relationship between test case set and its special schemas. That is, for a specific test set, the whole set of containers of its special schemas are equal to this original test set. As an example, consider the special schemas of the.
+
+\begin{table}[htbp]
+  \centering
+  \caption{An example of the whole set of containers of special schemas}
+ %   {\footnotesize
+      \label{ex:prospecialschemasoftestset}
+    \begin{tabular}{|c|} \hline
+   \textbf{Test Case set} \\ \hline
+   \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 0$)\}\\
+   \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 1$)\}\\ \hline
+   \textbf{ $\mathcal{S}(T)$ }\\ \hline
+  \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 0$)\}  \\
+  \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 0$)\} \\
+  \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 1$)\} \\ \hline
+     \textbf{ $\mathcal{S}(T)$ }\\ \hline
+  \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 0$)\}  \\
+  \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 0$)\} \\
+  \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 1$)\} \\ \hline
+     \textbf{ $\mathcal{S}(T)$ }\\ \hline
+  \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 0$)\}  \\
+  \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 0$)\} \\
+  \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 1$)\} \\ \hline
+    \end{tabular}%
+   % }
+\end{table}%
 
 
 \begin{definition} \label{de:minimalschema}
@@ -491,7 +567,7 @@ The minimal set of schemas of the faulty schemas are called \emph{minimal failur
 %Based on this, if a test case $t$ hit such a failure-inducing combination, say $c(F)$, it should trigger the fault $F$, for which the test case can be put as $t(F)$
 \end{definition}
 
-\begin{proposition}[Minimal failure-causing schemas and failing test set]\label{pro:faultyschemastests}
+\begin{proposition}[Minimal failure-causing schemas and failing test set]\label{pro:minmalfaultyschemastests}
 Given  $T_{fail}$ in the SUT, all the MFS is $\mathcal{C}(T_{fail})$.
 %then $\forall s_{2}, s_{1} \preceq s_{2}$, $s_{2}$ is a faulty schema.
 \end{proposition}
