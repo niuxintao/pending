@@ -433,11 +433,26 @@ Proposition \ref{pro:stct} revels the relationship between test case set and its
  A set of the \textbf{minimal} schemas that are only contained in test set $T$ is called the \emph{minimal special schemas} of test set $T$, which is denoted as $\mathcal{C}(T)$.
 \end{definition}
 
-Formally, $\mathcal{C}(T)  =  \{s | s \in \mathcal{S}(T)\ and\ \not\exists s' \prec s, s.t., s' \in \mathcal{S}(T)\}$. As an example, let test set $T$ still be \{ \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 0$)\}, \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 1$)\} \}. $\mathcal{C}(T)$ = \{ \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 0$)\} \}. Note that other two schemas in $\mathcal{S}(T)$ are the super-schemas of this schema, therefore, they are eliminated from this set.
+Formally, $\mathcal{C}(T)  =  \{s | s \in \mathcal{S}(T)\ and\ \not\exists s' \prec s, s.t., s' \in \mathcal{S}(T)\}$. As an example, let test set $T$ still be \{ $t_{1}$, $t_{2}$ \}, where $t_{1}$ is \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 0$)\} and $t_{2}$ is \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 1$)\}.  Table \ref{ex:minimalspecialschemasoftestset} shows the
+$\mathcal{C}(T)$. We can observe that there is only one schema, i.e., $s_{1}$, in this schema set. The other two schemas in $\mathcal{S}(T)$, i.e., $s_{2}$ and $s_{3}$, are the super-schemas of this schema, therefore, they are eliminated from this set.
 
-According to the definition of $\mathcal{C}(T)$, one obvious property is  $\mathcal{C}(T) \subseteq \mathcal{S}(T)$. The second property is that for any schema in $\mathcal{S}(T)$, it must be the super schema of one element of $\mathcal{C}(T)$, i.e., $\forall s \in \mathcal{S}(T), \exists s' \in \mathcal{C}(T), s.t., s' \preceq s$.
+\begin{table}[htbp]
+  \centering
+  \caption{An example of minimal special schemas of test case set}
+ %   {\footnotesize
+      \label{ex:minimalspecialschemasoftestset}
+    \begin{tabular}{|c|c|} \hline
+  \multicolumn{2}{|c|}{\textbf{Test Case set $T$}} \\ \hline
+  $t_{1}$ & \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 0$)\}\\
+  $t_{2}$ & \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 1$)\}\\ \hline
+  \multicolumn{2}{|c|}{\textbf{ $\mathcal{C}(T)$ }}  \\ \hline
+  $s_{1}$ & \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 0$)\}  \\ \hline
+    \end{tabular}%
+   % }
+\end{table}%
 
-We have the following relationship between  minimal special schema set and test case set $T$.
+
+According to the definition of $\mathcal{C}(T)$, one obvious property is  $\mathcal{C}(T) \subseteq \mathcal{S}(T)$. The second property is that for any schema in $\mathcal{S}(T)$, it must be the super schema of one element of $\mathcal{C}(T)$, i.e., $\forall s \in \mathcal{S}(T), \exists s' \in \mathcal{C}(T), s.t., s' \preceq s$. Besides these two obvious properties, we also have the following important property about the minimal special schema set.
 
 \begin{proposition}[Whole container of minimal special schema set ]\label{pro:ash}
 For any test set $T$ of the SUT, $\bigcup_{s \in \mathcal{C}(T)} \mathcal{T}(s) = T$.
@@ -451,6 +466,29 @@ $\forall t \in \bigcup_{s \in \mathcal{S}(T)} \mathcal{T}(s) $, $\exists s \in \
 Therefore, $\bigcup_{s \in \mathcal{C}(T)} \mathcal{T}(s) = \bigcup_{s \in \mathcal{S}(T)} \mathcal{T}(s) = T$.
 \end{proof}
 
+
+This proposition revels the relationship between the minimal special schemas and the corresponding test set. That is, for a specific test set, the whole set of containers of its minimal special schemas are equal to this original test set. As an example, we still consider the test case set we used before. Table \ref{ex:prospecialschemasoftestset} specifically shows the whole containers for each minimal special schema for test case set $T$, as well as their union (Note in this example, there is only one minimal special schema). We can observe that their union, i.e.,  $\bigcup_{s \in \mathcal{C}(T)}\mathcal{T}(s)$ is equal to the original test set $T$.
+
+\begin{table}[htbp]
+  \centering
+  \caption{An example of the whole set of containers of minimal special schemas}
+ %   {\footnotesize
+      \label{ex:prominimalspecialschemasoftestset}
+    \begin{tabular}{|c|c|} \hline
+  \multicolumn{2}{|c|}{\textbf{Test Case set}} \\ \hline
+  $t_{1}$ & \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 0$)\}\\
+  $t_{2}$ & \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 1$)\}\\ \hline
+  \multicolumn{2}{|c|}{\textbf{ $\mathcal{C}(T)$ }}  \\ \hline
+  $s_{1}$ & \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 0$)\}  \\ \hline
+   \multicolumn{2}{|c|}{\textbf{ $\mathcal{T}(s_{1})$}}  \\ \hline
+  $t_{1}$ & \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 0$)\} \\
+  $t_{2}$ & \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 1$)\} \\ \hline
+    \multicolumn{2}{|c|}{\textbf{  $\bigcup_{s \in \mathcal{C}(T)}\mathcal{T}(s)$ = $\mathcal{T}(s_{1})$ }}  \\ \hline
+  $t_{1}$ & \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 0$)\} \\
+  $t_{2}$ & \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 1$)\} \\ \hline
+    \end{tabular}%
+   % }
+\end{table}%
 
 % Another obvious observation is that
 %Then, we have the following proposition.
