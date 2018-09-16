@@ -606,17 +606,35 @@ This definition tells that to determine a schema to be faulty schema, we need to
    % }
 \end{table}%
 
+As the other side of this coin, the non-faulty schema is defined as the following.
 
-Since , as an opposite side of coin, the non-faulty schema.
 \begin{definition}\label{de:healthy}
-A schema is \emph{healthy schema} if and only if at least one of its whole container is a passing test case.
+A schema is \emph{healthy schema} if and only if at least one test case of its whole set of containers is a passing test case.
 \end{definition}
 
-Formally, a schema $s$ is healthy schema if and only if $\exists t \in \mathcal{T}(s)$, s.t., $t$ is a passing test case. This definition tells that a healthy schema will not cause the failure of test case because there is at least one passing test case contains it. Note that the healthy schema is the non-faulty schema we introduced in the previous section.
+Formally, a schema $s$ is healthy schema if and only if $\exists t \in \mathcal{T}(s)$, s.t., $t$ is a passing test case. This definition tells that a healthy schema is not the cause of a failure if there is at least one passing test case contains it. This is because if it is a faulty schema, non-test case that contains it is a passing test case (the failure will always be observed). Note that the healthy schema is the non-faulty schema we introduced in the previous section.  Table \ref{ex:healthyshema} shows an healthy schema example, i.e., \{($p_{1}, 1$), ($p_{2}, 0$)\}. We can observe that test case $t_{1}$ contains it and passed after execution.
+
+
+\begin{table}[htbp]
+  \centering
+  \caption{A healthy schema \{($p_{1}, 1$), ($p_{2}, 0$)\}}
+   % {\footnotesize
+  \label{ex:healthyshema}
+    \begin{tabular}{|c|c|c|}\hline
+  \multicolumn{3}{|c|}{ \textbf{Schema}} \\ \hline
+   $s$ &   \multicolumn{2}{|c|}{\{($p_{1}, 1$), ($p_{2}, 0$)\} } \\ \hline
+  \multicolumn{3}{|c|}{ \textbf{ $\mathcal{T}(s)$ }}\\ \hline
+    $t_{1}$ &   \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 0$)\} & Pass \\
+    $t_{2}$ &   \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 1$)\} & Fail \\
+    $t_{3}$ &   \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 1$), ($p_{4}, 0$)\} & Fail \\
+    $t_{4}$ &   \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 1$), ($p_{4}, 1$)\} & Fail \\ \hline
+    \end{tabular}
+   % }
+\end{table}%
 
 
 %This definition tells that a schema is called a faulty schema if for any test cases that contain a schema, say $c$, it will trigger a failure.
-With respect to healthy schemas and faulty schemas, we conclude the  propositions in this paper.
+With respect to healthy schemas and faulty schemas, we conclude the following  propositions in this paper.
 
 \begin{proposition}[Sub of Healthy]\label{pro:subofhealthy}
 Given a healthy schema $s_{1}$, then $\forall s_{2}, s_{2} \preceq s_{1}$, $s_{2}$ is a healthy schema.
@@ -627,6 +645,8 @@ According to the definition of healthy schema,  there exists at least one test c
 \end{proof}
 
 This proposition shows that any subschema of a healthy schema is also a healthy schema. In fact, this proposition can deduce the first rule in Section \ref{sec:motiv}.
+
+As an example, 
 
 
 \begin{proposition}[Super of Faulty]\label{pro:superoffaulty}
