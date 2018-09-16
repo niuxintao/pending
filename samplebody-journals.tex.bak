@@ -63,7 +63,7 @@ We first consider the traditional covering arrays. To understand the incompleten
 
 \begin{figure*}[!ht]
  \centering
- \includegraphics[width=5.6in]{ca.eps}
+ \includegraphics[width=5.6in]{ca.pdf}
  \caption{The incompleteness of Covering array }
  \label{fig_inc_ca}
 \end{figure*}
@@ -101,7 +101,7 @@ Next, let us use OFOT to identify the MFS and help to narrow down the set of pen
 %MFS identification task is to distinguish. The wildly used approach is OFOT.
 \begin{figure*}[ht]
  \centering
- \includegraphics[width=5.6in]{ofot_single.eps}
+ \includegraphics[width=5.6in]{ofot_single.pdf}
  \caption{OFOT with single MFS}
  \label{fig_ofot_single}
 \end{figure*}
@@ -115,7 +115,7 @@ Now let us assume there are two MFS in the failing test case $t_{5}$, which are 
 %This example shows that . Because there still existing pending schemas.
 \begin{figure*}[ht]
  \centering
- \includegraphics[width=5.6in]{ofot_multi.eps}
+ \includegraphics[width=5.6in]{ofot_multi.pdf}
  \caption{OFOT with multi MFS}
  \label{fig_ofot_multi}
 \end{figure*}
@@ -131,7 +131,7 @@ FIC also mutates one factor at a time to generate one additional test case.  The
 
 \begin{figure*}[!htb]
  \centering
- \includegraphics[width=5.3in]{fic.eps}
+ \includegraphics[width=5.3in]{fic.pdf}
  \caption{FIC with multiple MFS}
  \label{fig_fic_multi}
 \end{figure*}
@@ -147,7 +147,7 @@ One reason for this incompleteness that FIC missed anther MFS in the failing tes
 
 \begin{figure*}[!htb]
  \centering
- \includegraphics[width=5.3in]{finovlp.eps}
+ \includegraphics[width=5.3in]{finovlp.pdf}
  \caption{FINOVLP with multiple MFS}
  \label{fig_finovlp_multi}
 \end{figure*}
@@ -162,7 +162,7 @@ Since Covering array, OFOT, FIC, and FINOLP cannot remove all the pending schema
 
 \begin{figure*}[!htb]
  \centering
- \includegraphics[width=5.3in]{non-pending.eps}
+ \includegraphics[width=5.3in]{non-pending.pdf}
  \caption{Additional efforts to remove pending schemas}
  \label{fig_no_pending}
 \end{figure*}
@@ -433,11 +433,26 @@ Proposition \ref{pro:stct} revels the relationship between test case set and its
  A set of the \textbf{minimal} schemas that are only contained in test set $T$ is called the \emph{minimal special schemas} of test set $T$, which is denoted as $\mathcal{C}(T)$.
 \end{definition}
 
-Formally, $\mathcal{C}(T)  =  \{s | s \in \mathcal{S}(T)\ and\ \not\exists s' \prec s, s.t., s' \in \mathcal{S}(T)\}$. As an example, let test set $T$ still be \{ \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 0$)\}, \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 1$)\} \}. $\mathcal{C}(T)$ = \{ \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 0$)\} \}. Note that other two schemas in $\mathcal{S}(T)$ are the super-schemas of this schema, therefore, they are eliminated from this set.
+Formally, $\mathcal{C}(T)  =  \{s | s \in \mathcal{S}(T)\ and\ \not\exists s' \prec s, s.t., s' \in \mathcal{S}(T)\}$. As an example, let test set $T$ still be \{ $t_{1}$, $t_{2}$ \}, where $t_{1}$ is \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 0$)\} and $t_{2}$ is \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 1$)\}.  Table \ref{ex:minimalspecialschemasoftestset} shows the
+$\mathcal{C}(T)$. We can observe that there is only one schema, i.e., $s_{1}$, in this schema set. The other two schemas in $\mathcal{S}(T)$, i.e., $s_{2}$ and $s_{3}$, are the super-schemas of this schema, therefore, they are eliminated from this set.
 
-According to the definition of $\mathcal{C}(T)$, one obvious property is  $\mathcal{C}(T) \subseteq \mathcal{S}(T)$. The second property is that for any schema in $\mathcal{S}(T)$, it must be the super schema of one element of $\mathcal{C}(T)$, i.e., $\forall s \in \mathcal{S}(T), \exists s' \in \mathcal{C}(T), s.t., s' \preceq s$.
+\begin{table}[htbp]
+  \centering
+  \caption{An example of minimal special schemas of test case set}
+ %   {\footnotesize
+      \label{ex:minimalspecialschemasoftestset}
+    \begin{tabular}{|c|c|} \hline
+  \multicolumn{2}{|c|}{\textbf{Test Case set $T$}} \\ \hline
+  $t_{1}$ & \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 0$)\}\\
+  $t_{2}$ & \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 1$)\}\\ \hline
+  \multicolumn{2}{|c|}{\textbf{ $\mathcal{C}(T)$ }}  \\ \hline
+  $s_{1}$ & \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 0$)\}  \\ \hline
+    \end{tabular}%
+   % }
+\end{table}%
 
-We have the following property about the minimal special schema set.
+
+According to the definition of $\mathcal{C}(T)$, one obvious property is  $\mathcal{C}(T) \subseteq \mathcal{S}(T)$. The second property is that for any schema in $\mathcal{S}(T)$, it must be the super schema of one element of $\mathcal{C}(T)$, i.e., $\forall s \in \mathcal{S}(T), \exists s' \in \mathcal{C}(T), s.t., s' \preceq s$. Besides these two obvious properties, we also have the following important property about the minimal special schema set.
 
 \begin{proposition}[Whole container of minimal special schema set ]\label{pro:ash}
 For any test set $T$ of the SUT, $\bigcup_{s \in \mathcal{C}(T)} \mathcal{T}(s) = T$.
@@ -452,17 +467,63 @@ Therefore, $\bigcup_{s \in \mathcal{C}(T)} \mathcal{T}(s) = \bigcup_{s \in \math
 \end{proof}
 
 
+This proposition revels the relationship between the minimal special schemas and the corresponding test set. That is, for a specific test set, the whole set of containers of its minimal special schemas are equal to this original test set. As an example, we still consider the test case set we used before. Table \ref{ex:prospecialschemasoftestset} specifically shows the whole containers for each minimal special schema for test case set $T$, as well as their union (Note in this example, there is only one minimal special schema). We can observe that their union, i.e.,  $\bigcup_{s \in \mathcal{C}(T)}\mathcal{T}(s)$ is equal to the original test set $T$.
+
+\begin{table}[htbp]
+  \centering
+  \caption{An example of the whole set of containers of minimal special schemas}
+ %   {\footnotesize
+      \label{ex:prominimalspecialschemasoftestset}
+    \begin{tabular}{|c|c|} \hline
+  \multicolumn{2}{|c|}{\textbf{Test Case set}} \\ \hline
+  $t_{1}$ & \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 0$)\}\\
+  $t_{2}$ & \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 1$)\}\\ \hline
+  \multicolumn{2}{|c|}{\textbf{ $\mathcal{C}(T)$ }}  \\ \hline
+  $s_{1}$ & \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 0$)\}  \\ \hline
+   \multicolumn{2}{|c|}{\textbf{ $\mathcal{T}(s_{1})$}}  \\ \hline
+  $t_{1}$ & \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 0$)\} \\
+  $t_{2}$ & \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 1$)\} \\ \hline
+    \multicolumn{2}{|c|}{\textbf{  $\bigcup_{s \in \mathcal{C}(T)}\mathcal{T}(s)$ = $\mathcal{T}(s_{1})$ }}  \\ \hline
+  $t_{1}$ & \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 0$)\} \\
+  $t_{2}$ & \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 1$)\} \\ \hline
+    \end{tabular}%
+   % }
+\end{table}%
+
 % Another obvious observation is that
 %Then, we have the following proposition.
 Next, we consider the minimal special schemas for a subset of test case set $T$.
 
-\begin{lemma} [Minimal special schema of the subset of test set $T$]\label{pro:sbS}
+\begin{proposition} [Whole set of containers is the subset of test set $T$]\label{pro:sbS}
  For any test set $T$ and schema $s$ of the  SUT, if $\mathcal{T}(s) \subseteq T$, then  $s \in \mathcal{S}(T) $.
-\end{lemma}
+\end{proposition}
 \begin{proof}
  Assume $s \not\in \mathcal{S}(T)$, i.e., $s \not\in \mathcal{I}(T) \backslash \mathcal{I}(\bar{T})$, then $s \in \mathcal{I}(\bar{T})$. It indicates that $\exists t \in \bar{T}, t \in \mathcal{T}(s)$, which contradicts that $\mathcal{T}(s) \subseteq T$. Therefore, $s \in \mathcal{S}(T)$.
 \end{proof}
 
+
+Proposition \ref{pro:sbS} tells that for any schema, as long as its whole set of ontainers is subset of a test set $T$, then this schema must be one of the special schema of this test set $T$. As an example, consider test set T to be \{$t_{1}$, $t_{2}$\}, where $t_{1}$ and $t_{2}$ are the same as the previous examples. Let the schema $s'$ to be \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 0$)\}. We can learn that $\mathcal{T}(s')$ is \{ \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 0$)\} \}, which is one subset of $T$. Hence, $s'$ is one special schema of $T$. The details of this example are shown in Table \ref{ex:wholecontainersofsubsetoftestset}. 
+
+\begin{table}[htbp]
+  \centering
+  \caption{An example of the schema of which the whole set of containers is the subset of test set $T$}
+ %   {\footnotesize
+      \label{ex:wholecontainersofsubsetoftestset}
+    \begin{tabular}{|c|c|} \hline
+  \multicolumn{2}{|c|}{\textbf{Test Case set $T$}} \\ \hline
+  $t_{1}$ & \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 0$)\}\\
+  $t_{2}$ & \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 1$)\}\\ \hline
+  \multicolumn{2}{|c|}{\textbf{ $\mathcal{S}(T)$ }}  \\ \hline
+  $s_{1}$ & \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 0$)\}  \\
+  $s_{2}$ & \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 0$)\} \\
+  $s_{3}$ & \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 1$)\} \\ \hline
+  \multicolumn{2}{|c|}{\textbf{Schema $s'$}} \\ \hline
+  $s'$ & \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 0$)\}\\ \hline
+  \multicolumn{2}{|c|}{\textbf{ $\mathcal{T}(s')$ }}  \\ \hline
+  $t_{2}$ & \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4} 0$)\} \\ \hline
+    \end{tabular}%
+   % }
+\end{table}%
 
 One step further, for two subsuming test case set, we have the relationship between their minimal special schemas as the following.
 
@@ -471,8 +532,31 @@ For $T_{1}$ and $T_{2}$ of the SUT with $T_{2} \subseteq T_{1}$, $\forall s_{2} 
 \end{proposition}
 
 \begin{proof}
-$\forall s_{2} \in \mathcal{C}(T_{2})$,  $\mathcal{T}(s_{2}) \subseteq T_{2} \subseteq T_{1}$. According to Lemma \ref{pro:sbS}, $s_{2} \in \mathcal{S}(T_{1})$. By definitions of $\mathcal{S}(T)$ and $\mathcal{C}(T)$, $\exists s_{1} \in \mathcal{C}(T_{1}), s.t., s_{1} \preceq s_{2}$.
+$\forall s_{2} \in \mathcal{C}(T_{2})$,  $\mathcal{T}(s_{2}) \subseteq T_{2} \subseteq T_{1}$. According to Proposition \ref{pro:sbS}, $s_{2} \in \mathcal{S}(T_{1})$. By definitions of $\mathcal{S}(T)$ and $\mathcal{C}(T)$, $\exists s_{1} \in \mathcal{C}(T_{1}), s.t., s_{1} \preceq s_{2}$.
 \end{proof}
+
+Proposition \ref{pro:ssp} tells that for two subsuming test set, the minimal special schema of the smaller test set (subset) must be the super-schema of one of the minimal special schemas of the larger test set (superset). As an example, consider the test set $T_{1}$ to be \{$t_{1}, t_{2}$\}, and $T_{2}$ to be \{$t_{1}$\}, where $t_{1}$ and $t_{2}$ are the same as previous examples. It is easy to find $T_{2} \subseteq T_{1}$. Table  \ref{ex:minimalspecialschematwosubsumingtestset} shows the minimal special schemas of these two test sets. We can find that the minimal special schema of $T_{2}$ is the super-schema of the minimal special schema of $T_{1}$.
+
+\begin{table}[htbp]
+  \centering
+  \caption{An example of the minimal special schemas of two subsuming test set}
+ %   {\footnotesize
+      \label{ex:minimalspecialschematwosubsumingtestset}
+    \begin{tabular}{|c|c|} \hline
+  \multicolumn{2}{|c|}{\textbf{Test Case set $T_{1}$}} \\ \hline
+  $t_{1}$ & \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 0$)\}\\
+  $t_{2}$ & \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 1$)\}\\ \hline
+  \multicolumn{2}{|c|}{\textbf{ $\mathcal{C}(T_{1})$ }}  \\ \hline
+  $s_{1}$ & \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 0$)\}  \\ \hline
+  \multicolumn{2}{|c|}{\textbf{Test case set $T_{2}$}} \\ \hline
+  $s'$ & \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 0$)\}\\ \hline
+  \multicolumn{2}{|c|}{\textbf{ $\mathcal{C}(T_{2})$ }}  \\ \hline
+  $s_{2}$ & \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4} 0$)\} \\ \hline
+    \end{tabular}%
+   % }
+\end{table}%
+
+
 
 These propositions build the foundation for the analysis of minimal failure-causing schemas we will discuss later.
 
@@ -1236,7 +1320,7 @@ Fig \ref{fig_minmax} lists all the faulty schemas, healthy schemas, and pending 
 
 \begin{figure*}[ht]
  \centering
- \includegraphics[width=5.6in]{minmax.eps}
+ \includegraphics[width=5.6in]{minmax.pdf}
  \caption{The example of Proposition }
  \label{fig_minmax}
 \end{figure*}
