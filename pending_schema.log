@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6500) (preloaded format=pdflatex 2017.12.21)  17 SEP 2018 22:38
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6500) (preloaded format=pdflatex 2017.12.21)  17 SEP 2018 23:02
 entering extended mode
 **./pending_schema.tex
 (pending_schema.tex
@@ -1244,9 +1244,6 @@ Package rerunfilecheck Info: File `pending_schema.out' has not changed.
 
 LaTeX Warning: There were undefined references.
 
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
  )
 (\end occurred inside a group at level 1)
 
@@ -1282,7 +1279,7 @@ ikTex2.9/fonts/type1/public/txfonts/txsya.pfb><C:/CTEX/MikTex2.9/fonts/type1/pu
 blic/txfonts/txsyb.pfb><C:/CTEX/MikTex2.9/fonts/type1/public/txfonts/txsyc.pfb>
 <C:/CTEX/MikTex2.9/fonts/type1/public/newtx/txsys.pfb><C:/CTEX/MikTex2.9/fonts/
 type1/public/newtx/zxlri.pfb>
-Output written on pending_schema.pdf (33 pages, 2568042 bytes).
+Output written on pending_schema.pdf (33 pages, 2567957 bytes).
 PDF statistics:
  2568 PDF objects out of 2984 (max. 8388607)
  155 named destinations out of 1000 (max. 500000)
