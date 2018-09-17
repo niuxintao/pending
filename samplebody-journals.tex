@@ -646,7 +646,7 @@ According to the definition of healthy schema,  there exists at least one test c
 
 This proposition shows that any subschema of a healthy schema is also a healthy schema. In fact, this proposition can deduce the first rule in Section \ref{sec:motiv}.
 
-As an example, 
+As an example, if schema  \{($p_{1}, 1$), ($p_{2}, 0$)\} is a healthy schema, then its sub-schemas, i.e., \{($p_{1}, 1$)\} and \{($p_{2}, 0$)\} are all healthy schemas.
 
 
 \begin{proposition}[Super of Faulty]\label{pro:superoffaulty}
@@ -660,8 +660,29 @@ let $T_{2}$ be the set of all the test cases that contain $s_{2}$, we have $\for
 
 This proposition shows that any super-schema of a faulty schema is also a faulty schema.  Note that his proposition can deduce the second rule in Section \ref{sec:motiv}.
 
+As an example, if schema  \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 0$)\} is a faulty schema, then its super-schemas, i.e., \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 0$)\} and \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 1$)\} are all faulty schemas.
 
-We let the set of failing test cases in the SUT be $T_{fail}$, and the passing test cases in the SUT be $T_{pass}$. Obviously, $T_{pass} = \overline{T_{failing}}$. We can further obtain the relationships between faulty schemas and test cases.
+
+Next, let us discuss the relationships among tests, faulty schemas, and healthy schemas. We let the set of failing test cases in the SUT be $T_{fail}$, and the passing test cases in the SUT be $T_{pass}$. Obviously, $T_{pass} = \overline{T_{failing}}$. We can further conclude the following propositions.
+
+
+\begin{proposition}[Healty schemas and passing test set]\label{pro:healthyschemastests}
+Given  $T_{pass}$ in the SUT, all the healthy schemas is $\mathcal{I}(T_{pass})$.
+\end{proposition}
+
+\begin{proof}
+We first prove that, for any schema in $\mathcal{S}(T_{fail})$, it must be a faulty schema.
+Obviously $\forall s \in \mathcal{S}(T_{fail})$, $\mathcal{T}(s) \subseteq T_{fail}$ according to Proposition \ref{pro:stct}, indicating that $s$ is a faulty schema according to the definition of faulty schema.
+
+We second prove that, for any other schema that does not belong to $\mathcal{S}(T_{fail})$, it must be a healthy schema.
+Since $s \notin \mathcal{S}(T_{fail})$, i.e., $s \notin \mathcal{I}(T_{fail}) \backslash \mathcal{I}(T_{pass})$, then $s \in \mathcal{I}(T_{pass})$. Consequently, $\exists t \in T_{pass}, s \preceq t$. Hence, $s$ is a healthy schema according to the definition.
+% $\mathcal{T}(s) \subset T_{fail}$
+\end{proof}
+
+Proposition \ref{pro:healthyschemastests} tells 
+
+
+
 
 \begin{proposition}[Faulty schemas and failing test set]\label{pro:faultyschemastests}
 Given  $T_{fail}$ in the SUT, all the faulty schemas is $\mathcal{S}(T_{fail})$.
@@ -677,9 +698,7 @@ Since $s \notin \mathcal{S}(T_{fail})$, i.e., $s \notin \mathcal{I}(T_{fail}) \b
 % $\mathcal{T}(s) \subset T_{fail}$
 \end{proof}
 
-\begin{proposition}[Healty schemas and passing test set]\label{pro:healthyschemastests}
-Given  $T_{pass}$ in the SUT, all the healthy schemas is $\mathcal{I}(T_{pass})$.
-\end{proposition}
+
 
 %
 %
