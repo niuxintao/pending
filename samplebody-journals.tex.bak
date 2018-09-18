@@ -641,12 +641,12 @@ Given a healthy schema $s_{1}$, then $\forall s_{2}, s_{2} \preceq s_{1}$, $s_{2
 \end{proposition}
 
 \begin{proof}
-According to the definition of healthy schema,  there exists at least one test case that contains $s_{1}$ and passes. Let this test case be $t$. Obviously, $s_{1} \preceq t$.  Then $\forall s_{2} \preceq  s_{1}$, we have $s_{2} \preceq s_{1} \preceq t$ according to Proposition \ref{pro:subsumetrans}. Hence, $\forall s_{2} \preceq  s_{1}$,  $t$ contains $s_{2}$ and passes. According to the definition of healthy schema, $\forall s_{2} \preceq  s_{1}$, $s_{2}$ is a healthy schema.
+According to the definition of healthy schema,  $\exists t \in \mathcal{T}(s_{1})$, $t$ is a passing test case.  Obviously, $s_{1} \preceq t$.  Then $\forall s_{2} \preceq  s_{1}$, we have $s_{2} \preceq s_{1} \preceq t$ according to Proposition \ref{pro:subsumetrans}. That is, $t \in \mathcal{T}(s_{2})$. According to the definition of healthy schema, $s_{2}$ is a healthy schema.
 \end{proof}
 
 This proposition shows that any subschema of a healthy schema is also a healthy schema. In fact, this proposition can deduce the first rule in Section \ref{sec:motiv}.
 
-As an example, 
+As an example, if schema  \{($p_{1}, 1$), ($p_{2}, 0$)\} is a healthy schema, then its sub-schemas, i.e., \{($p_{1}, 1$)\} and \{($p_{2}, 0$)\} are all healthy schemas.
 
 
 \begin{proposition}[Super of Faulty]\label{pro:superoffaulty}
@@ -655,42 +655,53 @@ Given a faulty schema $s_{1}$, then $\forall s_{2}, s_{1} \preceq s_{2}$, $s_{2}
 
 
 \begin{proof}
-let $T_{2}$ be the set of all the test cases that contain $s_{2}$, we have $\forall t_{2} \in T_{2}$, $s_{2} \preceq t_{2}$.  Since $s_{1} \preceq s_{2}$, we have $\forall t_{2} \in T_{2}, s_{1} \preceq s_{2} \preceq t_{2}$ according to the Proposition \ref{pro:subsumetrans}. Hence, $\forall t_{2} \in T_{2}$, $t_{2}$ contains $s_{1}$. According to the definition of faulty schema, any test case which contains $s_{1}$ would fail. Hence, $\forall t_{2} \in T_{2}$, $t_{2}$ is a failing test case. According to the definition of faulty schema. $s_{2}$ is a faulty schema.
+ Since $s_{1} \preceq s_{2}$,  $\mathcal{T}(s_{2}) \subseteq \mathcal{T}(s_{1})$ according to the Proposition \ref{pro:shl}. Also, as $s_{1}$ is a faulty schema, all the tests in $\mathcal{T}(s_{1})$ are failing test cases. Therefore, all the tests in $\mathcal{T}(s_{2})$ are also failing test cases.  According to the definition of faulty schema, $s_{2}$ is a faulty schema.
 \end{proof}
 
 This proposition shows that any super-schema of a faulty schema is also a faulty schema.  Note that his proposition can deduce the second rule in Section \ref{sec:motiv}.
 
+As an example, if schema  \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 0$)\} is a faulty schema, then its super-schemas, i.e., \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 0$)\} and \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 1$)\} are all faulty schemas.
 
-We let the set of failing test cases in the SUT be $T_{fail}$, and the passing test cases in the SUT be $T_{pass}$. Obviously, $T_{pass} = \overline{T_{failing}}$. We can further obtain the relationships between faulty schemas and test cases.
 
+Next, let us discuss the relationships among tests, faulty schemas, and healthy schemas. We let the set of failing test cases in the SUT be $T_{fail}$, and the passing test cases in the SUT be $T_{pass}$. Obviously, $T_{pass} = \overline{T_{failing}}$. We can further conclude the following propositions.
 
-\begin{proposition}[Healty schemas and passing test set]\label{pro:healthyschemastests}
-Given  $T_{pass}$ in the SUT, all the healthy schemas is $\mathcal{I}(T_{pass})$.
+%\begin{proposition}[Healty schemas and passing test set]\label{pro:healthyschemastests}
+%Given  $T_{pass}$ in the SUT, all the healthy schemas is $\mathcal{I}(T_{pass})$.
+%\end{proposition}
+%
+%\begin{proof}
+%We first prove that, for any schema in $\mathcal{S}(T_{fail})$, it must be a faulty schema.
+%Obviously $\forall s \in \mathcal{S}(T_{fail})$, $\mathcal{T}(s) \subseteq T_{fail}$ according to Proposition \ref{pro:stct}, indicating that $s$ is a faulty schema according to the definition of faulty schema.
+%
+%We second prove that, for any other schema that does not belong to $\mathcal{S}(T_{fail})$, it must be a healthy schema.
+%Since $s \notin \mathcal{S}(T_{fail})$, i.e., $s \notin \mathcal{I}(T_{fail}) \backslash \mathcal{I}(T_{pass})$, then $s \in \mathcal{I}(T_{pass})$. Consequently, $\exists t \in T_{pass}, s \preceq t$. Hence, $s$ is a healthy schema according to the definition.
+%% $\mathcal{T}(s) \subset T_{fail}$
+%\end{proof}
+%
+%Proposition \ref{pro:healthyschemastests} tells
+%
+%\begin{proposition}[Faulty schemas and failing test set]\label{pro:faultyschemastests}
+%Given  $T_{fail}$ in the SUT, all the faulty schemas is $\mathcal{S}(T_{fail})$.
+%%then $\forall s_{2}, s_{1} \preceq s_{2}$, $s_{2}$ is a faulty schema.
+%\end{proposition}
+
+\begin{proposition}[Healty and faulty schemas in the SUT]\label{pro:schemasstateandtests}
+Given  $T_{pass}$ and $T_{fail}$ in the SUT, all the faulty schemas are in the set $\mathcal{S}(T_{fail})$, and all the healthy schemas are in the set $\mathcal{I}(T_{pass})$.
 \end{proposition}
 
 \begin{proof}
-We first prove that, for any schema in $\mathcal{S}(T_{fail})$, it must be a faulty schema.
-Obviously $\forall s \in \mathcal{S}(T_{fail})$, $\mathcal{T}(s) \subseteq T_{fail}$ according to Proposition \ref{pro:stct}, indicating that $s$ is a faulty schema according to the definition of faulty schema.
+It is obvious that for any schema $s$ in the SUT, we have $\mathcal{T}(s) \subseteq T_{fail}$ or $\mathcal{T}(s) \not\subseteq T_{fail}$.
 
-We second prove that, for any other schema that does not belong to $\mathcal{S}(T_{fail})$, it must be a healthy schema.
-Since $s \notin \mathcal{S}(T_{fail})$, i.e., $s \notin \mathcal{I}(T_{fail}) \backslash \mathcal{I}(T_{pass})$, then $s \in \mathcal{I}(T_{pass})$. Consequently, $\exists t \in T_{pass}, s \preceq t$. Hence, $s$ is a healthy schema according to the definition.
-% $\mathcal{T}(s) \subset T_{fail}$
-\end{proof}
+For the first type, i.e., $\mathcal{T}(s) \subseteq T_{fail}$, $s$ is a faulty schema since all the test cases of its whole containers are failing test cases. According to the 
 
 
-
-
-\begin{proposition}[Faulty schemas and failing test set]\label{pro:faultyschemastests}
-Given  $T_{fail}$ in the SUT, all the faulty schemas is $\mathcal{S}(T_{fail})$.
-%then $\forall s_{2}, s_{1} \preceq s_{2}$, $s_{2}$ is a faulty schema.
-\end{proposition}
-
-\begin{proof}
-We first prove that, for any schema in $\mathcal{S}(T_{fail})$, it must be a faulty schema.
-Obviously $\forall s \in \mathcal{S}(T_{fail})$, $\mathcal{T}(s) \subseteq T_{fail}$ according to Proposition \ref{pro:stct}, indicating that $s$ is a faulty schema according to the definition of faulty schema.
-
-We second prove that, for any other schema that does not belong to $\mathcal{S}(T_{fail})$, it must be a healthy schema.
-Since $s \notin \mathcal{S}(T_{fail})$, i.e., $s \notin \mathcal{I}(T_{fail}) \backslash \mathcal{I}(T_{pass})$, then $s \in \mathcal{I}(T_{pass})$. Consequently, $\exists t \in T_{pass}, s \preceq t$. Hence, $s$ is a healthy schema according to the definition.
+%We first prove that, for any schema in $\mathcal{S}(T_{fail})$, it must be a faulty schema.
+%Obviously $\forall s \in \mathcal{S}(T_{fail})$, $\mathcal{T}(s) \subseteq T_{fail}$ according to Proposition \ref{pro:stct}, indicating that $s$ is a faulty schema according to the definition of faulty schema.
+%
+%We second prove that, for any schema that in $\mathcal{I}(T_{pass})$, it must be a healthy schema.
+%$\forall s \in \mathcal{I}(T_{pass})$, $\exists t \in T_{pass}, s \preceq t$. That is, $\exists t \in T_{pass}, t \in \mathcal{T}(s)$.  Hence, $s$ is a healthy schema according to the definition.
+%
+%At last, we prove that, for any schema in the SUT, it either belongs to $\mathcal{S}(T_{fail})$ or belongs to $\mathcal{I}(T_{pass})$. Since $\mathcal{S}(T_{fail})$ = $\mathcal{I}(T_{fail}) \backslash \mathcal{I}(T_{pass})$, we have $\mathcal{S}(T_{fail}) \bigcap \mathcal{I}(T_{pass}) = \emptyset$ and $\mathcal{S}(T_{fail}) \bigcup \mathcal{I}(T_{pass}) = \mathcal{I}(T_{fail}) \bigcup \mathcal{I}(T_{pass})$ =  $\mathcal{I}(T_{fail} \bigcup T_{pass})$.
 % $\mathcal{T}(s) \subset T_{fail}$
 \end{proof}
 

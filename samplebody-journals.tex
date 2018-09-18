@@ -641,7 +641,7 @@ Given a healthy schema $s_{1}$, then $\forall s_{2}, s_{2} \preceq s_{1}$, $s_{2
 \end{proposition}
 
 \begin{proof}
-According to the definition of healthy schema,  there exists at least one test case of the whole set of containers  of $s_{1}$  passes. Let this test case be $t$. Obviously, $s_{1} \preceq t$.  Then $\forall s_{2} \preceq  s_{1}$, we have $s_{2} \preceq s_{1} \preceq t$ according to Proposition \ref{pro:subsumetrans}. That is, the passing test case $t$ is also one of the containers of $s_{2}$. According to the definition of healthy schema, $\forall s_{2} \preceq  s_{1}$, $s_{2}$ is a healthy schema.
+According to the definition of healthy schema,  $\exists t \in \mathcal{T}(s_{1})$, $t$ is a passing test case.  Obviously, $s_{1} \preceq t$.  Then $\forall s_{2} \preceq  s_{1}$, we have $s_{2} \preceq s_{1} \preceq t$ according to Proposition \ref{pro:subsumetrans}. That is, $t \in \mathcal{T}(s_{2})$. According to the definition of healthy schema, $s_{2}$ is a healthy schema.
 \end{proof}
 
 This proposition shows that any subschema of a healthy schema is also a healthy schema. In fact, this proposition can deduce the first rule in Section \ref{sec:motiv}.
@@ -655,7 +655,7 @@ Given a faulty schema $s_{1}$, then $\forall s_{2}, s_{1} \preceq s_{2}$, $s_{2}
 
 
 \begin{proof}
-let $T_{2}$ be the whole set of containers of $s_{2}$, we have $\forall t_{2} \in T_{2}$, $s_{2} \preceq t_{2}$.  Since $s_{1} \preceq s_{2}$, we have $\forall t_{2} \in T_{2}, s_{1} \preceq s_{2} \preceq t_{2}$ according to the Proposition \ref{pro:subsumetrans}. Hence, $\forall t_{2} \in T_{2}$, $t_{2}$ contains $s_{1}$. According to the definition of faulty schema, any test case which contains $s_{1}$ would fail. Hence, $\forall t_{2} \in T_{2}$, $t_{2}$ is a failing test case. According to the definition of faulty schema. $s_{2}$ is a faulty schema.
+ Since $s_{1} \preceq s_{2}$,  $\mathcal{T}(s_{2}) \subseteq \mathcal{T}(s_{1})$ according to the Proposition \ref{pro:shl}. Also, as $s_{1}$ is a faulty schema, all the tests in $\mathcal{T}(s_{1})$ are failing test cases. Therefore, all the tests in $\mathcal{T}(s_{2})$ are also failing test cases.  According to the definition of faulty schema, $s_{2}$ is a faulty schema.
 \end{proof}
 
 This proposition shows that any super-schema of a faulty schema is also a faulty schema.  Note that his proposition can deduce the second rule in Section \ref{sec:motiv}.
@@ -665,86 +665,121 @@ As an example, if schema  \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 0$)\} is a faul
 
 Next, let us discuss the relationships among tests, faulty schemas, and healthy schemas. We let the set of failing test cases in the SUT be $T_{fail}$, and the passing test cases in the SUT be $T_{pass}$. Obviously, $T_{pass} = \overline{T_{failing}}$. We can further conclude the following propositions.
 
-
 \begin{proposition}[Healty schemas and passing test set]\label{pro:healthyschemastests}
-Given  $T_{pass}$ in the SUT, all the healthy schemas is $\mathcal{I}(T_{pass})$.
+Given  $T_{pass}$ in the SUT, all the healthy schemas are in the set $\mathcal{I}(T_{pass})$.
 \end{proposition}
 
 \begin{proof}
-We first prove that, for any schema in $\mathcal{S}(T_{fail})$, it must be a faulty schema.
-Obviously $\forall s \in \mathcal{S}(T_{fail})$, $\mathcal{T}(s) \subseteq T_{fail}$ according to Proposition \ref{pro:stct}, indicating that $s$ is a faulty schema according to the definition of faulty schema.
+We first prove that, $\forall s \in \mathcal{I}(T_{pass})$, it must be a healthy schema.
+Obviously $\forall s \in \mathcal{I}(T_{pass})$, $\exists t \in T_{pass}, s \preceq t$. That is, $\exists t \in T_{pass},  t \in \mathcal{T}(s)$,  which indicates that $s$ is a healthy schema according to the definition of healthy schema.
 
-We second prove that, for any other schema that does not belong to $\mathcal{S}(T_{fail})$, it must be a healthy schema.
-Since $s \notin \mathcal{S}(T_{fail})$, i.e., $s \notin \mathcal{I}(T_{fail}) \backslash \mathcal{I}(T_{pass})$, then $s \in \mathcal{I}(T_{pass})$. Consequently, $\exists t \in T_{pass}, s \preceq t$. Hence, $s$ is a healthy schema according to the definition.
-% $\mathcal{T}(s) \subset T_{fail}$
+We second prove that, for any healthy schema $s$, it must have $s \in \mathcal{I}(T_{pass})$.
+According to the definition of healthy schema, we have for any healthy schema $s$,  $\exists t \in T_{pass},  t \in \mathcal{T}(s)$. That is,  $\exists t \in T_{pass}, s \preceq t$. Hence, $s \in \mathcal{I}(t) \subseteq  \mathcal{I}(T_{pass})$.
 \end{proof}
 
-Proposition \ref{pro:healthyschemastests} tells 
+Proposition \ref{{pro:healthyschemastests}} tells that the whole set of hit schemas of passing test case set are healthy schemas.  As an example, consider the test case set $T_{pass}$ has only one test case, which is \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 0$)\}. Then all the healthy schemas are in the set $\mathcal{I}(T_{pass})$, which are listed in Table \ref{ex:wholesetofhealthyschemas}.
 
-
+\begin{table}[htbp]
+  \centering
+  \caption{An example of the healthy schemas when given passing test case set}
+ %   {\footnotesize
+      \label{ex:wholesetofhealthyschemas}
+    \begin{tabular}{|c|c|} \hline
+   \multicolumn{2}{|c|}{\textbf{Passing Test Case Set $T_{pass}$}} \\ \hline
+   $t$ & \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 0$)\} \\ \hline
+    \multicolumn{2}{|c|}{\textbf{ $\mathcal{I}(T_{pass})$ }}\\ \hline
+   $s_{1}$ & \{($p_{1}, 1$)\} \\
+   $s_{2}$ & \{($p_{2}, 0$)\} \\
+   $s_{3}$ & \{($p_{3}, 0$)\} \\
+   $s_{4}$ & \{($p_{4}, 0$)\} \\
+   $s_{5}$ & \{($p_{1}, 1$),($p_{2}, 0$)\} \\
+   $s_{6}$ & \{($p_{1}, 1$),($p_{3}, 0$)\} \\
+   $s_{7}$ & \{($p_{1}, 1$),($p_{4}, 0$)\} \\
+   $s_{8}$ & \{($p_{2}, 0$),($p_{3}, 0$)\} \\
+   $s_{9}$ & \{($p_{2}, 0$),($p_{4}, 0$)\} \\
+   $s_{10}$ & \{($p_{3}, 0$),($p_{4}, 0$)\} \\
+   $s_{11}$ & \{($p_{1}, 1$),($p_{2}, 0$),($p_{3}, 0$)\} \\
+   $s_{12}$ & \{($p_{1}, 1$),($p_{2}, 0$),($p_{4}, 0$)\} \\
+   $s_{13}$ & \{($p_{1}, 1$),($p_{3}, 0$),($p_{4}, 0$)\} \\
+   $s_{14}$ & \{($p_{2}, 0$),($p_{3}, 0$),($p_{4}, 0$)\} \\
+   $s_{15}$ & \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 0$)\} \\ \hline
+    \end{tabular}%
+\end{table}%
 
 
 \begin{proposition}[Faulty schemas and failing test set]\label{pro:faultyschemastests}
-Given  $T_{fail}$ in the SUT, all the faulty schemas is $\mathcal{S}(T_{fail})$.
-%then $\forall s_{2}, s_{1} \preceq s_{2}$, $s_{2}$ is a faulty schema.
+Given  $T_{fail}$ in the SUT, all the faulty schemas are in the set $\mathcal{S}(T_{fail})$.
 \end{proposition}
 
 \begin{proof}
-We first prove that, for any schema in $\mathcal{S}(T_{fail})$, it must be a faulty schema.
+We first prove that, $\forall s \in \mathcal{S}(T_{fail})$, it must be a faulty schema.
 Obviously $\forall s \in \mathcal{S}(T_{fail})$, $\mathcal{T}(s) \subseteq T_{fail}$ according to Proposition \ref{pro:stct}, indicating that $s$ is a faulty schema according to the definition of faulty schema.
 
-We second prove that, for any other schema that does not belong to $\mathcal{S}(T_{fail})$, it must be a healthy schema.
-Since $s \notin \mathcal{S}(T_{fail})$, i.e., $s \notin \mathcal{I}(T_{fail}) \backslash \mathcal{I}(T_{pass})$, then $s \in \mathcal{I}(T_{pass})$. Consequently, $\exists t \in T_{pass}, s \preceq t$. Hence, $s$ is a healthy schema according to the definition.
-% $\mathcal{T}(s) \subset T_{fail}$
+We second prove that, for any faulty schema $s$, it must have $s \in \mathcal{S}(T_{fail})$.
+According to the definition of faulty schema, we have for any faulty schema $s$, $\mathcal{T}(s) \subseteq T_{fail}$. 
+According to the Proposition \ref{pro:sbS}, $s \in \mathcal{S}(T_{fail})$.
 \end{proof}
 
+Proposition \ref{pro:faultyschemastests} tells that the special schemas of failing test case set are faulty schemas. As an example, let failing test cases set $T_{fail}$ be \{ \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 0$)\}, \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 1$)\} \}. Table \ref{ex:faultyschemaspffailingtestset} listed all the faulty schemas, i.e., $\mathcal{S}(T_{fail})$.
 
 
-%
-%
-%\begin{proposition}[Faulty schema]\label{pro:faultyschema}
-%Given a set of failing test cases  $T_{fail}$, the faulty schema is then $\forall s_{2}, s_{2} \preceq s_{1}$, $s_{2}$ is a healthy schema.
-%\end{proposition}
+\begin{table}[htbp]
+  \centering
+  \caption{An example of faulty schemas when given failing test case set}
+ %   {\footnotesize
+      \label{ex:faultyschemaspffailingtestset}
+    \begin{tabular}{|c|c|} \hline
+  \multicolumn{2}{|c|}{\textbf{Failing test Case set $T_{fail}$}} \\ \hline
+  $t_{1}$ & \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 0$)\}\\
+  $t_{2}$ & \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 1$)\}\\ \hline
+  \multicolumn{2}{|c|}{\textbf{ $\mathcal{S}(T_{fail})$ }}  \\ \hline
+  $s_{1}$ & \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 0$)\}  \\
+  $s_{2}$ & \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 0$)\} \\
+  $s_{3}$ & \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 1$)\} \\ \hline
+    \end{tabular}%
+   % }
+\end{table}%
+
 
 \begin{definition} \label{de:faulty:minimal}
-The minimal set of schemas of the faulty schemas are called \emph{minimal failure-causing schema (MFS)} \cite{nie2011minimal}.
+The minimal set of schemas of the faulty schemas are called \emph{minimal faulty schema (MFS)}.
 %Based on this, if a test case $t$ hit such a failure-inducing combination, say $c(F)$, it should trigger the fault $F$, for which the test case can be put as $t(F)$
 \end{definition}
 
+This definition is equal to the minimal failure-causing schema (MFS) which is first proposed in \cite{nie2011minimal}. Other studies in CT focus on fault localization also aim to identifying this type of schemas \cite{nie2011minimal,zhang2011characterizing,ghandehari2012identifying,niu2013identifying}. Figuring the MFS helps to identify the root cause of a failure and thus facilitate the debugging process.
+
+
 \begin{proposition}[Minimal failure-causing schemas and failing test set]\label{pro:minmalfaultyschemastests}
 Given  $T_{fail}$ in the SUT, all the MFS is $\mathcal{C}(T_{fail})$.
-%then $\forall s_{2}, s_{1} \preceq s_{2}$, $s_{2}$ is a faulty schema.
 \end{proposition}
 
 %Note that MFS is identical to the failure-inducing interaction mentioned previously. %In this paper, the terms \emph{failure-inducing interactions} and \emph{MFS} are used interchangeably.
-Figuring the MFS helps to identify the root cause of a failure and thus facilitate the debugging process.
+The proof of this proposition is obvious and hence omitted. This proposition tells that the MFS of the SUT are the minimal special schemas of the failing test case set. As an example, consider the same failing test cases used in the previous example. Table \ref{ex:minimalfaultyschemaspffailingtestset} listed all the MFS, i.e., $\mathcal{C}(T_{fail})$.
 
 
-%\begin{definition}\label{de:healthy:maximal}
-%A schema, say, $c$, is called a \emph{healthy schema} when we find at least one passing test case that contains this schema. In addition, if none of super-schema of $c$ except itself is the \emph{healthy schema}, we then call the schema $c$ the \emph{maximal healthy schema (MHS)}.
-%\end{definition}
-%
-%The healthy schema is exactly the non-faulty schema we mentioned before. These two type of schemas, i.e., MFS and MHS, are essentially representations of the healthy schemas and faulty schemas in a test case. As shown later, other schemas can be determined to be healthy or faulty by these two type of schemas. As a result, we just need to record these two types of schemas (normally a small amount) instead of recording all the schemas in a test case (up to $2^{n}$) when identifying MFS.
+\begin{table}[htbp]
+  \centering
+  \caption{An example of MFS when given failing test case set}
+ %   {\footnotesize
+      \label{ex:minimalfaultyschemaspffailingtestset}
+    \begin{tabular}{|c|c|} \hline
+  \multicolumn{2}{|c|}{\textbf{Failing test Case set $T_{fail}$}} \\ \hline
+  $t_{1}$ & \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 0$)\}\\
+  $t_{2}$ & \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 1$)\}\\ \hline
+  \multicolumn{2}{|c|}{\textbf{ $\mathcal{C}(T_{fail})$ }}  \\ \hline
+  $s_{1}$ & \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 0$)\}  \\ \hline
+    \end{tabular}%
+   % }
+\end{table}%
 
 
-%, and their proofs are omitted due to their simplicity.
 
 
-%The following two propositions are proposed in our previous study [multi].
-%
-%\begin{corollary}[Minimal failure-causing schemas]\label{pro:mfsinthesut}
-%Minimal failure-causing schemas must be $\mathcal{C}(T_{fail})$.
-%%For any test set $T$ of the SUT, $\bigcup_{c \in \mathcal{C}(T)} \mathcal{T}(c) = T$.
-%\end{corollary}
-
-%
-%\begin{proposition}[{minimal schemas in the smaller test set}]\label{pro:ssp}
-%For two sets of test cases $T_{1}$ and $T_{2}$ of the SUT with $T_{2} \subseteq T_{1}$, $\forall c_{2} \in \mathcal{C}(T_{2})$, $\exists c_{1} \in \mathcal{C}(T_{1}), s.t., c_{1} \preceq c_{2}$.
-%\end{proposition}
+\section{The determinability of schemas}\label{sec:pending}
+In this section, we will introduce the notion of the determinability of schemas and its properties. Based on this, we give the formal definition of the pending schema.
+%Based on several theoretical analysis about pending schema, we will give an efficient approach to obtain them. Then we will show a case study of  how to apply this approach on identifying the pending schemas.
 
 
-\section{The determination of schemas}\label{sec:pending}
-In this section, we will give the formal definition of the pending schema, as well as its properties. Based on several theoretical analysis about pending schema, we will give an efficient approach to obtain them. Then we will show a case study of  how to apply this approach on identifying the pending schemas.
 %To give a better description, we will give several propositions which provide theoretical supports for our approach. The proofs of these propositions are given in the Appendix.
 
 \subsection{The determinable schemas}\label{sec:pending:determinable}
