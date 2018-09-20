@@ -663,7 +663,7 @@ This proposition shows that any super-schema of a faulty schema is also a faulty
 As an example, if schema  \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 0$)\} is a faulty schema, then its super-schemas, i.e., \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 0$)\} and \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 1$)\} are all faulty schemas.
 
 
-Next, let us discuss the relationships among tests, faulty schemas, and healthy schemas. We let the set of failing test cases in the SUT be $T_{fail}$, and the passing test cases in the SUT be $T_{pass}$. Obviously, $T_{pass} \bigcap T_{fail} = \emptyset$ and $T_{pass} \bigcup T_{fail} = T*$, where $T*$ indicates all the possible test cases in the SUT. In other word, $T_{pass} = \overline{T_{failing}}$. We can further conclude the following propositions.
+Next, let us discuss the relationships among tests, faulty schemas, and healthy schemas. We let the set of failing test cases in the SUT be $T_{fail}$, and the passing test cases in the SUT be $T_{pass}$. Obviously, $T_{pass} \bigcap T_{fail} = \emptyset$ and $T_{pass} \bigcup T_{fail} = T^{*}$, where $T^{*}$ indicates all the possible test cases in the SUT. In other word, $T_{pass} = \overline{T_{failing}}$. We can further conclude the following propositions.
 
 \begin{proposition}[Healty schemas and passing test set]\label{pro:healthyschemastests}
 Given  $T_{pass}$ in the SUT, all the healthy schemas are in the set $\mathcal{I}(T_{pass})$.
@@ -750,7 +750,7 @@ This definition is equal to the minimal failure-causing schema (MFS) which is fi
 
 
 \begin{proposition}[Minimal failure-causing schemas and failing test set]\label{pro:minmalfaultyschemastests}
-Given  $T_{fail}$ in the SUT, all the MFS is $\mathcal{C}(T_{fail})$.
+Given  $T_{fail}$ in the SUT, all the MFS are in the set $\mathcal{C}(T_{fail})$.
 \end{proposition}
 
 %Note that MFS is identical to the failure-inducing interaction mentioned previously. %In this paper, the terms \emph{failure-inducing interactions} and \emph{MFS} are used interchangeably.
@@ -786,7 +786,6 @@ In this section, we will introduce the notion of the determinability of schemas 
 %Before we give a formal definition of pending schema, we need to first give the definition of ``a determinable schema".
 Note that in Section \ref{sec:back}, we introduced the definition of faulty schema and healthy schema, as well as some properties of them. Based on these definitions, we can conclude that in order to determine a schema to be healthy or faulty, we need to make sure whether the corresponding schema satisfies the specific conditions. For example, if we find the condition that one test case of the whole set of containers of a schema holds, then this schema is a healthy schema. Hence, if these conditions hold by given information or can be deduced from given information, we can determine the the schema to be healthy or faulty. Otherwise, we cannot determine the state of the schema for lack of information. Next, we will give the definition of the determinable schema.
 
-%Given the results of the test cases or some schemas. This is the information.
 
 \begin{definition}\label{de:deteminable}
 A schema is determinable if and only if it is determined to be healthy schema or faulty schema according to given information.
@@ -794,80 +793,73 @@ A schema is determinable if and only if it is determined to be healthy schema or
 
 Here, the ``information'' indicates the outcomes of the execution of some test cases or the determination state of existed schemas. If we are given the outcomes of all the test cases in the SUT or the determination results of all the possible schemas in the SUT, then for any schema in the SUT, we can easily determine it to be faulty or healthy according to Propositions \ref{pro:subofhealthy}, \ref{pro:superoffaulty}, \ref{pro:healthyschemastests} and \ref{pro:faultyschemastests}. However, if only partial information is given, it is obvious that not all the schemas are determinable.
 
-Next, we will discuss the determination of schemas under a particular circumstance, which consists of a given set of passing test cases $T_{pass}$ and a set of minimal faulty schemas $S_{m}$. This circumstance is important to analyse the properties of schemas for MFS identification later.  Note that $T_{pass}$ and $S_{m}$ are only partial information, i.e., different from previous section, .
+Next, we will discuss the determinability of schemas under a particular circumstance. Specifically, we are given a set of passing test cases $T_{pass}$, a set of failing test cases $T_{fail}$, and a set of test cases, i.e., $T_{unknown}$, of which the execution results are unknown.  In this condition, we have $T_{pass} \bigcup T_{fail} \bigcup T_{unknown} =  T^{*}$, where $T^{*}$ indicates all the possible test cases in the SUT. Also, $T_{pass} \bigcap T_{fail} = T_{pass} \bigcap T_{unknown} = T_{fail} \bigcap T_{unknown} = \emptyset$. Note that, this condition is different from the condition we discussed in Section \ref{sec:back:failureandhealthy}, where the test case is either belong to $T_{fail}$ or $T_{pass}$. In this condition, a test case can belong to the third type of test case set $T_{unknown}$.
 
-\begin{proposition}[Determinable with passing test cases and faulty schemas]\label{pro:determinableparthealthyfaulty}
-Given a set of passing test case set $T_{pass}$, and a set of minimal faulty schemas $S_{M}$, for any schema, say, $s$, is determinable if only if either $\exists t \in T_{pass}, s \preceq t$ or $\exists m \in S_{M}, m \preceq s$.
+
+
+\begin{proposition}[Determinable to be healthy]\label{pro:determinablehealthy}
+Given  $T_{fail}$, $T_{pass}$, $T_{unknown}$, the schemas that can be determined to be healthy are the set $\mathcal{I}(T_{pass})$.
 \end{proposition}
 
 \begin{proof}
+We first prove that, $\forall s \in \mathcal{I}(T_{pass})$, it must be a healthy schema.
+Obviously $\forall s \in \mathcal{I}(T_{pass})$, $\exists t \in T_{pass}, s \preceq t$. That is, $\exists t \in T_{pass}, t \in \mathcal{T}(s)$. According to the definition of the healthy schema, $s$ is determined to be a healthy schema.
+ %Proposition \ref{pro:stct}, indicating that $s$ is a faulty schema according to the definition of faulty schema.
 
-We prove this proposition by two steps. First, we prove that if either $\exists t \in PTS, s \preceq t$ or $\exists m \in MFSS, m \preceq s$, $s$ is determinable.
-
-Note that $\forall t \in PTS$, $t$ is a healthy schema. This is because $t \preceq t$, and $t$ is a passing test case. Hence, $t$ itself is a healthy schema according to the definition. Hence, $\forall s \preceq t$, $s$ is also a healthy schema according to Proposition \ref{pro:subofhealthy}, indicating that if $\exists t \in PTS, s \preceq t$, $s$ is determinable (determined to be healthy schema).
-
-Also since $\forall m \in MFSS$, $m$ is faulty schema, hence according to Proposition \ref{pro:superoffaulty}, $\forall s,  m \preceq s$, $s$ is a faulty schema. It indicates that if $\exists m \in MFSS, m \preceq s$, $s$ is determinable (determined to be faulty schema).
-
-
-%as proved in Proposition \ref{pro:determinableparthealthy}, $s$ is determinable and is determined to be a healthy schema. If $\exists m \in MFSS, m \preceq s$, as proved in Proposition \ref{pro:determinablepartfaulty}, $s$ is also determinable and determined to be a faulty schema.
-
-Next, we prove that if $s$ is determinable, then either $\exists t \in PTS, s \preceq t$ or $\exists m \in MFSS, m \preceq s$.
-
-Let us first assume that $s$ is determined to be a heathy schema. Then according to the definition, $\exists t, s \preceq t$, $t$ is a passing test case. Since the given passing test case set is $PTS$, and the minimal faulty schema set $MFSS$ cannot guarantee any test case to be passing (It can only guarantee the test cases contain the schemas in $MFSS$ to be failing test csaes). It must have $t \in PTS$, because other test cases do not necessary to be passing test cases (In fact, it is possible that all these remaining test cases are failing test cases). Hence, if $s$ is determined to be a heathy schema it has $\exists t \in PTS, s \preceq t$.
-
-Let us then assume that $s$ is determined to be a faulty schema.  According to the definition, $\forall t, s \preceq t$, $t$ is a failing test case. However, all the test cases in $PTS$ are passing test cases, $MFSS$ can guarantee a set of failing test cases, which are $T(MFSS)$ = $\{ t | \exists m \in MFSS, m \preceq t \}$. Besides, other test cases do not necessary to be failing test cases.  Hence, it must have $\forall t, s \preceq t$, $t \in T(MFSS)$. That is, $T(s) \subseteq T(MFSS)$. According to Proposition \ref{pro:ssp}, we have $\exists m \in \mathcal{C}(T(MFSS))$, $m \preceq s$, which is equal to  $\exists m \in MFSS$, $m \preceq s$. Hence,  if $s$ is determined to be a faulty schema it has  $\exists m \in MFSS$, $m \preceq s$.
-
- %cannot make sure $s$ is a faulty schema. This is contradiction, indicating that $s$ cannot be determinable to be faulty schema.
-
-%Then we assume that $s$ is determined to be a faulty schema. We need to prove it has $\exists m \in MFSS, m \preceq s$.
-%We prove this by contradiction. We assume that $\nexists m \in MFSS, m \preceq s$.
-%
-%As a result, there are only two possible relationships between $s$ and $MFSS$. First, $\exists m \in MFSS, s \preceq m$. This is obviously not true, as all the schemas in $MFSS$ are minimal. Second, $\forall m \in MFSS$, $s \npreceq m$ and $m \npreceq s$. This is also not possible (We prove it in the Appendix). Since, these two conditions are all not hold, the assumption is not hold. Consequently, the only possible relationship between $s$ and $MFSS$ is $\exists m \in MFSS, m \preceq s$.
-
-%Combining these two conditions, we prove that if $s$ is determinable, it has $\exists m \in MFSS, m \preceq s$.
-
+We second prove that, for any schema $s \not\in \mathcal{I}(T_{pass})$, it cannot be determined to be a healthy schema. Since $s \not\in \mathcal{I}(T_{pass})$, $\not\exists t \in T_{pass}, s \preceq t$. Therefore,  $\not\exists t \in T_{pass}, t \in \mathcal{T}(s)$. Hence, $\mathcal{T}(s) \subseteq (T^{*} \backslash T_{pass}) = (T_{unknown} \bigcup T_{fail})$. Note that, there is none test case in $(T_{unknown} \bigcup T_{fail})$ is guaranteed to be passing test case. In fact, all the test cases in $T_{unknown}$ have the possibility to be failing test cases. Hence, schema $s$ cannot determined to be a healthy schema.
 \end{proof}
 
-Proposition \ref{pro:determinableparthealthyfaulty} tells that if given a set of passing test cases $PTS$ and minimal faulty schemas $MFSS$, only the schemas that are the super-schemas of these faulty schemas or subschemas in the passing test cases are determinable.  More formally, the set of the determinable schemas are
+Proposition \ref{pro:determinablehealthy} shows that all the schemas determined to be healthy schemas are those contained in the existed passing test cases. As an example.
+
+
+\begin{proposition}[Determinable to be faulty]\label{pro:determinablefaulty}
+Given  $T_{fail}$, $T_{pass}$, $T_{unknown}$,the schemas that can be determined to be faulty are the set $\mathcal{S}(T_{fail})$.
+\end{proposition}
+
+\begin{proof}
+We first prove that, $\forall s \in \mathcal{S}(T_{fail})$, it must be a faulty schema.
+Obviously $\forall s \in \mathcal{S}(T_{fail})$, $\mathcal{T}(s) \subseteq T_{fail}$ according to Proposition \ref{pro:stct}, indicating that $s$ is a faulty schema according to the definition of faulty schema.
+ %Proposition \ref{pro:stct}, indicating that $s$ is a faulty schema according to the definition of faulty schema.
+
+We second prove that, for any schema $s \not\in \mathcal{S}(T_{fail})$, it cannot be determined to be a faulty schema. Since $s \not\in \mathcal{S}(T_{fail})$, i.e., $s \not\in \mathcal{I}(T_{fail})\backslash \mathcal{I}(T^{*} \backslash T_{fail})$, $\exists t \in T^{*} \backslash T_{fail}, s \preceq t$. Therefore,  $\exists t \in T^{*} \backslash T_{fail}, t \in \mathcal{T}(s)$. Hence, $\mathcal{T}(s) \subseteq (T^{*} \backslash T_{pass}) = (T_{unknown} \bigcup T_{fail})$. Note that, there is none test case in $(T_{unknown} \bigcup T_{fail})$ is guaranteed to be passing test case. In fact, all the test cases in $T_{unknown}$ have the possibility to be failing test cases. Hence, schema $s$ cannot determined to be a healthy schema.
+\end{proof}
+
+Proposition \ref{pro:determinablefaulty} shows that all the schemas determined to be healthy schemas are those contained in the existed passing test cases. As an example.
+
+
+
+\begin{proposition}[Determinable]\label{pro:determinable}
+Given  $T_{fail}$, $T_{pass}$, $T_{unknown}$, only schemas $\mathcal{I}(T_{pass})$ and   $\mathcal{S}(T_{fail})$  are determinable.
+\end{proposition}
+
+
+%minimal faulty schemas $S_{m}$. This circumstance is important to analyse the properties of schemas for MFS identification later.  Note that we are only given $T_{pass}$ and $S_{m}$ here, without any other information. That is, we do not know the execution results of other test cases (they may be passing test cases or failing test cases). We also do not know the status of other schemas (they may be faulty schemas or healthy schemas).
+
+%\begin{proposition}[Determinable with passing test cases and faulty schemas]\label{pro:determinableparthealthyfaulty}
+%Given a set of passing test case set $T_{pass}$, and a set of minimal faulty schemas $S_{M}$, for any schema, say, $s$, is determinable if only if either $\exists t \in T_{pass}, s \preceq t$ or $\exists m \in S_{M}, m \preceq s$.
+%\end{proposition}
+%
+%\begin{proof}
+%We prove this proposition by two steps. First, we prove that if either $\exists t \in PTS, s \preceq t$ or $\exists m \in MFSS, m \preceq s$, $s$ is determinable.
+%
+%Note that $\forall t \in PTS$, $t$ is a healthy schema. This is because $t \preceq t$, and $t$ is a passing test case. Hence, $t$ itself is a healthy schema according to the definition. Hence, $\forall s \preceq t$, $s$ is also a healthy schema according to Proposition \ref{pro:subofhealthy}, indicating that if $\exists t \in PTS, s \preceq t$, $s$ is determinable (determined to be healthy schema).
+%
+%Also since $\forall m \in MFSS$, $m$ is faulty schema, hence according to Proposition \ref{pro:superoffaulty}, $\forall s,  m \preceq s$, $s$ is a faulty schema. It indicates that if $\exists m \in MFSS, m \preceq s$, $s$ is determinable (determined to be faulty schema).
+%
+%Next, we prove that if $s$ is determinable, then either $\exists t \in PTS, s \preceq t$ or $\exists m \in MFSS, m \preceq s$.
+%
+%Let us first assume that $s$ is determined to be a heathy schema. Then according to the definition, $\exists t, s \preceq t$, $t$ is a passing test case. Since the given passing test case set is $PTS$, and the minimal faulty schema set $MFSS$ cannot guarantee any test case to be passing (It can only guarantee the test cases contain the schemas in $MFSS$ to be failing test csaes). It must have $t \in PTS$, because other test cases do not necessary to be passing test cases (In fact, it is possible that all these remaining test cases are failing test cases). Hence, if $s$ is determined to be a heathy schema it has $\exists t \in PTS, s \preceq t$.
+%
+%Let us then assume that $s$ is determined to be a faulty schema.  According to the definition, $\forall t, s \preceq t$, $t$ is a failing test case. However, all the test cases in $PTS$ are passing test cases, $MFSS$ can guarantee a set of failing test cases, which are $T(MFSS)$ = $\{ t | \exists m \in MFSS, m \preceq t \}$. Besides, other test cases do not necessary to be failing test cases.  Hence, it must have $\forall t, s \preceq t$, $t \in T(MFSS)$. That is, $T(s) \subseteq T(MFSS)$. According to Proposition \ref{pro:ssp}, we have $\exists m \in \mathcal{C}(T(MFSS))$, $m \preceq s$, which is equal to  $\exists m \in MFSS$, $m \preceq s$. Hence,  if $s$ is determined to be a faulty schema it has  $\exists m \in MFSS$, $m \preceq s$.
+%\end{proof}
+%
+%Proposition \ref{pro:determinableparthealthyfaulty} tells that if given a set of passing test cases $PTS$ and minimal faulty schemas $MFSS$, only the schemas that are the super-schemas of these faulty schemas or subschemas in the passing test cases are determinable.  More formally, the set of the determinable schemas are
 
 \begin{equation}
 \begin{aligned}\label{eq:dss}
 DSS=\{ s\ |\ \exists t \in PTS,  s \preceq t  \ || \  \exists m \in MFSS, m \preceq s \} .
 \end{aligned}
 \end{equation}
-%
-% $$DSS = \{ $s | \exists t \in PTS, s \preceq t$ or $\exists m \in MFSS, m \preceq s  \} $$
-%%, and these schemas must be determined to be faulty schemas.
-
-%given a set of faulty schemas, of which satisfying that no other schemas of its faulty is faulty schema (This is the definition of MFS identification).
-
-
-%According to this definition, to tell a schema is determinable or not we need to check if it is a healthy schema or faulty schema.  Next, we will discuss under which conditions does a schema is determinable.
-
-%More formally, let $stat(s, pass)$  = true is the proposition that show a schema is true. This is true if and only if $\exists t, s \preceq t$, t is a passing test case.  Similarly,  let $stat(s, fail)$  = true is the proposition that show  a schema is faulty. This is true if and only if $\forall t, s \preceq t$, t is a failing test case. If we can know all the information of all the test cases in the SUT, we can easily judge the correctness of each function for any schema. However, if we have only partial information of the SUT, not all the schemas is determinable.
-%
-%Let us consider the general condition, when given a set of schemas of which the status is known. Formally, let $HSS$ be the set of the schemas of which the stat is determined to be healthy, i.e., $\forall s \in HSS, stat(s, pass) = true$ is solvable (can find satisfied test cases). Let $FSS$ be the set of the schemas of which the stat is determined to be faulty, i.e., $\forall s \in FSS, stat(s, fail) = true$ (can find satisfied test cases).  Then for any schema $s$, can we determined this schema to be healthy or faulty? Note that here we did not take the test cases as a knowledge, but instead of schemas, because schemas are more general (test cases themselves are schemas). Another reason is that schemas are more applicable if we obtain the information by MFS identification (they do not only offer the information of test cases, but also the schemas (MFS)).
-%
-%
-%\begin{proposition}[Determinable to be healthy with part set]\label{pro:determinableparthealthy}
-%Given $HSS$, $s$ is determined to he healthy if only if $stat(s, fail) \&\& stat(s_{i}, pass) \&\& stat(s_{j}, fail)$ is unsolvable.
-%\end{proposition}
-%
-%Note that this formula is unsolvable, if and only if $stat(s, fail)$ is not true. Hence, it can only be $stat(s, true)$ be true. Hence, $s$ must be a healthy schema.  (can be provable.)
-%
-%%
-%%\begin{proposition}[Determinable to be healthy with part set]\label{pro:determinableparthealthy}
-%%Given $HSS$, $s$ is determined to he healthy if only if $stat(s, fail) \&\& stat(s_{1}, pass) \&\& ... \&\& stat(s_{i}, pass) \&\& stat(s_{i}, pass)$ is unsolvable.
-%%\end{proposition}
-%%
-%%Note that this formula is unsolvable, if and only if $stat(s, fail)$ is not true. Hence, it can only be $stat(s, true)$ be true. Hence, $s$ must be a healthy schema.  (can be provable.)
-%
-%\begin{proposition}[Determinable to be faulty with part set]\label{pro:determinableparthealthy}
-%Given $FSS$, $s$ is determined to he faulty if only if $stat(s, pass) \&\& stat(s_{i}, pass) \&\& stat(s_{j}, fail)$ is unsolvable.
-%\end{proposition}
-%
-%Note that this formula is unsolvable, if and only if $stat(s, pass)$ is not true. Hence, it can only be $stat(s, fail)$ be true. Hence, $s$ must be a faulty schema.  (can be provable.)
-
 
 
 \subsection{The pending schemas}\label{sec:pending:pending}
