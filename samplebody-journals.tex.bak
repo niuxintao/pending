@@ -809,7 +809,7 @@ Obviously $\forall s \in \mathcal{I}(T_{pass})$, $\exists t \in T_{pass}, s \pre
 We second prove that, for any schema $s \not\in \mathcal{I}(T_{pass})$, it cannot be determined to be a healthy schema. Since $s \not\in \mathcal{I}(T_{pass})$, $\not\exists t \in T_{pass}, s \preceq t$. Therefore,  $\not\exists t \in T_{pass}, t \in \mathcal{T}(s)$. Hence, $\mathcal{T}(s) \subseteq (T^{*} \backslash T_{pass}) = (T_{unknown} \bigcup T_{fail})$. Note that, there is none test case in $(T_{unknown} \bigcup T_{fail})$ is guaranteed to be passing test case. In fact, all the test cases in $T_{unknown}$ have the possibility to be failing test cases. Hence, schema $s$ cannot determined to be a healthy schema.
 \end{proof}
 
-Proposition \ref{pro:determinablehealthy} shows that all the schemas determined to be healthy schemas are those contained in the existed passing test cases. As an example.
+Proposition \ref{pro:determinablehealthy} shows that only the schemas contained in those existed passing test cases can be determined to be healthy schemas.  As an example.
 
 
 \begin{proposition}[Determinable to be faulty]\label{pro:determinablefaulty}
@@ -821,10 +821,42 @@ We first prove that, $\forall s \in \mathcal{S}(T_{fail})$, it must be a faulty 
 Obviously $\forall s \in \mathcal{S}(T_{fail})$, $\mathcal{T}(s) \subseteq T_{fail}$ according to Proposition \ref{pro:stct}, indicating that $s$ is a faulty schema according to the definition of faulty schema.
  %Proposition \ref{pro:stct}, indicating that $s$ is a faulty schema according to the definition of faulty schema.
 
-We second prove that, for any schema $s \not\in \mathcal{S}(T_{fail})$, it cannot be determined to be a faulty schema. Since $s \not\in \mathcal{S}(T_{fail})$, i.e., $s \not\in \mathcal{I}(T_{fail})\backslash \mathcal{I}(T^{*} \backslash T_{fail})$, $\exists t \in T^{*} \backslash T_{fail}, s \preceq t$. Therefore,  $\exists t \in T^{*} \backslash T_{fail}, t \in \mathcal{T}(s)$. Hence, $\mathcal{T}(s) \subseteq (T^{*} \backslash T_{pass}) = (T_{unknown} \bigcup T_{fail})$. Note that, there is none test case in $(T_{unknown} \bigcup T_{fail})$ is guaranteed to be passing test case. In fact, all the test cases in $T_{unknown}$ have the possibility to be failing test cases. Hence, schema $s$ cannot determined to be a healthy schema.
+We second prove that, for any schema $s \not\in \mathcal{S}(T_{fail})$, it cannot be determined to be a faulty schema. Since $s \not\in \mathcal{S}(T_{fail})$, i.e., $s \not\in \mathcal{I}(T_{fail})\backslash \mathcal{I}(\overline{T_{fail}})$, we have $\exists t \in \overline{T_{fail}}, s \preceq t$. Therefore,  $\exists t \in \overline{T_{fail}}, t \in \mathcal{T}(s)$. Note that $\overline{T_{fail}}) = T^{*} \backslash T_{fail} =  (T_{unknown} \bigcup T_{pass})$. Since none test case in $T_{unknown} \bigcup T_{pass}$ can be guaranteed to be failing test case (all the test cases in $T_{unknown}$ have the possibility to be passing test cases), we have $\exists t \in \mathcal{T}(s)$ such that $t$ cannot be guaranteed to failing test case.  Hence, schema $s$ cannot determined to be a faulty schema.
 \end{proof}
 
-Proposition \ref{pro:determinablefaulty} shows that all the schemas determined to be healthy schemas are those contained in the existed passing test cases. As an example.
+Proposition \ref{pro:determinablefaulty} shows that only special schemas of existed failing test cases can be determined to be faulty schemas. As an example.
+
+\begin{table}[htbp]
+  \centering
+  \caption{An example of determinable schemas}
+  \label{ex:determinableschemas}
+    \begin{tabular}{|c|c|} \hline
+   \multicolumn{2}{|c|}{\textbf{Passing Test Case Set $T_{pass}$}} \\ \hline
+   $t_{1}$ & \{($p_{1}, 0$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 0$)\} \\ \hline
+    \multicolumn{2}{|c|}{\textbf{ Determined to be healthy$\mathcal{I}(T_{pass})$ }}\\ \hline
+   $s_{1}$ & \{($p_{1}, 0$)\} \\
+   $s_{2}$ & \{($p_{2}, 0$)\} \\
+   $s_{3}$ & \{($p_{3}, 0$)\} \\
+   $s_{4}$ & \{($p_{4}, 0$)\} \\
+   $s_{5}$ & \{($p_{1}, 0$),($p_{2}, 0$)\} \\
+   $s_{6}$ & \{($p_{1}, 0$),($p_{3}, 0$)\} \\
+   $s_{7}$ & \{($p_{1}, 0$),($p_{4}, 0$)\} \\
+   $s_{8}$ & \{($p_{2}, 0$),($p_{3}, 0$)\} \\
+   $s_{9}$ & \{($p_{2}, 0$),($p_{4}, 0$)\} \\
+   $s_{10}$ & \{($p_{3}, 0$),($p_{4}, 0$)\} \\
+   $s_{11}$ & \{($p_{1}, 0$),($p_{2}, 0$),($p_{3}, 0$)\} \\
+   $s_{12}$ & \{($p_{1}, 0$),($p_{2}, 0$),($p_{4}, 0$)\} \\
+   $s_{13}$ & \{($p_{1}, 0$),($p_{3}, 0$),($p_{4}, 0$)\} \\
+   $s_{14}$ & \{($p_{2}, 0$),($p_{3}, 0$),($p_{4}, 0$)\} \\
+   $s_{15}$ & \{($p_{1}, 0$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 0$)\} \\ \hline
+    \end{tabular}%
+\quad
+\begin{tabular}{ccc}
+\hline
+d&e&f\\
+\hline
+\end{tabular}
+\end{table}
 
 
 
