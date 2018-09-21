@@ -809,7 +809,60 @@ Obviously $\forall s \in \mathcal{I}(T_{pass})$, $\exists t \in T_{pass}, s \pre
 We second prove that, for any schema $s \not\in \mathcal{I}(T_{pass})$, it cannot be determined to be a healthy schema. Since $s \not\in \mathcal{I}(T_{pass})$, $\not\exists t \in T_{pass}, s \preceq t$. Therefore,  $\not\exists t \in T_{pass}, t \in \mathcal{T}(s)$. Hence, $\mathcal{T}(s) \subseteq (T^{*} \backslash T_{pass}) = (T_{unknown} \bigcup T_{fail})$. Note that, there is none test case in $(T_{unknown} \bigcup T_{fail})$ is guaranteed to be passing test case. In fact, all the test cases in $T_{unknown}$ have the possibility to be failing test cases. Hence, schema $s$ cannot determined to be a healthy schema.
 \end{proof}
 
-Proposition \ref{pro:determinablehealthy} shows that only the schemas contained in those existed passing test cases can be determined to be healthy schemas.  As an example.
+Proposition \ref{pro:determinablehealthy} shows that only the schemas contained in those existed passing test cases can be determined to be healthy schemas.  As an example, consider $T_{pass}$ contains one test case, which are \{($p_{1}, 0$), ($p_{2}, 0$), ($p_{3}, 1$), ($p_{4}, 0$)\}. $T_{fail}$ contains two test cases, which are \{($p_{1}, 0$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 0$)\}, and \{($p_{1}, 0$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 1$)\}, respectively. Other test cases are in $T_{unknown}$. Table \ref{ex:determinableschemas} shows the schemas that can be determined to be healthy schemas.
+
+\begin{table}[htbp]
+  \centering
+  \caption{An example of determinable schemas}
+  \label{ex:determinableschemas}
+    \begin{tabular}{|c|c|} \hline
+     \multicolumn{2}{|c|}{\textbf{Failing test Case set $T_{fail}$}} \\ \hline
+  $t_{1}$ & \{($p_{1}, 0$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 0$)\}\\
+  $t_{2}$ & \{($p_{1}, 0$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 1$)\}\\ \hline
+     \multicolumn{2}{|c|}{\textbf{Passing Test Case Set $T_{pass}$}} \\ \hline
+  $t_{3}$ & \{($p_{1}, 0$), ($p_{2}, 0$), ($p_{3}, 1$), ($p_{4}, 0$)\} \\ \hline
+        \multicolumn{2}{|c|}{\textbf{Unknown Test Case Set $T_{unknown}$}} \\ \hline
+  $t_{4}$ & \{($p_{1}, 0$), ($p_{2}, 0$), ($p_{3}, 1$), ($p_{4}, 1$)\} \\
+  $t_{5}$ & \{($p_{1}, 0$), ($p_{2}, 1$), ($p_{3}, 0$), ($p_{4}, 0$)\} \\
+  $t_{6}$ & \{($p_{1}, 0$), ($p_{2}, 1$), ($p_{3}, 0$), ($p_{4}, 1$)\} \\
+  $t_{7}$ & \{($p_{1}, 0$), ($p_{2}, 1$), ($p_{3}, 1$), ($p_{4}, 0$)\} \\
+  $t_{8}$ & \{($p_{1}, 0$), ($p_{2}, 1$), ($p_{3}, 1$), ($p_{4}, 1$)\} \\
+
+  $t_{9}$ & \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 0$)\}\\
+  $t_{10}$ & \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 1$)\}\\
+  $t_{11}$ & \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 1$), ($p_{4}, 0$)\} \\
+  $t_{12}$ & \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 1$), ($p_{4}, 1$)\} \\
+  $t_{13}$ & \{($p_{1}, 1$), ($p_{2}, 1$), ($p_{3}, 0$), ($p_{4}, 0$)\} \\
+  $t_{14}$ & \{($p_{1}, 1$), ($p_{2}, 1$), ($p_{3}, 0$), ($p_{4}, 1$)\} \\
+  $t_{15}$ & \{($p_{1}, 1$), ($p_{2}, 1$), ($p_{3}, 1$), ($p_{4}, 0$)\} \\
+  $t_{16}$ & \{($p_{1}, 1$), ($p_{2}, 1$), ($p_{3}, 1$), ($p_{4}, 1$)\} \\ \hline
+    \end{tabular}%
+\quad
+    \begin{tabular}{|c|c|} \hline
+   \multicolumn{2}{|c|}{\textbf{ Determined to be healthy$\mathcal{I}(T_{pass})$ }}\\ \hline
+   $s_{1}$ & \{($p_{1}, 0$)\} \\
+   $s_{2}$ & \{($p_{2}, 0$)\} \\
+   $s_{3}$ & \{($p_{3}, 1$)\} \\
+   $s_{4}$ & \{($p_{4}, 0$)\} \\
+   $s_{5}$ & \{($p_{1}, 0$),($p_{2}, 0$)\} \\
+   $s_{6}$ & \{($p_{1}, 0$),($p_{3}, 1$)\} \\
+   $s_{7}$ & \{($p_{1}, 0$),($p_{4}, 0$)\} \\
+   $s_{8}$ & \{($p_{2}, 0$),($p_{3}, 1$)\} \\
+   $s_{9}$ & \{($p_{2}, 0$),($p_{4}, 0$)\} \\
+   $s_{10}$ & \{($p_{3}, 1$),($p_{4}, 0$)\} \\
+   $s_{11}$ & \{($p_{1}, 0$),($p_{2}, 0$),($p_{3}, 1$)\} \\
+   $s_{12}$ & \{($p_{1}, 0$),($p_{2}, 0$),($p_{4}, 0$)\} \\
+   $s_{13}$ & \{($p_{1}, 0$),($p_{3}, 1$),($p_{4}, 0$)\} \\
+   $s_{14}$ & \{($p_{2}, 0$),($p_{3}, 1$),($p_{4}, 0$)\} \\
+   $s_{15}$ & \{($p_{1}, 0$), ($p_{2}, 0$), ($p_{3}, 1$), ($p_{4}, 0$)\} \\ \hline
+
+  \multicolumn{2}{|c|}{\textbf{Determined to be faulty $\mathcal{S}(T_{fail})$ }}  \\ \hline
+  $s_{1}$ & \{($p_{1}, 0$), ($p_{2}, 0$), ($p_{3}, 0$)\}  \\
+  $s_{2}$ & \{($p_{1}, 0$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 0$)\} \\
+  $s_{3}$ & \{($p_{1}, 0$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 1$)\} \\ \hline
+    \end{tabular}%
+\end{table}
+
 
 
 \begin{proposition}[Determinable to be faulty]\label{pro:determinablefaulty}
@@ -821,71 +874,27 @@ We first prove that, $\forall s \in \mathcal{S}(T_{fail})$, it must be a faulty 
 Obviously $\forall s \in \mathcal{S}(T_{fail})$, $\mathcal{T}(s) \subseteq T_{fail}$ according to Proposition \ref{pro:stct}, indicating that $s$ is a faulty schema according to the definition of faulty schema.
  %Proposition \ref{pro:stct}, indicating that $s$ is a faulty schema according to the definition of faulty schema.
 
-We second prove that, for any schema $s \not\in \mathcal{S}(T_{fail})$, it cannot be determined to be a faulty schema. Since $s \not\in \mathcal{S}(T_{fail})$, i.e., $s \not\in \mathcal{I}(T_{fail})\backslash \mathcal{I}(\overline{T_{fail}})$, we have $\exists t \in \overline{T_{fail}}, s \preceq t$. Therefore,  $\exists t \in \overline{T_{fail}}, t \in \mathcal{T}(s)$. Note that $\overline{T_{fail}}) = T^{*} \backslash T_{fail} =  (T_{unknown} \bigcup T_{pass})$. Since none test case in $T_{unknown} \bigcup T_{pass}$ can be guaranteed to be failing test case (all the test cases in $T_{unknown}$ have the possibility to be passing test cases), we have $\exists t \in \mathcal{T}(s)$ such that $t$ cannot be guaranteed to failing test case.  Hence, schema $s$ cannot determined to be a faulty schema.
+We second prove that, for any schema $s \not\in \mathcal{S}(T_{fail})$, it cannot be determined to be a faulty schema. Since $s \not\in \mathcal{S}(T_{fail})$, i.e., $s \not\in \mathcal{I}(T_{fail})\backslash \mathcal{I}(\overline{T_{fail}})$, we have $\exists t \in \overline{T_{fail}}, s \preceq t$. Therefore,  $\exists t \in \overline{T_{fail}}, t \in \mathcal{T}(s)$. Note that $\overline{T_{fail}}) = T^{*} \backslash T_{fail} =  (T_{unknown} \bigcup T_{pass})$. Since none test case in $T_{unknown} \bigcup T_{pass}$ can be guaranteed to be failing test case (all the test cases in $T_{unknown}$ have the possibility to be passing test cases), we have $\exists t \in \mathcal{T}(s)$ such that $t$ cannot be guaranteed to failing test case.  Hence, schema $s$ cannot be determined to be a faulty schema.
 \end{proof}
 
-Proposition \ref{pro:determinablefaulty} shows that only special schemas of existed failing test cases can be determined to be faulty schemas. As an example.
-
-\begin{table}[htbp]
-  \centering
-  \caption{An example of determinable schemas}
-  \label{ex:determinableschemas}
-    \begin{tabular}{|c|c|} \hline
-   \multicolumn{2}{|c|}{\textbf{Passing Test Case Set $T_{pass}$}} \\ \hline
-   $t_{1}$ & \{($p_{1}, 0$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 0$)\} \\ \hline
-    \multicolumn{2}{|c|}{\textbf{ Determined to be healthy$\mathcal{I}(T_{pass})$ }}\\ \hline
-   $s_{1}$ & \{($p_{1}, 0$)\} \\
-   $s_{2}$ & \{($p_{2}, 0$)\} \\
-   $s_{3}$ & \{($p_{3}, 0$)\} \\
-   $s_{4}$ & \{($p_{4}, 0$)\} \\
-   $s_{5}$ & \{($p_{1}, 0$),($p_{2}, 0$)\} \\
-   $s_{6}$ & \{($p_{1}, 0$),($p_{3}, 0$)\} \\
-   $s_{7}$ & \{($p_{1}, 0$),($p_{4}, 0$)\} \\
-   $s_{8}$ & \{($p_{2}, 0$),($p_{3}, 0$)\} \\
-   $s_{9}$ & \{($p_{2}, 0$),($p_{4}, 0$)\} \\
-   $s_{10}$ & \{($p_{3}, 0$),($p_{4}, 0$)\} \\
-   $s_{11}$ & \{($p_{1}, 0$),($p_{2}, 0$),($p_{3}, 0$)\} \\
-   $s_{12}$ & \{($p_{1}, 0$),($p_{2}, 0$),($p_{4}, 0$)\} \\
-   $s_{13}$ & \{($p_{1}, 0$),($p_{3}, 0$),($p_{4}, 0$)\} \\
-   $s_{14}$ & \{($p_{2}, 0$),($p_{3}, 0$),($p_{4}, 0$)\} \\
-   $s_{15}$ & \{($p_{1}, 0$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 0$)\} \\ \hline
-    \end{tabular}%
-\quad
-\begin{tabular}{ccc}
-\hline
-d&e&f\\
-\hline
-\end{tabular}
-\end{table}
-
+Proposition \ref{pro:determinablefaulty} shows that only special schemas of existed failing test cases can be determined to be faulty schemas.  For the same example discussed previously, Table \ref{ex:determinableschemas} also lists all the schemas that are determined to be faulty schemas.
 
 
 \begin{proposition}[Determinable]\label{pro:determinable}
 Given  $T_{fail}$, $T_{pass}$, $T_{unknown}$, only schemas $\mathcal{I}(T_{pass})$ and   $\mathcal{S}(T_{fail})$  are determinable.
 \end{proposition}
 
+This proposition gives the set of determined schemas when given $T_{fail}$, $T_{pass}$, and $T_{unknown}$. The proof of this propositions can be easily obtained by Propositions \ref{pro:determinablehealthy} and \ref{pro:determinablefaulty}, hence, we omit it here. For the same example discussed previously, Table \ref{ex:determinableschemas} lists all the determinable schemas, which are $\mathcal{S}(T_{fail})$ and $\mathcal{I}(T_{pass})$.
 
-%minimal faulty schemas $S_{m}$. This circumstance is important to analyse the properties of schemas for MFS identification later.  Note that we are only given $T_{pass}$ and $S_{m}$ here, without any other information. That is, we do not know the execution results of other test cases (they may be passing test cases or failing test cases). We also do not know the status of other schemas (they may be faulty schemas or healthy schemas).
+Based on Proposition \ref{pro:determinable}, we directly obtain the following formula to describe the set of determinable schemas $DS$, when given $T_{fail}$, $T_{pass}$, $T_{unknown}$.
 
-%\begin{proposition}[Determinable with passing test cases and faulty schemas]\label{pro:determinableparthealthyfaulty}
-%Given a set of passing test case set $T_{pass}$, and a set of minimal faulty schemas $S_{M}$, for any schema, say, $s$, is determinable if only if either $\exists t \in T_{pass}, s \preceq t$ or $\exists m \in S_{M}, m \preceq s$.
-%\end{proposition}
-%
-%\begin{proof}
-%We prove this proposition by two steps. First, we prove that if either $\exists t \in PTS, s \preceq t$ or $\exists m \in MFSS, m \preceq s$, $s$ is determinable.
-%
-%Note that $\forall t \in PTS$, $t$ is a healthy schema. This is because $t \preceq t$, and $t$ is a passing test case. Hence, $t$ itself is a healthy schema according to the definition. Hence, $\forall s \preceq t$, $s$ is also a healthy schema according to Proposition \ref{pro:subofhealthy}, indicating that if $\exists t \in PTS, s \preceq t$, $s$ is determinable (determined to be healthy schema).
-%
-%Also since $\forall m \in MFSS$, $m$ is faulty schema, hence according to Proposition \ref{pro:superoffaulty}, $\forall s,  m \preceq s$, $s$ is a faulty schema. It indicates that if $\exists m \in MFSS, m \preceq s$, $s$ is determinable (determined to be faulty schema).
-%
-%Next, we prove that if $s$ is determinable, then either $\exists t \in PTS, s \preceq t$ or $\exists m \in MFSS, m \preceq s$.
-%
-%Let us first assume that $s$ is determined to be a heathy schema. Then according to the definition, $\exists t, s \preceq t$, $t$ is a passing test case. Since the given passing test case set is $PTS$, and the minimal faulty schema set $MFSS$ cannot guarantee any test case to be passing (It can only guarantee the test cases contain the schemas in $MFSS$ to be failing test csaes). It must have $t \in PTS$, because other test cases do not necessary to be passing test cases (In fact, it is possible that all these remaining test cases are failing test cases). Hence, if $s$ is determined to be a heathy schema it has $\exists t \in PTS, s \preceq t$.
-%
-%Let us then assume that $s$ is determined to be a faulty schema.  According to the definition, $\forall t, s \preceq t$, $t$ is a failing test case. However, all the test cases in $PTS$ are passing test cases, $MFSS$ can guarantee a set of failing test cases, which are $T(MFSS)$ = $\{ t | \exists m \in MFSS, m \preceq t \}$. Besides, other test cases do not necessary to be failing test cases.  Hence, it must have $\forall t, s \preceq t$, $t \in T(MFSS)$. That is, $T(s) \subseteq T(MFSS)$. According to Proposition \ref{pro:ssp}, we have $\exists m \in \mathcal{C}(T(MFSS))$, $m \preceq s$, which is equal to  $\exists m \in MFSS$, $m \preceq s$. Hence,  if $s$ is determined to be a faulty schema it has  $\exists m \in MFSS$, $m \preceq s$.
-%\end{proof}
-%
-%Proposition \ref{pro:determinableparthealthyfaulty} tells that if given a set of passing test cases $PTS$ and minimal faulty schemas $MFSS$, only the schemas that are the super-schemas of these faulty schemas or subschemas in the passing test cases are determinable.  More formally, the set of the determinable schemas are
+\begin{equation}
+\begin{aligned}\label{eq:dss_1}
+DSS=\{ s\ |\ s \in  \mathcal{I}(T_{pass}) \ || \  s \in \mathcal{S}(T_{fail}) \} .
+\end{aligned}
+\end{equation}
+
+We can further .
 
 \begin{equation}
 \begin{aligned}\label{eq:dss}
