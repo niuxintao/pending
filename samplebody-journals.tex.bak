@@ -806,7 +806,7 @@ We first prove that, $\forall s \in \mathcal{I}(T_{pass})$, it must be a healthy
 Obviously $\forall s \in \mathcal{I}(T_{pass})$, $\exists t \in T_{pass}, s \preceq t$. That is, $\exists t \in T_{pass}, t \in \mathcal{T}(s)$. According to the definition of the healthy schema, $s$ is determined to be a healthy schema.
  %Proposition \ref{pro:stct}, indicating that $s$ is a faulty schema according to the definition of faulty schema.
 
-We second prove that, for any schema $s \not\in \mathcal{I}(T_{pass})$, it cannot be determined to be a healthy schema. Since $s \not\in \mathcal{I}(T_{pass})$, $\not\exists t \in T_{pass}, s \preceq t$. Therefore,  $\not\exists t \in T_{pass}, t \in \mathcal{T}(s)$. Hence, $\mathcal{T}(s) \subseteq (T^{*} \backslash T_{pass}) = (T_{unknown} \bigcup T_{fail})$. Note that, there is none test case in $(T_{unknown} \bigcup T_{fail})$ is guaranteed to be passing test case. In fact, all the test cases in $T_{unknown}$ have the possibility to be failing test cases. Hence, schema $s$ cannot determined to be a healthy schema.
+We second prove that, for any schema $s \not\in \mathcal{I}(T_{pass})$, it cannot be determined to be a healthy schema. Since $s \not\in \mathcal{I}(T_{pass})$, $\not\exists t \in T_{pass}, s \preceq t$. Therefore,  $\not\exists t \in T_{pass}, t \in \mathcal{T}(s)$. Hence, $\mathcal{T}(s) \subseteq (T^{*} \backslash T_{pass}) = (T_{unknown} \bigcup T_{fail})$. Note that, there is none test case in $(T_{unknown} \bigcup T_{fail})$ is guaranteed to be passing test case. In fact, all the test cases in $T_{unknown}$ have the possibility to be failing test cases. Hence, schema $s$ cannot be determined to be a healthy schema.
 \end{proof}
 
 Proposition \ref{pro:determinablehealthy} shows that only the schemas contained in those existed passing test cases can be determined to be healthy schemas.  As an example, consider $T_{pass}$ contains one test case, which are \{($p_{1}, 0$), ($p_{2}, 0$), ($p_{3}, 1$), ($p_{4}, 0$)\}. $T_{fail}$ contains two test cases, which are \{($p_{1}, 0$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 0$)\}, and \{($p_{1}, 0$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 1$)\}, respectively. Other test cases are in $T_{unknown}$. Table \ref{ex:determinableschemas} shows the schemas that can be determined to be healthy schemas.
@@ -857,15 +857,15 @@ Proposition \ref{pro:determinablehealthy} shows that only the schemas contained 
    $s_{15}$ & \{($p_{1}, 0$), ($p_{2}, 0$), ($p_{3}, 1$), ($p_{4}, 0$)\} \\ \hline
 
   \multicolumn{2}{|c|}{\textbf{Determined to be faulty $\mathcal{S}(T_{fail})$ }}  \\ \hline
-  $s_{1}$ & \{($p_{1}, 0$), ($p_{2}, 0$), ($p_{3}, 0$)\}  \\
-  $s_{2}$ & \{($p_{1}, 0$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 0$)\} \\
-  $s_{3}$ & \{($p_{1}, 0$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 1$)\} \\ \hline
+  $s_{16}$ & \{($p_{1}, 0$), ($p_{2}, 0$), ($p_{3}, 0$)\}  \\
+  $s_{17}$ & \{($p_{1}, 0$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 0$)\} \\
+  $s_{18}$ & \{($p_{1}, 0$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 1$)\} \\ \hline
     \end{tabular}%
 \end{table}
 
 
 
-\begin{proposition}[Determinable to be faulty]\label{pro:determinablefaulty}
+\begin{proposition}[Determined to be faulty]\label{pro:determinablefaulty}
 Given  $T_{fail}$, $T_{pass}$, $T_{unknown}$,the schemas that can be determined to be faulty are the set $\mathcal{S}(T_{fail})$.
 \end{proposition}
 
@@ -880,13 +880,13 @@ We second prove that, for any schema $s \not\in \mathcal{S}(T_{fail})$, it canno
 Proposition \ref{pro:determinablefaulty} shows that only special schemas of existed failing test cases can be determined to be faulty schemas.  For the same example discussed previously, Table \ref{ex:determinableschemas} also lists all the schemas that are determined to be faulty schemas.
 
 
-\begin{proposition}[Determinable]\label{pro:determinable}
+\begin{proposition}[Determinable schemas]\label{pro:determinable}
 Given  $T_{fail}$, $T_{pass}$, $T_{unknown}$, only schemas $\mathcal{I}(T_{pass})$ and   $\mathcal{S}(T_{fail})$  are determinable.
 \end{proposition}
 
-This proposition gives the set of determined schemas when given $T_{fail}$, $T_{pass}$, and $T_{unknown}$. The proof of this propositions can be easily obtained by Propositions \ref{pro:determinablehealthy} and \ref{pro:determinablefaulty}, hence, we omit it here. For the same example discussed previously, Table \ref{ex:determinableschemas} lists all the determinable schemas, which are $\mathcal{S}(T_{fail})$ and $\mathcal{I}(T_{pass})$.
+This proposition gives the set of determinable schemas when given $T_{fail}$, $T_{pass}$, and $T_{unknown}$. The proof of this propositions can be easily obtained by Propositions \ref{pro:determinablehealthy} and \ref{pro:determinablefaulty}, hence, we omit it here. For the same example discussed previously, Table \ref{ex:determinableschemas} lists all the determinable schemas, which are $\mathcal{S}(T_{fail})$ and $\mathcal{I}(T_{pass})$.
 
-Based on Proposition \ref{pro:determinable}, we directly obtain the following formula to describe the set of determinable schemas $DS$, when given $T_{fail}$, $T_{pass}$, $T_{unknown}$.
+Based on Proposition \ref{pro:determinable}, we directly obtain the following formula to describe the determinable schemas set $DSS$, when given $T_{fail}$, $T_{pass}$, $T_{unknown}$.
 
 \begin{equation}
 \begin{aligned}\label{eq:dss_1}
@@ -894,18 +894,20 @@ DSS=\{ s\ |\ s \in  \mathcal{I}(T_{pass}) \ || \  s \in \mathcal{S}(T_{fail}) \}
 \end{aligned}
 \end{equation}
 
-We can further .
+We can further evolve Formula \ref{eq:dss_1} to the following formula.
 
 \begin{equation}
 \begin{aligned}\label{eq:dss}
-DSS=\{ s\ |\ \exists t \in PTS,  s \preceq t  \ || \  \exists m \in MFSS, m \preceq s \} .
+DSS=\{ s\ |\ \exists t \in T_{pass},  s \preceq t  \ || \  \exists m \in \mathcal{C}(T_{fail}), m \preceq s \} .
 \end{aligned}
 \end{equation}
+
+Note that Formula \ref{eq:dss} is equal to the formula \ref{eq:dss_1}. The proof of the equality is omitted since it can be directly obtained by the definition of the whole set of hit schemas and the definition of minimal special schema.
 
 
 \subsection{The pending schemas}\label{sec:pending:pending}
 
-After the introduction of determinable schemas and their properties, we can easily define the undetermined schemas, i.e., the pending schemas.
+After the introduction of determinable schemas and their properties, we can easily define the indeterminable schemas, i.e., the pending schemas.
 %Through these motivating examples, we can learn that the pending schema is not checked to be healthy and faulty. Hence, we give the definition of the pending schema as follows.
 
 \begin{definition}\label{de:pending}
@@ -918,20 +920,6 @@ A schema is called a \textbf{\emph{pending} schema}, if and only if it cannot be
 %\end{definition}
 From this definition, it is obvious that the pending schema is the converse of determinable schema. That is, with given information, if a schema is determinable, then it is not a pending schema; and if it is not determinable, it must be a pending schema. The \emph{pending} schema is actually the \emph{cannot-be-determined} schema discussed in Section \ref{sec:intro} and Section \ref{sec:motiv}, which is the key schema we focus on in this paper. To analyse the pending schemas in one failing test case is important to evaluate the completeness of the test.  Next, we will give the first property about the pending schema.
 
-
-%However, we give the more general condition. We normally did not the pending schemas, but the faulty schemas and healthy schemas.
-%Next, we give the determinable of pending
-%
-%
-%\begin{proposition}[Pending o be healthy with part set]
-%Given $HSS$ and $FSS$, $s$ is pending schema if and  only if $stat(s, fail) \&\& stat(s_{i}, pass) \&\&$ $stat(s_{j}, fail)$ and $stat(s, pass) \&\&$ $stat(s_{i}, pass)$ $\&\& stat(s_{j}, fail)$ are both solvable.
-%\end{proposition}
-%
-%If the first is solvable, then it is not must be a healthy schema. The second shows that it is not necessarily a faulty schema. This indicates that this schema can be healthy or faulty. That is, its state is not decidable. This is also we called a pending schema.
-
-%However, to emulate all the faulty schemas and all the healthy schemas is very large. By the propostios 3 and 4,
-%
-%More formally, we can learn that it should not be any super-schemas of existing faulty schemas, and any sub-shemas of existing healthy schemas.
 \begin{proposition}[Sandwich rule]\label{pro:pendingsandwich}
 Given two pending schemas $s_{1}$, $s_{2}$, and $s_{1} \preceq s_{2}$. Then $\forall s_{3}, s_{1} \preceq s_{3} \preceq s_{2}$, $s_{3}$ is a pending schema.
 \end{proposition}
@@ -940,21 +928,137 @@ Given two pending schemas $s_{1}$, $s_{2}$, and $s_{1} \preceq s_{2}$. Then $\fo
 We give the proof by contradiction. First, we assume that $s_{3}$ is a faulty schema. Since $s_{3} \preceq s_{2}$, then according to Proposition \ref{pro:superoffaulty}, $s_{2}$ is also a faulty schema. This is contradiction as $s_{2}$ is a pending schema. Hence, $s_{3}$ is not a faulty schema. Next, we assume that $s_{3}$ is a healthy schema.  Since $s_{1} \preceq s_{3}$, then according to Proposition \ref{pro:subofhealthy}, $s_{1}$ is also a healthy schema. This is also contradiction as $s_{1}$ is a pending schema.  Hence, $s_{3}$ is not a healthy schema. At last, according to the definition of pending schema, $s_{3}$ is a pending schema.
 \end{proof}
 
-This proposition gives the determination of pending schemas in the presence of two subsuming pending schemas.
+This proposition gives the determination of pending schemas in the presence of two subsuming pending schemas. As an example, consider schemas \{($p_{1}, 0$)\}, and \{($p_{1}, 0$), ($p_{2}, 0$), ($p_{3}, 0$)\} are two pending schemas, then schema \{($p_{1}, 0$), ($p_{2}, 0$)\} must also be pending schema.
 
-Similarly as the determinable schemas, we will discuss the pending schemas for the circumstance with a given set of passing test case and a set of minimal faulty schemas.
+Similarly as before, we will discuss the pending schemas under the circumstance when given a set of passing test cases $T_{pass}$, a set of failing test cases $T_{fail}$, and a set of test cases of which the execution results are unknown $T_{unknown}$.
+ %minimal faulty schemas.
 
 %This circumstance is important to analyse the properties of schemas for MFS identification later.
 
-\begin{proposition}[pending with passing test cases and minimal faulty schemas]\label{pro:pendingparthealthyfaulty}
-Given a set of passing test case set $PTS$, and a set of minimal faulty schemas $MFSS$, for any schema, say, $s$, is pending schemas if only if $\forall t \in PTS, s \npreceq t$ and $\forall m \in MFSS, m \npreceq s$.
+\begin{proposition}[Pending schemas]\label{pro:pendingparthealthyfaulty}
+Given $T_{pass}$, $T_{fail}$, and $T_{unknown}$, for any schema, say, $s$, is pending schema if only if $s \not\in \mathcal{I}(T_{pass})$ and   $s \not\in \mathcal{S}(T_{fail})$.
 \end{proposition}
 
-The proof of this proposition is omitted (can be easily deduced based on Proposition \ref{pro:determinableparthealthyfaulty}). Proposition \ref{pro:pendingparthealthyfaulty} tells that if given a set of passing test cases $PTS$ and minimal faulty schemas $MFSS$, only the schemas that are neither the super-schemas of these faulty schemas nor subschemas in the passing test cases are pending schemas.  More formally, the set of the pending schemas are
+The proof of this proposition is omitted (can be easily deduced based on Proposition \ref{pro:determinable}). Proposition \ref{pro:pendingparthealthyfaulty} gives the set of pending schemas when given $T_{fail}$, $T_{pass}$, and $T_{unknown}$.
+As an example, we consider the same  $T_{fail}$, $T_{pass}$, and $T_{unknown}$ as in Table \ref{ex:determinableschemas}. The pending schemas for this example are listed in Table \ref{ex:pendingschemas}. We can learn that each schema in Table \ref{ex:pendingschemas} is neither contained in set $\mathcal{I}(T_{pass})$ nor contained in set $\mathcal{S}(T_{fail})$ of Table \ref{ex:determinableschemas}. Another observation from this Table is that all the pending schemas plus the determinable schemas are equal to whole set of  schemas that contained in the SUT, of which the number is $3^{4} - 1 = 80$.
+
+\begin{table}[htbp]
+  \centering
+  \caption{An example of pending schemas}
+  \label{ex:pendingschemas}
+    \begin{tabular}{|c|c|} \hline
+     \multicolumn{2}{|c|}{\textbf{1-way schemas}} \\ \hline
+  $s_{19}$ & \{($p_{1}, 1$)\}\\
+  $s_{20}$ & \{($p_{2}, 1$)\}\\
+  $s_{21}$ & \{($p_{3}, 0$)\} \\
+  $s_{22}$ & \{($p_{4}, 1$)\} \\ \hline
+%    \end{tabular}%
+%\quad
+%    \begin{tabular}{|c|c|} \hline
+     \multicolumn{2}{|c|}{\textbf{2-way schemas}} \\ \hline
+
+  $s_{23}$ & \{($p_{1}, 0$), ($p_{2}, 1$)\}\\
+  $s_{24}$ & \{($p_{1}, 0$), ($p_{3}, 0$)\}\\
+  $s_{25}$ & \{($p_{1}, 0$), ($p_{4}, 1$)\}\\
+
+  $s_{26}$ & \{($p_{1}, 1$), ($p_{2}, 0$)\}\\
+  $s_{27}$ & \{($p_{1}, 1$), ($p_{2}, 1$)\}\\
+  $s_{28}$ & \{($p_{1}, 1$), ($p_{3}, 0$)\}\\
+  $s_{29}$ & \{($p_{1}, 1$), ($p_{3}, 1$)\}\\
+  $s_{30}$ & \{($p_{1}, 1$), ($p_{4}, 0$)\}\\
+  $s_{31}$ & \{($p_{1}, 1$), ($p_{4}, 1$)\}\\
+
+  $s_{32}$ & \{($p_{2}, 0$), ($p_{3}, 0$)\}\\
+  $s_{33}$ & \{($p_{2}, 0$), ($p_{4}, 1$)\}\\
+
+  $s_{34}$ & \{($p_{2}, 1$), ($p_{3}, 0$)\}\\
+  $s_{35}$ & \{($p_{2}, 1$), ($p_{3}, 1$)\}\\
+  $s_{36}$ & \{($p_{2}, 1$), ($p_{4}, 0$)\}\\
+  $s_{37}$ & \{($p_{2}, 1$), ($p_{4}, 1$)\}\\
+
+  $s_{38}$ & \{($p_{3}, 0$), ($p_{4}, 0$)\}\\
+  $s_{39}$ & \{($p_{3}, 0$), ($p_{4}, 1$)\}\\
+
+  $s_{40}$ & \{($p_{3}, 1$), ($p_{4}, 1$)\}\\ \hline
+    \end{tabular}%
+\quad
+    \begin{tabular}{|c|c|} \hline
+   \multicolumn{2}{|c|}{\textbf{3-way schemas}}\\ \hline
+   $s_{41}$ & \{($p_{1}, 0$),($p_{2}, 0$), ($p_{4}, 1$)\} \\
+
+   $s_{42}$ & \{($p_{1}, 0$),($p_{2}, 1$), ($p_{3}, 0$)\} \\
+   $s_{43}$ & \{($p_{1}, 0$),($p_{2}, 1$), ($p_{3}, 1$)\} \\
+
+   $s_{44}$ & \{($p_{1}, 0$),($p_{2}, 1$), ($p_{4}, 0$)\} \\
+   $s_{45}$ & \{($p_{1}, 0$),($p_{2}, 1$), ($p_{4}, 1$)\} \\
+
+   $s_{46}$ & \{($p_{1}, 0$),($p_{3}, 0$), ($p_{4}, 0$)\} \\
+   $s_{47}$ & \{($p_{1}, 0$),($p_{3}, 0$), ($p_{4}, 1$)\} \\
+
+   $s_{48}$ & \{($p_{1}, 0$),($p_{3}, 1$), ($p_{4}, 1$)\} \\
+   
+   
+   $s_{49}$ & \{($p_{1}, 1$),($p_{2}, 0$), ($p_{3}, 0$)\} \\
+   $s_{50}$ & \{($p_{1}, 1$),($p_{2}, 0$), ($p_{3}, 1$)\} \\
+   $s_{51}$ & \{($p_{1}, 1$),($p_{2}, 0$), ($p_{4}, 0$)\} \\
+   $s_{52}$ & \{($p_{1}, 1$),($p_{2}, 0$), ($p_{4}, 1$)\} \\
+   $s_{53}$ & \{($p_{1}, 1$),($p_{2}, 1$), ($p_{3}, 0$)\} \\
+   $s_{54}$ & \{($p_{1}, 1$),($p_{2}, 1$), ($p_{3}, 1$)\} \\
+   $s_{55}$ & \{($p_{1}, 1$),($p_{2}, 1$), ($p_{4}, 0$)\} \\
+   $s_{56}$ & \{($p_{1}, 1$),($p_{2}, 1$), ($p_{4}, 1$)\} \\   
+  
+   $s_{57}$ & \{($p_{1}, 1$),($p_{3}, 0$), ($p_{4}, 0$)\} \\
+   $s_{58}$ & \{($p_{1}, 1$),($p_{3}, 0$), ($p_{4}, 1$)\} \\
+   $s_{59}$ & \{($p_{1}, 1$),($p_{3}, 1$), ($p_{4}, 0$)\} \\
+   $s_{60}$ & \{($p_{1}, 1$),($p_{3}, 1$), ($p_{4}, 1$)\} \\
+   
+   $s_{61}$ & \{($p_{2}, 0$),($p_{3}, 0$), ($p_{4}, 0$)\} \\
+   $s_{62}$ & \{($p_{2}, 0$),($p_{3}, 0$), ($p_{4}, 1$)\} \\
+
+   $s_{63}$ & \{($p_{2}, 0$),($p_{3}, 1$), ($p_{4}, 1$)\} \\
+
+   $s_{64}$ & \{($p_{2}, 1$),($p_{3}, 0$), ($p_{4}, 0$)\} \\
+   $s_{65}$ & \{($p_{2}, 1$),($p_{3}, 0$), ($p_{4}, 1$)\} \\
+
+   $s_{66}$ & \{($p_{2}, 1$),($p_{3}, 1$), ($p_{4}, 0$)\} \\
+   $s_{67}$ & \{($p_{2}, 1$),($p_{3}, 1$), ($p_{4}, 1$)\} \\  \hline
+    \end{tabular}%
+    \quad
+    \begin{tabular}{|c|c|} \hline
+   \multicolumn{2}{|c|}{\textbf{4-way schemas}}\\ \hline
+  $s_{68}$ & \{($p_{1}, 0$), ($p_{2}, 0$), ($p_{3}, 1$), ($p_{4}, 1$)\} \\
+  $s_{69}$ & \{($p_{1}, 0$), ($p_{2}, 1$), ($p_{3}, 0$), ($p_{4}, 0$)\} \\
+  $s_{70}$ & \{($p_{1}, 0$), ($p_{2}, 1$), ($p_{3}, 0$), ($p_{4}, 1$)\} \\
+  $s_{71}$ & \{($p_{1}, 0$), ($p_{2}, 1$), ($p_{3}, 1$), ($p_{4}, 0$)\} \\
+  $s_{72}$ & \{($p_{1}, 0$), ($p_{2}, 1$), ($p_{3}, 1$), ($p_{4}, 1$)\} \\
+
+  $s_{73}$ & \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 0$)\}\\
+  $s_{74}$ & \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 1$)\}\\
+  $s_{75}$ & \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 1$), ($p_{4}, 0$)\} \\
+  $s_{76}$ & \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 1$), ($p_{4}, 1$)\} \\
+  $s_{77}$ & \{($p_{1}, 1$), ($p_{2}, 1$), ($p_{3}, 0$), ($p_{4}, 0$)\} \\
+  $s_{78}$ & \{($p_{1}, 1$), ($p_{2}, 1$), ($p_{3}, 0$), ($p_{4}, 1$)\} \\
+  $s_{79}$ & \{($p_{1}, 1$), ($p_{2}, 1$), ($p_{3}, 1$), ($p_{4}, 0$)\} \\
+  $s_{80}$ & \{($p_{1}, 1$), ($p_{2}, 1$), ($p_{3}, 1$), ($p_{4}, 1$)\} \\ \hline
+    \end{tabular}%
+\end{table}
+
+
+
+More formally, the set of the pending schemas set $PSS$ can be formulated as the following formula.
+
+
+\begin{equation}
+\begin{aligned}\label{eq:pss_1}
+PSS=\{ s\ |\ s \not\in  \mathcal{I}(T_{pass}) \ \&\& \  s \not\in \mathcal{S}(T_{fail}) \} .
+\end{aligned}
+\end{equation}
+
+Similarly, we can further evolve Formula \ref{eq:pss_1} to the following formula.
 
 \begin{equation}
 \begin{aligned}\label{eq:pss}
-PSS=\{ s\ |\ \forall t \in PTS,  s \npreceq t  \ \&\& \  \forall m \in MFSS, m \npreceq s \}.
+PSS=\{ s\ |\ \forall t \in T_{pass},  s \npreceq t  \ \&\& \  \forall m \in \mathcal{C}(T_{fail}), m \npreceq s \}.
 \end{aligned}
 \end{equation}
 
@@ -971,12 +1075,12 @@ It is obviously $PSS$ and $DSS$ are complemented.
 
 \section{Obtaining the pending schemas in one failing test case}\label{sec:pending:obtaining}
 
-In the previous section, we have already obtained the formula to describe the set of pending schemas for given information. However, this set is usually too large and contains many schemas that never appear in any generated test cases (These schemas are evidently pending schemas). In this paper, we only focus on these schemas that have already appeared in the generated test cases. This is because after testing and MFS identification, testers may have a false confidence on the fact that all the schemas appeared in these test cases are determinable, which may result in hidden dangers to the system under testing if the fact is not true (some of them are not determinable).
+In the previous section, we have already obtained the formula to describe the set of pending schemas for given information. However, this set is usually too large and contains many schemas that never appear in any executed test cases. As an example, in Table \ref{ex:pendingschemas}, the schema $s_{29}$ \{($p_{1}, 1$), ($p_{3}, 1$)\} neither appears in the $T_{pass}$ nor appears in $T_{fail}$. These schemas are evidently pending schemas since they do not even have the chance to be tested. In this paper, we only focus on these schemas that have already appeared in the executed test cases. This is because after testing and MFS identification, testers may have a false confidence on the fact that all the schemas appeared in these test cases are determinable, which may result in hidden dangers to the system under testing if the fact is not true (some of them are not determinable). For example in Table \ref{ex:pendingschemas}, the schema $s_{24}$  \{($p_{1}, 0$), ($p_{3}, 0$)\} is a pending schema, but it has already appeared in the executed failing test case $t_{1}$.
 % but the fact is the extences of the pending schemas in these test cases, the testing and MFS identification is still not complete. Consequently, we only focus the pending schemas that appeared in the generated test cases.
 
 %Since all the schemas in the passing test cases are determinable (healthy), what we focus is the pending schemas in the failing test cases.
 
-More formally,  given a failing test case $t$ =\{$(p_{1}, v_{1})$, $(p_{2}, v_{2})$, ..., $(p_{n}, v_{n})$\},  a set of passing test cases $PTS$ = \{ $t_{1}, t_{2}, ... t_{i}, ...$\}, and a set of minimal faulty schemas $MFSS$ = \{ $m_{1}, m_{2}, ... m_{i}, ...$ \}, our goal is to find the set of pending schemas in test case $t$.
+More formally,  given a failing test case $t$ =\{$(p_{1}, v_{1})$, $(p_{2}, v_{2})$, ..., $(p_{n}, v_{n})$\},  a set of passing test cases $T_{pass}$, a set of failing test cases $T_{fail}$, our goal is to find the set of pending schemas in test case $t$.
 
 
 We will settle this problem step by step.  According to Formula \ref{eq:pss}, we can easily obtain the pending schemas in the failing test case are in the following set.
@@ -986,14 +1090,14 @@ We will settle this problem step by step.  According to Formula \ref{eq:pss}, we
 % and \ref{pro:superoffaulty}, it is easy to find that, the pending schemas set PSS should be the following set
 \begin{equation}
 \begin{aligned}\label{eq:pssfirst}
-PSS=\{ s\ |\ s \preceq t\ \&\&\ \forall m \in MFSS,  m \npreceq s  \ \&\&\  \forall t_{i} \in PTS, s \npreceq t_{i} \} .
+PSS=\{ s\ |\ s \preceq t\ \&\&\ \forall t \in T_{pass},  s \npreceq t  \ \&\& \  \forall m \in \mathcal{C}(T_{fail}), m \npreceq s \}.
+%PSS=\{ s\ |\ s \preceq t\ \&\&\ \forall m \in MFSS,  m \npreceq s  \ \&\&\  \forall t_{i} \in PTS, s \npreceq t_{i} \} .
 \end{aligned}
 \end{equation}
 
-%\begin{proof}
-%\end{proof}
-
 %To obtain one pending schema, we just need to select one schema which satisfies $ c \in PSS$.
+The proof of this equation is obvious and omitted here. Note that 
+
 However, to directly utilize Formula \ref{eq:pssfirst} is not practical to obtain the pending schemas, because in the worst case it needs to check every schema in a test case $t$. Note that the number of schemas in $t$ is $2^{n} - 1$, where $n$ is the number of factors in this test case. For each schema we need to check whether it is the sub-schemas of any test case in $PSS$ (the number of the test cases in $PTS$ is |$PTS$|). We also need to check whether it is the super-schemas of any faulty schemas in $MFSS$ (the number of the faulty schemas in $MFSS$ is |$MFSS$|). As a result, the complexity of directly utilizing Formula \ref{eq:pssfirst} is $2^{n} \times |PTS| \times |MFSS|$, which is infeasible to handle when $n$ is large. Hence, we need to find another formula which is equivalent to Formula \ref{eq:pssfirst}, but with much lower complexity.
 
 Our first step is to reduce the number of minimal faulty schemas to be checked for a pending schema.  For this, let $MFSS_{t}$ be the minimal faulty schemas that are the subschemas of test case $t$. That is, $MFSS^{t}$ = $\{ s\ | \ s \in MFSS, s \preceq t \}$.  It is obvious that the complexity of obtaining $MFSS^{t}$ from $MFSS$ is $O(|MFSS|)$.

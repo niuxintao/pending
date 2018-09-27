@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6500) (preloaded format=pdflatex 2017.12.21)  21 SEP 2018 16:57
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6500) (preloaded format=pdflatex 2017.12.21)  27 SEP 2018 23:46
 entering extended mode
 **./pending_schema.tex
 (pending_schema.tex
@@ -1086,7 +1086,7 @@ LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/n' will be
 (Font)              scaled to size 10.0pt on input line 13.
 
 [2.2] [3.3]
-<ca.pdf, id=202, pagebox=cropbox, 599.23875pt x 472.76625pt>
+<ca.pdf, id=210, pagebox=cropbox, 599.23875pt x 472.76625pt>
 File: ca.pdf Graphic file (type pdf)
 <use ca.pdf>
 Package pdftex.def Info: ca.pdf  used on input line 66. on input line 66.
@@ -1098,7 +1098,7 @@ Overfull \hbox (8.88994pt too wide) in paragraph at lines 66--67
  []
 
 [4.4] [5.5 <./ca.pdf>]
-<ofot_single.pdf, id=539, pagebox=cropbox, 597.23125pt x 493.845pt>
+<ofot_single.pdf, id=547, pagebox=cropbox, 597.23125pt x 493.845pt>
 File: ofot_single.pdf Graphic file (type pdf)
 <use ofot_single.pdf>
 Package pdftex.def Info: ofot_single.pdf  used on input line 104. on input line
@@ -1111,7 +1111,7 @@ Overfull \hbox (8.88994pt too wide) in paragraph at lines 104--105
  []
 
 [6.6 <./ofot_single.pdf>]
-<ofot_multi.pdf, id=832, pagebox=cropbox, 603.25375pt x 498.86375pt>
+<ofot_multi.pdf, id=840, pagebox=cropbox, 603.25375pt x 498.86375pt>
 File: ofot_multi.pdf Graphic file (type pdf)
 <use ofot_multi.pdf>
 Package pdftex.def Info: ofot_multi.pdf  used on input line 118. on input line 
@@ -1124,21 +1124,21 @@ Overfull \hbox (8.88994pt too wide) in paragraph at lines 118--119
  []
 
 [7.7 <./ofot_multi.pdf>]
-<fic.pdf, id=1117, pagebox=cropbox, 598.235pt x 495.8525pt>
+<fic.pdf, id=1125, pagebox=cropbox, 598.235pt x 495.8525pt>
 File: fic.pdf Graphic file (type pdf)
 <use fic.pdf>
 Package pdftex.def Info: fic.pdf  used on input line 134. on input line 134.
 Package pdftex.def Info: Requested size: 383.03122pt x 317.4807pt on input line
  134.
  [8.8 <./fic.pdf>]
-<finovlp.pdf, id=1412, pagebox=cropbox, 600.2425pt x 798.985pt>
+<finovlp.pdf, id=1420, pagebox=cropbox, 600.2425pt x 798.985pt>
 File: finovlp.pdf Graphic file (type pdf)
 <use finovlp.pdf>
 Package pdftex.def Info: finovlp.pdf  used on input line 150. on input line 150
 .
 Package pdftex.def Info: Requested size: 383.03122pt x 509.8613pt on input line
  150.
-<non-pending.pdf, id=1416, pagebox=cropbox, 602.25pt x 687.56876pt>
+<non-pending.pdf, id=1424, pagebox=cropbox, 602.25pt x 687.56876pt>
 File: non-pending.pdf Graphic file (type pdf)
 <use non-pending.pdf>
 Package pdftex.def Info: non-pending.pdf  used on input line 165. on input line
@@ -1165,24 +1165,16 @@ lmi/m/it/10 s\LMS/ntxsy/m/n/10 º$\T1/LinuxLibertineT-TLF/m/n/10 (-20) .
 [17.17] [18.18] [19.19] [20.20] [21.21] [22.22] [23.23]
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/it' will be
 (Font)              scaled to size 10.0pt on input line 914.
- [24.24]
-
-LaTeX Warning: Reference `ex:pendingschemas' on page 25 undefined on input line
- 943.
-
-
-LaTeX Warning: Reference `ex:pendingschemas' on page 25 undefined on input line
- 943.
-
-[25.25] [26.26] [27.27]
+ [24.24] [25.25]
+[26.26] [27.27] [28.28]
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/n' will be
-(Font)              scaled to size 8.0pt on input line 1196.
+(Font)              scaled to size 8.0pt on input line 1246.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/n' will be
-(Font)              scaled to size 6.2pt on input line 1196.
+(Font)              scaled to size 6.2pt on input line 1246.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/n' will be
-(Font)              scaled to size 5.5pt on input line 1196.
- [28.28] [29.29] [30.30]
-Overfull \hbox (9.46637pt too wide) in paragraph at lines 1343--1344
+(Font)              scaled to size 5.5pt on input line 1246.
+ [29.29] [30.30]
+Overfull \hbox (9.46637pt too wide) in paragraph at lines 1393--1394
 []\T1/LinuxLibertineT-TLF/m/n/10 (-20) Let $\OML/nxlmi/m/it/10 B \U/ntxmia/m/it
 /10 =$ \T1/LinuxLibertineT-TLF/m/n/10 (-20) {$\OML/nxlmi/m/it/10 s \LMS/ntxsy/m
 /n/10 j \OML/nxlmi/m/it/10 s \LMS/ntxsy/m/n/10  \OML/nxlmi/m/it/10 t \OT1/Linu
@@ -1197,44 +1189,50 @@ mi/m/it/10 s[]; t\LMS/ntxsy/m/n/10 º [] \OML/nxlmi/m/it/10 CMNS\LMS/ntxsy/m/n/1
  []
 
 
-Overfull \hbox (2.21951pt too wide) in paragraph at lines 1364--1374
+Overfull \hbox (2.21951pt too wide) in paragraph at lines 1414--1424
  [][][] 
  []
 
 [31.31]
-<minmax.pdf, id=2388, pagebox=cropbox, 644.4075pt x 544.0325pt>
+<minmax.pdf, id=2403, pagebox=cropbox, 644.4075pt x 544.0325pt>
 File: minmax.pdf Graphic file (type pdf)
 <use minmax.pdf>
-Package pdftex.def Info: minmax.pdf  used on input line 1446. on input line 144
-6.
+Package pdftex.def Info: minmax.pdf  used on input line 1495. on input line 149
+5.
 Package pdftex.def Info: Requested size: 404.71243pt x 341.68803pt on input lin
-e 1446.
+e 1495.
 
-Overfull \hbox (8.88994pt too wide) in paragraph at lines 1446--1447
+Overfull \hbox (8.88994pt too wide) in paragraph at lines 1495--1496
  [][] 
  []
 
 
-LaTeX Warning: Reference `eq:pssthird' on page 32 undefined on input line 1464.
+LaTeX Warning: Reference `eq:pssthird' on page 32 undefined on input line 1501.
 
 
 
-LaTeX Warning: Reference `eq:pssthird' on page 32 undefined on input line 1464.
+LaTeX Warning: Reference `eq:pssthird' on page 32 undefined on input line 1501.
 
 
-[32.32] [33.33 <./minmax.pdf>] Processing 'acks' comment.
+[32.32]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [33.33 <./minmax.pdf>]
+Underfull \vbox (badness 2698) has occurred while \output is active []
+
+ [34.34]
+Processing 'acks' comment.
 \openout4 = `comment.cut'.
 
-
-Comment 'acks' writing to comment.cut. Straight input of comment.cut.
-(comment.cut) (pending_schema.bbl
+ Comment 'acks' writing to comment.cut.
+Straight input of comment.cut. (comment.cut) (pending_schema.bbl
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/it' will be
 (Font)              scaled to size 8.0pt on input line 47.
 
-Underfull \vbox (badness 1142) has occurred while \output is active []
+Underfull \vbox (badness 1867) has occurred while \output is active []
 
- [34.34]))
-[35.35]
+ [35.35]))
+[36.36]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 143.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 143.
  (pending_schema.aux)
@@ -1247,61 +1245,49 @@ Package rerunfilecheck Warning: File `pending_schema.out' has changed.
 (rerunfilecheck)                or use package `bookmark'.
 
 Package rerunfilecheck Info: Checksums for `pending_schema.out':
-(rerunfilecheck)             Before: 03B905BF9D826E627648E056F5864C62;8728
-(rerunfilecheck)             After:  5D5784EBED62B0EDF84EA93701EE16ED;6367.
+(rerunfilecheck)             Before: 2B26943CF6BC2D69DD91F9C234718E53;9422
+(rerunfilecheck)             After:  CB9D547A46FA36036E7732F9D9D1FD1B;6884.
 
 LaTeX Warning: There were undefined references.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  )
 (\end occurred inside a group at level 1)
 
-### simple group (level 1) entered at line 1300 ({)
+### simple group (level 1) entered at line 1350 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 19588 strings out of 493312
- 296846 string characters out of 3143321
- 421766 words of memory out of 3000000
- 21888 multiletter control sequences out of 15000+200000
- 213215 words of font info for 505 fonts, out of 3000000 for 9000
+ 19587 strings out of 493312
+ 296796 string characters out of 3143321
+ 424812 words of memory out of 3000000
+ 21890 multiletter control sequences out of 15000+200000
+ 212942 words of font info for 503 fonts, out of 3000000 for 9000
  1302 hyphenation exceptions out of 8191
- 60i,17n,94p,1804b,606s stack positions out of 5000i,500n,10000p,200000b,50000s
-pdfTeX warning (dest): name{figure.caption.28} has been referen
-ced but does not exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{section*.32} has been referenced but does not exist
-, replaced by a fixed one
-
-pdfTeX warning (dest): name{section*.30} has been referenced but does not exist
-, replaced by a fixed one
-
-{C:/CTEX/MikTex2.9/fonts/enc/dvips/libertine/lbtn_ki75ao.enc}{C:/CTEX/MikTex2.9
-/fonts/enc/dvips/newtx/libertinealt.enc}{C:/CTEX/MikTex2.9/fonts/enc/dvips/libe
-rtine/lbtn_ncsllp.enc}{C:/CTEX/MikTex2.9/fonts/enc/dvips/libertine/lbtn_7grukw.
-enc}{C:/CTEX/MikTex2.9/fonts/enc/dvips/libertine/lbtn_nh77jq.enc}{C:/CTEX/MikTe
-x2.9/fonts/enc/dvips/libertine/lbtn_naooyc.enc}{C:/CTEX/MikTex2.9/fonts/enc/dvi
-ps/base/8r.enc}{C:/CTEX/MikTex2.9/fonts/enc/dvips/libertine/lbtn_oexx6f.enc}{C:
-/CTEX/MikTex2.9/fonts/enc/dvips/libertine/lbtn_76gpa5.enc}{C:/CTEX/MikTex2.9/fo
-nts/enc/dvips/libertine/lbtn_25tcsq.enc}<C:/CTEX/MikTex2.9/fonts/type1/public/l
-ibertine/LinBiolinumT.pfb><C:/CTEX/MikTex2.9/fonts/type1/public/libertine/LinBi
-olinumTB.pfb><C:/CTEX/MikTex2.9/fonts/type1/public/libertine/LinLibertineT.pfb>
-<C:/CTEX/MikTex2.9/fonts/type1/public/libertine/LinLibertineTB.pfb><C:/CTEX/Mik
-Tex2.9/fonts/type1/public/libertine/LinLibertineTBI.pfb><C:/CTEX/MikTex2.9/font
-s/type1/public/libertine/LinLibertineTI.pfb><C:/CTEX/MikTex2.9/fonts/type1/publ
-ic/newtx/fxlri-5letters.pfb><C:/CTEX/MikTex2.9/fonts/type1/public/newtx/fxlri-7
-letters.pfb><C:/CTEX/MikTex2.9/fonts/type1/public/newtx/ntxsyralt.pfb><C:/CTEX/
-MikTex2.9/fonts/type1/public/txfonts/rtxmi.pfb><C:/CTEX/MikTex2.9/fonts/type1/p
-ublic/newtx/rtxmi7.pfb><C:/CTEX/MikTex2.9/fonts/type1/public/txfonts/rtxr.pfb><
-C:/CTEX/MikTex2.9/fonts/type1/public/newtx/txexs.pfb><C:/CTEX/MikTex2.9/fonts/t
-ype1/public/txfonts/txsya.pfb><C:/CTEX/MikTex2.9/fonts/type1/public/txfonts/txs
-yb.pfb><C:/CTEX/MikTex2.9/fonts/type1/public/txfonts/txsyc.pfb><C:/CTEX/MikTex2
-.9/fonts/type1/public/newtx/txsys.pfb><C:/CTEX/MikTex2.9/fonts/type1/public/new
-tx/zxlri.pfb>
-Output written on pending_schema.pdf (35 pages, 2591156 bytes).
+ 60i,17n,94p,1804b,624s stack positions out of 5000i,500n,10000p,200000b,50000s
+{C:/CTEX/MikTex2.9/fonts/enc/dvips/libertine/lbtn_ki75ao.enc}{C
+:/CTEX/MikTex2.9/fonts/enc/dvips/newtx/libertinealt.enc}{C:/CTEX/MikTex2.9/font
+s/enc/dvips/libertine/lbtn_ncsllp.enc}{C:/CTEX/MikTex2.9/fonts/enc/dvips/libert
+ine/lbtn_7grukw.enc}{C:/CTEX/MikTex2.9/fonts/enc/dvips/libertine/lbtn_nh77jq.en
+c}{C:/CTEX/MikTex2.9/fonts/enc/dvips/libertine/lbtn_naooyc.enc}{C:/CTEX/MikTex2
+.9/fonts/enc/dvips/base/8r.enc}{C:/CTEX/MikTex2.9/fonts/enc/dvips/libertine/lbt
+n_oexx6f.enc}{C:/CTEX/MikTex2.9/fonts/enc/dvips/libertine/lbtn_76gpa5.enc}{C:/C
+TEX/MikTex2.9/fonts/enc/dvips/libertine/lbtn_25tcsq.enc}<C:/CTEX/MikTex2.9/font
+s/type1/public/libertine/LinBiolinumT.pfb><C:/CTEX/MikTex2.9/fonts/type1/public
+/libertine/LinBiolinumTB.pfb><C:/CTEX/MikTex2.9/fonts/type1/public/libertine/Li
+nLibertineT.pfb><C:/CTEX/MikTex2.9/fonts/type1/public/libertine/LinLibertineTB.
+pfb><C:/CTEX/MikTex2.9/fonts/type1/public/libertine/LinLibertineTBI.pfb><C:/CTE
+X/MikTex2.9/fonts/type1/public/libertine/LinLibertineTI.pfb><C:/CTEX/MikTex2.9/
+fonts/type1/public/newtx/fxlri-5letters.pfb><C:/CTEX/MikTex2.9/fonts/type1/publ
+ic/newtx/fxlri-7letters.pfb><C:/CTEX/MikTex2.9/fonts/type1/public/newtx/ntxsyra
+lt.pfb><C:/CTEX/MikTex2.9/fonts/type1/public/txfonts/rtxmi.pfb><C:/CTEX/MikTex2
+.9/fonts/type1/public/newtx/rtxmi7.pfb><C:/CTEX/MikTex2.9/fonts/type1/public/tx
+fonts/rtxr.pfb><C:/CTEX/MikTex2.9/fonts/type1/public/newtx/txexs.pfb><C:/CTEX/M
+ikTex2.9/fonts/type1/public/txfonts/txsya.pfb><C:/CTEX/MikTex2.9/fonts/type1/pu
+blic/txfonts/txsyb.pfb><C:/CTEX/MikTex2.9/fonts/type1/public/txfonts/txsyc.pfb>
+<C:/CTEX/MikTex2.9/fonts/type1/public/newtx/txsys.pfb><C:/CTEX/MikTex2.9/fonts/
+type1/public/newtx/zxlri.pfb>
+Output written on pending_schema.pdf (36 pages, 2598697 bytes).
 PDF statistics:
- 2615 PDF objects out of 2984 (max. 8388607)
+ 2632 PDF objects out of 2984 (max. 8388607)
  169 named destinations out of 1000 (max. 500000)
- 63248 words of extra memory for PDF output out of 74296 (max. 10000000)
+ 63264 words of extra memory for PDF output out of 74296 (max. 10000000)
 
