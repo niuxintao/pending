@@ -996,8 +996,8 @@ As an example, we consider the same  $T_{fail}$, $T_{pass}$, and $T_{unknown}$ a
    $s_{47}$ & \{($p_{1}, 0$),($p_{3}, 0$), ($p_{4}, 1$)\} \\
 
    $s_{48}$ & \{($p_{1}, 0$),($p_{3}, 1$), ($p_{4}, 1$)\} \\
-   
-   
+
+
    $s_{49}$ & \{($p_{1}, 1$),($p_{2}, 0$), ($p_{3}, 0$)\} \\
    $s_{50}$ & \{($p_{1}, 1$),($p_{2}, 0$), ($p_{3}, 1$)\} \\
    $s_{51}$ & \{($p_{1}, 1$),($p_{2}, 0$), ($p_{4}, 0$)\} \\
@@ -1005,13 +1005,13 @@ As an example, we consider the same  $T_{fail}$, $T_{pass}$, and $T_{unknown}$ a
    $s_{53}$ & \{($p_{1}, 1$),($p_{2}, 1$), ($p_{3}, 0$)\} \\
    $s_{54}$ & \{($p_{1}, 1$),($p_{2}, 1$), ($p_{3}, 1$)\} \\
    $s_{55}$ & \{($p_{1}, 1$),($p_{2}, 1$), ($p_{4}, 0$)\} \\
-   $s_{56}$ & \{($p_{1}, 1$),($p_{2}, 1$), ($p_{4}, 1$)\} \\   
-  
+   $s_{56}$ & \{($p_{1}, 1$),($p_{2}, 1$), ($p_{4}, 1$)\} \\
+
    $s_{57}$ & \{($p_{1}, 1$),($p_{3}, 0$), ($p_{4}, 0$)\} \\
    $s_{58}$ & \{($p_{1}, 1$),($p_{3}, 0$), ($p_{4}, 1$)\} \\
    $s_{59}$ & \{($p_{1}, 1$),($p_{3}, 1$), ($p_{4}, 0$)\} \\
    $s_{60}$ & \{($p_{1}, 1$),($p_{3}, 1$), ($p_{4}, 1$)\} \\
-   
+
    $s_{61}$ & \{($p_{2}, 0$),($p_{3}, 0$), ($p_{4}, 0$)\} \\
    $s_{62}$ & \{($p_{2}, 0$),($p_{3}, 0$), ($p_{4}, 1$)\} \\
 
@@ -1096,10 +1096,30 @@ PSS=\{ s\ |\ s \preceq t\ \&\&\ \forall t \in T_{pass},  s \npreceq t  \ \&\& \ 
 \end{equation}
 
 %To obtain one pending schema, we just need to select one schema which satisfies $ c \in PSS$.
-The proof of this equation is obvious and omitted here. In fact, Formula \ref{eq:pssfirst} is obtained by selecting those pending schemas (based on Formula \ref{eq:pss}) that are in test case $t$.  Since Formula \ref{eq:pssfirst} focus on these schemas that are in test case $t$, it reduces a lot of schemas that are needed to be considered when comparing with Formula \ref{eq:pss}. However, to directly utilize Formula \ref{eq:pssfirst} is still not practical, because in the worst case it needs to check every schema in a test case $t$. Note that the number of schemas in $t$ is $2^{n} - 1$, where $n$ is the number of factors in this test case. For each schema we need to check whether it is the sub-schemas of any test case in $T_{pass}$ (the number of the test cases in $T_{pass}$ is |$T_{pass}$|). We also need to check whether it is the super-schemas of any schema in $\mathcal{C}(T_{fail})$ (the number of the faulty schemas in $\mathcal{C}(T_{fail})$ is |$\mathcal{C}(T_{fail})$|). As a result, the complexity of directly utilizing Formula \ref{eq:pssfirst} is $2^{n} \times |T_{pass}| \times |\mathcal{C}(T_{fail})|$, which is infeasible to handle when $n$ is large. Hence, we need to find another formula which is equivalent to Formula \ref{eq:pssfirst}, but with much lower complexity.
+The proof of this equation is obvious and omitted here. In fact, Formula \ref{eq:pssfirst} is obtained by selecting those pending schemas (based on Formula \ref{eq:pss}) that are in test case $t$.  Since Formula \ref{eq:pssfirst} focus on these schemas that are in test case $t$, it reduces a lot of schemas that are needed to be considered when comparing with Formula \ref{eq:pss}. As an example, we use the same SUT used in Section \ref{sec:pending:pending}. That is, consider $T_{pass}$ to be \{ \{($p_{1}, 0$), ($p_{2}, 0$), ($p_{3}, 1$), ($p_{4}, 0$)\} \}, and $T_{fail}$ to be \{ \{($p_{1}, 0$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 0$)\},  \{($p_{1}, 0$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 1$)\} \}. Different from Section \ref{sec:pending:pending} which lists all the pending schemas, we only focus on the pending schemas in one failing test case, say, \{($p_{1}, 0$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 0$)\}. Table \ref{ex:pendingschemasinonetestcase} lists all the pending schemas in this test case. We can observe that there are only 6 schemas are selected from all the pending schemas listed in Table \ref{ex:pendingschemas}.
+
+\begin{table}[htbp]
+  \centering
+  \caption{An example of pending schemas in one test case}
+  \label{ex:pendingschemasinonetestcase}
+    \begin{tabular}{|c|c|} \hline
+     \multicolumn{2}{|c|}{\textbf{The test Case set}} \\ \hline
+   $t_{1}$ & \{($p_{1}, 0$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 0$)\}\\ \hline
+        \multicolumn{2}{|c|}{\textbf{pending schemas in this test case}} \\ \hline
+   $s_{21}$ & \{($p_{3}, 0$)\} \\
+   $s_{24}$ & \{($p_{1}, 0$),($p_{3}, 0$)\} \\
+   $s_{32}$ & \{($p_{2}, 0$),($p_{3}, 0$)\} \\
+   $s_{38}$ & \{($p_{3}, 0$),($p_{4}, 0$)\} \\
+   $s_{46}$ & \{($p_{1}, 0$),($p_{3}, 0$),($p_{4}, 0$)\} \\
+   $s_{61}$ & \{($p_{2}, 0$),($p_{3}, 0$),($p_{4}, 0$)\} \\ \hline
+    \end{tabular}%
+\end{table}
+
+
+Although focusing on the pending schemas in executed test cases reduce a lot of computation, however, to directly utilize Formula \ref{eq:pssfirst} is still not practical, especially when the number of factors in one test case is large. This is because in the worst case it needs to check every schema in a test case $t$. Note that the number of schemas in $t$ is $2^{n} - 1$, where $n$ is the number of factors in this test case. For each schema we need to check whether it is the sub-schemas of any test case in $T_{pass}$ (the number of the test cases in $T_{pass}$ is |$T_{pass}$|). We also need to check whether it is the super-schemas of any schema in $\mathcal{C}(T_{fail})$ (the number of the faulty schemas in $\mathcal{C}(T_{fail})$ is |$\mathcal{C}(T_{fail})$|). As a result, the complexity of directly utilizing Formula \ref{eq:pssfirst} is $2^{n} \times |T_{pass}| \times |\mathcal{C}(T_{fail})|$, which is infeasible to handle when $n$ is large. Hence, we need to find another formula which is equivalent to Formula \ref{eq:pssfirst}, but with much lower complexity.
 
 \subsection{Reduce the space of schemas to be checked}
-Our first step is to reduce the number of minimal faulty schemas to be checked for a pending schema.  For this, let $\mathcal{C}(T_{fail})_{t}$ be the minimal faulty schemas that are the subschemas of test case $t$. That is, $\mathcal{C}(T_{fail})^{t}$ = $\{ s\ | \ s \in \mathcal{C}(T_{fail}), s \preceq t \}$.  It is obvious that the complexity of obtaining $\mathcal{C}(T_{fail})^{t}$ from $\mathcal{C}(T_{fail})$ is $O(|\mathcal{C}(T_{fail})|)$.
+Our first step is to reduce the number of minimal faulty schemas to be checked for a pending schema.  For this, let $\mathcal{C}(T_{fail})^{t}$ be the minimal faulty schemas that are the subschemas of test case $t$. That is, $\mathcal{C}(T_{fail})^{t}$ = $\{ s\ | \ s \in \mathcal{C}(T_{fail}), s \preceq t \}$.  It is obvious that the complexity of obtaining $\mathcal{C}(T_{fail})^{t}$ from $\mathcal{C}(T_{fail})$ is $O(|\mathcal{C}(T_{fail})|)$.
 
 %Let $\mathcal{C}(T_{fail})^{t\circ}$ = $\mathcal{C}(T_{fail}) \backslash \mathcal{C}(T_{fail})^{t}$.
 

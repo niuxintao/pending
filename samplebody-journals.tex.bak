@@ -996,8 +996,8 @@ As an example, we consider the same  $T_{fail}$, $T_{pass}$, and $T_{unknown}$ a
    $s_{47}$ & \{($p_{1}, 0$),($p_{3}, 0$), ($p_{4}, 1$)\} \\
 
    $s_{48}$ & \{($p_{1}, 0$),($p_{3}, 1$), ($p_{4}, 1$)\} \\
-   
-   
+
+
    $s_{49}$ & \{($p_{1}, 1$),($p_{2}, 0$), ($p_{3}, 0$)\} \\
    $s_{50}$ & \{($p_{1}, 1$),($p_{2}, 0$), ($p_{3}, 1$)\} \\
    $s_{51}$ & \{($p_{1}, 1$),($p_{2}, 0$), ($p_{4}, 0$)\} \\
@@ -1005,13 +1005,13 @@ As an example, we consider the same  $T_{fail}$, $T_{pass}$, and $T_{unknown}$ a
    $s_{53}$ & \{($p_{1}, 1$),($p_{2}, 1$), ($p_{3}, 0$)\} \\
    $s_{54}$ & \{($p_{1}, 1$),($p_{2}, 1$), ($p_{3}, 1$)\} \\
    $s_{55}$ & \{($p_{1}, 1$),($p_{2}, 1$), ($p_{4}, 0$)\} \\
-   $s_{56}$ & \{($p_{1}, 1$),($p_{2}, 1$), ($p_{4}, 1$)\} \\   
-  
+   $s_{56}$ & \{($p_{1}, 1$),($p_{2}, 1$), ($p_{4}, 1$)\} \\
+
    $s_{57}$ & \{($p_{1}, 1$),($p_{3}, 0$), ($p_{4}, 0$)\} \\
    $s_{58}$ & \{($p_{1}, 1$),($p_{3}, 0$), ($p_{4}, 1$)\} \\
    $s_{59}$ & \{($p_{1}, 1$),($p_{3}, 1$), ($p_{4}, 0$)\} \\
    $s_{60}$ & \{($p_{1}, 1$),($p_{3}, 1$), ($p_{4}, 1$)\} \\
-   
+
    $s_{61}$ & \{($p_{2}, 0$),($p_{3}, 0$), ($p_{4}, 0$)\} \\
    $s_{62}$ & \{($p_{2}, 0$),($p_{3}, 0$), ($p_{4}, 1$)\} \\
 
@@ -1096,102 +1096,106 @@ PSS=\{ s\ |\ s \preceq t\ \&\&\ \forall t \in T_{pass},  s \npreceq t  \ \&\& \ 
 \end{equation}
 
 %To obtain one pending schema, we just need to select one schema which satisfies $ c \in PSS$.
-The proof of this equation is obvious and omitted here. Note that 
+The proof of this equation is obvious and omitted here. In fact, Formula \ref{eq:pssfirst} is obtained by selecting those pending schemas (based on Formula \ref{eq:pss}) that are in test case $t$.  Since Formula \ref{eq:pssfirst} focus on these schemas that are in test case $t$, it reduces a lot of schemas that are needed to be considered when comparing with Formula \ref{eq:pss}. As an example, we use the same SUT used in Section \ref{sec:pending:pending}
+ 
+ 
+However, to directly utilize Formula \ref{eq:pssfirst} is still not practical, because in the worst case it needs to check every schema in a test case $t$. Note that the number of schemas in $t$ is $2^{n} - 1$, where $n$ is the number of factors in this test case. For each schema we need to check whether it is the sub-schemas of any test case in $T_{pass}$ (the number of the test cases in $T_{pass}$ is |$T_{pass}$|). We also need to check whether it is the super-schemas of any schema in $\mathcal{C}(T_{fail})$ (the number of the faulty schemas in $\mathcal{C}(T_{fail})$ is |$\mathcal{C}(T_{fail})$|). As a result, the complexity of directly utilizing Formula \ref{eq:pssfirst} is $2^{n} \times |T_{pass}| \times |\mathcal{C}(T_{fail})|$, which is infeasible to handle when $n$ is large. Hence, we need to find another formula which is equivalent to Formula \ref{eq:pssfirst}, but with much lower complexity.
 
-However, to directly utilize Formula \ref{eq:pssfirst} is not practical to obtain the pending schemas, because in the worst case it needs to check every schema in a test case $t$. Note that the number of schemas in $t$ is $2^{n} - 1$, where $n$ is the number of factors in this test case. For each schema we need to check whether it is the sub-schemas of any test case in $PSS$ (the number of the test cases in $PTS$ is |$PTS$|). We also need to check whether it is the super-schemas of any faulty schemas in $MFSS$ (the number of the faulty schemas in $MFSS$ is |$MFSS$|). As a result, the complexity of directly utilizing Formula \ref{eq:pssfirst} is $2^{n} \times |PTS| \times |MFSS|$, which is infeasible to handle when $n$ is large. Hence, we need to find another formula which is equivalent to Formula \ref{eq:pssfirst}, but with much lower complexity.
+\subsection{Reduce the space of schemas to be checked}
+Our first step is to reduce the number of minimal faulty schemas to be checked for a pending schema.  For this, let $\mathcal{C}(T_{fail})^{t}$ be the minimal faulty schemas that are the subschemas of test case $t$. That is, $\mathcal{C}(T_{fail})^{t}$ = $\{ s\ | \ s \in \mathcal{C}(T_{fail}), s \preceq t \}$.  It is obvious that the complexity of obtaining $\mathcal{C}(T_{fail})^{t}$ from $\mathcal{C}(T_{fail})$ is $O(|\mathcal{C}(T_{fail})|)$.
 
-Our first step is to reduce the number of minimal faulty schemas to be checked for a pending schema.  For this, let $MFSS_{t}$ be the minimal faulty schemas that are the subschemas of test case $t$. That is, $MFSS^{t}$ = $\{ s\ | \ s \in MFSS, s \preceq t \}$.  It is obvious that the complexity of obtaining $MFSS^{t}$ from $MFSS$ is $O(|MFSS|)$.
-
-%Let $MFSS^{t\circ}$ = $MFSS \backslash MFSS^{t}$.
+%Let $\mathcal{C}(T_{fail})^{t\circ}$ = $\mathcal{C}(T_{fail}) \backslash \mathcal{C}(T_{fail})^{t}$.
 
 %We have the following propositions.
 
-\begin{proposition}\label{pro:mfssintequal}
-Let schema set $A$ = $\{ s\ |\ s \preceq t\ \&\&\ \forall m \in MFSS,  m \npreceq s \}$,  schema set $B$ = $\{ s\ |\ s \preceq t\ \&\&\ \forall m \in MFSS^{t},  m \npreceq s \}$. Then we have $A = B$.
+\begin{proposition}[Reduce to fault schemas in t]\label{pro:mfssintequal}
+Let schema set $A$ = $\{ s\ |\ s \preceq t\ \&\&\ \forall m \in \mathcal{C}(T_{fail}),  m \npreceq s \}$,  schema set $B$ = $\{ s\ |\ s \preceq t\ \&\&\ \forall m \in \mathcal{C}(T_{fail})^{t},  m \npreceq s \}$. Then we have $A = B$.
 \end{proposition}
 
 \begin{proof}
 
-A = $\{ s\ |\  s \preceq t\ \&\&\ \forall m \in MFSS,  m \npreceq s \}$
+A = $\{ s\ |\  s \preceq t\ \&\&\ \forall m \in \mathcal{C}(T_{fail}),  m \npreceq s \}$
  =
-$\{ s\ |\  s \preceq t\ \&\&\ \forall m \in MFSS^{t},  m \npreceq s \&\&\   \forall m \in MFSS \backslash MFSS^{t},  m \npreceq s  \}$
+$\{ s\ |\  s \preceq t\ \&\&\ \forall m \in \mathcal{C}(T_{fail})^{t},  m \npreceq s \&\&\   \forall m \in \mathcal{C}(T_{fail}) \backslash \mathcal{C}(T_{fail})^{t},  m \npreceq s  \}$
 
-Since $MFSS \backslash MFSS^{t}$ = $\{ m \ | \ m \in MFSS, m \npreceq t \}$.
+Since $\mathcal{C}(T_{fail}) \backslash \mathcal{C}(T_{fail})^{t}$ = $\{ m \ | \ m \in \mathcal{C}(T_{fail}), m \npreceq t \}$.
 
-Hence, $\forall s \preceq t, m \in MFSS \backslash MFSS^{t},  m \npreceq s$ (Otherwise, $m \preceq s \preceq t$, which is contradiction).
+Hence, $\forall s \preceq t, m \in \mathcal{C}(T_{fail}) \backslash \mathcal{C}(T_{fail})^{t},  m \npreceq s$ (Otherwise, $m \preceq s \preceq t$, which is contradiction).
 
-Since the condition $\forall s \preceq t, \forall m \in MFSS \backslash MFSS^{t},  m \npreceq s $ does always hold, therefore, A =
-$\{ s\ |\  s \preceq t\ \&\&\ \forall m \in MFSS^{t},  m \npreceq s \&\&\   \forall m \in MFSS \backslash MFSS^{t},  m \npreceq s  \}$  =
-$\{ s\ |\  s \preceq t\ \&\&\ \forall m \in MFSS^{t},  m \npreceq s \}$ = B.
+Since the condition $\forall s \preceq t, \forall m \in \mathcal{C}(T_{fail}) \backslash \mathcal{C}(T_{fail})^{t},  m \npreceq s $ does always hold, therefore, A =
+$\{ s\ |\  s \preceq t\ \&\&\ \forall m \in \mathcal{C}(T_{fail})^{t},  m \npreceq s \&\&\   \forall m \in \mathcal{C}(T_{fail}) \backslash \mathcal{C}(T_{fail})^{t},  m \npreceq s  \}$  =
+$\{ s\ |\  s \preceq t\ \&\&\ \forall m \in \mathcal{C}(T_{fail})^{t},  m \npreceq s \}$ = B.
 \end{proof}
 
 With this proposition, we only need to focus on the minimal faulty schemas that only contained in the failing test case $t$ instead of all the possible minimal faulty schemas to obtain the pending schemas. %hence, reduce the number of faulty schemas.
 
 Next, we consider to reduce the number of passing test cases to be checked for a pending schema.
 
-Let $PTS^{t}$ be the schemas that are intersection subschemas between each test case in $PTS$ and test case $t$. That is, $PTS^{t}$ = $\{ s\ | \exists t' \in  PTS, s\ =\ t' \cap t \}$. Note that to obtain $PTS^{t}$ from $PTS$, the complexity is $O(|PTS|)$.  It is easy to know that $\forall s \in PTS^{t}, s \preceq t \ \&\& \ \exists s' \in PTS, s \preceq s'$.
+Let $T_{pass}^{t}$ be the schemas that are intersection subschemas between each test case in $T_{pass}$ and test case $t$. That is, $T_{pass}^{t}$ = $\{ s\ | \exists t' \in  T_{pass}, s\ =\ t' \cap t \}$. Note that to obtain $T_{pass}^{t}$ from $T_{pass}$, the complexity is $O(|T_{pass}|)$.  It is easy to know that $\forall s \in T_{pass}^{t}, s \preceq t \ \&\& \ \exists s' \in T_{pass}, s \preceq s'$.
 
 
 \begin{proposition}\label{pro:healthysintequal}
-Let schema set $A$ = $\{ s\ |\ s \preceq t\ \&\&\  \forall t_{i} \in PTS, s \npreceq t_{i} \} $,  schema set $B$ = $\{ s\ |\ s \preceq t\ \&\&\ \forall p \in PTS^{t}, s \npreceq p \}$. Then we have $A = B$.
+Let schema set $A$ = $\{ s\ |\ s \preceq t\ \&\&\  \forall t_{i} \in T_{pass}, s \npreceq t_{i} \} $,  schema set $B$ = $\{ s\ |\ s \preceq t\ \&\&\ \forall p \in T_{pass}^{t}, s \npreceq p \}$. Then we have $A = B$.
 \end{proposition}
 
 \begin{proof}
-Note that $PTS^{t}$ = $\{ s\ |\exists t' \in PTS, s =  t' \cap t \}$.
-%and we have $\forall s \in PTS^{t}, s \preceq t \&\& \exists t' \in PTS, s \preceq t'$.
+Note that $T_{pass}^{t}$ = $\{ s\ |\exists t' \in T_{pass}, s =  t' \cap t \}$.
+%and we have $\forall s \in T_{pass}^{t}, s \preceq t \&\& \exists t' \in T_{pass}, s \preceq t'$.
 
-We first prove that $A \subseteq B$. Note for each $s \in A$, we have $s \preceq t \&\& \forall t_{i} \in PTS, s \npreceq t_{i}$. We assume that $\exists s \in A, \exists s' \in PTS^{t}, s \preceq s'$. For $s'$, $\exists t' \in PTS, s' \preceq t'$. Hence, $s  \preceq s' \preceq t'$. This is contradiction. Hence the assumption does not hold, indicating that $\forall s \in A, \forall s' \in PTS^{t}, s \npreceq s' \&\& s \preceq t$. That is $\forall s \in A$, $s \in B$. Hence, $A \subseteq B$.
+We first prove that $A \subseteq B$. Note for each $s \in A$, we have $s \preceq t \&\& \forall t_{i} \in T_{pass}, s \npreceq t_{i}$. We assume that $\exists s \in A, \exists s' \in T_{pass}^{t}, s \preceq s'$. For $s'$, $\exists t' \in T_{pass}, s' \preceq t'$. Hence, $s  \preceq s' \preceq t'$. This is contradiction. Hence the assumption does not hold, indicating that $\forall s \in A, \forall s' \in T_{pass}^{t}, s \npreceq s' \&\& s \preceq t$. That is $\forall s \in A$, $s \in B$. Hence, $A \subseteq B$.
 
-Next we prove that $B \subseteq A$. Since $\forall s \in B$, we have $s \preceq t \&\& \forall t_{i} \in  PTS^{t}, s \npreceq t_{i}$. We assume that $\exists s \in B, \exists t' \in PTS, s \preceq t'$. Also $s \preceq t$, which indicates that $s \preceq (t \cap t')$.  Since $(t \cap t') \in PTS^{t} $, $\exists s \in B, \exists t_{i} \in PTS^{t}, s \preceq t_{i}$. This is contradiction, indicating that  $\forall s \in B, \forall t' \in PTS, s \npreceq t' \&\& s \preceq t$. That is, $\forall s \in B$, $s \in A$. Hence, $B \subseteq A$.
+Next we prove that $B \subseteq A$. Since $\forall s \in B$, we have $s \preceq t \&\& \forall t_{i} \in  T_{pass}^{t}, s \npreceq t_{i}$. We assume that $\exists s \in B, \exists t' \in T_{pass}, s \preceq t'$. Also $s \preceq t$, which indicates that $s \preceq (t \cap t')$.  Since $(t \cap t') \in T_{pass}^{t} $, $\exists s \in B, \exists t_{i} \in T_{pass}^{t}, s \preceq t_{i}$. This is contradiction, indicating that  $\forall s \in B, \forall t' \in T_{pass}, s \npreceq t' \&\& s \preceq t$. That is, $\forall s \in B$, $s \in A$. Hence, $B \subseteq A$.
 
 Since we have $A \subseteq B$ and $B \subseteq A$, we have $A = B$.
 \end{proof}
 
 With this proposition, we do not need to check each passing test case. Instead, we only need to focus on the intersection part of passing test cases and the failing test case.
 
-We can further reduce the number of schemas need to checked. Let $PTS^{t\bigtriangleup}$ be the maximal schemas in $PTS^{t}$. That is, $PTS^{t\bigtriangleup}$ = $\{ s\ |  s \in PTS^{t} \&\& \nexists s'  \in PTS^{t}, s \prec s' \}$.  To obtain $PTS^{t\bigtriangleup}$ from $PTS$ with complexity of $O(|PTS|^{2})$. It is easy to know that $\forall s \in PTS^{t}, \exists s' \in PTS^{t\bigtriangleup},  s \preceq s'$.
+We can further reduce the number of schemas need to checked. Let $T_{pass}^{t\bigtriangleup}$ be the maximal schemas in $T_{pass}^{t}$. That is, $T_{pass}^{t\bigtriangleup}$ = $\{ s\ |  s \in T_{pass}^{t} \&\& \nexists s'  \in T_{pass}^{t}, s \prec s' \}$.  To obtain $T_{pass}^{t\bigtriangleup}$ from $T_{pass}$ with complexity of $O(|T_{pass}|^{2})$. It is easy to know that $\forall s \in T_{pass}^{t}, \exists s' \in T_{pass}^{t\bigtriangleup},  s \preceq s'$.
 
 \begin{proposition}\label{pro:healthysintequal2}
-Let schema set $A$ = $\{ s\ |\ s \preceq t\ \&\&\ \forall p \in PTS^{t}, s \npreceq p \}$, schema set $B$ = $\{ s\ |\ s \preceq t\ \&\&\ \forall p \in PTS^{t\bigtriangleup}, s \npreceq p \}$. Then we have $A = B$.
+Let schema set $A$ = $\{ s\ |\ s \preceq t\ \&\&\ \forall p \in T_{pass}^{t}, s \npreceq p \}$, schema set $B$ = $\{ s\ |\ s \preceq t\ \&\&\ \forall p \in T_{pass}^{t\bigtriangleup}, s \npreceq p \}$. Then we have $A = B$.
 \end{proposition}
 
 \begin{proof}
 
 First, we will prove $A \subseteq B$.
 
-Since $PTS^{t\bigtriangleup} \subseteq PTS^{t}$, we have $  \{ s | \forall p \in PTS^{t}, s \npreceq p \} =  \{ s | \forall p \in PTS^{t\bigtriangleup}, s \npreceq p \ \&\& \  \forall p \in PTS^{t} \backslash PTS^{t\bigtriangleup}, s \npreceq p \} \subseteq \{ s | \forall p \in PTS^{t\bigtriangleup}, s \npreceq p \}$. Hence,  $\{ s\ |\ s \preceq t\ \&\&\ \forall p \in PTS^{t}, s \npreceq p \} \subseteq  \{ s\ |\ s \preceq t\ \&\&\ \forall p \in PTS^{t\bigtriangleup}, s \npreceq p \}$. That is,  $A \subseteq B$.
+Since $T_{pass}^{t\bigtriangleup} \subseteq T_{pass}^{t}$, we have $  \{ s | \forall p \in T_{pass}^{t}, s \npreceq p \} =  \{ s | \forall p \in T_{pass}^{t\bigtriangleup}, s \npreceq p \ \&\& \  \forall p \in T_{pass}^{t} \backslash T_{pass}^{t\bigtriangleup}, s \npreceq p \} \subseteq \{ s | \forall p \in T_{pass}^{t\bigtriangleup}, s \npreceq p \}$. Hence,  $\{ s\ |\ s \preceq t\ \&\&\ \forall p \in T_{pass}^{t}, s \npreceq p \} \subseteq  \{ s\ |\ s \preceq t\ \&\&\ \forall p \in T_{pass}^{t\bigtriangleup}, s \npreceq p \}$. That is,  $A \subseteq B$.
 
 Next, we will prove $B \subseteq A$.
 
-We assume that  $\exists s \in  \{ s | \forall p \in PTS^{t\bigtriangleup}, s \npreceq p \}$, $ s \notin \{ s | \forall p \in PTS^{t}, s \npreceq p \}$. It indicates that $\exists p' \in PTS^{t}, s \preceq p'$. Since $p' \in PTS^{t}$, $\exists p'' \in PTS^{t\bigtriangleup}, p' \preceq p''$. It has $s \preceq p' \preceq p''$. This is contradiction.  Hence, the assumption does not hold, indicating that $\forall s \in  \{ s | \forall p \in PTS^{t\bigtriangleup}$, $s \in  \{ s | \forall p \in PTS^{t}, s \npreceq p \}$. Hence, $\{ s | \forall p \in PTS^{t\bigtriangleup}$ $\subseteq$ $\{ s | \forall p \in PTS^{t}, s \npreceq p \}$. Therefore, $\{ s\ |\ s \preceq t\ \&\&\ \forall p \in PTS^{t\bigtriangleup}, s \npreceq p \}$ $\subseteq$ $\{ s\ |\ s \preceq t\ \&\&\ \forall p \in PTS^{t}, s \npreceq p \} $. That is $B \subseteq A$.
+We assume that  $\exists s \in  \{ s | \forall p \in T_{pass}^{t\bigtriangleup}, s \npreceq p \}$, $ s \notin \{ s | \forall p \in T_{pass}^{t}, s \npreceq p \}$. It indicates that $\exists p' \in T_{pass}^{t}, s \preceq p'$. Since $p' \in T_{pass}^{t}$, $\exists p'' \in T_{pass}^{t\bigtriangleup}, p' \preceq p''$. It has $s \preceq p' \preceq p''$. This is contradiction.  Hence, the assumption does not hold, indicating that $\forall s \in  \{ s | \forall p \in T_{pass}^{t\bigtriangleup}$, $s \in  \{ s | \forall p \in T_{pass}^{t}, s \npreceq p \}$. Hence, $\{ s | \forall p \in T_{pass}^{t\bigtriangleup}$ $\subseteq$ $\{ s | \forall p \in T_{pass}^{t}, s \npreceq p \}$. Therefore, $\{ s\ |\ s \preceq t\ \&\&\ \forall p \in T_{pass}^{t\bigtriangleup}, s \npreceq p \}$ $\subseteq$ $\{ s\ |\ s \preceq t\ \&\&\ \forall p \in T_{pass}^{t}, s \npreceq p \} $. That is $B \subseteq A$.
 
 As we have shown B $\subseteq$ A, and A $\subseteq$ B, so A = B.
 \end{proof}
 
-With this proposition, we do not need to check each schema in $PTS^{t}$, instead, we only need to focus on the maximal schemas in this set.
+With this proposition, we do not need to check each schema in $T_{pass}^{t}$, instead, we only need to focus on the maximal schemas in this set.
 
 With these two set of schemas, we can obtain the second formula to compute the pending schemas in a failing test case $t$, which is listed in the following.
 
 \begin{equation}
 \begin{aligned}\label{eq:pssfirst_mutated}
-PSS=\{ s\ |\ s \preceq t\ \&\&\ \forall m \in MFSS^{t},  m \npreceq s  \ \&\&\  \forall p \in PTS^{t\bigtriangleup}, s \npreceq p \} .
+PSS=\{ s\ |\ s \preceq t\ \&\&\ \forall m \in \mathcal{C}(T_{fail})^{t},  m \npreceq s  \ \&\&\  \forall p \in T_{pass}^{t\bigtriangleup}, s \npreceq p \} .
 \end{aligned}
 \end{equation}
 
 \begin{proof}
 
-Let A = $\{ s\ |\  s \preceq t\ \&\&\ \forall m \in MFSS,  m \npreceq s \}$, B = $ \{ s\ |\ s \preceq t\ \&\&  \forall p \in PTS, s \npreceq p \} $. Obviously, PSS = $A \cap B$.
+Let A = $\{ s\ |\  s \preceq t\ \&\&\ \forall m \in \mathcal{C}(T_{fail}),  m \npreceq s \}$, B = $ \{ s\ |\ s \preceq t\ \&\&  \forall p \in T_{pass}, s \npreceq p \} $. Obviously, PSS = $A \cap B$.
 
-According to Proposition \ref{pro:mfssintequal}, A = $\{ s\ |\  s \preceq t\ \&\&\ \forall m \in MFSS^{t},  m \npreceq s \}$.
-According to Proposition \ref{pro:healthysintequal} and Proposition \ref{pro:healthysintequal2}, B = $\{ s\ |\  s \preceq t\ \&\&\ \forall p \in PTS^{t},  s \npreceq p \}$ = $\{ s\ |\  s \preceq t\ \&\&\ \forall p \in PTS^{t\bigtriangleup},  s \npreceq p \}$.
+According to Proposition \ref{pro:mfssintequal}, A = $\{ s\ |\  s \preceq t\ \&\&\ \forall m \in \mathcal{C}(T_{fail})^{t},  m \npreceq s \}$.
+According to Proposition \ref{pro:healthysintequal} and Proposition \ref{pro:healthysintequal2}, B = $\{ s\ |\  s \preceq t\ \&\&\ \forall p \in T_{pass}^{t},  s \npreceq p \}$ = $\{ s\ |\  s \preceq t\ \&\&\ \forall p \in T_{pass}^{t\bigtriangleup},  s \npreceq p \}$.
 
-Hence, $PSS$ = $A \cap B$ = $\{ s\ |\  s \preceq t\ \&\&\ \forall m \in MFSS^{t},  m \npreceq s \}$ $\cap$ $\{ s\ |\  s \preceq t\ \&\&\ \forall p \in PTS^{t\bigtriangleup},  s \npreceq p \}$ = $\{ s\ |\ s \preceq t\ \&\&\ \forall m \in MFSS^{t},  m \npreceq s  \ \&\&\  \forall p \in PTS^{t\bigtriangleup}, s \npreceq p \}$.
+Hence, $PSS$ = $A \cap B$ = $\{ s\ |\  s \preceq t\ \&\&\ \forall m \in \mathcal{C}(T_{fail})^{t},  m \npreceq s \}$ $\cap$ $\{ s\ |\  s \preceq t\ \&\&\ \forall p \in T_{pass}^{t\bigtriangleup},  s \npreceq p \}$ = $\{ s\ |\ s \preceq t\ \&\&\ \forall m \in \mathcal{C}(T_{fail})^{t},  m \npreceq s  \ \&\&\  \forall p \in T_{pass}^{t\bigtriangleup}, s \npreceq p \}$.
 \end{proof}
 
 
-With respect to Formula \ref{eq:pssfirst_mutated}, the complexity of obtaining the pending schemas is computed as follows. We first need to obtain $MFSS^{t}$ and $PTS^{t\bigtriangleup}$, for which the complexities are $O(|MFSS|)$ and $O(|PTS|^{2})$. Then we still need to check each schema in test case $t$, to figure whether it is subschema of some schema in $PTS^{t\bigtriangleup}$ or super-schema of some schema in $MFSS^{t}$, for which the complexity is $O(2^{n}* |MFSS^{t}| * |PTS^{t\bigtriangleup}|)$, where $n$ is the number of factors in the test case.  At last, the complexity is $O(|MFSS| + |PTS|^{2} + 2^{n}* |MFSS^{t}| * |PTS^{t\bigtriangleup}| )$. Obviously, this is still not feasible when $n$ is large.
+With respect to Formula \ref{eq:pssfirst_mutated}, the complexity of obtaining the pending schemas is computed as follows. We first need to obtain $\mathcal{C}(T_{fail})^{t}$ and $T_{pass}^{t\bigtriangleup}$, for which the complexities are $O(|\mathcal{C}(T_{fail})|)$ and $O(|T_{pass}|^{2})$. Then we still need to check each schema in test case $t$, to figure whether it is subschema of some schema in $T_{pass}^{t\bigtriangleup}$ or super-schema of some schema in $\mathcal{C}(T_{fail})^{t}$, for which the complexity is $O(2^{n}* |\mathcal{C}(T_{fail})^{t}| * |T_{pass}^{t\bigtriangleup}|)$, where $n$ is the number of factors in the test case.  At last, the complexity is $O(|\mathcal{C}(T_{fail})| + |T_{pass}|^{2} + 2^{n}* |\mathcal{C}(T_{fail})^{t}| * |T_{pass}^{t\bigtriangleup}| )$. Obviously, this is still not feasible when $n$ is large.
 
 
+
+\subsection{Change to CMXS and CMNS}
 
 Next, we will try to eliminate the influence of the number of $n$ to obtain the pending schemas. For this purpose, we defined the following two sets, i.e. $CMXS$ and $CMNS$.
 
@@ -1425,9 +1429,9 @@ As an example, considering a test case $t$ -- \{($p_{1}$, 1),($p_{2}$, 1),($p_{3
 
 Based on Proposition \ref{pro:subofCMXSfor2} and \ref{pro:superofCMNS2}, we can easily learn that \{$s\ |\ s \preceq t\ \&\&\ \forall s_{i} \in FSS, s_{i} \npreceq s $\} $\bigcap$ \{$s\ |\ s \preceq t\ \&\&\ \forall s_{i} \in HSS, s \npreceq s_{i} $\}  $=$  \{$ s\ |\ \exists s_{1}' \in CMXS(FSS, t)$, $s \preceq s_{1}'$\} $\bigcap$  \{$ s\ |\ s \preceq t \ \&\& \ \exists s_{1}' \in CMNS(HSS, t)$, $s_{1}' \preceq s$\}.  Considering $\forall s \in $\{$ s\ |\ \exists s_{1}' \in CMXS(FSS, t)$, $s \preceq s_{1}'$\}, $s \preceq t$, we have  \{$ s\ |\ \exists s_{1}' \in CMXS(FSS, t)$, $s \preceq s_{1}'$\} $\bigcap$  \{$ s\ |\ s \preceq t \ \&\& \ \exists s_{1}' \in CMNS(HSS, t)$, $s_{1}' \preceq s$\} =  \{$ s\ |\ \exists s_{1}' \in CMXS(FSS, t)$, $s \preceq s_{1}'$\} $\bigcap$  \{$ s\ | \exists s_{1}' \in CMNS(HSS, t)$, $s_{1}' \preceq s$\}.
 
-Let $t$ be the failing test case, the schemas set $PTS^{t\bigtriangleup}$ be the set of schemas $HSS$ (it satisfies that $\forall s \in PTS^{t\bigtriangleup}, s \preceq t $), the minimal faulty schemas $MFSS^{t}$ be the set of schemas $FSS$ (it also satisfies that $\forall s \in MFSS^{t}, s \preceq t $). Then we transform the aforementioned formula (Formula \ref{eq:pssfirst}) to be the following equation.
+Let $t$ be the failing test case, the schemas set $T_{pass}^{t\bigtriangleup}$ be the set of schemas $HSS$ (it satisfies that $\forall s \in T_{pass}^{t\bigtriangleup}, s \preceq t $), the minimal faulty schemas $\mathcal{C}(T_{fail})^{t}$ be the set of schemas $FSS$ (it also satisfies that $\forall s \in \mathcal{C}(T_{fail})^{t}, s \preceq t $). Then we transform the aforementioned formula (Formula \ref{eq:pssfirst}) to be the following equation.
 
-\{$s\ |\ s \preceq t\ \&\&\ \forall t_{i} \in PTS^{t\bigtriangleup}, s \npreceq t_{i} \&\&\ \forall m \in MFSS^{t}, m \npreceq s   $\} $=$  \{$ s\ |\ $ $\exists s_{1}' \in CMNS(PTS^{t\bigtriangleup}, t)$, $s_{1}' \preceq s$  $\&\&$ $\exists s_{1}' \in CMXS(MFSS^{t}, t)$, $s \preceq s_{1}'$  \} $=$  \{$ s\ |\ \exists s_{1}' \in CMNS(PTS^{t\bigtriangleup}, t), s_{2}' \in CMXS(MFSS^{t}, t)$, $s_{1}' \preceq s \preceq s_{2}'$ \}.
+\{$s\ |\ s \preceq t\ \&\&\ \forall t_{i} \in T_{pass}^{t\bigtriangleup}, s \npreceq t_{i} \&\&\ \forall m \in \mathcal{C}(T_{fail})^{t}, m \npreceq s   $\} $=$  \{$ s\ |\ $ $\exists s_{1}' \in CMNS(T_{pass}^{t\bigtriangleup}, t)$, $s_{1}' \preceq s$  $\&\&$ $\exists s_{1}' \in CMXS(\mathcal{C}(T_{fail})^{t}, t)$, $s \preceq s_{1}'$  \} $=$  \{$ s\ |\ \exists s_{1}' \in CMNS(T_{pass}^{t\bigtriangleup}, t), s_{2}' \in CMXS(\mathcal{C}(T_{fail})^{t}, t)$, $s_{1}' \preceq s \preceq s_{2}'$ \}.
 
 At last, we can learn that the pending schemas set is equal to the following formula.
 
@@ -1443,12 +1447,12 @@ At last, we can learn that the pending schemas set is equal to the following for
 
 \begin{equation}\label{eq:psssecond}
 \begin{aligned}
-PSS =  \{ s\ |\ \exists s_{1}' \in CMNS(PTS^{t\bigtriangleup}, t), s_{2}' \in CMXS(MFSS^{t}, t),  s_{1}' \preceq s \preceq s_{2}' \}.
+PSS =  \{ s\ |\ \exists s_{1}' \in CMNS(T_{pass}^{t\bigtriangleup}, t), s_{2}' \in CMXS(\mathcal{C}(T_{fail})^{t}, t),  s_{1}' \preceq s \preceq s_{2}' \}.
 \end{aligned}
 %PSS = \{ c\ |\ \exists c_{1}' \in CMNS(HSS, t), c_{1}' \preceq c \&\& \exists c_{1}' \in CMNS(HSS, t), c_{1}' \preceq c\}.
 \end{equation}
 
-According to Formula \ref{eq:psssecond}, the complexity of obtaining one pending schema is O($ \tau^{|MFSS^{t}|} \times \tau^{|PTS^{t\bigtriangleup}|}$). This is because to obtain one pending schema, we only need to search the schemas in $CMXS(MFSS^{t}, t)$ and $CMNS(PTS^{t\bigtriangleup}, t)$, of which the complexity are O($\tau^{|MFSS^{t}|}$) and O($\tau^{|PTS^{t\bigtriangleup}|}$), respectively. Then we need to check each pair of schemas in these two sets, to find whether exists $c_{1} \in CMXS(MFSS^{t}, t)$, $c_{2} \in CMNS(PTS^{t\bigtriangleup}, t)$, such that $c_{2} \preceq c_{1}$. If so, then both $c_{2}$ and $c_{1}$ satisfy Formula \ref{eq:psssecond}. Furthermore, $\forall c_{3}, c_{2} \preceq c_{3} \preceq c_{1}$, $c_{3}$ also satisfy Formula \ref{eq:psssecond}. Hence, the complexity of obtaining one pending schema is O($\tau^{|MFSS^{t}|} \times \tau^{|PTS^{t\bigtriangleup}|}$). Note that with Formula \ref{eq:psssecond}, we have eliminated the influence of the number $n$ (See Formula \ref{eq:pssfirst} and Formula \ref{eq:pssfirst_mutated}) to obtaining the pending schemas.
+According to Formula \ref{eq:psssecond}, the complexity of obtaining one pending schema is O($ \tau^{|\mathcal{C}(T_{fail})^{t}|} \times \tau^{|T_{pass}^{t\bigtriangleup}|}$). This is because to obtain one pending schema, we only need to search the schemas in $CMXS(\mathcal{C}(T_{fail})^{t}, t)$ and $CMNS(T_{pass}^{t\bigtriangleup}, t)$, of which the complexity are O($\tau^{|\mathcal{C}(T_{fail})^{t}|}$) and O($\tau^{|T_{pass}^{t\bigtriangleup}|}$), respectively. Then we need to check each pair of schemas in these two sets, to find whether exists $c_{1} \in CMXS(\mathcal{C}(T_{fail})^{t}, t)$, $c_{2} \in CMNS(T_{pass}^{t\bigtriangleup}, t)$, such that $c_{2} \preceq c_{1}$. If so, then both $c_{2}$ and $c_{1}$ satisfy Formula \ref{eq:psssecond}. Furthermore, $\forall c_{3}, c_{2} \preceq c_{3} \preceq c_{1}$, $c_{3}$ also satisfy Formula \ref{eq:psssecond}. Hence, the complexity of obtaining one pending schema is O($\tau^{|\mathcal{C}(T_{fail})^{t}|} \times \tau^{|T_{pass}^{t\bigtriangleup}|}$). Note that with Formula \ref{eq:psssecond}, we have eliminated the influence of the number $n$ (See Formula \ref{eq:pssfirst} and Formula \ref{eq:pssfirst_mutated}) to obtaining the pending schemas.
 %In fact, we can further reduce the complexity of obtaining pending schemas. When given a set of schemas $S$, let the minimal schemas as $S^{\bot } = \{ c | c \in S, \nexists c' \in S, c' \prec c \}$ and the maximal schemas as $S^{\top } = \{ c | c \in S, \nexists c' \in S, c \prec c' \}$. Based on this, we can have the following proposition:
 %
 %\begin{proposition}\label{pro:identicialPending}
@@ -1488,7 +1492,6 @@ As an example, consider a failing test case $t = \{(p_{1}, 1),$ $ (p_{2}, 1), (p
 
 Fig \ref{fig_minmax} lists all the faulty schemas, healthy schemas, and pending schemas of test case $t$. At the second part, it lists the $CMXS(FSS, t)$, $CMNS(HSS, t)$, and the schema set \{$ c\ |\ \exists c_{1}' \in CMXS(FSS, t)$, $c_{1}' \in CMNS(HSS, t)$, $c_{2}' \preceq c \preceq c_{1}'$ \}. At last it shows $CMXS(FSS^{\bot}, t)$, $CMNS(HSS^{\top}, t)$ and  \{$ c\ |\ \exists c_{1}' \in CMXS(FSS^{\bot}, t)$, $ c_{2}' \in CMNS($ $HSS^{\top}, t)$, $c_{2}' \preceq c \preceq c_{1}'$ \}.
 
-%We can learn that these two schema set mentioned in Proposition \ref{pro:identicialPending} are identical in Fig \ref{fig_minmax}, but the schema set based on $CMXS(FSS^{\bot}, t)$, $CMNS(HSS^{\top}, t)$ used much fewer schemas (3 in total) to obtain the result than the schema set based on $CMXS(FSS, t)$, $CMNS(HSS, t)$ (7 in total). Another observation from this figure is that these two schema set are both identical to the pending schemas. It suggests that using CMXS and CMNS can effectively and efficiently to get the pending schemas, when compared to list all the schemas in a test case and find the pending schema one by one according to Formula \ref{eq:pssfirst}.
 
 \begin{figure*}[ht]
  \centering
@@ -1497,29 +1500,13 @@ Fig \ref{fig_minmax} lists all the faulty schemas, healthy schemas, and pending 
  \label{fig_minmax}
 \end{figure*}
 
-
-%At last, according to Proposition \ref{pro:identicialPending}, we have the third formula to compute pending schemas as follow:
-%
-%\begin{equation}\label{eq:pssthird}
-%\begin{aligned}
-%PSS =  \{ c\ |\ \exists c_{1}' \in CMXS(FSS^{\bot}, t), c_{2}' \in CMNS(HSS^{\top}, t), c_{2}' \preceq c \preceq c_{1}' \}.
-%\end{aligned}
-%%PSS = \{ c\ |\ \exists c_{1}' \in CMNS(HSS, t), c_{1}' \preceq c \&\& \exists c_{1}' \in CMNS(HSS, t), c_{1}' \preceq c\}.
-%\end{equation}
-%
-%According to Formula \ref{eq:pssthird}, the complexity of obtaining one pending schema is O($ \tau^{|FSS^{\bot}|} \times \tau^{|HSS^{\top}|}$), where $|FSS^{\bot}|$ and $|HSS^{\top}|$ are two relatively small numbers during MFS identification.
-
 \subsection{A case study of applying Formula }
 In this section, we will show a case study of how to obtain the pending schemas with Formula \ref{eq:pssthird}. For consistency, we use the example in the Section \ref{sec:motiv}. Next, we will show how to  apply Formula \ref{eq:pssthird} to obtain the pending schemas of the failing test case $t_{5}$ after using FINOLP. Note that other approaches can be obtained in the same way.
 %  in the FINOLP. Others are shown in the appendix in a similar way.
 From Figure , we can learn that the maximal healthy schemas are the passing test cases themselves, which are $t_{1}$ ,..., and $t_{16}$. While the minimal faulty schemas are the MFS  (Other faulty schemas are the super schemas of this one).
 Then we can learn that.  Note that we can learn that .
 
-%When applying this analysis, we can get back to the motivation example.
-%We do not need list all the schemas, but we can figure out which one is the pending schema (Covering array, OFOT, OFOT with single  MFS, FIC, FIC with multiple )
 
-
-% Start of "Sample References" section
 
 \section{Empirical studies}\label{sec:emp}
 
