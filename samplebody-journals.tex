@@ -677,7 +677,7 @@ We second prove that, for any healthy schema $s$, it must have $s \in \mathcal{I
 According to the definition of healthy schema, we have for any healthy schema $s$,  $\exists t \in T_{pass},  t \in \mathcal{T}(s)$. That is,  $\exists t \in T_{pass}, s \preceq t$. Hence, $s \in \mathcal{I}(t) \subseteq  \mathcal{I}(T_{pass})$.
 \end{proof}
 
-Proposition \ref{pro:healthyschemastests} tells that the whole set of hit schemas of passing test case set are healthy schemas.  As an example, consider the test case set $T_{pass}$ has only one test case, which is \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 0$)\}. Then all the healthy schemas are in the set $\mathcal{I}(T_{pass})$, which are listed in Table \ref{ex:wholesetofhealthyschemas}.
+Proposition \ref{pro:healthyschemastests} tells that the whole set of hit schemas of passing test case set are healthy schemas.  As an example, consider the test case set $T_{pass}$ has two test cases, which are \{($p_{1}, 0$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 0$)\}, and \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 0$)\}, respectively. Then all the healthy schemas are in the set $\mathcal{I}(T_{pass})$, which are listed in Table \ref{ex:wholesetofhealthyschemas}.
 
 \begin{table}[htbp]
   \centering
@@ -686,23 +686,39 @@ Proposition \ref{pro:healthyschemastests} tells that the whole set of hit schema
       \label{ex:wholesetofhealthyschemas}
     \begin{tabular}{|c|c|} \hline
    \multicolumn{2}{|c|}{\textbf{Passing Test Case Set $T_{pass}$}} \\ \hline
-   $t$ & \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 0$)\} \\ \hline
+   $t_{1}$ & \{($p_{1}, 0$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 0$)\} \\
+   $t_{2}$ & \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 0$)\} \\ \hline
     \multicolumn{2}{|c|}{\textbf{ $\mathcal{I}(T_{pass})$ }}\\ \hline
-   $s_{1}$ & \{($p_{1}, 1$)\} \\
-   $s_{2}$ & \{($p_{2}, 0$)\} \\
-   $s_{3}$ & \{($p_{3}, 0$)\} \\
-   $s_{4}$ & \{($p_{4}, 0$)\} \\
-   $s_{5}$ & \{($p_{1}, 1$),($p_{2}, 0$)\} \\
-   $s_{6}$ & \{($p_{1}, 1$),($p_{3}, 0$)\} \\
-   $s_{7}$ & \{($p_{1}, 1$),($p_{4}, 0$)\} \\
-   $s_{8}$ & \{($p_{2}, 0$),($p_{3}, 0$)\} \\
-   $s_{9}$ & \{($p_{2}, 0$),($p_{4}, 0$)\} \\
-   $s_{10}$ & \{($p_{3}, 0$),($p_{4}, 0$)\} \\
-   $s_{11}$ & \{($p_{1}, 1$),($p_{2}, 0$),($p_{3}, 0$)\} \\
-   $s_{12}$ & \{($p_{1}, 1$),($p_{2}, 0$),($p_{4}, 0$)\} \\
-   $s_{13}$ & \{($p_{1}, 1$),($p_{3}, 0$),($p_{4}, 0$)\} \\
-   $s_{14}$ & \{($p_{2}, 0$),($p_{3}, 0$),($p_{4}, 0$)\} \\
-   $s_{15}$ & \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 0$)\} \\ \hline
+   $s_{1}$ & \{($p_{1}, 0$)\} \\
+   $s_{2}$ & \{($p_{1}, 1$)\} \\
+   $s_{3}$ & \{($p_{2}, 0$)\} \\
+   $s_{4}$ & \{($p_{3}, 0$)\} \\
+   $s_{5}$ & \{($p_{4}, 0$)\} \\
+
+   $s_{6}$ & \{($p_{1}, 0$),($p_{2}, 0$)\} \\
+   $s_{7}$ & \{($p_{1}, 0$),($p_{3}, 0$)\} \\
+   $s_{8}$ & \{($p_{1}, 0$),($p_{4}, 0$)\} \\
+
+
+   $s_{9}$ & \{($p_{1}, 1$),($p_{2}, 0$)\} \\
+   $s_{10}$ & \{($p_{1}, 1$),($p_{3}, 0$)\} \\
+   $s_{11}$ & \{($p_{1}, 1$),($p_{4}, 0$)\} \\
+   $s_{12}$ & \{($p_{2}, 0$),($p_{3}, 0$)\} \\
+   $s_{13}$ & \{($p_{2}, 0$),($p_{4}, 0$)\} \\
+   $s_{14}$ & \{($p_{3}, 0$),($p_{4}, 0$)\} \\
+
+   $s_{15}$ & \{($p_{1}, 0$),($p_{2}, 0$),($p_{3}, 0$)\} \\
+   $s_{16}$ & \{($p_{1}, 0$),($p_{2}, 0$),($p_{4}, 0$)\} \\
+   $s_{17}$ & \{($p_{1}, 0$),($p_{3}, 0$),($p_{4}, 0$)\} \\
+
+   $s_{18}$ & \{($p_{1}, 1$),($p_{2}, 0$),($p_{3}, 0$)\} \\
+   $s_{19}$ & \{($p_{1}, 1$),($p_{2}, 0$),($p_{4}, 0$)\} \\
+   $s_{20}$ & \{($p_{1}, 1$),($p_{3}, 0$),($p_{4}, 0$)\} \\
+
+   $s_{21}$ & \{($p_{2}, 0$),($p_{3}, 0$),($p_{4}, 0$)\} \\
+
+   $s_{22}$ & \{($p_{1}, 0$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 0$)\} \\
+   $s_{23}$ & \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 0$)\} \\  \hline
     \end{tabular}%
 \end{table}%
 
@@ -809,57 +825,78 @@ Obviously $\forall s \in \mathcal{I}(T_{pass})$, $\exists t \in T_{pass}, s \pre
 We second prove that, for any schema $s \not\in \mathcal{I}(T_{pass})$, it cannot be determined to be a healthy schema. Since $s \not\in \mathcal{I}(T_{pass})$, $\not\exists t \in T_{pass}, s \preceq t$. Therefore,  $\not\exists t \in T_{pass}, t \in \mathcal{T}(s)$. Hence, $\mathcal{T}(s) \subseteq (T^{*} \backslash T_{pass}) = (T_{unknown} \bigcup T_{fail})$. Note that, there is none test case in $(T_{unknown} \bigcup T_{fail})$ is guaranteed to be passing test case. In fact, all the test cases in $T_{unknown}$ have the possibility to be failing test cases. Hence, schema $s$ cannot be determined to be a healthy schema.
 \end{proof}
 
-Proposition \ref{pro:determinablehealthy} shows that only the schemas contained in those existed passing test cases can be determined to be healthy schemas.  As an example, consider $T_{pass}$ contains one test case, which are \{($p_{1}, 0$), ($p_{2}, 0$), ($p_{3}, 1$), ($p_{4}, 0$)\}. $T_{fail}$ contains two test cases, which are \{($p_{1}, 0$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 0$)\}, and \{($p_{1}, 0$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 1$)\}, respectively. Other test cases are in $T_{unknown}$. Table \ref{ex:determinableschemas} shows the schemas that can be determined to be healthy schemas.
+Proposition \ref{pro:determinablehealthy} shows that only the schemas contained in those existed passing test cases can be determined to be healthy schemas.  As an example, we consider the SUT with $T_{pass}$, $T_{fail}$, and $T_{unkonwn}$ shown as in Table \ref{ex:determinableschemassut}.  Then Table \ref{ex:determinablehealthyschemas} shows the schemas that can be determined to be healthy schemas.
 
 \begin{table}[htbp]
   \centering
-  \caption{An example of determinable schemas}
-  \label{ex:determinableschemas}
+  \caption{An example of the state of the test cases in the SUT}
+  \label{ex:determinableschemassut}
     \begin{tabular}{|c|c|} \hline
      \multicolumn{2}{|c|}{\textbf{Failing test Case set $T_{fail}$}} \\ \hline
-  $t_{1}$ & \{($p_{1}, 0$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 0$)\}\\
-  $t_{2}$ & \{($p_{1}, 0$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 1$)\}\\ \hline
-     \multicolumn{2}{|c|}{\textbf{Passing Test Case Set $T_{pass}$}} \\ \hline
-  $t_{3}$ & \{($p_{1}, 0$), ($p_{2}, 0$), ($p_{3}, 1$), ($p_{4}, 0$)\} \\ \hline
-        \multicolumn{2}{|c|}{\textbf{Unknown Test Case Set $T_{unknown}$}} \\ \hline
-  $t_{4}$ & \{($p_{1}, 0$), ($p_{2}, 0$), ($p_{3}, 1$), ($p_{4}, 1$)\} \\
-  $t_{5}$ & \{($p_{1}, 0$), ($p_{2}, 1$), ($p_{3}, 0$), ($p_{4}, 0$)\} \\
-  $t_{6}$ & \{($p_{1}, 0$), ($p_{2}, 1$), ($p_{3}, 0$), ($p_{4}, 1$)\} \\
-  $t_{7}$ & \{($p_{1}, 0$), ($p_{2}, 1$), ($p_{3}, 1$), ($p_{4}, 0$)\} \\
-  $t_{8}$ & \{($p_{1}, 0$), ($p_{2}, 1$), ($p_{3}, 1$), ($p_{4}, 1$)\} \\
+  $t_{1}$ & \{($p_{1}, 0$), ($p_{2}, 0$), ($p_{3}, 1$), ($p_{4}, 0$)\}\\
+  $t_{2}$ & \{($p_{1}, 0$), ($p_{2}, 0$), ($p_{3}, 1$), ($p_{4}, 1$)\}\\
+  $t_{3}$ & \{($p_{1}, 0$), ($p_{2}, 1$), ($p_{3}, 1$), ($p_{4}, 0$)\}\\
+  $t_{4}$ & \{($p_{1}, 0$), ($p_{2}, 1$), ($p_{3}, 1$), ($p_{4}, 1$)\}\\
+  $t_{5}$ & \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 1$), ($p_{4}, 0$)\}\\
+  $t_{6}$ & \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 1$), ($p_{4}, 1$)\}\\
+  $t_{7}$ & \{($p_{1}, 1$), ($p_{2}, 1$), ($p_{3}, 1$), ($p_{4}, 0$)\}\\
+  $t_{8}$ & \{($p_{1}, 1$), ($p_{2}, 1$), ($p_{3}, 1$), ($p_{4}, 1$)\}\\
 
-  $t_{9}$ & \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 0$)\}\\
-  $t_{10}$ & \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 1$)\}\\
-  $t_{11}$ & \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 1$), ($p_{4}, 0$)\} \\
-  $t_{12}$ & \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 1$), ($p_{4}, 1$)\} \\
-  $t_{13}$ & \{($p_{1}, 1$), ($p_{2}, 1$), ($p_{3}, 0$), ($p_{4}, 0$)\} \\
-  $t_{14}$ & \{($p_{1}, 1$), ($p_{2}, 1$), ($p_{3}, 0$), ($p_{4}, 1$)\} \\
-  $t_{15}$ & \{($p_{1}, 1$), ($p_{2}, 1$), ($p_{3}, 1$), ($p_{4}, 0$)\} \\
-  $t_{16}$ & \{($p_{1}, 1$), ($p_{2}, 1$), ($p_{3}, 1$), ($p_{4}, 1$)\} \\ \hline
+  $t_{9}$ & \{($p_{1}, 1$), ($p_{2}, 1$), ($p_{3}, 0$), ($p_{4}, 0$)\}\\
+  $t_{10}$ & \{($p_{1}, 1$), ($p_{2}, 1$), ($p_{3}, 0$), ($p_{4}, 1$)\}\\  \hline
+
+     \multicolumn{2}{|c|}{\textbf{Passing Test Case Set $T_{pass}$}} \\ \hline
+  $t_{11}$ & \{($p_{1}, 0$), ($p_{2}, 1$), ($p_{3}, 0$), ($p_{4}, 1$)\} \\
+  $t_{12}$ & \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 1$)\} \\ \hline
+        \multicolumn{2}{|c|}{\textbf{Unknown Test Case Set $T_{unknown}$}} \\ \hline
+  $t_{13}$ & \{($p_{1}, 0$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 0$)\} \\
+  $t_{14}$ & \{($p_{1}, 0$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 1$)\} \\
+  $t_{15}$ & \{($p_{1}, 0$), ($p_{2}, 1$), ($p_{3}, 0$), ($p_{4}, 0$)\} \\
+  $t_{16}$ & \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 0$)\} \\ \hline
     \end{tabular}%
-\quad
+\end{table}
+
+
+\begin{table}[htbp]
+  \centering
+  \caption{An example of schemas determined to be healthy schemas}
+  \label{ex:determinablehealthyschemas}
     \begin{tabular}{|c|c|} \hline
    \multicolumn{2}{|c|}{\textbf{ Determined to be healthy$\mathcal{I}(T_{pass})$ }}\\ \hline
    $s_{1}$ & \{($p_{1}, 0$)\} \\
-   $s_{2}$ & \{($p_{2}, 0$)\} \\
-   $s_{3}$ & \{($p_{3}, 1$)\} \\
-   $s_{4}$ & \{($p_{4}, 0$)\} \\
-   $s_{5}$ & \{($p_{1}, 0$),($p_{2}, 0$)\} \\
-   $s_{6}$ & \{($p_{1}, 0$),($p_{3}, 1$)\} \\
-   $s_{7}$ & \{($p_{1}, 0$),($p_{4}, 0$)\} \\
-   $s_{8}$ & \{($p_{2}, 0$),($p_{3}, 1$)\} \\
-   $s_{9}$ & \{($p_{2}, 0$),($p_{4}, 0$)\} \\
-   $s_{10}$ & \{($p_{3}, 1$),($p_{4}, 0$)\} \\
-   $s_{11}$ & \{($p_{1}, 0$),($p_{2}, 0$),($p_{3}, 1$)\} \\
-   $s_{12}$ & \{($p_{1}, 0$),($p_{2}, 0$),($p_{4}, 0$)\} \\
-   $s_{13}$ & \{($p_{1}, 0$),($p_{3}, 1$),($p_{4}, 0$)\} \\
-   $s_{14}$ & \{($p_{2}, 0$),($p_{3}, 1$),($p_{4}, 0$)\} \\
-   $s_{15}$ & \{($p_{1}, 0$), ($p_{2}, 0$), ($p_{3}, 1$), ($p_{4}, 0$)\} \\ \hline
+   $s_{2}$ & \{($p_{1}, 1$)\} \\
+   $s_{3}$ & \{($p_{2}, 0$)\} \\
+   $s_{4}$ & \{($p_{2}, 1$)\} \\
+   $s_{5}$ & \{($p_{3}, 0$)\} \\
+   $s_{6}$ & \{($p_{4}, 1$)\} \\
 
-  \multicolumn{2}{|c|}{\textbf{Determined to be faulty $\mathcal{S}(T_{fail})$ }}  \\ \hline
-  $s_{16}$ & \{($p_{1}, 0$), ($p_{2}, 0$), ($p_{3}, 0$)\}  \\
-  $s_{17}$ & \{($p_{1}, 0$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 0$)\} \\
-  $s_{18}$ & \{($p_{1}, 0$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 1$)\} \\ \hline
+   $s_{7}$ & \{($p_{1}, 0$),($p_{2}, 1$)\} \\
+   $s_{8}$ & \{($p_{1}, 0$),($p_{3}, 0$)\} \\
+   $s_{9}$ & \{($p_{1}, 0$),($p_{4}, 1$)\} \\
+   $s_{10}$ & \{($p_{1}, 1$),($p_{2}, 0$)\} \\
+   $s_{11}$ & \{($p_{1}, 1$),($p_{3}, 0$)\} \\
+   $s_{12}$ & \{($p_{1}, 1$),($p_{4}, 1$)\} \\
+
+   $s_{13}$ & \{($p_{2}, 1$),($p_{3}, 0$)\} \\
+   $s_{14}$ & \{($p_{2}, 1$),($p_{4}, 1$)\} \\
+   $s_{15}$ & \{($p_{2}, 0$),($p_{3}, 0$)\} \\
+   $s_{16}$ & \{($p_{2}, 0$),($p_{4}, 1$)\} \\
+
+   $s_{17}$ & \{($p_{3}, 0$),($p_{4}, 1$)\} \\
+
+   $s_{18}$ & \{($p_{1}, 0$),($p_{2}, 1$),($p_{3}, 0$)\} \\
+   $s_{19}$ & \{($p_{1}, 0$),($p_{2}, 1$),($p_{4}, 1$)\} \\
+   $s_{20}$ & \{($p_{1}, 0$),($p_{3}, 0$),($p_{4}, 1$)\} \\
+   
+   $s_{21}$ & \{($p_{1}, 1$),($p_{2}, 0$),($p_{3}, 0$)\} \\
+   $s_{22}$ & \{($p_{1}, 1$),($p_{2}, 0$),($p_{4}, 1$)\} \\
+   $s_{23}$ & \{($p_{1}, 1$),($p_{3}, 0$),($p_{4}, 1$)\} \\ 
+
+   $s_{24}$ & \{($p_{2}, 1$),($p_{3}, 0$),($p_{4}, 1$)\} \\
+   $s_{25}$ & \{($p_{2}, 0$),($p_{3}, 0$),($p_{4}, 1$)\} \\
+
+   $s_{26}$ & \{($p_{1}, 0$), ($p_{2}, 1$), ($p_{3}, 0$), ($p_{4}, 1$)\} \\
+   $s_{27}$ & \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 1$)\} \\ \hline
     \end{tabular}%
 \end{table}
 
@@ -877,14 +914,70 @@ Obviously $\forall s \in \mathcal{S}(T_{fail})$, $\mathcal{T}(s) \subseteq T_{fa
 We second prove that, for any schema $s \not\in \mathcal{S}(T_{fail})$, it cannot be determined to be a faulty schema. Since $s \not\in \mathcal{S}(T_{fail})$, i.e., $s \not\in \mathcal{I}(T_{fail})\backslash \mathcal{I}(\overline{T_{fail}})$, we have $\exists t \in \overline{T_{fail}}, s \preceq t$. Therefore,  $\exists t \in \overline{T_{fail}}, t \in \mathcal{T}(s)$. Note that $\overline{T_{fail}}) = T^{*} \backslash T_{fail} =  (T_{unknown} \bigcup T_{pass})$. Since none test case in $T_{unknown} \bigcup T_{pass}$ can be guaranteed to be failing test case (all the test cases in $T_{unknown}$ have the possibility to be passing test cases), we have $\exists t \in \mathcal{T}(s)$ such that $t$ cannot be guaranteed to failing test case.  Hence, schema $s$ cannot be determined to be a faulty schema.
 \end{proof}
 
-Proposition \ref{pro:determinablefaulty} shows that only special schemas of existed failing test cases can be determined to be faulty schemas.  For the same example discussed previously, Table \ref{ex:determinableschemas} also lists all the schemas that are determined to be faulty schemas.
+Proposition \ref{pro:determinablefaulty} shows that only special schemas of existed failing test cases can be determined to be faulty schemas.  For the same example discussed previously, Table \ref{ex:determinablefaultyschemas} lists all the schemas that are determined to be faulty schemas. 
+We can observe that all the schemas in $\mathcal{S}(T_{fail})$ are faulty schemas. In other words, faulty schemas are the super-schemas of the schemas in $\mathcal{C}(T_{fail})$ = \{ \{($p_{3}$, 1)\}, \{($p_{1}$, 1), ($p_{2}$, 1)\} \}.
+
+\begin{table}[htbp]
+  \centering
+  \caption{An example of schemas determined to be faulty schemas}
+  \label{ex:determinablefaultyschemas}
+    \begin{tabular}{|c|c|} \hline
+  \multicolumn{2}{|c|}{\textbf{Determined to be faulty $\mathcal{S}(T_{fail})$ }}  \\ \hline
+   $s_{28}$ & \{($p_{3}, 1$)\}  \\
+   $s_{29}$ & \{($p_{1}, 1$), ($p_{2}, 1$)\}  \\
+   
+   $s_{30}$ & \{($p_{1}, 0$), ($p_{3}, 1$)\}  \\
+   $s_{31}$ & \{($p_{1}, 1$), ($p_{3}, 1$)\}  \\
+   
+   $s_{32}$ & \{($p_{2}, 0$), ($p_{3}, 1$)\}  \\
+   $s_{33}$ & \{($p_{2}, 1$), ($p_{3}, 1$)\}  \\ 
+
+   $s_{34}$ & \{($p_{3}, 1$), ($p_{4}, 0$)\}  \\
+   $s_{35}$ & \{($p_{3}, 1$), ($p_{4}, 1$)\}  \\ 
+   
+   $s_{36}$ & \{($p_{1}, 1$), ($p_{2}, 1$), ($p_{3}, 0$)\}  \\
+   $s_{37}$ & \{($p_{1}, 1$), ($p_{2}, 1$), ($p_{3}, 1$)\}  \\
+   $s_{38}$ & \{($p_{1}, 1$), ($p_{2}, 1$), ($p_{4}, 0$)\}  \\
+   $s_{39}$ & \{($p_{1}, 1$), ($p_{2}, 1$), ($p_{4}, 1$)\}  \\
+   
+   $s_{40}$ & \{($p_{1}, 0$), ($p_{2}, 0$), ($p_{3}, 1$)\}  \\
+   $s_{41}$ & \{($p_{1}, 0$), ($p_{2}, 1$), ($p_{3}, 1$)\}  \\
+   $s_{42}$ & \{($p_{1}, 0$), ($p_{3}, 1$), ($p_{4}, 0$)\}  \\
+   $s_{43}$ & \{($p_{1}, 0$), ($p_{3}, 1$), ($p_{4}, 1$)\}  \\
+   
+   $s_{44}$ & \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 1$)\}  \\
+   $s_{45}$ & \{($p_{1}, 1$), ($p_{3}, 1$), ($p_{4}, 0$)\}  \\
+   $s_{46}$ & \{($p_{1}, 1$), ($p_{3}, 1$), ($p_{4}, 1$)\}  \\ 
+   
+   $s_{47}$ & \{($p_{2}, 0$), ($p_{3}, 1$), ($p_{4}, 0$)\}  \\
+   $s_{48}$ & \{($p_{2}, 0$), ($p_{3}, 1$), ($p_{4}, 1$)\}  \\
+   
+   $s_{49}$ & \{($p_{2}, 1$), ($p_{3}, 1$), ($p_{4}, 1$)\}  \\
+   $s_{50}$ & \{($p_{2}, 1$), ($p_{3}, 1$), ($p_{4}, 1$)\}  \\
+   
+  $s_{51}$ & \{($p_{1}, 0$), ($p_{2}, 0$), ($p_{3}, 1$), ($p_{4}, 0$)\}\\
+  $s_{52}$ & \{($p_{1}, 0$), ($p_{2}, 0$), ($p_{3}, 1$), ($p_{4}, 1$)\}\\
+  $s_{53}$ & \{($p_{1}, 0$), ($p_{2}, 1$), ($p_{3}, 1$), ($p_{4}, 0$)\}\\
+  $s_{54}$ & \{($p_{1}, 0$), ($p_{2}, 1$), ($p_{3}, 1$), ($p_{4}, 1$)\}\\
+  $s_{55}$ & \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 1$), ($p_{4}, 0$)\}\\
+  $s_{56}$ & \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 1$), ($p_{4}, 1$)\}\\
+  $s_{57}$ & \{($p_{1}, 1$), ($p_{2}, 1$), ($p_{3}, 1$), ($p_{4}, 0$)\}\\
+  $s_{58}$ & \{($p_{1}, 1$), ($p_{2}, 1$), ($p_{3}, 1$), ($p_{4}, 1$)\}\\
+
+  $s_{59}$ & \{($p_{1}, 1$), ($p_{2}, 1$), ($p_{3}, 0$), ($p_{4}, 0$)\}\\
+  $s_{60}$ & \{($p_{1}, 1$), ($p_{2}, 1$), ($p_{3}, 0$), ($p_{4}, 1$)\}\\ 
+  
+  \hline
+    \end{tabular}%
+\end{table}
+
 
 
 \begin{proposition}[Determinable schemas]\label{pro:determinable}
-Given  $T_{fail}$, $T_{pass}$, $T_{unknown}$, only schemas $\mathcal{I}(T_{pass})$ and   $\mathcal{S}(T_{fail})$  are determinable.
+Given  $T_{fail}$, $T_{pass}$, $T_{unknown}$, only schemas $\mathcal{I}(T_{pass})$ and  $\mathcal{S}(T_{fail})$  are determinable.
 \end{proposition}
 
-This proposition gives the set of determinable schemas when given $T_{fail}$, $T_{pass}$, and $T_{unknown}$. The proof of this propositions can be easily obtained by Propositions \ref{pro:determinablehealthy} and \ref{pro:determinablefaulty}, hence, we omit it here. For the same example discussed previously, Table \ref{ex:determinableschemas} lists all the determinable schemas, which are $\mathcal{S}(T_{fail})$ and $\mathcal{I}(T_{pass})$.
+This proposition gives the set of determinable schemas when given $T_{fail}$, $T_{pass}$, and $T_{unknown}$. The proof of this propositions can be easily obtained by Propositions \ref{pro:determinablehealthy} and \ref{pro:determinablefaulty}, hence, we omit it here. For the same example discussed previously, Table \ref{ex:determinablehealthyschemas} together with Table \ref{ex:determinablefaultyschemas} list all the determinable schemas, which are $\mathcal{S}(T_{fail}) \bigcup \mathcal{I}(T_{pass})$.
 
 Based on Proposition \ref{pro:determinable}, we directly obtain the following formula to describe the determinable schemas set $DSS$, when given $T_{fail}$, $T_{pass}$, $T_{unknown}$.
 
@@ -940,106 +1033,45 @@ Given $T_{pass}$, $T_{fail}$, and $T_{unknown}$, for any schema, say, $s$, is pe
 \end{proposition}
 
 The proof of this proposition is omitted (can be easily deduced based on Proposition \ref{pro:determinable}). Proposition \ref{pro:pendingparthealthyfaulty} gives the set of pending schemas when given $T_{fail}$, $T_{pass}$, and $T_{unknown}$.
-As an example, we consider the same  $T_{fail}$, $T_{pass}$, and $T_{unknown}$ as in Table \ref{ex:determinableschemas}. The pending schemas for this example are listed in Table \ref{ex:pendingschemas}. We can learn that each schema in Table \ref{ex:pendingschemas} is neither contained in set $\mathcal{I}(T_{pass})$ nor contained in set $\mathcal{S}(T_{fail})$ of Table \ref{ex:determinableschemas}. Another observation from this Table is that all the pending schemas plus the determinable schemas are equal to whole set of  schemas that contained in the SUT, of which the number is $3^{4} - 1 = 80$.
+As an example, we consider the same  $T_{fail}$, $T_{pass}$, and $T_{unknown}$ as shown in Table \ref{ex:determinableschemassut}. The pending schemas for this example are listed in Table \ref{ex:pendingschemas}. We can learn that each schema in Table \ref{ex:pendingschemas} is neither contained in set $\mathcal{I}(T_{pass})$ of Table \ref{ex:determinablehealthyschemas} nor contained in set $\mathcal{S}(T_{fail})$ of Table \ref{ex:determinablefaultyschemas}. Another observation from this Table is that all the pending schemas plus the determinable schemas are equal to whole set of  schemas that contained in the SUT, of which the number is $3^{4} - 1 = 80$.
 
 \begin{table}[htbp]
   \centering
   \caption{An example of pending schemas}
   \label{ex:pendingschemas}
     \begin{tabular}{|c|c|} \hline
-     \multicolumn{2}{|c|}{\textbf{1-way schemas}} \\ \hline
-  $s_{19}$ & \{($p_{1}, 1$)\}\\
-  $s_{20}$ & \{($p_{2}, 1$)\}\\
-  $s_{21}$ & \{($p_{3}, 0$)\} \\
-  $s_{22}$ & \{($p_{4}, 1$)\} \\ \hline
-%    \end{tabular}%
-%\quad
-%    \begin{tabular}{|c|c|} \hline
-     \multicolumn{2}{|c|}{\textbf{2-way schemas}} \\ \hline
+     \multicolumn{2}{|c|}{\textbf{$s \not\in \mathcal{S}(T_{fail})$ and $s \not\in \mathcal{I}(T_{pass})$}} \\ \hline
+  $s_{61}$ & \{($p_{4}, 0$)\}\\
+  
+  $s_{62}$ & \{($p_{1}, 0$), ($p_{2}, 0$)\}\\
+  
+  $s_{63}$ & \{($p_{1}, 0$), ($p_{4}, 0$)\}\\
+  $s_{64}$ & \{($p_{1}, 1$), ($p_{4}, 0$)\}\\
+  $s_{65}$ & \{($p_{2}, 0$), ($p_{4}, 0$)\}\\
+  $s_{66}$ & \{($p_{2}, 1$), ($p_{4}, 0$)\}\\
+  $s_{67}$ & \{($p_{3}, 0$), ($p_{4}, 0$)\}\\
+  
+  $s_{68}$ & \{($p_{1}, 0$), ($p_{2}, 0$), ($p_{3}, 0$)\}\\
+    
+  $s_{69}$ & \{($p_{1}, 0$), ($p_{2}, 0$), ($p_{4}, 0$)\}\\
+  $s_{70}$ & \{($p_{1}, 0$), ($p_{2}, 0$), ($p_{4}, 1$)\}\\
+      
+  
+  $s_{71}$ & \{($p_{1}, 0$), ($p_{2}, 1$), ($p_{4}, 0$)\}\\
+  $s_{72}$ & \{($p_{1}, 0$), ($p_{3}, 0$), ($p_{4}, 0$)\}\\
+  
+  $s_{73}$ & \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{4}, 0$)\}\\
+  $s_{74}$ & \{($p_{1}, 1$), ($p_{3}, 0$), ($p_{4}, 0$)\}\\
+  
+  $s_{75}$ & \{($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 0$)\}\\
+  $s_{76}$ & \{($p_{2}, 1$), ($p_{3}, 0$), ($p_{4}, 0$)\}\\ 
+  
 
-  $s_{23}$ & \{($p_{1}, 0$), ($p_{2}, 1$)\}\\
-  $s_{24}$ & \{($p_{1}, 0$), ($p_{3}, 0$)\}\\
-  $s_{25}$ & \{($p_{1}, 0$), ($p_{4}, 1$)\}\\
-
-  $s_{26}$ & \{($p_{1}, 1$), ($p_{2}, 0$)\}\\
-  $s_{27}$ & \{($p_{1}, 1$), ($p_{2}, 1$)\}\\
-  $s_{28}$ & \{($p_{1}, 1$), ($p_{3}, 0$)\}\\
-  $s_{29}$ & \{($p_{1}, 1$), ($p_{3}, 1$)\}\\
-  $s_{30}$ & \{($p_{1}, 1$), ($p_{4}, 0$)\}\\
-  $s_{31}$ & \{($p_{1}, 1$), ($p_{4}, 1$)\}\\
-
-  $s_{32}$ & \{($p_{2}, 0$), ($p_{3}, 0$)\}\\
-  $s_{33}$ & \{($p_{2}, 0$), ($p_{4}, 1$)\}\\
-
-  $s_{34}$ & \{($p_{2}, 1$), ($p_{3}, 0$)\}\\
-  $s_{35}$ & \{($p_{2}, 1$), ($p_{3}, 1$)\}\\
-  $s_{36}$ & \{($p_{2}, 1$), ($p_{4}, 0$)\}\\
-  $s_{37}$ & \{($p_{2}, 1$), ($p_{4}, 1$)\}\\
-
-  $s_{38}$ & \{($p_{3}, 0$), ($p_{4}, 0$)\}\\
-  $s_{39}$ & \{($p_{3}, 0$), ($p_{4}, 1$)\}\\
-
-  $s_{40}$ & \{($p_{3}, 1$), ($p_{4}, 1$)\}\\ \hline
-    \end{tabular}%
-\quad
-    \begin{tabular}{|c|c|} \hline
-   \multicolumn{2}{|c|}{\textbf{3-way schemas}}\\ \hline
-   $s_{41}$ & \{($p_{1}, 0$),($p_{2}, 0$), ($p_{4}, 1$)\} \\
-
-   $s_{42}$ & \{($p_{1}, 0$),($p_{2}, 1$), ($p_{3}, 0$)\} \\
-   $s_{43}$ & \{($p_{1}, 0$),($p_{2}, 1$), ($p_{3}, 1$)\} \\
-
-   $s_{44}$ & \{($p_{1}, 0$),($p_{2}, 1$), ($p_{4}, 0$)\} \\
-   $s_{45}$ & \{($p_{1}, 0$),($p_{2}, 1$), ($p_{4}, 1$)\} \\
-
-   $s_{46}$ & \{($p_{1}, 0$),($p_{3}, 0$), ($p_{4}, 0$)\} \\
-   $s_{47}$ & \{($p_{1}, 0$),($p_{3}, 0$), ($p_{4}, 1$)\} \\
-
-   $s_{48}$ & \{($p_{1}, 0$),($p_{3}, 1$), ($p_{4}, 1$)\} \\
-
-
-   $s_{49}$ & \{($p_{1}, 1$),($p_{2}, 0$), ($p_{3}, 0$)\} \\
-   $s_{50}$ & \{($p_{1}, 1$),($p_{2}, 0$), ($p_{3}, 1$)\} \\
-   $s_{51}$ & \{($p_{1}, 1$),($p_{2}, 0$), ($p_{4}, 0$)\} \\
-   $s_{52}$ & \{($p_{1}, 1$),($p_{2}, 0$), ($p_{4}, 1$)\} \\
-   $s_{53}$ & \{($p_{1}, 1$),($p_{2}, 1$), ($p_{3}, 0$)\} \\
-   $s_{54}$ & \{($p_{1}, 1$),($p_{2}, 1$), ($p_{3}, 1$)\} \\
-   $s_{55}$ & \{($p_{1}, 1$),($p_{2}, 1$), ($p_{4}, 0$)\} \\
-   $s_{56}$ & \{($p_{1}, 1$),($p_{2}, 1$), ($p_{4}, 1$)\} \\
-
-   $s_{57}$ & \{($p_{1}, 1$),($p_{3}, 0$), ($p_{4}, 0$)\} \\
-   $s_{58}$ & \{($p_{1}, 1$),($p_{3}, 0$), ($p_{4}, 1$)\} \\
-   $s_{59}$ & \{($p_{1}, 1$),($p_{3}, 1$), ($p_{4}, 0$)\} \\
-   $s_{60}$ & \{($p_{1}, 1$),($p_{3}, 1$), ($p_{4}, 1$)\} \\
-
-   $s_{61}$ & \{($p_{2}, 0$),($p_{3}, 0$), ($p_{4}, 0$)\} \\
-   $s_{62}$ & \{($p_{2}, 0$),($p_{3}, 0$), ($p_{4}, 1$)\} \\
-
-   $s_{63}$ & \{($p_{2}, 0$),($p_{3}, 1$), ($p_{4}, 1$)\} \\
-
-   $s_{64}$ & \{($p_{2}, 1$),($p_{3}, 0$), ($p_{4}, 0$)\} \\
-   $s_{65}$ & \{($p_{2}, 1$),($p_{3}, 0$), ($p_{4}, 1$)\} \\
-
-   $s_{66}$ & \{($p_{2}, 1$),($p_{3}, 1$), ($p_{4}, 0$)\} \\
-   $s_{67}$ & \{($p_{2}, 1$),($p_{3}, 1$), ($p_{4}, 1$)\} \\  \hline
-    \end{tabular}%
-    \quad
-    \begin{tabular}{|c|c|} \hline
-   \multicolumn{2}{|c|}{\textbf{4-way schemas}}\\ \hline
-  $s_{68}$ & \{($p_{1}, 0$), ($p_{2}, 0$), ($p_{3}, 1$), ($p_{4}, 1$)\} \\
-  $s_{69}$ & \{($p_{1}, 0$), ($p_{2}, 1$), ($p_{3}, 0$), ($p_{4}, 0$)\} \\
-  $s_{70}$ & \{($p_{1}, 0$), ($p_{2}, 1$), ($p_{3}, 0$), ($p_{4}, 1$)\} \\
-  $s_{71}$ & \{($p_{1}, 0$), ($p_{2}, 1$), ($p_{3}, 1$), ($p_{4}, 0$)\} \\
-  $s_{72}$ & \{($p_{1}, 0$), ($p_{2}, 1$), ($p_{3}, 1$), ($p_{4}, 1$)\} \\
-
-  $s_{73}$ & \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 0$)\}\\
-  $s_{74}$ & \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 1$)\}\\
-  $s_{75}$ & \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 1$), ($p_{4}, 0$)\} \\
-  $s_{76}$ & \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 1$), ($p_{4}, 1$)\} \\
-  $s_{77}$ & \{($p_{1}, 1$), ($p_{2}, 1$), ($p_{3}, 0$), ($p_{4}, 0$)\} \\
-  $s_{78}$ & \{($p_{1}, 1$), ($p_{2}, 1$), ($p_{3}, 0$), ($p_{4}, 1$)\} \\
-  $s_{79}$ & \{($p_{1}, 1$), ($p_{2}, 1$), ($p_{3}, 1$), ($p_{4}, 0$)\} \\
-  $s_{80}$ & \{($p_{1}, 1$), ($p_{2}, 1$), ($p_{3}, 1$), ($p_{4}, 1$)\} \\ \hline
+  $s_{77}$ & \{($p_{1}, 0$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 0$)\} \\
+  $s_{78}$ & \{($p_{1}, 0$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 1$)\} \\
+  $s_{79}$ & \{($p_{1}, 0$), ($p_{2}, 1$), ($p_{3}, 0$), ($p_{4}, 0$)\} \\
+  $s_{80}$ & \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 0$)\} \\ \hline
+  
     \end{tabular}%
 \end{table}
 
@@ -1096,7 +1128,7 @@ PSS=\{ s\ |\ s \preceq t\ \&\&\ \forall t \in T_{pass},  s \npreceq t  \ \&\& \ 
 \end{equation}
 
 %To obtain one pending schema, we just need to select one schema which satisfies $ c \in PSS$.
-The proof of this equation is obvious and omitted here. In fact, Formula \ref{eq:pssfirst} is obtained by selecting those pending schemas (based on Formula \ref{eq:pss}) that are in test case $t$.  Since Formula \ref{eq:pssfirst} focus on these schemas that are in test case $t$, it reduces a lot of schemas that are needed to be considered when comparing with Formula \ref{eq:pss}. As an example, we use the same SUT used in Section \ref{sec:pending:pending}. That is, consider $T_{pass}$ to be \{ \{($p_{1}, 0$), ($p_{2}, 0$), ($p_{3}, 1$), ($p_{4}, 0$)\} \}, and $T_{fail}$ to be \{ \{($p_{1}, 0$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 0$)\},  \{($p_{1}, 0$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 1$)\} \}. Different from Section \ref{sec:pending:pending} which lists all the pending schemas, we only focus on the pending schemas in one failing test case, say, \{($p_{1}, 0$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 0$)\}. Table \ref{ex:pendingschemasinonetestcase} lists all the pending schemas in this test case. We can observe that there are only 6 schemas are selected from all the pending schemas listed in Table \ref{ex:pendingschemas}.
+The proof of this equation is obvious and omitted here. In fact, Formula \ref{eq:pssfirst} is obtained by selecting those pending schemas (based on Formula \ref{eq:pss}) that are in test case $t$.  Since Formula \ref{eq:pssfirst} focus on these schemas that are in test case $t$, it reduces a lot of schemas that are needed to be considered when comparing with Formula \ref{eq:pss}. As an example, we still use the same  $T_{fail}$, $T_{pass}$, and $T_{unknown}$ as shown in Table \ref{ex:determinableschemassut}. Different from Table \ref{ex:pendingschemas} which lists all the pending schemas, we only focus on the pending schemas in one failing test case, say, $t_{1}$ \{($p_{1}, 0$), ($p_{2}, 0$), ($p_{3}, 1$), ($p_{4}, 0$)\}. Table \ref{ex:pendingschemasinonetestcase} lists all the pending schemas in this test case. We can observe that there are only 5 schemas are selected from all the pending schemas listed in Table \ref{ex:pendingschemas}.
 
 \begin{table}[htbp]
   \centering
@@ -1104,14 +1136,13 @@ The proof of this equation is obvious and omitted here. In fact, Formula \ref{eq
   \label{ex:pendingschemasinonetestcase}
     \begin{tabular}{|c|c|} \hline
      \multicolumn{2}{|c|}{\textbf{The test Case set}} \\ \hline
-   $t_{1}$ & \{($p_{1}, 0$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 0$)\}\\ \hline
+   $t_{1}$ & \{($p_{1}, 0$), ($p_{2}, 0$), ($p_{3}, 1$), ($p_{4}, 0$)\}\\ \hline
         \multicolumn{2}{|c|}{\textbf{pending schemas in this test case}} \\ \hline
-   $s_{21}$ & \{($p_{3}, 0$)\} \\
-   $s_{24}$ & \{($p_{1}, 0$),($p_{3}, 0$)\} \\
-   $s_{32}$ & \{($p_{2}, 0$),($p_{3}, 0$)\} \\
-   $s_{38}$ & \{($p_{3}, 0$),($p_{4}, 0$)\} \\
-   $s_{46}$ & \{($p_{1}, 0$),($p_{3}, 0$),($p_{4}, 0$)\} \\
-   $s_{61}$ & \{($p_{2}, 0$),($p_{3}, 0$),($p_{4}, 0$)\} \\ \hline
+   $s_{61}$ & \{($p_{4}, 0$)\} \\
+   $s_{62}$ & \{($p_{1}, 0$),($p_{2}, 0$)\} \\
+   $s_{63}$ & \{($p_{1}, 0$),($p_{4}, 0$)\} \\
+   $s_{65}$ & \{($p_{2}, 0$),($p_{4}, 0$)\} \\
+   $s_{69}$ & \{($p_{1}, 0$),($p_{2}, 0$),($p_{4}, 0$)\} \\ \hline
     \end{tabular}%
 \end{table}
 
@@ -1145,6 +1176,41 @@ $\{ s\ |\  s \preceq t\ \&\&\ \forall m \in \mathcal{C}(T_{fail})^{t},  m \nprec
 \end{proof}
 
 With this proposition, we only need to focus on the minimal faulty schemas that only contained in the failing test case $t$ instead of all the possible minimal faulty schemas to obtain the pending schemas. %hence, reduce the number of faulty schemas.
+
+For the same example used in the previous section, we consider the SUT with $T_{pass}$, $T_{fail}$, and $T_{unkonwn}$ shown as in Table \ref{ex:determinableschemassut}. In this example, we have $\mathcal{C}(T_{fail})$ = \{ \{($p_{3}, 1$)\}, \{($p_{1}, 1$), ($p_{2}$, 1)\} \}. We next focus on the failing test case $t_{1}$ =  \{ ($p_{1}, 0$), ($p_{2}, 0$), ($p_{3}, 1$), ($p_{4}, 0$)\}. For this test case, we have $\mathcal{C}(T_{fail})^{t_{1}}$ = \{ \{($p_{3}, 1$)\} \}. 
+
+
+
+\begin{table}[htbp]
+  \centering
+  \caption{An example of the reduction the faulty schemas needs to be checed}
+  \label{ex:mfssintequal}
+    \begin{tabular}{|c|c|} \hline
+     \multicolumn{2}{|c|}{$\{ s\ |\ s \preceq t\ \&\&\ \forall m \in \mathcal{C}(T_{fail}),  m \npreceq s \}$} \\ \hline
+   $s_{1}$ & \{($p_{1}, 0$)\} \\
+   $s_{3}$ & \{($p_{2}, 0$)\} \\
+   $s_{61}$ & \{($p_{4}, 0$)\} \\
+   
+   $s_{62}$ & \{($p_{1}, 0$),($p_{2}, 0$)\} \\
+   $s_{63}$ & \{($p_{1}, 0$),($p_{4}, 0$)\} \\
+   $s_{65}$ & \{($p_{2}, 0$),($p_{4}, 0$)\} \\
+   
+   $s_{69}$ & \{($p_{1}, 0$),($p_{2}, 0$),($p_{4}, 0$)\} \\ \hline
+    \end{tabular}%
+\quad
+    \begin{tabular}{|c|c|} \hline
+   \multicolumn{2}{|c|}{$\{ s\ |\ s \preceq t\ \&\&\ \forall m \in \mathcal{C}(T_{fail})^{t},  m \npreceq s \}$}\\ \hline
+   $s_{1}$ & \{($p_{1}, 0$)\} \\
+   $s_{3}$ & \{($p_{2}, 0$)\} \\
+   $s_{61}$ & \{($p_{4}, 0$)\} \\
+   $s_{62}$ & \{($p_{1}, 0$),($p_{2}, 0$)\} \\
+   $s_{63}$ & \{($p_{1}, 0$),($p_{4}, 0$)\} \\
+   $s_{65}$ & \{($p_{2}, 0$),($p_{4}, 0$)\} \\
+   $s_{69}$ & \{($p_{1}, 0$),($p_{2}, 0$),($p_{4}, 0$)\} \\ \hline
+    \end{tabular}%
+\end{table}
+
+
 
 Next, we consider to reduce the number of passing test cases to be checked for a pending schema.
 
