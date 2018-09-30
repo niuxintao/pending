@@ -1325,16 +1325,14 @@ According to Proposition \ref{pro:healthysintequal} and Proposition \ref{pro:hea
 Hence, $PSS$ = $A \cap B$ = $\{ s\ |\  s \preceq t\ \&\&\ \forall m \in \mathcal{C}(T_{fail})^{t},  m \npreceq s \}$ $\cap$ $\{ s\ |\  s \preceq t\ \&\&\ \forall p \in T_{pass}^{t\bigtriangleup},  s \npreceq p \}$ = $\{ s\ |\ s \preceq t\ \&\&\ \forall m \in \mathcal{C}(T_{fail})^{t},  m \npreceq s  \ \&\&\  \forall p \in T_{pass}^{t\bigtriangleup}, s \npreceq p \}$.
 \end{proof}
 
-Formula \ref{eq:pssfirst_mutated} to. As an example. Table \ref{ex:pendingschemasinonetestcaseusingfaultyandhealthy}
+By Formula \ref{eq:pssfirst_mutated}, we only need to use $\mathcal{C}(T_{fail})^{t}$ and $T_{pass}^{t\bigtriangleup}$ to obtain the pending schemas in a test case instead of using all the minimal faulty schemas $\mathcal{C}(T_{fail})$ and all the passing test cases $ T_{pass}$ which are used by Formula \ref{eq:pssfirst}. As an example, we still consider  $T_{pass}$, $T_{fail}$, and $T_{unkonwn}$ shown in Table \ref{ex:determinableschemassut}. Let us focus on the failing test case $t_{2}$ \{ ($p_{1}, 0$), ($p_{2}, 0$), ($p_{3}, 1$), ($p_{4}, 1$)\}. we then have  $\mathcal{C}(T_{fail})^{t_{2}}$ = \{ \{($p_{3}, 1$)\} \}, $T_{pass}^{t_{2}\bigtriangleup}$ = \{ \{($p_{1}, 0$) , ($p_{4}, 1$)\}, \{($p_{2}, 0$), ($p_{4}, 1$)\} \}. Then Table \ref{ex:pendingschemasinonetestcaseusingfaultyandhealthy} lists the schemas in $\{ s\ |\ s \preceq t_{2}\ \&\&\ \forall m \in \mathcal{C}(T_{fail})^{t_{2}},  m \npreceq s  \ \&\&\  \forall p \in T_{pass}^{t_{2}\bigtriangleup}, s \npreceq p \} $. We can learn that this schema set is equal to the pending schema set which is shown in Table \ref{ex:pendingschemasinonetestcase}.
 
 \begin{table}[htbp]
   \centering
-  \caption{An example of pending schemas in one test case}
+  \caption{An example of pending schemas in one test case by using Formula \ref{eq:pssfirst_mutated} }
   \label{ex:pendingschemasinonetestcaseusingfaultyandhealthy}
     \begin{tabular}{|c|c|} \hline
-     \multicolumn{2}{|c|}{\textbf{The test Case set}} \\ \hline
-   $t_{2}$ & \{($p_{1}, 0$), ($p_{2}, 0$), ($p_{3}, 1$), ($p_{4}, 1$)\}\\ \hline
-        \multicolumn{2}{|c|}{\textbf{pending schemas in this test case}} \\ \hline
+     \multicolumn{2}{|c|}{$\{ s\ |\ s \preceq t_{2}\ \&\&\ \forall m \in \mathcal{C}(T_{fail})^{t_{2}},  m \npreceq s  \ \&\&\  \forall p \in T_{pass}^{t_{2}\bigtriangleup}, s \npreceq p \} $} \\ \hline
    $s_{62}$ & \{($p_{1}, 0$),($p_{2}, 0$)\} \\
    $s_{ 70}$ & \{($p_{1}, 0$),($p_{2}, 0$),($p_{4}, 1$)\} \\ \hline
     \end{tabular}%
@@ -1348,7 +1346,7 @@ With respect to Formula \ref{eq:pssfirst_mutated}, the complexity of obtaining t
 
 \subsection{Change to CMXS and CMNS}
 
-Next, we will try to eliminate the influence of the number of $n$ to obtain the pending schemas. For this purpose, we defined the following two sets, i.e. $CMXS$ and $CMNS$.
+Next, we will try to eliminate the influence of the number of $n$ (the total number of factors in one test case) to obtain the pending schemas. For this purpose, we defined the following two sets, i.e. $CMXS$ and $CMNS$.
 
 \begin{definition}
 For a $k$-degree schema $s$ = \{$(p_{x_{1}}, v_{x_{1}})$, $(p_{x_{2}}, v_{x_{2}})$, ..., $(p_{x_{k}}, v_{x_{k}})$\}, a test case $t$ = \{$(p_{1}, v_{1})$, $(p_{2}, v_{2})$, ..., $(p_{n}, v_{n})$\}, and $s \preceq t$. We denote the candidate maximal non-super schema set as $CMXS(s,t)$ = \{$t \backslash (p_{x_{i}}, v_{x_{i}})$ | $(p_{x_{i}}, v_{x_{i}}) \in s $\}.

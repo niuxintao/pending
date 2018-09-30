@@ -1128,7 +1128,7 @@ PSS=\{ s\ |\ s \preceq t\ \&\&\ \forall t \in T_{pass},  s \npreceq t  \ \&\& \ 
 \end{equation}
 
 %To obtain one pending schema, we just need to select one schema which satisfies $ c \in PSS$.
-The proof of this equation is obvious and omitted here. In fact, Formula \ref{eq:pssfirst} is obtained by selecting those pending schemas (based on Formula \ref{eq:pss}) that are in test case $t$.  Since Formula \ref{eq:pssfirst} focus on these schemas that are in test case $t$, it reduces a lot of schemas that are needed to be considered when comparing with Formula \ref{eq:pss}. As an example, we still use the same  $T_{fail}$, $T_{pass}$, and $T_{unknown}$ as shown in Table \ref{ex:determinableschemassut}. Different from Table \ref{ex:pendingschemas} which lists all the pending schemas, we only focus on the pending schemas in one failing test case, say, $t_{1}$ \{($p_{1}, 0$), ($p_{2}, 0$), ($p_{3}, 1$), ($p_{4}, 0$)\}. Table \ref{ex:pendingschemasinonetestcase} lists all the pending schemas in this test case. We can observe that there are only 5 schemas are selected from all the pending schemas listed in Table \ref{ex:pendingschemas}.
+The proof of this equation is obvious and omitted here. In fact, Formula \ref{eq:pssfirst} is obtained by selecting those pending schemas (based on Formula \ref{eq:pss}) that are in test case $t$.  Since Formula \ref{eq:pssfirst} focus on these schemas that are in test case $t$, it reduces a lot of schemas that are needed to be considered when comparing with Formula \ref{eq:pss}. As an example, we still use the same  $T_{fail}$, $T_{pass}$, and $T_{unknown}$ as shown in Table \ref{ex:determinableschemassut}. Different from Table \ref{ex:pendingschemas} which lists all the pending schemas, we only focus on the pending schemas in one failing test case, say, $t_{2}$ \{($p_{1}, 0$), ($p_{2}, 0$), ($p_{3}, 1$), ($p_{4}, 1$)\}. Table \ref{ex:pendingschemasinonetestcase} lists all the pending schemas in this test case. We can observe that there are only 2 schemas are selected from all the pending schemas listed in Table \ref{ex:pendingschemas}.
 
 \begin{table}[htbp]
   \centering
@@ -1136,13 +1136,10 @@ The proof of this equation is obvious and omitted here. In fact, Formula \ref{eq
   \label{ex:pendingschemasinonetestcase}
     \begin{tabular}{|c|c|} \hline
      \multicolumn{2}{|c|}{\textbf{The test Case set}} \\ \hline
-   $t_{1}$ & \{($p_{1}, 0$), ($p_{2}, 0$), ($p_{3}, 1$), ($p_{4}, 0$)\}\\ \hline
+   $t_{2}$ & \{($p_{1}, 0$), ($p_{2}, 0$), ($p_{3}, 1$), ($p_{4}, 1$)\}\\ \hline
         \multicolumn{2}{|c|}{\textbf{pending schemas in this test case}} \\ \hline
-   $s_{61}$ & \{($p_{4}, 0$)\} \\
    $s_{62}$ & \{($p_{1}, 0$),($p_{2}, 0$)\} \\
-   $s_{63}$ & \{($p_{1}, 0$),($p_{4}, 0$)\} \\
-   $s_{65}$ & \{($p_{2}, 0$),($p_{4}, 0$)\} \\
-   $s_{69}$ & \{($p_{1}, 0$),($p_{2}, 0$),($p_{4}, 0$)\} \\ \hline
+   $s_{ 70}$ & \{($p_{1}, 0$),($p_{2}, 0$),($p_{4}, 1$)\} \\ \hline
     \end{tabular}%
 \end{table}
 
@@ -1177,14 +1174,14 @@ $\{ s\ |\  s \preceq t\ \&\&\ \forall m \in \mathcal{C}(T_{fail})^{t},  m \nprec
 
 With this proposition, we only need to focus on the minimal faulty schemas that only contained in the failing test case $t$ instead of all the possible minimal faulty schemas to obtain the pending schemas. %hence, reduce the number of faulty schemas.
 
-For the same example used in the previous section, we consider the SUT with $T_{pass}$, $T_{fail}$, and $T_{unkonwn}$ shown as in Table \ref{ex:determinableschemassut}. In this example, we have $\mathcal{C}(T_{fail})$ = \{ \{($p_{3}, 1$)\}, \{($p_{1}, 1$), ($p_{2}$, 1)\} \}. We next focus on the failing test case $t_{2}$ =  \{ ($p_{1}, 0$), ($p_{2}, 0$), ($p_{3}, 1$), ($p_{4}, 1$)\}. For this test case, we have $\mathcal{C}(T_{fail})^{t_{1}}$ = \{ \{($p_{3}, 1$)\} \}. Table \ref{ex:mfssintequal} shows these two schema sets, i.e., $\{ s\ |\  s \preceq t\ \&\&\ \forall m \in \mathcal{C}(T_{fail}),  m \npreceq s \}$ and $\{ s\ |\  s \preceq t\ \&\&\ \forall m \in \mathcal{C}(T_{fail})^{t_{1}},  m \npreceq s \}$. We can learn these two sets are equal.
+For the same example used in the previous section, we consider the SUT with $T_{pass}$, $T_{fail}$, and $T_{unkonwn}$ shown as in Table \ref{ex:determinableschemassut}. In this example, we have $\mathcal{C}(T_{fail})$ = \{ \{($p_{3}, 1$)\}, \{($p_{1}, 1$), ($p_{2}$, 1)\} \}. We next focus on the failing test case $t_{2}$ =  \{ ($p_{1}, 0$), ($p_{2}, 0$), ($p_{3}, 1$), ($p_{4}, 1$)\}. For this test case, we have $\mathcal{C}(T_{fail})^{t_{2}}$ = \{ \{($p_{3}, 1$)\} \}. Table \ref{ex:mfssintequal} shows these two schema sets, i.e., $\{ s\ |\  s \preceq t_{2}\ \&\&\ \forall m \in \mathcal{C}(T_{fail}),  m \npreceq s \}$ and $\{ s\ |\  s \preceq t_{2}\ \&\&\ \forall m \in \mathcal{C}(T_{fail})^{t_{2}},  m \npreceq s \}$. We can learn these two sets are equal.
 
 \begin{table}[htbp]
   \centering
-  \caption{An example of the reduction the faulty schemas needs to be checed}
+  \caption{An example of the reduction the faulty schemas needs to be checked}
   \label{ex:mfssintequal}
     \begin{tabular}{|c|c|} \hline
-     \multicolumn{2}{|c|}{$\{ s\ |\ s \preceq t\ \&\&\ \forall m \in \mathcal{C}(T_{fail}),  m \npreceq s \}$} \\ \hline
+     \multicolumn{2}{|c|}{$\{ s\ |\ s \preceq t_{2}\ \&\&\ \forall m \in \mathcal{C}(T_{fail}),  m \npreceq s \}$} \\ \hline
    $s_{1}$ & \{($p_{1}, 0$)\} \\
    $s_{3}$ & \{($p_{2}, 0$)\} \\
    $s_{6}$ & \{($p_{4}, 1$)\} \\
@@ -1197,7 +1194,7 @@ For the same example used in the previous section, we consider the SUT with $T_{
     \end{tabular}%
 \quad
     \begin{tabular}{|c|c|} \hline
-   \multicolumn{2}{|c|}{$\{ s\ |\ s \preceq t\ \&\&\ \forall m \in \mathcal{C}(T_{fail})^{t_{1}},  m \npreceq s \}$}\\ \hline
+   \multicolumn{2}{|c|}{$\{ s\ |\ s \preceq t_{2}\ \&\&\ \forall m \in \mathcal{C}(T_{fail})^{t_{2}},  m \npreceq s \}$}\\ \hline
    $s_{1}$ & \{($p_{1}, 0$)\} \\
    $s_{3}$ & \{($p_{2}, 0$)\} \\
    $s_{6}$ & \{($p_{4}, 1$)\} \\
@@ -1230,16 +1227,16 @@ Next we prove that $B \subseteq A$. Since $\forall s \in B$, we have $s \preceq 
 Since we have $A \subseteq B$ and $B \subseteq A$, we have $A = B$.
 \end{proof}
 
-With this proposition, we do not need to check each passing test case. Instead, we only need to focus on the intersection part of passing test cases and the failing test case.  Going back to the previous example,  we still consider the SUT with $T_{pass}$, $T_{fail}$, and $T_{unkonwn}$ shown as in Table \ref{ex:determinableschemassut}. In this example, $T_{pass}$ contains two passing test cases, which are  $t_{11}$ \{($p_{1}, 0$), ($p_{2}, 1$), ($p_{3}, 0$), ($p_{4}, 1$)\} and  $t_{12}$  \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 1$)\}, respectively. We next still focus on the failing test case $t_{2}$ =  \{ ($p_{1}, 0$), ($p_{2}, 0$), ($p_{3}, 1$), ($p_{4}, 1$)\}. For this test case, we have $T_{pass}^{t_{1}}$ = \{ \{($p_{1}, 0$)\}, \{($p_{2}, 0$)\},  \{($p_{4}, 1$)\}, \{($p_{1}, 0$) , ($p_{4}, 1$)\}, \{($p_{2}, 0$), ($p_{4}, 1$)\} \}.
+With this proposition, we do not need to check each passing test case. Instead, we only need to focus on the intersection part of passing test cases and the failing test case.  Going back to the previous example,  we still consider the SUT with $T_{pass}$, $T_{fail}$, and $T_{unkonwn}$ shown as in Table \ref{ex:determinableschemassut}. In this example, $T_{pass}$ contains two passing test cases, which are  $t_{11}$ \{($p_{1}, 0$), ($p_{2}, 1$), ($p_{3}, 0$), ($p_{4}, 1$)\} and  $t_{12}$  \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 1$)\}, respectively. We next still focus on the failing test case $t_{2}$ =  \{ ($p_{1}, 0$), ($p_{2}, 0$), ($p_{3}, 1$), ($p_{4}, 1$)\}. For this test case, we have $T_{pass}^{t_{2}}$ = \{ \{($p_{1}, 0$)\}, \{($p_{2}, 0$)\},  \{($p_{4}, 1$)\}, \{($p_{1}, 0$) , ($p_{4}, 1$)\}, \{($p_{2}, 0$), ($p_{4}, 1$)\} \}.
 
-Table \ref{ex:healthyintequal} shows these two schema sets, i.e., $\{ s\ |\  s \preceq t\ \&\&\ \forall m \in \mathcal{C}(T_{fail}),  m \npreceq s \}$ and $\{ s\ |\  s \preceq t\ \&\&\ \forall m \in \mathcal{C}(T_{fail})^{t_{1}},  m \npreceq s \}$. We can learn these two sets are equal.
+Table \ref{ex:healthyintequal} shows these two schema sets, i.e., $\{ s\ |\ s \preceq t_{2}\ \&\&\  \forall t_{i} \in T_{pass}, s \npreceq t_{i} \} $ and $\{ s\ |\ s \preceq t_{2}\ \&\&\ \forall p \in T_{pass}^{t_{2}}, s \npreceq p \}$. We can learn these two sets are equal.
 
  \begin{table}[htbp]
   \centering
   \caption{An example of the reduction to the healthy schemas instead of passing test cases}
   \label{ex:healthyintequal}
     \begin{tabular}{|c|c|} \hline
-     \multicolumn{2}{|c|}{$\{ s\ |\ s \preceq t\ \&\&\  \forall t_{i} \in T_{pass}, s \npreceq t_{i} \} $} \\ \hline
+     \multicolumn{2}{|c|}{$\{ s\ |\ s \preceq t_{2}\ \&\&\  \forall t_{i} \in T_{pass}, s \npreceq t_{i} \} $} \\ \hline
    $s_{28}$ & \{($p_{3}, 1$)\} \\
    $s_{62}$ & \{($p_{1}, 0$),($p_{2}, 0$)\} \\
    $s_{30}$ & \{($p_{1}, 0$),($p_{3}, 1$)\} \\
@@ -1253,7 +1250,7 @@ Table \ref{ex:healthyintequal} shows these two schema sets, i.e., $\{ s\ |\  s \
     \end{tabular}%
 \quad
     \begin{tabular}{|c|c|} \hline
-   \multicolumn{2}{|c|}{$\{ s\ |\ s \preceq t\ \&\&\ \forall p \in T_{pass}^{t}, s \npreceq p \}$}\\ \hline
+   \multicolumn{2}{|c|}{$\{ s\ |\ s \preceq t_{2}\ \&\&\ \forall p \in T_{pass}^{t_{2}}, s \npreceq p \}$}\\ \hline
    $s_{28}$ & \{($p_{3}, 1$)\} \\
    $s_{62}$ & \{($p_{1}, 0$),($p_{2}, 0$)\} \\
    $s_{30}$ & \{($p_{1}, 0$),($p_{3}, 1$)\} \\
@@ -1287,7 +1284,7 @@ We assume that  $\exists s \in  \{ s | \forall p \in T_{pass}^{t\bigtriangleup},
 As we have shown B $\subseteq$ A, and A $\subseteq$ B, so A = B.
 \end{proof}
 
-With this proposition, we do not need to check each schema in $T_{pass}^{t}$, instead, we only need to focus on the maximal schemas in this set.   Going back to the previous example, we have $T_{pass}^{t_{1}\bigtriangleup}$ = \{ \{($p_{1}, 0$) , ($p_{4}, 1$)\}, \{($p_{2}, 0$), ($p_{4}, 1$)\} \}. Table \ref{ex:maximalhealthyintequal} shows the schemas of $\{ s\ |\ s \preceq t\ \&\&\ \forall p \in T_{pass}^{t\bigtriangleup}, s \npreceq p \}$, we can observe this set is equal to the previous schema sets, that are $\{ s\ |\  s \preceq t\ \&\&\ \forall m \in \mathcal{C}(T_{fail}),  m \npreceq s \}$ and $\{ s\ |\  s \preceq t\ \&\&\ \forall m \in \mathcal{C}(T_{fail})^{t_{1}},  m \npreceq s \}$.
+With this proposition, we do not need to check each schema in $T_{pass}^{t}$, instead, we only need to focus on the maximal schemas in this set.   Going back to the previous example, we have $T_{pass}^{t_{2}\bigtriangleup}$ = \{ \{($p_{1}, 0$) , ($p_{4}, 1$)\}, \{($p_{2}, 0$), ($p_{4}, 1$)\} \}. Table \ref{ex:maximalhealthyintequal} shows the schemas of $\{ s\ |\ s \preceq t_{2}\ \&\&\ \forall p \in T_{pass}^{t_{2}\bigtriangleup}, s \npreceq p \}$, we can observe this set is equal to the previous schema sets, that are  $\{ s\ |\ s \preceq t_{2}\ \&\&\  \forall t_{i} \in T_{pass}, s \npreceq t_{i} \} $ and $\{ s\ |\ s \preceq t_{2}\ \&\&\ \forall p \in T_{pass}^{t_{2}}, s \npreceq p \}$, respectively.
 
 
  \begin{table}[htbp]
@@ -1295,7 +1292,7 @@ With this proposition, we do not need to check each schema in $T_{pass}^{t}$, in
   \caption{An example of the reduction to maximal healthy schemas}
   \label{ex:maximalhealthyintequal}
     \begin{tabular}{|c|c|} \hline
-     \multicolumn{2}{|c|}{$\{ s\ |\ s \preceq t\ \&\&\ \forall p \in T_{pass}^{t\bigtriangleup}, s \npreceq p \}$} \\ \hline
+     \multicolumn{2}{|c|}{$\{ s\ |\ s \preceq t_{2}\ \&\&\ \forall p \in T_{pass}^{t_{2}\bigtriangleup}, s \npreceq p \}$} \\ \hline
    $s_{28}$ & \{($p_{3}, 1$)\} \\
    $s_{62}$ & \{($p_{1}, 0$),($p_{2}, 0$)\} \\
    $s_{30}$ & \{($p_{1}, 0$),($p_{3}, 1$)\} \\
@@ -1308,7 +1305,6 @@ With this proposition, we do not need to check each schema in $T_{pass}^{t}$, in
    $s_{52}$ & \{($p_{1}, 0$),($p_{2}, 0$),($p_{3}, 1$),($p_{4}, 1$)\} \\ \hline
     \end{tabular}%
   \end{table}
-
 
 
 With these two set of schemas, we can obtain the second formula to compute the pending schemas in a failing test case $t$, which is listed in the following.
@@ -1328,6 +1324,22 @@ According to Proposition \ref{pro:healthysintequal} and Proposition \ref{pro:hea
 
 Hence, $PSS$ = $A \cap B$ = $\{ s\ |\  s \preceq t\ \&\&\ \forall m \in \mathcal{C}(T_{fail})^{t},  m \npreceq s \}$ $\cap$ $\{ s\ |\  s \preceq t\ \&\&\ \forall p \in T_{pass}^{t\bigtriangleup},  s \npreceq p \}$ = $\{ s\ |\ s \preceq t\ \&\&\ \forall m \in \mathcal{C}(T_{fail})^{t},  m \npreceq s  \ \&\&\  \forall p \in T_{pass}^{t\bigtriangleup}, s \npreceq p \}$.
 \end{proof}
+
+Formula \ref{eq:pssfirst_mutated}  As an example. Table \ref{ex:pendingschemasinonetestcaseusingfaultyandhealthy}
+
+\begin{table}[htbp]
+  \centering
+  \caption{An example of pending schemas in one test case}
+  \label{ex:pendingschemasinonetestcaseusingfaultyandhealthy}
+    \begin{tabular}{|c|c|} \hline
+     \multicolumn{2}{|c|}{\textbf{The test Case set}} \\ \hline
+   $t_{2}$ & \{($p_{1}, 0$), ($p_{2}, 0$), ($p_{3}, 1$), ($p_{4}, 1$)\}\\ \hline
+        \multicolumn{2}{|c|}{\textbf{pending schemas in this test case}} \\ \hline
+   $s_{62}$ & \{($p_{1}, 0$),($p_{2}, 0$)\} \\
+   $s_{ 70}$ & \{($p_{1}, 0$),($p_{2}, 0$),($p_{4}, 1$)\} \\ \hline
+    \end{tabular}%
+\end{table}
+
 
 
 With respect to Formula \ref{eq:pssfirst_mutated}, the complexity of obtaining the pending schemas is computed as follows. We first need to obtain $\mathcal{C}(T_{fail})^{t}$ and $T_{pass}^{t\bigtriangleup}$, for which the complexities are $O(|\mathcal{C}(T_{fail})|)$ and $O(|T_{pass}|^{2})$. Then we still need to check each schema in test case $t$, to figure whether it is subschema of some schema in $T_{pass}^{t\bigtriangleup}$ or super-schema of some schema in $\mathcal{C}(T_{fail})^{t}$, for which the complexity is $O(2^{n}* |\mathcal{C}(T_{fail})^{t}| * |T_{pass}^{t\bigtriangleup}|)$, where $n$ is the number of factors in the test case.  At last, the complexity is $O(|\mathcal{C}(T_{fail})| + |T_{pass}|^{2} + 2^{n}* |\mathcal{C}(T_{fail})^{t}| * |T_{pass}^{t\bigtriangleup}| )$. Obviously, this is still not feasible when $n$ is large.
