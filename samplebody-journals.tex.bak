@@ -1213,7 +1213,7 @@ Let $T_{pass}^{t}$ be the schemas that are intersection subschemas between each 
 
 
 \begin{proposition}\label{pro:healthysintequal}
-Let schema set $A$ = $\{ s\ |\ s \preceq t\ \&\&\  \forall t_{i} \in T_{pass}, s \npreceq t_{i} \} $,  schema set $B$ = $\{ s\ |\ s \preceq t\ \&\&\ \forall p \in T_{pass}^{t}, s \npreceq p \}$. Then we have $A = B$.
+Let schema set $A$ = $\{ s\ |\ s \preceq t\ \&\&\  \forall t_{i} \in T_{pass}, s \npreceq t_{i} \} $,  schema set $B$ = $\{ s\ |\ s \preceq t\ \&\&\ \forall m \in T_{pass}^{t}, s \npreceq m \}$. Then we have $A = B$.
 \end{proposition}
 
 \begin{proof}
@@ -1229,7 +1229,7 @@ Since we have $A \subseteq B$ and $B \subseteq A$, we have $A = B$.
 
 With this proposition, we do not need to check each passing test case. Instead, we only need to focus on the intersection part of passing test cases and the failing test case.  Going back to the previous example,  we still consider the SUT with $T_{pass}$, $T_{fail}$, and $T_{unkonwn}$ shown as in Table \ref{ex:determinableschemassut}. In this example, $T_{pass}$ contains two passing test cases, which are  $t_{11}$ \{($p_{1}, 0$), ($p_{2}, 1$), ($p_{3}, 0$), ($p_{4}, 1$)\} and  $t_{12}$  \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 1$)\}, respectively. We next still focus on the failing test case $t_{2}$ =  \{ ($p_{1}, 0$), ($p_{2}, 0$), ($p_{3}, 1$), ($p_{4}, 1$)\}. For this test case, we have $T_{pass}^{t_{2}}$ = \{ \{($p_{1}, 0$)\}, \{($p_{2}, 0$)\},  \{($p_{4}, 1$)\}, \{($p_{1}, 0$) , ($p_{4}, 1$)\}, \{($p_{2}, 0$), ($p_{4}, 1$)\} \}.
 
-Table \ref{ex:healthyintequal} shows these two schema sets, i.e., $\{ s\ |\ s \preceq t_{2}\ \&\&\  \forall t_{i} \in T_{pass}, s \npreceq t_{i} \} $ and $\{ s\ |\ s \preceq t_{2}\ \&\&\ \forall p \in T_{pass}^{t_{2}}, s \npreceq p \}$. We can learn these two sets are equal.
+Table \ref{ex:healthyintequal} shows these two schema sets, i.e., $\{ s\ |\ s \preceq t_{2}\ \&\&\  \forall t_{i} \in T_{pass}, s \npreceq t_{i} \} $ and $\{ s\ |\ s \preceq t_{2}\ \&\&\ \forall m \in T_{pass}^{t_{2}}, s \npreceq m \}$. We can learn these two sets are equal.
 
  \begin{table}[htbp]
   \centering
@@ -1250,7 +1250,7 @@ Table \ref{ex:healthyintequal} shows these two schema sets, i.e., $\{ s\ |\ s \p
     \end{tabular}%
 \quad
     \begin{tabular}{|c|c|} \hline
-   \multicolumn{2}{|c|}{$\{ s\ |\ s \preceq t_{2}\ \&\&\ \forall p \in T_{pass}^{t_{2}}, s \npreceq p \}$}\\ \hline
+   \multicolumn{2}{|c|}{$\{ s\ |\ s \preceq t_{2}\ \&\&\ \forall m \in T_{pass}^{t_{2}}, s \npreceq m \}$}\\ \hline
    $s_{28}$ & \{($p_{3}, 1$)\} \\
    $s_{62}$ & \{($p_{1}, 0$),($p_{2}, 0$)\} \\
    $s_{30}$ & \{($p_{1}, 0$),($p_{3}, 1$)\} \\
@@ -1268,23 +1268,23 @@ Table \ref{ex:healthyintequal} shows these two schema sets, i.e., $\{ s\ |\ s \p
 We can further reduce the number of schemas need to checked. Let $T_{pass}^{t\bigtriangleup}$ be the maximal schemas in $T_{pass}^{t}$. That is, $T_{pass}^{t\bigtriangleup}$ = $\{ s\ |  s \in T_{pass}^{t} \&\& \nexists s'  \in T_{pass}^{t}, s \prec s' \}$.  To obtain $T_{pass}^{t\bigtriangleup}$ from $T_{pass}$ with complexity of $O(|T_{pass}|^{2})$. It is easy to know that $\forall s \in T_{pass}^{t}, \exists s' \in T_{pass}^{t\bigtriangleup},  s \preceq s'$.
 
 \begin{proposition}\label{pro:healthysintequal2}
-Let schema set $A$ = $\{ s\ |\ s \preceq t\ \&\&\ \forall p \in T_{pass}^{t}, s \npreceq p \}$, schema set $B$ = $\{ s\ |\ s \preceq t\ \&\&\ \forall p \in T_{pass}^{t\bigtriangleup}, s \npreceq p \}$. Then we have $A = B$.
+Let schema set $A$ = $\{ s\ |\ s \preceq t\ \&\&\ \forall m \in T_{pass}^{t}, s \npreceq m \}$, schema set $B$ = $\{ s\ |\ s \preceq t\ \&\&\ \forall m \in T_{pass}^{t\bigtriangleup}, s \npreceq m \}$. Then we have $A = B$.
 \end{proposition}
 
 \begin{proof}
 
 First, we will prove $A \subseteq B$.
 
-Since $T_{pass}^{t\bigtriangleup} \subseteq T_{pass}^{t}$, we have $  \{ s | \forall p \in T_{pass}^{t}, s \npreceq p \} =  \{ s | \forall p \in T_{pass}^{t\bigtriangleup}, s \npreceq p \ \&\& \  \forall p \in T_{pass}^{t} \backslash T_{pass}^{t\bigtriangleup}, s \npreceq p \} \subseteq \{ s | \forall p \in T_{pass}^{t\bigtriangleup}, s \npreceq p \}$. Hence,  $\{ s\ |\ s \preceq t\ \&\&\ \forall p \in T_{pass}^{t}, s \npreceq p \} \subseteq  \{ s\ |\ s \preceq t\ \&\&\ \forall p \in T_{pass}^{t\bigtriangleup}, s \npreceq p \}$. That is,  $A \subseteq B$.
+Since $T_{pass}^{t\bigtriangleup} \subseteq T_{pass}^{t}$, we have $  \{ s | \forall m \in T_{pass}^{t}, s \npreceq m \} =  \{ s | \forall m \in T_{pass}^{t\bigtriangleup}, s \npreceq m \ \&\& \  \forall m \in T_{pass}^{t} \backslash T_{pass}^{t\bigtriangleup}, s \npreceq m \} \subseteq \{ s | \forall m \in T_{pass}^{t\bigtriangleup}, s \npreceq m \}$. Hence,  $\{ s\ |\ s \preceq t\ \&\&\ \forall m \in T_{pass}^{t}, s \npreceq m \} \subseteq  \{ s\ |\ s \preceq t\ \&\&\ \forall m \in T_{pass}^{t\bigtriangleup}, s \npreceq m \}$. That is,  $A \subseteq B$.
 
 Next, we will prove $B \subseteq A$.
 
-We assume that  $\exists s \in  \{ s | \forall p \in T_{pass}^{t\bigtriangleup}, s \npreceq p \}$, $ s \notin \{ s | \forall p \in T_{pass}^{t}, s \npreceq p \}$. It indicates that $\exists p' \in T_{pass}^{t}, s \preceq p'$. Since $p' \in T_{pass}^{t}$, $\exists p'' \in T_{pass}^{t\bigtriangleup}, p' \preceq p''$. It has $s \preceq p' \preceq p''$. This is contradiction.  Hence, the assumption does not hold, indicating that $\forall s \in  \{ s | \forall p \in T_{pass}^{t\bigtriangleup}$, $s \in  \{ s | \forall p \in T_{pass}^{t}, s \npreceq p \}$. Hence, $\{ s | \forall p \in T_{pass}^{t\bigtriangleup}$ $\subseteq$ $\{ s | \forall p \in T_{pass}^{t}, s \npreceq p \}$. Therefore, $\{ s\ |\ s \preceq t\ \&\&\ \forall p \in T_{pass}^{t\bigtriangleup}, s \npreceq p \}$ $\subseteq$ $\{ s\ |\ s \preceq t\ \&\&\ \forall p \in T_{pass}^{t}, s \npreceq p \} $. That is $B \subseteq A$.
+We assume that  $\exists s \in  \{ s | \forall m \in T_{pass}^{t\bigtriangleup}, s \npreceq m \}$, $ s \notin \{ s | \forall m \in T_{pass}^{t}, s \npreceq m \}$. It indicates that $\exists p' \in T_{pass}^{t}, s \preceq p'$. Since $p' \in T_{pass}^{t}$, $\exists p'' \in T_{pass}^{t\bigtriangleup}, p' \preceq p''$. It has $s \preceq p' \preceq p''$. This is contradiction.  Hence, the assumption does not hold, indicating that $\forall s \in  \{ s | \forall m \in T_{pass}^{t\bigtriangleup}$, $s \in  \{ s | \forall m \in T_{pass}^{t}, s \npreceq m \}$. Hence, $\{ s | \forall m \in T_{pass}^{t\bigtriangleup}$ $\subseteq$ $\{ s | \forall m \in T_{pass}^{t}, s \npreceq m \}$. Therefore, $\{ s\ |\ s \preceq t\ \&\&\ \forall m \in T_{pass}^{t\bigtriangleup}, s \npreceq m \}$ $\subseteq$ $\{ s\ |\ s \preceq t\ \&\&\ \forall m \in T_{pass}^{t}, s \npreceq m \} $. That is $B \subseteq A$.
 
 As we have shown B $\subseteq$ A, and A $\subseteq$ B, so A = B.
 \end{proof}
 
-With this proposition, we do not need to check each schema in $T_{pass}^{t}$, instead, we only need to focus on the maximal schemas in this set.   Going back to the previous example, we have $T_{pass}^{t_{2}\bigtriangleup}$ = \{ \{($p_{1}, 0$) , ($p_{4}, 1$)\}, \{($p_{2}, 0$), ($p_{4}, 1$)\} \}. Table \ref{ex:maximalhealthyintequal} shows the schemas of $\{ s\ |\ s \preceq t_{2}\ \&\&\ \forall p \in T_{pass}^{t_{2}\bigtriangleup}, s \npreceq p \}$, we can observe this set is equal to the previous schema sets, that are  $\{ s\ |\ s \preceq t_{2}\ \&\&\  \forall t_{i} \in T_{pass}, s \npreceq t_{i} \} $ and $\{ s\ |\ s \preceq t_{2}\ \&\&\ \forall p \in T_{pass}^{t_{2}}, s \npreceq p \}$, respectively.
+With this proposition, we do not need to check each schema in $T_{pass}^{t}$, instead, we only need to focus on the maximal schemas in this set.   Going back to the previous example, we have $T_{pass}^{t_{2}\bigtriangleup}$ = \{ \{($p_{1}, 0$) , ($p_{4}, 1$)\}, \{($p_{2}, 0$), ($p_{4}, 1$)\} \}. Table \ref{ex:maximalhealthyintequal} shows the schemas of $\{ s\ |\ s \preceq t_{2}\ \&\&\ \forall m \in T_{pass}^{t_{2}\bigtriangleup}, s \npreceq m \}$, we can observe this set is equal to the previous schema sets, that are  $\{ s\ |\ s \preceq t_{2}\ \&\&\  \forall t_{i} \in T_{pass}, s \npreceq t_{i} \} $ and $\{ s\ |\ s \preceq t_{2}\ \&\&\ \forall m \in T_{pass}^{t_{2}}, s \npreceq m \}$, respectively.
 
 
  \begin{table}[htbp]
@@ -1292,7 +1292,7 @@ With this proposition, we do not need to check each schema in $T_{pass}^{t}$, in
   \caption{An example of the reduction to maximal healthy schemas}
   \label{ex:maximalhealthyintequal}
     \begin{tabular}{|c|c|} \hline
-     \multicolumn{2}{|c|}{$\{ s\ |\ s \preceq t_{2}\ \&\&\ \forall p \in T_{pass}^{t_{2}\bigtriangleup}, s \npreceq p \}$} \\ \hline
+     \multicolumn{2}{|c|}{$\{ s\ |\ s \preceq t_{2}\ \&\&\ \forall m \in T_{pass}^{t_{2}\bigtriangleup}, s \npreceq m \}$} \\ \hline
    $s_{28}$ & \{($p_{3}, 1$)\} \\
    $s_{62}$ & \{($p_{1}, 0$),($p_{2}, 0$)\} \\
    $s_{30}$ & \{($p_{1}, 0$),($p_{3}, 1$)\} \\
@@ -1311,30 +1311,28 @@ With these two set of schemas, we can obtain the second formula to compute the p
 
 \begin{equation}
 \begin{aligned}\label{eq:pssfirst_mutated}
-PSS=\{ s\ |\ s \preceq t\ \&\&\ \forall m \in \mathcal{C}(T_{fail})^{t},  m \npreceq s  \ \&\&\  \forall p \in T_{pass}^{t\bigtriangleup}, s \npreceq p \} .
+PSS=\{ s\ |\ s \preceq t\ \&\&\ \forall m \in \mathcal{C}(T_{fail})^{t},  m \npreceq s  \ \&\&\  \forall m \in T_{pass}^{t\bigtriangleup}, s \npreceq m \} .
 \end{aligned}
 \end{equation}
 
 \begin{proof}
 
-Let A = $\{ s\ |\  s \preceq t\ \&\&\ \forall m \in \mathcal{C}(T_{fail}),  m \npreceq s \}$, B = $ \{ s\ |\ s \preceq t\ \&\&  \forall p \in T_{pass}, s \npreceq p \} $. Obviously, PSS = $A \cap B$.
+Let A = $\{ s\ |\  s \preceq t\ \&\&\ \forall m \in \mathcal{C}(T_{fail}),  m \npreceq s \}$, B = $ \{ s\ |\ s \preceq t\ \&\&  \forall m \in T_{pass}, s \npreceq m \} $. Obviously, PSS = $A \cap B$.
 
 According to Proposition \ref{pro:mfssintequal}, A = $\{ s\ |\  s \preceq t\ \&\&\ \forall m \in \mathcal{C}(T_{fail})^{t},  m \npreceq s \}$.
-According to Proposition \ref{pro:healthysintequal} and Proposition \ref{pro:healthysintequal2}, B = $\{ s\ |\  s \preceq t\ \&\&\ \forall p \in T_{pass}^{t},  s \npreceq p \}$ = $\{ s\ |\  s \preceq t\ \&\&\ \forall p \in T_{pass}^{t\bigtriangleup},  s \npreceq p \}$.
+According to Proposition \ref{pro:healthysintequal} and Proposition \ref{pro:healthysintequal2}, B = $\{ s\ |\  s \preceq t\ \&\&\ \forall m \in T_{pass}^{t},  s \npreceq m \}$ = $\{ s\ |\  s \preceq t\ \&\&\ \forall m \in T_{pass}^{t\bigtriangleup},  s \npreceq m \}$.
 
-Hence, $PSS$ = $A \cap B$ = $\{ s\ |\  s \preceq t\ \&\&\ \forall m \in \mathcal{C}(T_{fail})^{t},  m \npreceq s \}$ $\cap$ $\{ s\ |\  s \preceq t\ \&\&\ \forall p \in T_{pass}^{t\bigtriangleup},  s \npreceq p \}$ = $\{ s\ |\ s \preceq t\ \&\&\ \forall m \in \mathcal{C}(T_{fail})^{t},  m \npreceq s  \ \&\&\  \forall p \in T_{pass}^{t\bigtriangleup}, s \npreceq p \}$.
+Hence, $PSS$ = $A \cap B$ = $\{ s\ |\  s \preceq t\ \&\&\ \forall m \in \mathcal{C}(T_{fail})^{t},  m \npreceq s \}$ $\cap$ $\{ s\ |\  s \preceq t\ \&\&\ \forall m \in T_{pass}^{t\bigtriangleup},  s \npreceq m \}$ = $\{ s\ |\ s \preceq t\ \&\&\ \forall m \in \mathcal{C}(T_{fail})^{t},  m \npreceq s  \ \&\&\  \forall m \in T_{pass}^{t\bigtriangleup}, s \npreceq m \}$.
 \end{proof}
 
-Formula \ref{eq:pssfirst_mutated}  As an example. Table \ref{ex:pendingschemasinonetestcaseusingfaultyandhealthy}
+By Formula \ref{eq:pssfirst_mutated}, we only need to use $\mathcal{C}(T_{fail})^{t}$ and $T_{pass}^{t\bigtriangleup}$ to obtain the pending schemas in a test case instead of using all the minimal faulty schemas $\mathcal{C}(T_{fail})$ and all the passing test cases $ T_{pass}$ which are used by Formula \ref{eq:pssfirst}. As an example, we still consider  $T_{pass}$, $T_{fail}$, and $T_{unkonwn}$ shown in Table \ref{ex:determinableschemassut}. Let us focus on the failing test case $t_{2}$ \{ ($p_{1}, 0$), ($p_{2}, 0$), ($p_{3}, 1$), ($p_{4}, 1$)\}. we then have  $\mathcal{C}(T_{fail})^{t_{2}}$ = \{ \{($p_{3}, 1$)\} \}, $T_{pass}^{t_{2}\bigtriangleup}$ = \{ \{($p_{1}, 0$) , ($p_{4}, 1$)\}, \{($p_{2}, 0$), ($p_{4}, 1$)\} \}. Then Table \ref{ex:pendingschemasinonetestcaseusingfaultyandhealthy} lists the schemas in $\{ s\ |\ s \preceq t_{2}\ \&\&\ \forall m \in \mathcal{C}(T_{fail})^{t_{2}},  m \npreceq s  \ \&\&\  \forall m \in T_{pass}^{t_{2}\bigtriangleup}, s \npreceq m \} $. We can learn that this schema set is equal to the pending schema set which is shown in Table \ref{ex:pendingschemasinonetestcase}.
 
 \begin{table}[htbp]
   \centering
-  \caption{An example of pending schemas in one test case}
+  \caption{An example of pending schemas in one test case by using Formula \ref{eq:pssfirst_mutated} }
   \label{ex:pendingschemasinonetestcaseusingfaultyandhealthy}
     \begin{tabular}{|c|c|} \hline
-     \multicolumn{2}{|c|}{\textbf{The test Case set}} \\ \hline
-   $t_{2}$ & \{($p_{1}, 0$), ($p_{2}, 0$), ($p_{3}, 1$), ($p_{4}, 1$)\}\\ \hline
-        \multicolumn{2}{|c|}{\textbf{pending schemas in this test case}} \\ \hline
+     \multicolumn{2}{|c|}{$\{ s\ |\ s \preceq t_{2}\ \&\&\ \forall m \in \mathcal{C}(T_{fail})^{t_{2}},  m \npreceq s  \ \&\&\  \forall m \in T_{pass}^{t_{2}\bigtriangleup}, s \npreceq m \} $} \\ \hline
    $s_{62}$ & \{($p_{1}, 0$),($p_{2}, 0$)\} \\
    $s_{ 70}$ & \{($p_{1}, 0$),($p_{2}, 0$),($p_{4}, 1$)\} \\ \hline
     \end{tabular}%
@@ -1348,13 +1346,13 @@ With respect to Formula \ref{eq:pssfirst_mutated}, the complexity of obtaining t
 
 \subsection{Change to CMXS and CMNS}
 
-Next, we will try to eliminate the influence of the number of $n$ to obtain the pending schemas. For this purpose, we defined the following two sets, i.e. $CMXS$ and $CMNS$.
+Next, we will try to eliminate the influence of the number of $n$ (the total number of factors in one test case) to obtain the pending schemas. For this purpose, we defined the following two sets, i.e. $CMXS$ and $CMNS$. 
 
 \begin{definition}
 For a $k$-degree schema $s$ = \{$(p_{x_{1}}, v_{x_{1}})$, $(p_{x_{2}}, v_{x_{2}})$, ..., $(p_{x_{k}}, v_{x_{k}})$\}, a test case $t$ = \{$(p_{1}, v_{1})$, $(p_{2}, v_{2})$, ..., $(p_{n}, v_{n})$\}, and $s \preceq t$. We denote the candidate maximal non-super schema set as $CMXS(s,t)$ = \{$t \backslash (p_{x_{i}}, v_{x_{i}})$ | $(p_{x_{i}}, v_{x_{i}}) \in s $\}.
 \end{definition}
 
-Note that $CMXS$ is the set of schemas that remove one distinct factor value in $s$, such that all these schemas will not be the super-schema of $s$. For example assume the test case \{$(p_{1}, v_{1})$, $(p_{2}, v_{2})$, $(p_{3}, v_{3})$, $(p_{4}, v_{4})$\}, and a schema \{$(p_{1}, v_{1})$, $(p_{3}, v_{3})$\}. Then the CMXS set is \{ \{$(p_{2}, v_{2})$,  $(p_{3}, v_{3})$, $(p_{4}, v_{4})$\}, \{$(p_{1}, v_{1})$,  $(p_{2}, v_{2})$, $(p_{4}, v_{4})$\} \}. Obviously, the complexity of obtaining $CMXS$ with respect to one schema and one test case is O($\tau$), where $\tau$ is the number of parameter values in this faulty schema, i.e., the degree of this schema.
+Note that $CMXS$ is the set of schemas that remove one distinct factor value in $s$, such that all these schemas will not be the super-schema of $s$. For example assume the test case \{$(p_{1}, v_{1})$, $(p_{2}, v_{2})$, $(p_{3}, v_{3})$, $(p_{4}, v_{4})$\}, and a schema \{$(p_{1}, v_{1})$, $(p_{3}, v_{3})$\}. Then the $CMXS$ set is \{ \{$(p_{2}, v_{2})$,  $(p_{3}, v_{3})$, $(p_{4}, v_{4})$\}, \{$(p_{1}, v_{1})$,  $(p_{2}, v_{2})$, $(p_{4}, v_{4})$\} \}. Obviously, the complexity of obtaining $CMXS$ with respect to one schema and one test case is O($\tau$), where $\tau$ is the number of parameter values in this faulty schema, i.e., the degree of this schema.
 
 With respect to the $CMXS$ set of a single schema, we can get the following proposition:
 
@@ -1369,7 +1367,7 @@ Let A =  \{$s\ |\ s \preceq t\ \&\&\ s_{1} \npreceq s$\}, and B = \{$ s\ |\ \exi
 
 
 
-Let $s_{1}$ = \{$(p_{x_{1}}, v_{x_{1}})$, $(p_{x_{2}}, v_{x_{2}})$, ..., $(p_{x_{k}}, v_{x_{k}})$\},  t = \{$(p_{1}, v_{1})$, $(p_{2}, v_{2})$, ..., $(p_{n}, v_{n})$\}, and CMXS($s_{1}$,$t$)= \{$t \backslash (p_{x_{i}}, v_{x_{i}})$ | $(p_{x_{i}},$ $v_{x_{i}})$ $ \in s_{1} $\}.
+Let $s_{1}$ = \{$(p_{x_{1}}, v_{x_{1}})$, $(p_{x_{2}}, v_{x_{2}})$, ..., $(p_{x_{k}}, v_{x_{k}})$\},  t = \{$(p_{1}, v_{1})$, $(p_{2}, v_{2})$, ..., $(p_{n}, v_{n})$\}, and $CMXS$($s_{1}$,$t$)= \{$t \backslash (p_{x_{i}}, v_{x_{i}})$ | $(p_{x_{i}},$ $v_{x_{i}})$ $ \in s_{1} $\}.
 
 First we will show A $\subseteq$ B.
 
@@ -1387,7 +1385,45 @@ As we have shown B $\subseteq$ A, and A $\subseteq$ B, so A = B.
 
 %This proposition indicates for one specific schema $s$ and test case $t$, the schemas in one test case that are not $s$ and per-schemas of one specific schema, it must be the sub-schema or equal to the schemas in CMXS.
 
-In the equation of Proposition \ref{pro:subofCMXS}, the schemas of the left side, i.e., \{$s\ |\ s \preceq t\ \&\&\ s_{1} \npreceq s$\}, are the sub-schemas of test case $t$, but not the super-schemas of  schema $s_{1}$.  The right side set in this equation, i.e., \{$ s\ |\ \exists s_{1}' \in CMXS(s_{1}, t)$, $s \preceq s_{1}'$\}, are schemas which are sub-schemas of at least one schema in $CMXS(s_{1}, t)$. Proposition \ref{pro:subofCMXS} indicates that these two schema sets are equivalent. As an example, considering a test case $t$ -- \{($p_{1}$, 1),($p_{2}$, 1),($p_{3}$, 1),($p_{4}$, 1)\}, and a schema $s_{f}$ --  \{($p_{3}$, 1)\}. Table \ref{examleOfCMXSPro} shows the schema set  \{$s\ |\ s \prec t\ \&\&\ s_{f} \npreceq s$\}, $CMXS(s_{f}, t)$ and \{$ s\ |\ \exists s_{1}' \in CMXS(s_{f}, t)$, $s \preceq s_{1}'$\}.
+In the equation of Proposition \ref{pro:subofCMXS}, the schemas of the left side, i.e., \{$s\ |\ s \preceq t\ \&\&\ s_{1} \npreceq s$\}, are the sub-schemas of test case $t$, but not the super-schemas of  schema $s_{1}$.  The right side set in this equation, i.e., \{$ s\ |\ \exists s_{1}' \in CMXS(s_{1}, t)$, $s \preceq s_{1}'$\}, are schemas which are sub-schemas of at least one schema in $CMXS(s_{1}, t)$. Proposition \ref{pro:subofCMXS} indicates that these two schema sets are equivalent. 
+
+As an example, we also use $T_{pass}$, $T_{fail}$, and $T_{unkonwn}$ shown as in Table \ref{ex:determinableschemassut}. At this time, we consider the failing test case $t_{8}$ -- \{($p_{1}$, 1),($p_{2}$, 1),($p_{3}$, 1),($p_{4}$, 1)\}, and one minimal faulty schema $s_{28}$  \{($p_{3}$, 1)\}. 
+Table \ref{examleOfCMXSPro} shows the schema set  \{$s\ |\ s \prec t_{8}\ \&\&\ s_{28} \npreceq s$\}, $CMXS(s_{28}, t_{8})$ and \{$ s\ |\ \exists m \in CMXS(s_{28}, t_{8})$, $s \preceq m$\}.
+
+
+% \begin{table}[htbp]
+%  \centering
+%  \caption{An example of the reduction to the healthy schemas instead of passing test cases}
+%  \label{ex:healthyintequal}
+%    \begin{tabular}{|c|c|} \hline
+%     \multicolumn{2}{|c|}{$\{ s\ |\ s \preceq t_{2}\ \&\&\  \forall t_{i} \in T_{pass}, s \npreceq t_{i} \} $} \\ \hline
+%   $s_{28}$ & \{($p_{3}, 1$)\} \\
+%   $s_{62}$ & \{($p_{1}, 0$),($p_{2}, 0$)\} \\
+%   $s_{30}$ & \{($p_{1}, 0$),($p_{3}, 1$)\} \\
+%   $s_{32}$ & \{($p_{2}, 0$),($p_{3}, 1$)\} \\
+%   $s_{35}$ & \{($p_{3}, 1$),($p_{4}, 1$)\} \\
+%   $s_{40}$ & \{($p_{1}, 0$),($p_{2}, 0$),($p_{3}, 1$)\} \\
+%   $s_{70}$ & \{($p_{1}, 0$),($p_{2}, 0$),($p_{4}, 1$)\} \\
+%   $s_{43}$ & \{($p_{1}, 0$),($p_{3}, 1$),($p_{4}, 1$)\} \\
+%   $s_{48}$ & \{($p_{2}, 0$),($p_{3}, 1$),($p_{4}, 1$)\} \\
+%   $s_{52}$ & \{($p_{1}, 0$),($p_{2}, 0$),($p_{3}, 1$),($p_{4}, 1$)\} \\ \hline
+%    \end{tabular}%
+%\quad
+%    \begin{tabular}{|c|c|} \hline
+%   \multicolumn{2}{|c|}{$\{ s\ |\ s \preceq t_{2}\ \&\&\ \forall p \in T_{pass}^{t_{2}}, s \npreceq p \}$}\\ \hline
+%   $s_{28}$ & \{($p_{3}, 1$)\} \\
+%   $s_{62}$ & \{($p_{1}, 0$),($p_{2}, 0$)\} \\
+%   $s_{30}$ & \{($p_{1}, 0$),($p_{3}, 1$)\} \\
+%   $s_{32}$ & \{($p_{2}, 0$),($p_{3}, 1$)\} \\
+%   $s_{35}$ & \{($p_{3}, 1$),($p_{4}, 1$)\} \\
+%   $s_{40}$ & \{($p_{1}, 0$),($p_{2}, 0$),($p_{3}, 1$)\} \\
+%   $s_{70}$ & \{($p_{1}, 0$),($p_{2}, 0$),($p_{4}, 1$)\} \\
+%   $s_{43}$ & \{($p_{1}, 0$),($p_{3}, 1$),($p_{4}, 1$)\} \\
+%   $s_{48}$ & \{($p_{2}, 0$),($p_{3}, 1$),($p_{4}, 1$)\} \\
+%   $s_{52}$ & \{($p_{1}, 0$),($p_{2}, 0$),($p_{3}, 1$),($p_{4}, 1$)\} \\ \hline
+%    \end{tabular}%
+%\end{table}
+
 
 % Table generated by Excel2LaTeX from sheet 'Sheet3'
 \begin{table*}[ht]
