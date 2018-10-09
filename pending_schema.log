@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6500) (preloaded format=pdflatex 2017.12.21)  9 OCT 2018 12:31
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6500) (preloaded format=pdflatex 2017.12.21)  9 OCT 2018 13:52
 entering extended mode
 **./pending_schema.tex
 (pending_schema.tex
@@ -1168,7 +1168,7 @@ LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/it' will be
  [25.25]
 [26.26] [27.27] [28.28] [29.29] [30.30] [31.31] [32.32] [33.33] [34.34]
 [35.35]
-Overfull \hbox (9.46637pt too wide) in paragraph at lines 1675--1676
+Overfull \hbox (9.46637pt too wide) in paragraph at lines 1710--1711
 []\T1/LinuxLibertineT-TLF/m/n/10 (-20) Let $\OML/nxlmi/m/it/10 B \U/ntxmia/m/it
 /10 =$ \T1/LinuxLibertineT-TLF/m/n/10 (-20) {$\OML/nxlmi/m/it/10 s \LMS/ntxsy/m
 /n/10 j \OML/nxlmi/m/it/10 s \LMS/ntxsy/m/n/10  \OML/nxlmi/m/it/10 t \OT1/Linu
@@ -1182,16 +1182,7 @@ mi/m/it/10 s[]; t\LMS/ntxsy/m/n/10 º [] \OML/nxlmi/m/it/10 CMNS\LMS/ntxsy/m/n/1
 0 ¹\OML/nxlmi/m/it/10 s[]; t\LMS/ntxsy/m/n/10 º \U/ntxmia/m/it/10 =
  []
 
-[36.36]
-
-LaTeX Warning: Reference `eq:pssthird' on page 37 undefined on input line 1795.
-
-
-
-LaTeX Warning: Reference `eq:pssthird' on page 37 undefined on input line 1795.
-
-
-[37.37] [38.38] Processing 'acks' comment.
+[36.36] [37.37] [38.38] Processing 'acks' comment.
 \openout4 = `comment.cut'.
 
 
@@ -1199,11 +1190,7 @@ Comment 'acks' writing to comment.cut. Straight input of comment.cut.
 (comment.cut) (pending_schema.bbl
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/it' will be
 (Font)              scaled to size 8.0pt on input line 47.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [39.39]))
-[40.40]
+ [39.39])) [40.40]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 143.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 143.
  (pending_schema.aux)
@@ -1216,24 +1203,21 @@ Package rerunfilecheck Warning: File `pending_schema.out' has changed.
 (rerunfilecheck)                or use package `bookmark'.
 
 Package rerunfilecheck Info: Checksums for `pending_schema.out':
-(rerunfilecheck)             Before: 908F59CA812748CD68126649536B97F2;9422
-(rerunfilecheck)             After:  32D147721D0C31F7CBD1A6CB3A1795F0;6884.
-
-LaTeX Warning: There were undefined references.
-
+(rerunfilecheck)             Before: FA3BC883F2D05325722EE22A4D19289B;9438
+(rerunfilecheck)             After:  68199FAEA8C90F5E82D72077B914A533;6897.
  )
 (\end occurred inside a group at level 1)
 
-### simple group (level 1) entered at line 1600 ({)
+### simple group (level 1) entered at line 1633 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 19554 strings out of 493312
- 296281 string characters out of 3143321
- 421625 words of memory out of 3000000
+ 19552 strings out of 493312
+ 296240 string characters out of 3143321
+ 422704 words of memory out of 3000000
  21868 multiletter control sequences out of 15000+200000
- 191365 words of font info for 479 fonts, out of 3000000 for 9000
+ 191092 words of font info for 477 fonts, out of 3000000 for 9000
  1302 hyphenation exceptions out of 8191
- 60i,17n,94p,1804b,606s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 60i,17n,94p,1804b,610s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/CTEX/MikTex2.9/fonts/enc/dvips/libertine/lbtn_ki75ao.enc}{C
 :/CTEX/MikTex2.9/fonts/enc/dvips/newtx/libertinealt.enc}{C:/CTEX/MikTex2.9/font
 s/enc/dvips/libertine/lbtn_ncsllp.enc}{C:/CTEX/MikTex2.9/fonts/enc/dvips/libert
@@ -1255,9 +1239,9 @@ wtx/txexs.pfb><C:/CTEX/MikTex2.9/fonts/type1/public/txfonts/txsya.pfb><C:/CTEX/
 MikTex2.9/fonts/type1/public/txfonts/txsyb.pfb><C:/CTEX/MikTex2.9/fonts/type1/p
 ublic/txfonts/txsyc.pfb><C:/CTEX/MikTex2.9/fonts/type1/public/newtx/txsys.pfb><
 C:/CTEX/MikTex2.9/fonts/type1/public/newtx/zxlri.pfb>
-Output written on pending_schema.pdf (40 pages, 2410335 bytes).
+Output written on pending_schema.pdf (40 pages, 2414738 bytes).
 PDF statistics:
- 2629 PDF objects out of 2984 (max. 8388607)
- 181 named destinations out of 1000 (max. 500000)
+ 2638 PDF objects out of 2984 (max. 8388607)
+ 182 named destinations out of 1000 (max. 500000)
  57115 words of extra memory for PDF output out of 61914 (max. 10000000)
 

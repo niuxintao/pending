@@ -1214,7 +1214,7 @@ To depicts this proposition more clearly, we next check this proposition in the 
 
    $s_{48}$ & \{($p_{1}, 0$),($p_{2}, 0$)\} \\
 
-   $s_{51}$ & \{($p_{1}, 0$),($p_{3}, 1$)\} \\
+   $s_{10}$ & \{($p_{1}, 0$),($p_{3}, 1$)\} \\
    $s_{50}$ & \{($p_{1}, 0$),($p_{4}, 1$)\} \\
 
    $s_{53}$ & \{($p_{2}, 0$),($p_{3}, 1$)\} \\
@@ -1235,7 +1235,7 @@ To depicts this proposition more clearly, we next check this proposition in the 
 
    $s_{48}$ & \{($p_{1}, 0$),($p_{2}, 0$)\} \\
 
-   $s_{51}$ & \{($p_{1}, 0$),($p_{3}, 1$)\} \\
+   $s_{10}$ & \{($p_{1}, 0$),($p_{3}, 1$)\} \\
    $s_{50}$ & \{($p_{1}, 0$),($p_{4}, 1$)\} \\
 
    $s_{53}$ & \{($p_{2}, 0$),($p_{3}, 1$)\} \\
@@ -1336,7 +1336,9 @@ With this proposition, we do not need to check each schema in $T_{pass}^{t}$, in
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Going back to the previous example, we have $T_{pass}^{t_{7}\bigtriangleup}$ = \{ \{($p_{1}, 1$) , ($p_{4}, 1$)\}, \{($p_{2}, 1$), ($p_{3}, 1$)\} \}. Table \ref{ex:maximalhealthyintequal} shows the schemas of $\{ s\ |\ s \preceq t_{7}\ \&\&\ \forall m \in T_{pass}^{t_{7}\bigtriangleup}, s \npreceq m \}$, we can observe this set is equal to the previous schema sets, that are  $\{ s\ |\ s \preceq t_{7}\ \&\&\  \forall t_{i} \in T_{pass}, s \npreceq t_{i} \} $ and $\{ s\ |\ s \preceq t_{7}\ \&\&\ \forall m \in T_{pass}^{t_{7}}, s \npreceq m \}$, respectively.
+Going back to the previous example, we have $T_{pass}^{t_{7}\bigtriangleup}$ = \{ \{($p_{1}, 1$) , ($p_{4}, 1$)\}, \{($p_{2}, 1$), ($p_{3}, 1$)\} \}. Since in this example  $T_{pass}^{t_{7}\bigtriangleup}$ =  $T_{pass}^{t_{7}}$, it is obvious that  $\{ s\ |\ s \preceq t_{7}\ \&\&\ \forall m \in T_{pass}^{t_{7}}, s \npreceq m \}$ =  $\{ s\ |\ s \preceq t_{7}\ \&\&\ \forall m \in T_{pass}^{t_{7}\bigtriangleup}, s \npreceq m \}$.   Table \ref{ex:maximalhealthyintequal} shows the schemas of $\{ s\ |\ s \preceq t_{7}\ \&\&\ \forall m \in T_{pass}^{t_{7}\bigtriangleup}, s \npreceq m \}$.
+
+%we can observe this set is equal to the previous schema sets, that are  $\{ s\ |\ s \preceq t_{7}\ \&\&\  \forall t_{i} \in T_{pass}, s \npreceq t_{i} \} $ and $\{ s\ |\ s \preceq t_{7}\ \&\&\ \forall m \in T_{pass}^{t_{7}}, s \npreceq m \}$, respectively.
 
 
  \begin{table}[htbp]
@@ -1344,17 +1346,18 @@ Going back to the previous example, we have $T_{pass}^{t_{7}\bigtriangleup}$ = \
   \caption{An example of the reduction to maximal healthy schemas}
   \label{ex:maximalhealthyintequal}
     \begin{tabular}{|c|c|} \hline
-     \multicolumn{2}{|c|}{$\{ s\ |\ s \preceq t_{2}\ \&\&\ \forall m \in T_{pass}^{t_{2}\bigtriangleup}, s \npreceq m \}$} \\ \hline
-   $s_{28}$ & \{($p_{3}, 1$)\} \\
-   $s_{62}$ & \{($p_{1}, 0$),($p_{2}, 0$)\} \\
-   $s_{30}$ & \{($p_{1}, 0$),($p_{3}, 1$)\} \\
-   $s_{32}$ & \{($p_{2}, 0$),($p_{3}, 1$)\} \\
-   $s_{35}$ & \{($p_{3}, 1$),($p_{4}, 1$)\} \\
-   $s_{40}$ & \{($p_{1}, 0$),($p_{2}, 0$),($p_{3}, 1$)\} \\
-   $s_{70}$ & \{($p_{1}, 0$),($p_{2}, 0$),($p_{4}, 1$)\} \\
-   $s_{43}$ & \{($p_{1}, 0$),($p_{3}, 1$),($p_{4}, 1$)\} \\
-   $s_{48}$ & \{($p_{2}, 0$),($p_{3}, 1$),($p_{4}, 1$)\} \\
-   $s_{52}$ & \{($p_{1}, 0$),($p_{2}, 0$),($p_{3}, 1$),($p_{4}, 1$)\} \\ \hline
+     \multicolumn{2}{|c|}{$\{ s\ |\ s \preceq t_{7}\ \&\&\ \forall m \in T_{pass}^{t_{7}\bigtriangleup}, s \npreceq m \}$} \\ \hline
+   $s_{31}$ & \{($p_{1}, 1$),($p_{2}, 1$)\} \\
+   $s_{51}$ & \{($p_{1}, 1$),($p_{3}, 1$)\} \\
+   $s_{56}$ & \{($p_{2}, 1$),($p_{4}, 1$)\} \\
+   $s_{32}$ & \{($p_{3}, 1$),($p_{4}, 1$)\} \\
+
+   $s_{35}$ & \{($p_{1}, 1$),($p_{2}, 1$),($p_{3}, 1$)\} \\
+   $s_{37}$ & \{($p_{1}, 1$),($p_{2}, 1$),($p_{4}, 1$)\} \\
+   $s_{38}$ & \{($p_{1}, 1$),($p_{3}, 1$),($p_{4}, 1$)\} \\
+   $s_{40}$ & \{($p_{2}, 1$),($p_{3}, 1$),($p_{4}, 1$)\} \\
+
+   $s_{47}$ & \{($p_{1}, 1$),($p_{2}, 1$),($p_{3}, 1$),($p_{4}, 1$)\} \\ \hline
     \end{tabular}%
   \end{table}
 
@@ -1380,7 +1383,7 @@ According to Proposition \ref{pro:healthysintequal} and Proposition \ref{pro:hea
 Hence, $PSS$ = $A \cap B$ = $\{ s\ |\  s \preceq t\ \&\&\ \forall m \in \mathcal{C}(T_{fail})^{t},  m \npreceq s \}$ $\cap$ $\{ s\ |\  s \preceq t\ \&\&\ \forall m \in T_{pass}^{t\bigtriangleup},  s \npreceq m \}$ = $\{ s\ |\ s \preceq t\ \&\&\ \forall m \in \mathcal{C}(T_{fail})^{t},  m \npreceq s  \ \&\&\  \forall m \in T_{pass}^{t\bigtriangleup}, s \npreceq m \}$.
 \end{proof}
 
-By Formula \ref{eq:pssfirst_mutated}, we only need to use $\mathcal{C}(T_{fail})^{t}$ and $T_{pass}^{t\bigtriangleup}$ to obtain the pending schemas in a test case instead of using all the minimal faulty schemas $\mathcal{C}(T_{fail})$ and all the passing test cases $ T_{pass}$ which are used by Formula \ref{eq:pssfirst}. As an example, we still consider  $T_{pass}$, $T_{fail}$, and $T_{unkonwn}$ shown in Table \ref{ex:determinableschemassut}. Let us re-focus on the failing test case $t_{7}$ \{ ($p_{1}, 1$), ($p_{2}, 1$), ($p_{3}, 1$), ($p_{4}, 1$)\}. we then have  $\mathcal{C}(T_{fail})^{t_{7}}$ = \{\{($p_{1}, 1$), ($p_{2}, 1$)\}, \{($p_{3}, 1$), ($p_{4}, 1$)\} \}, $T_{pass}^{t_{7}\bigtriangleup}$ = \{ \{($p_{1}, 1$) , ($p_{4}, 1$)\}, \{($p_{2}, 1$), ($p_{3}, 1$)\} \}. Then Table \ref{ex:pendingschemasinonetestcaseusingfaultyandhealthy} lists the schemas in $\{ s\ |\ s \preceq t_{7}\ \&\&\ \forall m \in \mathcal{C}(T_{fail})^{t_{7}},  m \npreceq s  \ \&\&\  \forall m \in T_{pass}^{t_{7}\bigtriangleup}, s \npreceq m \} $. We can learn that this schema set is equal to the pending schema set which is shown in Table \ref{ex:pendingschemasinonetestcase}.
+By Formula \ref{eq:pssfirst_mutated}, we only need to use $\mathcal{C}(T_{fail})^{t}$ and $T_{pass}^{t\bigtriangleup}$ to obtain the pending schemas in a test case instead of using all the minimal faulty schemas $\mathcal{C}(T_{fail})$ and all the passing test cases $ T_{pass}$ which are used by Formula \ref{eq:pssfirst}. As an example, we still consider  $T_{pass}$, $T_{fail}$, and $T_{unkonwn}$ shown in Table \ref{ex:determinableschemassut}. Let us re-focus on the failing test case $t_{7}$ \{ ($p_{1}, 1$), ($p_{2}, 1$), ($p_{3}, 1$), ($p_{4}, 1$)\}. We then have  $\mathcal{C}(T_{fail})^{t_{7}}$ = \{\{($p_{1}, 1$), ($p_{2}, 1$)\}, \{($p_{3}, 1$), ($p_{4}, 1$)\} \}, $T_{pass}^{t_{7}\bigtriangleup}$ = \{ \{($p_{1}, 1$) , ($p_{4}, 1$)\}, \{($p_{2}, 1$), ($p_{3}, 1$)\} \}.  Table \ref{ex:pendingschemasinonetestcaseusingfaultyandhealthy} lists the schemas in $\{ s\ |\ s \preceq t_{7}\ \&\&\ \forall m \in \mathcal{C}(T_{fail})^{t_{7}},  m \npreceq s  \ \&\&\  \forall m \in T_{pass}^{t_{7}\bigtriangleup}, s \npreceq m \} $. We can learn that this schema set is the intersection of schemas listed in Table \ref{ex:mfssintequalfirst} and \ref{ex:maximalhealthyintequal}, and it is equal to the pending schema set which is shown in Table \ref{ex:pendingschemasinonetestcase}.
 
 \begin{table}[htbp]
   \centering
@@ -1392,7 +1395,6 @@ By Formula \ref{eq:pssfirst_mutated}, we only need to use $\mathcal{C}(T_{fail})
    $s_{56}$ & \{($p_{2}, 1$),($p_{4}, 1$)\} \\ \hline
     \end{tabular}%
 \end{table}
-
 
 
 With respect to Formula \ref{eq:pssfirst_mutated}, the complexity of obtaining the pending schemas is computed as follows. We first need to obtain $\mathcal{C}(T_{fail})^{t}$ and $T_{pass}^{t\bigtriangleup}$, for which the complexities are $O(|\mathcal{C}(T_{fail})|)$ and $O(|T_{pass}|^{2})$. Then we still need to check each schema in test case $t$, to figure whether it is subschema of some schema in $T_{pass}^{t\bigtriangleup}$ or super-schema of some schema in $\mathcal{C}(T_{fail})^{t}$, for which the complexity is $O(2^{n}* |\mathcal{C}(T_{fail})^{t}| * |T_{pass}^{t\bigtriangleup}|)$, where $n$ is the number of factors in the test case.  At last, the complexity is $O(|\mathcal{C}(T_{fail})| + |T_{pass}|^{2} + 2^{n}* |\mathcal{C}(T_{fail})^{t}| * |T_{pass}^{t\bigtriangleup}| )$. Obviously, this is still not feasible when $n$ is large.
@@ -1456,10 +1458,12 @@ Table \ref{examleOfCMXSPro} shows the schema set  \{$s\ |\ s \preceq t_{7}\ \&\&
    $s_{6}$ & \{($p_{3}, 1$)\} \\
    $s_{8}$ & \{($p_{4}, 1$)\} \\
    $s_{31}$ & \{($p_{1}, 1$),($p_{2}, 1$)\} \\
-   $s_{12}$ & \{($p_{1}, 1$),($p_{3}, 1$)\} \\
-   $s_{51}$ & \{($p_{1}, 1$),($p_{4}, 1$)\} \\
-   $s_{14}$ & \{($p_{2}, 1$),($p_{3}, 1$)\} \\
+   
+   $s_{51}$ & \{($p_{1}, 1$),($p_{3}, 1$)\} \\
+   $s_{14}$ & \{($p_{1}, 1$),($p_{4}, 1$)\} \\
+   $s_{17}$ & \{($p_{2}, 1$),($p_{3}, 1$)\} \\
    $s_{56}$ & \{($p_{2}, 1$),($p_{4}, 1$)\} \\
+   
    $s_{35}$ & \{($p_{1}, 1$),($p_{2}, 1$),($p_{3}, 1$)\} \\
    $s_{37}$ & \{($p_{1}, 1$),($p_{2}, 1$),($p_{4}, 1$)\} \\   \hline
     \end{tabular}%
@@ -1477,10 +1481,12 @@ Table \ref{examleOfCMXSPro} shows the schema set  \{$s\ |\ s \preceq t_{7}\ \&\&
    $s_{6}$ & \{($p_{3}, 1$)\} \\
    $s_{8}$ & \{($p_{4}, 1$)\} \\
    $s_{31}$ & \{($p_{1}, 1$),($p_{2}, 1$)\} \\
-   $s_{12}$ & \{($p_{1}, 1$),($p_{3}, 1$)\} \\
-   $s_{51}$ & \{($p_{1}, 1$),($p_{4}, 1$)\} \\
-   $s_{14}$ & \{($p_{2}, 1$),($p_{3}, 1$)\} \\
+   
+   $s_{51}$ & \{($p_{1}, 1$),($p_{3}, 1$)\} \\
+   $s_{14}$ & \{($p_{1}, 1$),($p_{4}, 1$)\} \\
+   $s_{17}$ & \{($p_{2}, 1$),($p_{3}, 1$)\} \\
    $s_{56}$ & \{($p_{2}, 1$),($p_{4}, 1$)\} \\
+   
    $s_{35}$ & \{($p_{1}, 1$),($p_{2}, 1$),($p_{3}, 1$)\} \\
    $s_{37}$ & \{($p_{1}, 1$),($p_{2}, 1$),($p_{4}, 1$)\} \\
    \hline
@@ -1534,17 +1540,18 @@ As an example, consider the failing test case $t_{7}$ -- \{($p_{1}$, 1),($p_{2}$
    $s_{6}$ & \{($p_{3}, 1$)\} \\
    $s_{8}$ & \{($p_{4}, 1$)\} \\
 
-   $s_{12}$ & \{($p_{1}, 1$),($p_{3}, 1$)\} \\
-   $s_{51}$ & \{($p_{1}, 1$),($p_{4}, 1$)\} \\
-   $s_{14}$ & \{($p_{2}, 1$),($p_{3}, 1$)\} \\
-   $s_{56}$ & \{($p_{2}, 1$),($p_{4}, 1$)\} \\  \hline
+   $s_{51}$ & \{($p_{1}, 1$),($p_{3}, 1$)\} \\
+   $s_{14}$ & \{($p_{1}, 1$),($p_{4}, 1$)\} \\
+   $s_{17}$ & \{($p_{2}, 1$),($p_{3}, 1$)\} \\
+   $s_{56}$ & \{($p_{2}, 1$),($p_{4}, 1$)\} \\
+    \hline
     \end{tabular}%
 \quad
     \begin{tabular}{|c|c|} \hline
      \multicolumn{2}{|c|}{$CMXS(FSS, t_{7})$} \\ \hline
-   $s_{12}$ & \{($p_{1}, 1$),($p_{3}, 1$)\} \\
-   $s_{51}$ & \{($p_{1}, 1$),($p_{4}, 1$)\} \\
-   $s_{14}$ & \{($p_{2}, 1$),($p_{3}, 1$)\} \\
+   $s_{51}$ & \{($p_{1}, 1$),($p_{3}, 1$)\} \\
+   $s_{14}$ & \{($p_{1}, 1$),($p_{4}, 1$)\} \\
+   $s_{17}$ & \{($p_{2}, 1$),($p_{3}, 1$)\} \\
    $s_{56}$ & \{($p_{2}, 1$),($p_{4}, 1$)\} \\
     \hline
     \end{tabular}%
@@ -1556,9 +1563,9 @@ As an example, consider the failing test case $t_{7}$ -- \{($p_{1}$, 1),($p_{2}$
    $s_{6}$ & \{($p_{3}, 1$)\} \\
    $s_{8}$ & \{($p_{4}, 1$)\} \\
 
-   $s_{12}$ & \{($p_{1}, 1$),($p_{3}, 1$)\} \\
-   $s_{51}$ & \{($p_{1}, 1$),($p_{4}, 1$)\} \\
-   $s_{14}$ & \{($p_{2}, 1$),($p_{3}, 1$)\} \\
+   $s_{51}$ & \{($p_{1}, 1$),($p_{3}, 1$)\} \\
+   $s_{14}$ & \{($p_{1}, 1$),($p_{4}, 1$)\} \\
+   $s_{17}$ & \{($p_{2}, 1$),($p_{3}, 1$)\} \\
    $s_{56}$ & \{($p_{2}, 1$),($p_{4}, 1$)\} \\
    \hline
     \end{tabular}%
@@ -1594,7 +1601,6 @@ With respect to set B, $\forall s' \in B$, it has $s' \preceq t$  and $\exists s
 
 In the equation of Proposition \ref{pro:superofCMNS}, the schemas of the left side, i.e., \{$s\ |\ s \preceq t\ \&\&\ s \npreceq s_{1}$\}, are the sub-schemas of test case $t$, but not the sub-schemas of schema $s_{1}$. The right side set in this equation, i.e.,\{$ s\ |\ s \preceq t \  \&\& \ \exists s_{1}' \in CMNS(s_{1}, t)$, $s_{1}' \preceq s$\}, are sub-schemas of test case $t$, and also are the super-schemas of at least one schema in $CMNS(s_{1}, t)$. Proposition \ref{pro:superofCMNS} indicates that these two schema sets are equivalent. As an example, consider the failing test case $t_{7}$ -- \{($p_{1}$, 1),($p_{2}$, 1),($p_{3}$, 1),($p_{4}$, 1)\}, and a healthy schema $s_{14}$ \{($p_{1}, 1$),($p_{4}, 1$)\}. Table \ref{examleOfCMNSPro} shows the schema set  \{$s\ |\ s \preceq t_{7}\ \&\&\ s_{14} \npreceq s$\}, $CMNS(s_{14}, t_{7})$ and {$ s\ |\ s \preceq t_{7}\ \&\& \ \exists s_{1}' \in CMNS(s_{14}, t_{7})$, $s_{1}' \preceq s$\}.
 
-% Table generated by Excel2LaTeX from sheet 'Sheet3'
  \begin{table}[htbp]
   \centering
   \caption{An example of Proposition \ref{pro:superofCMNS}}
@@ -1627,7 +1633,9 @@ In the equation of Proposition \ref{pro:superofCMNS}, the schemas of the left si
     \end{tabular}%
 \quad
     \begin{tabular}{|c|c|} \hline
-   \multicolumn{2}{|c|}{\{$ s\ |\ s \preceq t_{7}\ \&\& \ \exists s_{1}' \in CMNS(s_{14}, t_{7})$, $s_{1}' \preceq s$\}}\\ \hline
+   \multicolumn{2}{|c|}{ \{ $ s\ |\ s \preceq t_{7}\ \&\& $ }\\
+   \multicolumn{2}{|c|}{\ $\exists s_{1}' \in CMNS(s_{14}, t_{7})$, $s_{1}' \preceq s$\}}\\
+    \hline
    $s_{4}$ & \{($p_{2}, 1$)\} \\
    $s_{6}$ & \{($p_{3}, 1$)\} \\
 
@@ -1682,7 +1690,6 @@ Similar to Proposition \ref{pro:subofCMXS} and \ref{pro:subofCMXSfor2},  Proposi
 
 As an example, consider the test case $t_{7}$ -- \{($p_{1}$, 1),($p_{2}$, 1),($p_{3}$, 1),($p_{4}$, 1)\}, and a set of schemas  $HSS$ -- \{ \{($p_{1}$, 1),($p_{4}$, 1)\}  \{($p_{2}$, 1),($p_{3}$, 1)\} \}. Table \ref{examleOfCMNSPro2} shows the schema set \{$s\ |\ s \preceq t_{7}\ \&\&\ \forall s_{i} \in HSS, s \npreceq s_{i} $\}, $CMNS(HSS, t_{7})$ and \{$ s\ |\ s \preceq t_{7} \ \&\& \ \exists s_{1}' \in CMNS(HSS, t_{7})$, $s_{1}' \preceq s$\}.
 
-% Table generated by Excel2LaTeX from sheet 'Sheet3'
  \begin{table}[htbp]
   \centering
   \caption{An example of Proposition \ref{pro:superofCMNS2}}
@@ -1714,7 +1721,9 @@ As an example, consider the test case $t_{7}$ -- \{($p_{1}$, 1),($p_{2}$, 1),($p
     \end{tabular}%
 \quad
     \begin{tabular}{|c|c|} \hline
-   \multicolumn{2}{|c|}{\{$ s\ |\ s \preceq t_{7}\ \&\& \ \exists s_{1}' \in CMNS(HSS, t_{7}), s_{1}' \preceq s$\}}\\ \hline
+    
+   \multicolumn{2}{|c|}{ \{$ s\ |\ s \preceq t_{7}\ \&\& $ }\\
+   \multicolumn{2}{|c|}{\ $\exists s_{1}' \in CMNS(HSS, t_{7}), s_{1}' \preceq s$\} }\\ \hline
 
    $s_{31}$ & \{($p_{1}, 1$),($p_{2}, 1$)\} \\
    $s_{51}$ & \{($p_{1}, 1$),($p_{3}, 1$)\} \\
@@ -1749,52 +1758,47 @@ PSS =  \{ s\ |\ \exists s_{1}' \in CMNS(T_{pass}^{t\bigtriangleup}, t), s_{2}' \
 \end{equation}
 
 
-As an example, consider a failing test case $t_{7} = \{(p_{1}, 1),$ $ (p_{2}, 1), (p_{3}, 1), (p_{4}, 1)\}$, the minimal faulty schema set that is contained in this test case, that is, $\mathcal{C}(T_{fail})^{t}$ = $FSS =$ \{ $\{(p_{1}, $ $1), (p_{2}, 1)\}$, $\{(p_{3}, 1), (p_{4}, 1)\}$ \}, and the maximal healthy schema set that is contained in this test case, that is,  $T_{pass}^{t\bigtriangleup}$ = $HSS =$  \{ \{ $(p_{1}, 1)$, $(p_{4}, 1)$ \}, \{$(p_{2}, 1)$, $(p_{3}, 1)$ \} \}.
+As an example, consider a failing test case $t_{7} = \{(p_{1}, 1),$ $ (p_{2}, 1), (p_{3}, 1), (p_{4}, 1)\}$, the minimal faulty schema set that is contained in this test case, that is, $\mathcal{C}(T_{fail})^{t}$ = $FSS =$ \{ $\{(p_{1}, $ $1), (p_{2}, 1)\}$, $\{(p_{3}, 1), (p_{4}, 1)\}$ \}, and the maximal healthy schema set that is contained in this test case, that is,  $T_{pass}^{t\bigtriangleup}$ = $HSS =$  \{ \{ $(p_{1}, 1)$, $(p_{4}, 1)$ \}, \{$(p_{2}, 1)$, $(p_{3}, 1)$ \} \}. 
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-Based on these data, we have $FSS^{t_{7}}$ = \{ $\{(p_{1}, $ $1), (p_{2}, 1)\}$, $\{(p_{3}, 1), (p_{4}, 1)\}$ \}, and the maximal healthy schema set $HSS^{\top}$ $= \{\{ (p_{2}, 1), (p_{3}, 1), (p_{4}, 1) \}\}$.
-
-
-
-Table \ref{examleofeqpsssecond} shows this result, we can learn it is equal to the pending schemas we obtain before.
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-%Fig \ref{fig_minmax} lists all the faulty schemas, healthy schemas, and pending schemas of test case $t$. At the second part, it lists the $CMXS(FSS, t)$, $CMNS(HSS, t)$, and the schema set \{$ c\ |\ \exists c_{1}' \in CMXS(FSS, t)$, $c_{1}' \in CMNS(HSS, t)$, $c_{2}' \preceq c \preceq c_{1}'$ \}. At last it shows $CMXS(FSS^{\bot}, t)$, $CMNS(HSS^{\top}, t)$ and  \{$ c\ |\ \exists c_{1}' \in CMXS(FSS^{\bot}, t)$, $ c_{2}' \in CMNS($ $HSS^{\top}, t)$, $c_{2}' \preceq c \preceq c_{1}'$ \}.
+Table \ref{examleofeqpsssecond} shows this result $CMXS(FSS, t_{7})$ $CMNS(HSS, t_{7})$, and \{$\exists s_{1}' \in CMNS(HSS, t_{7})$, $s_{2}' \in CMXS(FSS, t_{7})$, $s_{1}' \preceq s \preceq s_{2}'$\}, we can learn the set \{$\exists s_{1}' \in CMNS(HSS, t_{7})$, $s_{2}' \in CMXS(FSS, t_{7})$, $s_{1}' \preceq s \preceq s_{2}'$\} is equal to the pending schema set we obtain in Table \ref{ex:pendingschemasinonetestcase} and \ref{ex:pendingschemasinonetestcaseusingfaultyandhealthy}, through Formula \ref{eq:pssfirst} and \ref{eq:pssfirst_mutated}, respectively.
 
 
  \begin{table}[htbp]
   \centering
   \caption{An example of Formula \ref{eq:psssecond}}
   \label{examleofeqpsssecond}
+  \begin{tabular}{|c|c|} \hline
+     \multicolumn{2}{|c|}{$CMXS(FSS, t_{7})$} \\ \hline
+   $s_{51}$ & \{($p_{1}, 1$),($p_{3}, 1$)\} \\
+   $s_{14}$ & \{($p_{1}, 1$),($p_{4}, 1$)\} \\
+   $s_{17}$ & \{($p_{2}, 1$),($p_{3}, 1$)\} \\
+   $s_{56}$ & \{($p_{2}, 1$),($p_{4}, 1$)\} \\
+    \hline
+    \end{tabular}%
+  \quad
     \begin{tabular}{|c|c|} \hline
-   \multicolumn{2}{|c|}{\{$\exists s_{1}' \in CMXS(FSS, t_{7})$, $s_{1}' \preceq s \&\& \exists s_{1}' \in CMNS(HSS, t_{7}), s_{1}' \preceq s$\}}\\ \hline
+     \multicolumn{2}{|c|}{$CMNS(HSS, t_{7})$} \\ \hline
+   $s_{31}$ & \{($p_{1}, 1$),($p_{2}, 1$)\} \\
+   $s_{51}$ & \{($p_{1}, 1$),($p_{3}, 1$)\} \\
+   $s_{56}$ & \{($p_{2}, 1$),($p_{4}, 1$)\} \\
+   $s_{32}$ & \{($p_{3}, 1$),($p_{4}, 1$)\} \\
+    \hline
+    \end{tabular}%
+   \quad
+    \begin{tabular}{|c|c|} \hline
+   \multicolumn{2}{|c|}{\{$\exists s_{1}' \in CMNS(HSS, t_{7})$, $s_{2}' \in CMXS(FSS, t_{7})$, $s_{1}' \preceq s \preceq s_{2}'$\}}\\ \hline
    $s_{51}$ & \{($p_{1}, 1$),($p_{3}, 1$)\} \\
    $s_{56}$ & \{($p_{2}, 1$),($p_{4}, 1$)\} \\ \hline
     \end{tabular}%
 \end{table}
 
 
-%\begin{figure*}[ht]
-% \centering
-% \includegraphics[width=5.6in]{minmax.pdf}
-% \caption{The example of Proposition }
-% \label{fig_minmax}
-%\end{figure*}
 
+According to Formula \ref{eq:psssecond}, the complexity of obtaining one pending schema is O($|\mathcal{C}(T_{fail})| + |T_{pass}|^{2} + \tau^{|\mathcal{C}(T_{fail})^{t}|} \times \tau^{|T_{pass}^{t\bigtriangleup}|}$). This is because we first need to obtain $\mathcal{C}(T_{fail})^{t}$ and $T_{pass}^{t\bigtriangleup}$, for which the complexities are $O(|\mathcal{C}(T_{fail})|)$ and $O(|T_{pass}|^{2})$. Then, to obtain one pending schema, we only need to search the schemas in $CMXS(\mathcal{C}(T_{fail})^{t}, t)$ and $CMNS(T_{pass}^{t\bigtriangleup}, t)$, of which the complexity are O($\tau^{|\mathcal{C}(T_{fail})^{t}|}$) and O($\tau^{|T_{pass}^{t\bigtriangleup}|}$), respectively. After that, we need to check each pair of schemas in these two sets, to find whether exists $c_{1} \in CMXS(\mathcal{C}(T_{fail})^{t}, t)$, $c_{2} \in CMNS(T_{pass}^{t\bigtriangleup}, t)$, such that $c_{2} \preceq c_{1}$. If so, then both $c_{2}$ and $c_{1}$ satisfy Formula \ref{eq:psssecond}. Furthermore, $\forall c_{3}, c_{2} \preceq c_{3} \preceq c_{1}$, $c_{3}$ also satisfy Formula \ref{eq:psssecond}. Hence, the complexity of obtaining one pending schema is O($|\mathcal{C}(T_{fail})| + |T_{pass}|^{2} + \tau^{|\mathcal{C}(T_{fail})^{t}|} \times \tau^{|T_{pass}^{t\bigtriangleup}|}$). Note that with Formula \ref{eq:psssecond}, we have eliminated the influence of the number $n$ (See Formula \ref{eq:pssfirst} and Formula \ref{eq:pssfirst_mutated}) to obtaining the pending schemas.
 
-According to Formula \ref{eq:psssecond}, the complexity of obtaining one pending schema is O($ \tau^{|\mathcal{C}(T_{fail})^{t}|} \times \tau^{|T_{pass}^{t\bigtriangleup}|}$). This is because to obtain one pending schema, we only need to search the schemas in $CMXS(\mathcal{C}(T_{fail})^{t}, t)$ and $CMNS(T_{pass}^{t\bigtriangleup}, t)$, of which the complexity are O($\tau^{|\mathcal{C}(T_{fail})^{t}|}$) and O($\tau^{|T_{pass}^{t\bigtriangleup}|}$), respectively. Then we need to check each pair of schemas in these two sets, to find whether exists $c_{1} \in CMXS(\mathcal{C}(T_{fail})^{t}, t)$, $c_{2} \in CMNS(T_{pass}^{t\bigtriangleup}, t)$, such that $c_{2} \preceq c_{1}$. If so, then both $c_{2}$ and $c_{1}$ satisfy Formula \ref{eq:psssecond}. Furthermore, $\forall c_{3}, c_{2} \preceq c_{3} \preceq c_{1}$, $c_{3}$ also satisfy Formula \ref{eq:psssecond}. Hence, the complexity of obtaining one pending schema is O($\tau^{|\mathcal{C}(T_{fail})^{t}|} \times \tau^{|T_{pass}^{t\bigtriangleup}|}$). Note that with Formula \ref{eq:psssecond}, we have eliminated the influence of the number $n$ (See Formula \ref{eq:pssfirst} and Formula \ref{eq:pssfirst_mutated}) to obtaining the pending schemas.
-
-\subsection{A case study of applying Formula }
-In this section, we will show a case study of how to obtain the pending schemas with Formula \ref{eq:pssthird}. For consistency, we use the example in the Section \ref{sec:motiv}. Next, we will show how to  apply Formula \ref{eq:pssthird} to obtain the pending schemas of the failing test case $t_{5}$ after using FINOLP. Note that other approaches can be obtained in the same way.
+\subsection{A case study of applying Formula \ref{eq:psssecond} }
+In this section, we will show a case study of how to obtain the pending schemas with Formula \ref{eq:psssecond}. For consistency, we use the example in the Section \ref{sec:motiv}. Next, we will show how to  apply Formula  \ref{eq:psssecond} to obtain the pending schemas of the failing test case $t_{5}$ after using FINOLP. Note that other approaches can be obtained in the same way.
 %  in the FINOLP. Others are shown in the appendix in a similar way.
 From Figure , we can learn that the maximal healthy schemas are the passing test cases themselves, which are $t_{1}$ ,..., and $t_{16}$. While the minimal faulty schemas are the MFS  (Other faulty schemas are the super schemas of this one).
 Then we can learn that.  Note that we can learn that .
