@@ -27,8 +27,7 @@ One simple solution is to exhaustively list all the schemas in one failing test 
 
 For all of these, a metric should be proposed to assist in evaluating the completeness of MFS identification approaches, and it should be more efficient than a simple exhaustive testing. In this paper, we proposed the notion of \textbf{pending schemas}, which indicates the schemas that cannot be determined to be faulty or not. By calculating the number of pending schemas in one failing test case, we can easily assess the extent to which the MFS identification approaches are incomplete. In fact, by the use of pending schemas, we can also evaluate the incompleteness of traditional covering arrays.
 
-Furthermore, we theoretically analyzed the relationships among schemas by proposing nine novel propositions. Based on them, we gave three equivalent formulas, but with different complexities, to obtain the pending schemas. Among these formulas, Formula 3 helps to reduce the complexity of obtaining pending schemas from O($2^{n}$) to O($ \tau^{|FSS^{\bot}|+|HSS^{\top}|}$), where $\tau$ is the number of parameter values in the MFS, and $|FSS^{\bot}|$ and $|HSS^{\top}|$ are two relatively small numbers and independent on the number of parameters $n$ in one test case. Formula 3 is much more efficient at obtaining pending schemas when compared to the exhaustive methods which consecutively checks schemas in one failing test case, especially when $n$ is large.
-
+Furthermore, we theoretically analyzed the relationships among schemas by proposing nine novel propositions. Based on them, we gave three equivalent formulas, but with different complexities, to obtain the pending schemas. Among these formulas, the last formula helps to reduce the complexity of obtaining pending schemas from $O(2^{n})$ to $O(\tau^{|\mathcal{C}(T_{fail})^{t}|} \times \tau^{|T_{pass}^{t\bigtriangleup}|})$, where $\tau$ is the number of parameter values in the MFS, and $|\mathcal{C}(T_{fail})^{t}|$ and $|T_{pass}^{t\bigtriangleup}|$ are two relatively small numbers and independent on the number of parameters $n$ in one test case. The last formula is much more efficient at obtaining pending schemas when compared to the exhaustive methods which consecutively checks schemas in one failing test case, especially when $n$ is large.
 
 We conducted a series empirical studies on some real software systems with various number of parameters and values. We first evaluated the incompleteness of traditional covering arrays and different fault localization approaches in CT. We also compared the efficiency of three formulas in terms of obtaining pending schemas. Our results mainly shows that the incompleteness in very common in the covering arrays and  MFS identification approaches. We also observed that Formula 3 is the most efficient formula among others in most cases.
 
@@ -37,7 +36,7 @@ We conducted a series empirical studies on some real software systems with vario
 
   \item We showed that the traditional covering arrays and the minimal failure-causing schema model are still incomplete in terms of the determination of schemas to be faulty or healthy.
   \item We introduced the notion of the pending schema to evaluate the incompleteness of these models in combinatorial testing.
-  \item We proposed several propositions to formulate the set of pending schemas and gave three equivalent formulas to obtain the pending schemas, based on which we reduced the complexity of obtaining pending schemas from O($2^{n}$) to O($ \tau^{|FSS^{\bot}|+|HSS^{\top}|}$), where $|FSS^{\bot}|$ and $|HSS^{\top}|$ are two relatively small numbers and independent on the number of $n$.
+  \item We proposed several propositions to formulate the set of pending schemas and gave three equivalent formulas to obtain the pending schemas in one test case, based on which we reduced the complexity of obtaining pending schemas from $O(2^{n})$ to $O(\tau^{|\mathcal{C}(T_{fail})^{t}|} \times \tau^{|T_{pass}^{t\bigtriangleup}|})$, where $|\mathcal{C}(T_{fail})^{t}|$ and $|T_{pass}^{t\bigtriangleup}|$ are two relatively small numbers and independent on the number of $n$.
   \item We conducted a series of experiments to evaluate the incompleteness of traditional covering arrays and MFS identification approaches. Besides, we also evaluated the efficiency of the three formulas on obtaining pending schemas.
 \end{itemize}
 
@@ -1119,7 +1118,7 @@ The proof of this equation is obvious and omitted here. In fact, Formula \ref{eq
 \end{table}
 
 
-Although focusing on the pending schemas in executed test cases reduce a lot of computation, however, to directly utilize Formula \ref{eq:pssfirst} is still not practical, especially when the number of factors in one test case is large. This is because in the worst case it needs to check every schema in a test case $t$. Note that the number of schemas in $t$ is $2^{n} - 1$, where $n$ is the number of factors in this test case. For each schema we need to check whether it is the sub-schemas of any test case in $T_{pass}$ (the number of the test cases in $T_{pass}$ is |$T_{pass}$|). We also need to check whether it is the super-schemas of any schema in $\mathcal{C}(T_{fail})$ (the number of the faulty schemas in $\mathcal{C}(T_{fail})$ is |$\mathcal{C}(T_{fail})$|). As a result, the complexity of directly utilizing Formula \ref{eq:pssfirst} is $2^{n} \times |T_{pass}| \times |\mathcal{C}(T_{fail})|$, which is infeasible to handle when $n$ is large. Hence, we need to find another formula which is equivalent to Formula \ref{eq:pssfirst}, but with much lower complexity.
+Although focusing on the pending schemas in executed test cases reduce a lot of computation, however, to directly utilize Formula \ref{eq:pssfirst} is still not practical, especially when the number of factors in one test case is large. This is because in the worst case it needs to check every schema in a test case $t$. Note that the number of schemas in $t$ is $2^{n} - 1$, where $n$ is the number of factors in this test case. For each schema we need to check whether it is the sub-schemas of any test case in $T_{pass}$ (the number of the test cases in $T_{pass}$ is |$T_{pass}$|). We also need to check whether it is the super-schemas of any schema in $\mathcal{C}(T_{fail})$ (the number of the faulty schemas in $\mathcal{C}(T_{fail})$ is |$\mathcal{C}(T_{fail})$|). As a result, the complexity of directly utilizing Formula \ref{eq:pssfirst} is $O(2^{n} \times |T_{pass}| \times |\mathcal{C}(T_{fail})|) \sim O(2^{n})$, which is infeasible to handle when $n$ is large. Hence, we need to find another formula which is equivalent to Formula \ref{eq:pssfirst}, but with much lower complexity.
 
 \subsection{Reduce the space of schemas to be checked}
 Our first step is to reduce the number of minimal faulty schemas to be checked for a pending schema.  For this, let $\mathcal{C}(T_{fail})^{t}$ be the minimal faulty schemas that are the subschemas of test case $t$. That is, $\mathcal{C}(T_{fail})^{t}$ = $\{ s\ | \ s \in \mathcal{C}(T_{fail}), s \preceq t \}$.  It is obvious that the complexity of obtaining $\mathcal{C}(T_{fail})^{t}$ from $\mathcal{C}(T_{fail})$ is $O(|\mathcal{C}(T_{fail})|)$.
@@ -1402,7 +1401,7 @@ By Formula \ref{eq:pssfirst_mutated}, we only need to use $\mathcal{C}(T_{fail})
 \end{table}
 
 
-With respect to Formula \ref{eq:pssfirst_mutated}, the complexity of obtaining the pending schemas is computed as follows. We first need to obtain $\mathcal{C}(T_{fail})^{t}$ and $T_{pass}^{t\bigtriangleup}$, for which the complexities are $O(|\mathcal{C}(T_{fail})|)$ and $O(|T_{pass}|^{2})$. Then we still need to check each schema in test case $t$, to figure whether it is subschema of some schema in $T_{pass}^{t\bigtriangleup}$ or super-schema of some schema in $\mathcal{C}(T_{fail})^{t}$, for which the complexity is $O(2^{n}* |\mathcal{C}(T_{fail})^{t}| * |T_{pass}^{t\bigtriangleup}|)$, where $n$ is the number of factors in the test case.  At last, the complexity is $O(|\mathcal{C}(T_{fail})| + |T_{pass}|^{2} + 2^{n}* |\mathcal{C}(T_{fail})^{t}| * |T_{pass}^{t\bigtriangleup}| )$. Obviously, this is still not feasible when $n$ is large.
+With respect to Formula \ref{eq:pssfirst_mutated}, the complexity of obtaining the pending schemas is computed as follows. We first need to obtain $\mathcal{C}(T_{fail})^{t}$ and $T_{pass}^{t\bigtriangleup}$, for which the complexities are $O(|\mathcal{C}(T_{fail})|)$ and $O(|T_{pass}|^{2})$. Then we still need to check each schema in test case $t$, to figure whether it is subschema of some schema in $T_{pass}^{t\bigtriangleup}$ or super-schema of some schema in $\mathcal{C}(T_{fail})^{t}$, for which the complexity is $O(2^{n}* |\mathcal{C}(T_{fail})^{t}| * |T_{pass}^{t\bigtriangleup}|)$, where $n$ is the number of factors in the test case.  At last, the complexity is $O(|\mathcal{C}(T_{fail})| + |T_{pass}|^{2} + 2^{n}* |\mathcal{C}(T_{fail})^{t}| * |T_{pass}^{t\bigtriangleup}| ) \sim O(2^{n})$. Obviously, this is still not feasible when $n$ is large.
 
 
 
@@ -1462,12 +1461,12 @@ Table \ref{examleOfCMXSPro} shows the schema set  \{$s\ |\ s \preceq t_{7}\ \&\&
    $s_{6}$ & \{($p_{3}, 1$)\} \\
    $s_{8}$ & \{($p_{4}, 1$)\} \\
    $s_{31}$ & \{($p_{1}, 1$),($p_{2}, 1$)\} \\
-   
+
    $s_{51}$ & \{($p_{1}, 1$),($p_{3}, 1$)\} \\
    $s_{14}$ & \{($p_{1}, 1$),($p_{4}, 1$)\} \\
    $s_{17}$ & \{($p_{2}, 1$),($p_{3}, 1$)\} \\
    $s_{56}$ & \{($p_{2}, 1$),($p_{4}, 1$)\} \\
-   
+
    $s_{35}$ & \{($p_{1}, 1$),($p_{2}, 1$),($p_{3}, 1$)\} \\
    $s_{37}$ & \{($p_{1}, 1$),($p_{2}, 1$),($p_{4}, 1$)\} \\   \hline
     \end{tabular}%
@@ -1485,12 +1484,12 @@ Table \ref{examleOfCMXSPro} shows the schema set  \{$s\ |\ s \preceq t_{7}\ \&\&
    $s_{6}$ & \{($p_{3}, 1$)\} \\
    $s_{8}$ & \{($p_{4}, 1$)\} \\
    $s_{31}$ & \{($p_{1}, 1$),($p_{2}, 1$)\} \\
-   
+
    $s_{51}$ & \{($p_{1}, 1$),($p_{3}, 1$)\} \\
    $s_{14}$ & \{($p_{1}, 1$),($p_{4}, 1$)\} \\
    $s_{17}$ & \{($p_{2}, 1$),($p_{3}, 1$)\} \\
    $s_{56}$ & \{($p_{2}, 1$),($p_{4}, 1$)\} \\
-   
+
    $s_{35}$ & \{($p_{1}, 1$),($p_{2}, 1$),($p_{3}, 1$)\} \\
    $s_{37}$ & \{($p_{1}, 1$),($p_{2}, 1$),($p_{4}, 1$)\} \\
    \hline
@@ -1725,7 +1724,7 @@ As an example, consider the test case $t_{7}$ -- \{($p_{1}$, 1),($p_{2}$, 1),($p
     \end{tabular}%
 \quad
     \begin{tabular}{|c|c|} \hline
-    
+
    \multicolumn{2}{|c|}{ \{$ s\ |\ s \preceq t_{7}\ \&\& $ }\\
    \multicolumn{2}{|c|}{\ $\exists s_{1}' \in CMNS(HSS, t_{7}), s_{1}' \preceq s$\} }\\ \hline
 
@@ -1762,7 +1761,7 @@ PSS =  \{ s\ |\ \exists s_{1}' \in CMNS(T_{pass}^{t\bigtriangleup}, t), s_{2}' \
 \end{equation}
 
 
-As an example, consider a failing test case $t_{7} = \{(p_{1}, 1),$ $ (p_{2}, 1), (p_{3}, 1), (p_{4}, 1)\}$, the minimal faulty schema set that is contained in this test case, that is, $\mathcal{C}(T_{fail})^{t}$ = $FSS =$ \{ $\{(p_{1}, $ $1), (p_{2}, 1)\}$, $\{(p_{3}, 1), (p_{4}, 1)\}$ \}, and the maximal healthy schema set that is contained in this test case, that is,  $T_{pass}^{t\bigtriangleup}$ = $HSS =$  \{ \{ $(p_{1}, 1)$, $(p_{4}, 1)$ \}, \{$(p_{2}, 1)$, $(p_{3}, 1)$ \} \}. 
+As an example, consider a failing test case $t_{7} = \{(p_{1}, 1),$ $ (p_{2}, 1), (p_{3}, 1), (p_{4}, 1)\}$, the minimal faulty schema set that is contained in this test case, that is, $\mathcal{C}(T_{fail})^{t}$ = $FSS =$ \{ $\{(p_{1}, $ $1), (p_{2}, 1)\}$, $\{(p_{3}, 1), (p_{4}, 1)\}$ \}, and the maximal healthy schema set that is contained in this test case, that is,  $T_{pass}^{t\bigtriangleup}$ = $HSS =$  \{ \{ $(p_{1}, 1)$, $(p_{4}, 1)$ \}, \{$(p_{2}, 1)$, $(p_{3}, 1)$ \} \}.
 
 
 Table \ref{examleofeqpsssecond} shows this result $CMXS(FSS, t_{7})$ $CMNS(HSS, t_{7})$, and \{$\exists s_{1}' \in CMNS(HSS, t_{7})$, $s_{2}' \in CMXS(FSS, t_{7})$, $s_{1}' \preceq s \preceq s_{2}'$\}, we can learn the set \{$\exists s_{1}' \in CMNS(HSS, t_{7})$, $s_{2}' \in CMXS(FSS, t_{7})$, $s_{1}' \preceq s \preceq s_{2}'$\} is equal to the pending schema set we obtain in Table \ref{ex:pendingschemasinonetestcase} and \ref{ex:pendingschemasinonetestcaseusingfaultyandhealthy}, through Formula \ref{eq:pssfirst} and \ref{eq:pssfirst_mutated}, respectively.
@@ -1799,7 +1798,7 @@ Table \ref{examleofeqpsssecond} shows this result $CMXS(FSS, t_{7})$ $CMNS(HSS, 
 
 
 
-According to Formula \ref{eq:psssecond}, the complexity of obtaining one pending schema is O($|\mathcal{C}(T_{fail})| + |T_{pass}|^{2} + \tau^{|\mathcal{C}(T_{fail})^{t}|} \times \tau^{|T_{pass}^{t\bigtriangleup}|}$). This is because we first need to obtain $\mathcal{C}(T_{fail})^{t}$ and $T_{pass}^{t\bigtriangleup}$, for which the complexities are $O(|\mathcal{C}(T_{fail})|)$ and $O(|T_{pass}|^{2})$. Then, to obtain one pending schema, we only need to search the schemas in $CMXS(\mathcal{C}(T_{fail})^{t}, t)$ and $CMNS(T_{pass}^{t\bigtriangleup}, t)$, of which the complexity are O($\tau^{|\mathcal{C}(T_{fail})^{t}|}$) and O($\tau^{|T_{pass}^{t\bigtriangleup}|}$), respectively. After that, we need to check each pair of schemas in these two sets, to find whether exists $c_{1} \in CMXS(\mathcal{C}(T_{fail})^{t}, t)$, $c_{2} \in CMNS(T_{pass}^{t\bigtriangleup}, t)$, such that $c_{2} \preceq c_{1}$. If so, then both $c_{2}$ and $c_{1}$ satisfy Formula \ref{eq:psssecond}. Furthermore, $\forall c_{3}, c_{2} \preceq c_{3} \preceq c_{1}$, $c_{3}$ also satisfy Formula \ref{eq:psssecond}. Hence, the complexity of obtaining one pending schema is O($|\mathcal{C}(T_{fail})| + |T_{pass}|^{2} + \tau^{|\mathcal{C}(T_{fail})^{t}|} \times \tau^{|T_{pass}^{t\bigtriangleup}|}$). Note that with Formula \ref{eq:psssecond}, we have eliminated the influence of the number $n$ (See Formula \ref{eq:pssfirst} and Formula \ref{eq:pssfirst_mutated}) to obtaining the pending schemas.
+According to Formula \ref{eq:psssecond}, the complexity of obtaining one pending schema is O($|\mathcal{C}(T_{fail})| + |T_{pass}|^{2} + \tau^{|\mathcal{C}(T_{fail})^{t}|} \times \tau^{|T_{pass}^{t\bigtriangleup}|}$). This is because we first need to obtain $\mathcal{C}(T_{fail})^{t}$ and $T_{pass}^{t\bigtriangleup}$, for which the complexities are $O(|\mathcal{C}(T_{fail})|)$ and $O(|T_{pass}|^{2})$. Then, to obtain one pending schema, we only need to search the schemas in $CMXS(\mathcal{C}(T_{fail})^{t}, t)$ and $CMNS(T_{pass}^{t\bigtriangleup}, t)$, of which the complexity are O($\tau^{|\mathcal{C}(T_{fail})^{t}|}$) and O($\tau^{|T_{pass}^{t\bigtriangleup}|}$), respectively. After that, we need to check each pair of schemas in these two sets, to find whether exists $c_{1} \in CMXS(\mathcal{C}(T_{fail})^{t}, t)$, $c_{2} \in CMNS(T_{pass}^{t\bigtriangleup}, t)$, such that $c_{2} \preceq c_{1}$. If so, then both $c_{2}$ and $c_{1}$ satisfy Formula \ref{eq:psssecond}. Furthermore, $\forall c_{3}, c_{2} \preceq c_{3} \preceq c_{1}$, $c_{3}$ also satisfy Formula \ref{eq:psssecond}. Hence, the complexity of obtaining one pending schema is $O(|\mathcal{C}(T_{fail})| + |T_{pass}|^{2} + \tau^{|\mathcal{C}(T_{fail})^{t}|} \times \tau^{|T_{pass}^{t\bigtriangleup}|})  \sim O( \tau^{|\mathcal{C}(T_{fail})^{t}|} \times \tau^{|T_{pass}^{t\bigtriangleup}|}) $. Note that with Formula \ref{eq:psssecond}, we have eliminated the influence of the number $n$ (See Formula \ref{eq:pssfirst} and Formula \ref{eq:pssfirst_mutated}) to obtaining the pending schemas.
 
 \subsection{A case study of applying Formula \ref{eq:psssecond} }
 In this section, we will show a case study of how to obtain the pending schemas with Formula \ref{eq:psssecond}. For consistency, we use the example in the Section \ref{sec:motiv}. Next, we will show how to  apply Formula  \ref{eq:psssecond} to obtain the pending schemas of the failing test case $t_{5}$ after using FINOLP. Note that other approaches can be obtained in the same way.
@@ -1863,13 +1862,13 @@ Our previous work \cite{niu2013identifying} proposed an approach that utilizes t
 \section{Conclusion}\label{sec:conclusion}
 To identify the MFS in the SUT is important because it provides additional supports to find the cause of the failure. Although many efforts have been proposed to make the MFS identification approaches more efficient and effective, the existence of pending schemas still make them incomplete, which would be hidden dangers to the software under testing. Hence, to identify these pending schemas is of great importance to reveal such potential risks.
 
-In this paper, we studied the characteristics of the relationships among faulty schemas, healthy schemas, minimal failure-causing schemas, and maximal healthy schemas. The subsuming relationships among them form the basis of the methodology for pending schemas. Particulary, we proposed several propositions to formulate the set of pending schemas and give three equivalent formulas to obtain them. Among the three formulas, the last formula reduce the complexity of obtaining pending schemas from O($2^{n}$) to O($ \tau^{|FSS^{\bot}|+|HSS^{\top}|}$), where $n$ is the number of factors in the software, while $|FSS^{\bot}|$ and $|HSS^{\top}|$ are two relatively small numbers and independent on the number of $n$.
+In this paper, we studied the characteristics of the relationships among faulty schemas, healthy schemas, minimal failure-causing schemas, and maximal healthy schemas. The subsuming relationships among them form the basis of the methodology for pending schemas. Particulary, we proposed several propositions to formulate the set of pending schemas and give three equivalent formulas to obtain them in one test case. Among the three formulas, the last formula reduce the complexity of obtaining pending schemas from $O(2^{n})$ to $O(\tau^{|\mathcal{C}(T_{fail})^{t}|} \times \tau^{|T_{pass}^{t\bigtriangleup}|})$, where $n$ is the number of factors in the software, while $|\mathcal{C}(T_{fail})^{t}|$ and $|T_{pass}^{t\bigtriangleup}|$ are two relatively small numbers and independent on the number of $n$.
 
 We conduct a series empirical studies on some real software systems with various number of parameters and values. Our results shows that the incompleteness in very common in the covering arrays and MFS identification approaches. We also observed that the third proposed formula is the most efficient when compared others in most cases.
 
 As a future work, it is appealing to take the advantages of the pending schemas to assist in the MFS identification approaches. More specifically, we would like to develop a new framework for MFS identification, which take the pending schemas as a indicator. That is, any MFS identification algorithm that runs on this framework aims to empty the set of pending schemas. It is of interest to evaluate the efficiency and effectiveness of this framework with respect to various MFS identification approaches that run on it.
 
-Another interesting futher work is to obtain a general theory of pending schemas, faulty schemas, and healthy schemas.
+Another interesting future work is to obtain a general theory of pending schemas, faulty schemas, and healthy schemas.
 
 % Appendix
 \appendix

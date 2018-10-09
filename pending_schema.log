@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6500) (preloaded format=pdflatex 2017.12.21)  9 OCT 2018 14:26
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6500) (preloaded format=pdflatex 2017.12.21)  9 OCT 2018 22:21
 entering extended mode
 **./pending_schema.tex
 (pending_schema.tex
@@ -1089,11 +1089,11 @@ LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/n' will be
 <ca.pdf, id=210, pagebox=cropbox, 599.23875pt x 472.76625pt>
 File: ca.pdf Graphic file (type pdf)
 <use ca.pdf>
-Package pdftex.def Info: ca.pdf  used on input line 66. on input line 66.
+Package pdftex.def Info: ca.pdf  used on input line 65. on input line 65.
 Package pdftex.def Info: Requested size: 404.71243pt x 319.30544pt on input lin
-e 66.
+e 65.
 
-Overfull \hbox (8.88994pt too wide) in paragraph at lines 66--67
+Overfull \hbox (8.88994pt too wide) in paragraph at lines 65--66
  [][] 
  []
 
@@ -1101,12 +1101,12 @@ Overfull \hbox (8.88994pt too wide) in paragraph at lines 66--67
 <ofot_single.pdf, id=547, pagebox=cropbox, 597.23125pt x 493.845pt>
 File: ofot_single.pdf Graphic file (type pdf)
 <use ofot_single.pdf>
-Package pdftex.def Info: ofot_single.pdf  used on input line 104. on input line
- 104.
+Package pdftex.def Info: ofot_single.pdf  used on input line 103. on input line
+ 103.
 Package pdftex.def Info: Requested size: 404.71243pt x 334.65723pt on input lin
-e 104.
+e 103.
 
-Overfull \hbox (8.88994pt too wide) in paragraph at lines 104--105
+Overfull \hbox (8.88994pt too wide) in paragraph at lines 103--104
  [][] 
  []
 
@@ -1114,12 +1114,12 @@ Overfull \hbox (8.88994pt too wide) in paragraph at lines 104--105
 <ofot_multi.pdf, id=840, pagebox=cropbox, 603.25375pt x 498.86375pt>
 File: ofot_multi.pdf Graphic file (type pdf)
 <use ofot_multi.pdf>
-Package pdftex.def Info: ofot_multi.pdf  used on input line 118. on input line 
-118.
+Package pdftex.def Info: ofot_multi.pdf  used on input line 117. on input line 
+117.
 Package pdftex.def Info: Requested size: 404.71243pt x 334.67848pt on input lin
-e 118.
+e 117.
 
-Overfull \hbox (8.88994pt too wide) in paragraph at lines 118--119
+Overfull \hbox (8.88994pt too wide) in paragraph at lines 117--118
  [][] 
  []
 
@@ -1127,32 +1127,32 @@ Overfull \hbox (8.88994pt too wide) in paragraph at lines 118--119
 <fic.pdf, id=1125, pagebox=cropbox, 598.235pt x 495.8525pt>
 File: fic.pdf Graphic file (type pdf)
 <use fic.pdf>
-Package pdftex.def Info: fic.pdf  used on input line 134. on input line 134.
+Package pdftex.def Info: fic.pdf  used on input line 133. on input line 133.
 Package pdftex.def Info: Requested size: 383.03122pt x 317.4807pt on input line
- 134.
+ 133.
  [8.8 <./fic.pdf>]
 <finovlp.pdf, id=1420, pagebox=cropbox, 600.2425pt x 798.985pt>
 File: finovlp.pdf Graphic file (type pdf)
 <use finovlp.pdf>
-Package pdftex.def Info: finovlp.pdf  used on input line 150. on input line 150
+Package pdftex.def Info: finovlp.pdf  used on input line 149. on input line 149
 .
 Package pdftex.def Info: Requested size: 383.03122pt x 509.8613pt on input line
- 150.
+ 149.
 <non-pending.pdf, id=1424, pagebox=cropbox, 602.25pt x 687.56876pt>
 File: non-pending.pdf Graphic file (type pdf)
 <use non-pending.pdf>
-Package pdftex.def Info: non-pending.pdf  used on input line 165. on input line
- 165.
+Package pdftex.def Info: non-pending.pdf  used on input line 164. on input line
+ 164.
 Package pdftex.def Info: Requested size: 383.03122pt x 437.31473pt on input lin
-e 165.
+e 164.
  [9.9] [10.10 <./finovlp.pdf>]
 [11.11 <./non-pending.pdf>]
 \c@assumption=\count147
  [12.12]
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/sc' will be
-(Font)              scaled to size 10.0pt on input line 215.
+(Font)              scaled to size 10.0pt on input line 214.
  [13.13] [14.14] [15.15] [16.16]
-Overfull \hbox (5.83913pt too wide) in paragraph at lines 464--465
+Overfull \hbox (5.83913pt too wide) in paragraph at lines 463--464
 \LMS/ntxsy/m/n/10 C¹\OML/nxlmi/m/it/10 T\LMS/ntxsy/m/n/10 º\OML/nxlmi/m/it/10 ;
  s:t:;  s[] \LMS/ntxsy/m/n/10  \OML/nxlmi/m/it/10 s$\T1/LinuxLibertineT-TLF/m/
 n/10 (-20) . Cor-re-spond-ingly $\LMS/ntxsy/m/n/10 T¹\OML/nxlmi/m/it/10 s\LMS/n
@@ -1162,18 +1162,18 @@ LMS/ntxsy/m/n/10 2 T¹\OML/nxlmi/m/it/10 s[]\LMS/ntxsy/m/n/10 º  [][] T¹\OML/nx
 lmi/m/it/10 s\LMS/ntxsy/m/n/10 º$\T1/LinuxLibertineT-TLF/m/n/10 (-20) . 
  []
 
-[17.17] [18.18] [19.19] [20.20] [21.21] [22.22] [23.23] [24.24]
+[17.17] [18.18] [19.19] [20.20] [21.21] [22.22] [23.23]
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/it' will be
-(Font)              scaled to size 10.0pt on input line 986.
- [25.25]
+(Font)              scaled to size 10.0pt on input line 985.
+ [24.24] [25.25]
 [26.26] [27.27] [28.28] [29.29] [30.30]
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 7.3pt on input line 1337.
+(Font)              scaled to size 7.3pt on input line 1336.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 5.5pt on input line 1337.
+(Font)              scaled to size 5.5pt on input line 1336.
  [31.31] [32.32] [33.33] [34.34]
 [35.35]
-Overfull \hbox (9.46637pt too wide) in paragraph at lines 1683--1684
+Overfull \hbox (9.46637pt too wide) in paragraph at lines 1682--1683
 []\T1/LinuxLibertineT-TLF/m/n/10 (-20) Let $\OML/nxlmi/m/it/10 B \U/ntxmia/m/it
 /10 =$ \T1/LinuxLibertineT-TLF/m/n/10 (-20) {$\OML/nxlmi/m/it/10 s \LMS/ntxsy/m
 /n/10 j \OML/nxlmi/m/it/10 s \LMS/ntxsy/m/n/10  \OML/nxlmi/m/it/10 t \OT1/Linu
@@ -1210,29 +1210,26 @@ Package rerunfilecheck Warning: File `pending_schema.out' has changed.
 Package rerunfilecheck Info: Checksums for `pending_schema.out':
 (rerunfilecheck)             Before: 70693F7D7EC5EB74242F07043B2A432A;9438
 (rerunfilecheck)             After:  2EE17F87E3EC067D657860F3D95650EC;6897.
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
  )
 (\end occurred inside a group at level 1)
 
-### simple group (level 1) entered at line 1606 ({)
+### simple group (level 1) entered at line 1605 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 19556 strings out of 493312
- 296358 string characters out of 3143321
- 423704 words of memory out of 3000000
+ 19539 strings out of 493312
+ 296216 string characters out of 3143321
+ 431727 words of memory out of 3000000
  21872 multiletter control sequences out of 15000+200000
- 200934 words of font info for 478 fonts, out of 3000000 for 9000
+ 195478 words of font info for 461 fonts, out of 3000000 for 9000
  1302 hyphenation exceptions out of 8191
- 60i,17n,94p,1804b,610s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 60i,17n,94p,1879b,610s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/CTEX/MikTex2.9/fonts/enc/dvips/libertine/lbtn_ki75ao.enc}{C
 :/CTEX/MikTex2.9/fonts/enc/dvips/newtx/libertinealt.enc}{C:/CTEX/MikTex2.9/font
 s/enc/dvips/libertine/lbtn_ncsllp.enc}{C:/CTEX/MikTex2.9/fonts/enc/dvips/libert
 ine/lbtn_7grukw.enc}{C:/CTEX/MikTex2.9/fonts/enc/dvips/libertine/lbtn_nh77jq.en
 c}{C:/CTEX/MikTex2.9/fonts/enc/dvips/libertine/lbtn_naooyc.enc}{C:/CTEX/MikTex2
-.9/fonts/enc/dvips/base/8r.enc}{C:/CTEX/MikTex2.9/fonts/enc/dvips/libertine/lbt
-n_oexx6f.enc}{C:/CTEX/MikTex2.9/fonts/enc/dvips/libertine/lbtn_76gpa5.enc}{C:/C
+.9/fonts/enc/dvips/libertine/lbtn_oexx6f.enc}{C:/CTEX/MikTex2.9/fonts/enc/dvips
+/base/8r.enc}{C:/CTEX/MikTex2.9/fonts/enc/dvips/libertine/lbtn_76gpa5.enc}{C:/C
 TEX/MikTex2.9/fonts/enc/dvips/libertine/lbtn_25tcsq.enc}<C:/CTEX/MikTex2.9/font
 s/type1/public/libertine/LinBiolinumT.pfb><C:/CTEX/MikTex2.9/fonts/type1/public
 /libertine/LinBiolinumTB.pfb><C:/CTEX/MikTex2.9/fonts/type1/public/libertine/Li
@@ -1247,7 +1244,7 @@ wtx/txexs.pfb><C:/CTEX/MikTex2.9/fonts/type1/public/txfonts/txsya.pfb><C:/CTEX/
 MikTex2.9/fonts/type1/public/txfonts/txsyb.pfb><C:/CTEX/MikTex2.9/fonts/type1/p
 ublic/txfonts/txsyc.pfb><C:/CTEX/MikTex2.9/fonts/type1/public/newtx/txsys.pfb><
 C:/CTEX/MikTex2.9/fonts/type1/public/newtx/zxlri.pfb>
-Output written on pending_schema.pdf (40 pages, 2415297 bytes).
+Output written on pending_schema.pdf (40 pages, 2415446 bytes).
 PDF statistics:
  2637 PDF objects out of 2984 (max. 8388607)
  182 named destinations out of 1000 (max. 500000)
