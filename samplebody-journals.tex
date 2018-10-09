@@ -793,10 +793,7 @@ The proof of this proposition is obvious and hence omitted. This proposition tel
 
 \section{The determinability of schemas}\label{sec:pending}
 In this section, we will introduce the notion of the determinability of schemas and its properties. Based on this, we give the formal definition of the pending schema.
-%Based on several theoretical analysis about pending schema, we will give an efficient approach to obtain them. Then we will show a case study of  how to apply this approach on identifying the pending schemas.
 
-
-%To give a better description, we will give several propositions which provide theoretical supports for our approach. The proofs of these propositions are given in the Appendix.
 
 \subsection{The determinable schemas}\label{sec:pending:determinable}
 %Before we give a formal definition of pending schema, we need to first give the definition of ``a determinable schema".
@@ -984,16 +981,12 @@ Note that Formula \ref{eq:dss} is equal to the formula \ref{eq:dss_1}. The proof
 \subsection{The pending schemas}\label{sec:pending:pending}
 
 After the introduction of determinable schemas and their properties, we can easily define the indeterminable schemas, i.e., the pending schemas.
-%Through these motivating examples, we can learn that the pending schema is not checked to be healthy and faulty. Hence, we give the definition of the pending schema as follows.
 
 \begin{definition}\label{de:pending}
 A schema is called a \textbf{\emph{pending} schema}, if and only if it cannot be determined to be healthy schema or faulty schema according to given information.
 \end{definition}
 
 
-%\begin{definition}\label{de:deteminable}
-%A schema is determinable if and only if it is determined to be healthy schema or faulty schema according to given information.
-%\end{definition}
 From this definition, it is obvious that the pending schema is the converse of determinable schema. That is, with given information, if a schema is determinable, then it is not a pending schema; and if it is not determinable, it must be a pending schema. The \emph{pending} schema is actually the \emph{cannot-be-determined} schema discussed in Section \ref{sec:intro} and Section \ref{sec:motiv}, which is the key schema we focus on in this paper. To analyse the pending schemas in one failing test case is important to evaluate the completeness of the test.  Next, we will give the first property about the pending schema.
 
 \begin{proposition}[Sandwich rule]\label{pro:pendingsandwich}
@@ -1094,27 +1087,18 @@ PSS=\{ s\ |\ \forall t \in T_{pass},  s \npreceq t  \ \&\& \  \forall m \in \mat
 It is obviously $PSS$ and $DSS$ are complemented.
 
 
-%Note that this formula is unsolvable, if and only if $stat(s, fail)$ is not true. Hence, it can only be $stat(s, true)$ be true. Hence, $s$ must be a healthy schema.  (can be provable.)
-
 \section{Obtaining the pending schemas in one failing test case}\label{sec:pending:obtaining}
 
 In the previous section, we have already obtained the formula to describe the set of pending schemas for given information. However, this set is usually too large and contains many schemas that never appear in any executed test cases. As an example, in Table \ref{ex:pendingschemas}, the schema $s_{58}$ \{($p_{1}, 0$), ($p_{2}, 0$), ($p_{3}, 0$)\} neither appears in the $T_{pass}$ nor appears in $T_{fail}$. These schemas are evidently pending schemas since they do not even have the chance to be tested. In this paper, we only focus on these schemas that have already appeared in the executed test cases. This is because after testing and MFS identification, testers may have a false confidence on the fact that all the schemas appeared in these test cases are determinable, which may result in hidden dangers to the system under testing if the fact is not true (some of them are not determinable). For example in Table \ref{ex:pendingschemas}, the schema $s_{51}$  \{($p_{1}, 1$), ($p_{3}, 1$)\} is a pending schema, but it has already appeared in the executed failing test cases $t_{3}$ $t_{6}$, and $t_{7}$.
-% but the fact is the extences of the pending schemas in these test cases, the testing and MFS identification is still not complete. Consequently, we only focus the pending schemas that appeared in the generated test cases.
-
-%Since all the schemas in the passing test cases are determinable (healthy), what we focus is the pending schemas in the failing test cases.
 
 More formally,  given a failing test case $t$ =\{$(p_{1}, v_{1})$, $(p_{2}, v_{2})$, ..., $(p_{n}, v_{n})$\},  a set of passing test cases $T_{pass}$, a set of failing test cases $T_{fail}$, our goal is to find the set of pending schemas in test case $t$.
 
 
 We will settle this problem step by step.  According to Formula \ref{eq:pss}, we can easily obtain the pending schemas in the failing test case are in the following set.
 
-%the $\forall s $, $s \in HSS$ or $\forall s \in HSS, s' \prec s$ is a healthy schema. That is $s \preceq s' in HSS$ is healthy schema. Note that according to these information (We cannot generate and execute more test cases to obtain more information), we can only dong this. Second, .
-
-% and \ref{pro:superoffaulty}, it is easy to find that, the pending schemas set PSS should be the following set
 \begin{equation}
 \begin{aligned}\label{eq:pssfirst}
 PSS=\{ s\ |\ s \preceq t\ \&\&\ \forall t \in T_{pass},  s \npreceq t  \ \&\& \  \forall m \in \mathcal{C}(T_{fail}), m \npreceq s \}.
-%PSS=\{ s\ |\ s \preceq t\ \&\&\ \forall m \in MFSS,  m \npreceq s  \ \&\&\  \forall t_{i} \in PTS, s \npreceq t_{i} \} .
 \end{aligned}
 \end{equation}
 
@@ -1140,9 +1124,6 @@ Although focusing on the pending schemas in executed test cases reduce a lot of 
 \subsection{Reduce the space of schemas to be checked}
 Our first step is to reduce the number of minimal faulty schemas to be checked for a pending schema.  For this, let $\mathcal{C}(T_{fail})^{t}$ be the minimal faulty schemas that are the subschemas of test case $t$. That is, $\mathcal{C}(T_{fail})^{t}$ = $\{ s\ | \ s \in \mathcal{C}(T_{fail}), s \preceq t \}$.  It is obvious that the complexity of obtaining $\mathcal{C}(T_{fail})^{t}$ from $\mathcal{C}(T_{fail})$ is $O(|\mathcal{C}(T_{fail})|)$.
 
-%Let $\mathcal{C}(T_{fail})^{t\circ}$ = $\mathcal{C}(T_{fail}) \backslash \mathcal{C}(T_{fail})^{t}$.
-
-%We have the following propositions.
 
 \begin{proposition}[Reduce to fault schemas in t]\label{pro:mfssintequal}
 Let schema set $A$ = $\{ s\ |\ s \preceq t\ \&\&\ \forall m \in \mathcal{C}(T_{fail}),  m \npreceq s \}$,  schema set $B$ = $\{ s\ |\ s \preceq t\ \&\&\ \forall m \in \mathcal{C}(T_{fail})^{t},  m \npreceq s \}$. Then we have $A = B$.
@@ -1259,7 +1240,6 @@ Let schema set $A$ = $\{ s\ |\ s \preceq t\ \&\&\  \forall t_{i} \in T_{pass}, s
 
 \begin{proof}
 Note that $T_{pass}^{t}$ = $\{ s\ |\exists t' \in T_{pass}, s =  t' \cap t \}$.
-%and we have $\forall s \in T_{pass}^{t}, s \preceq t \&\& \exists t' \in T_{pass}, s \preceq t'$.
 
 We first prove that $A \subseteq B$. Note for each $s \in A$, we have $s \preceq t \&\& \forall t_{i} \in T_{pass}, s \npreceq t_{i}$. We assume that $\exists s \in A, \exists s' \in T_{pass}^{t}, s \preceq s'$. For $s'$, $\exists t' \in T_{pass}, s' \preceq t'$. Hence, $s  \preceq s' \preceq t'$. This is contradiction. Hence the assumption does not hold, indicating that $\forall s \in A, \forall s' \in T_{pass}^{t}, s \npreceq s' \&\& s \preceq t$. That is $\forall s \in A$, $s \in B$. Hence, $A \subseteq B$.
 
@@ -1270,7 +1250,6 @@ Since we have $A \subseteq B$ and $B \subseteq A$, we have $A = B$.
 
 With this proposition, we do not need to check each passing test case. Instead, we only need to focus on the intersection part of passing test cases and the failing test case.  Going back to the previous example,  we still consider the SUT with $T_{pass}$, $T_{fail}$, and $T_{unkonwn}$ shown as in Table \ref{ex:determinableschemassut}. In this example, $T_{pass}$ contains two passing test cases, which are  $t_{8}$ \{($p_{1}, 0$), ($p_{2}, 1$), ($p_{3}, 1$), ($p_{4}, 0$)\} and  $t_{9}$  \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 1$)\}, respectively. We next turn back to the failing test case $t_{7}$ =  \{ ($p_{1}, 1$), ($p_{2}, 1$), ($p_{3}, 1$), ($p_{4}, 1$)\}. For this test case, we have $T_{pass}^{t_{7}}$ = \{ \{($p_{1}, 1$) , ($p_{4}, 1$)\}, \{($p_{2}, 1$), ($p_{3}, 1$)\} \}.
 
-%\{($p_{1}, 1$)\}, \{($p_{2}, 1$)\}, \{($p_{3}, 1$)\},  \{($p_{4}, 1$)\},
 
 Table \ref{ex:healthyintequal} shows these two schema sets, i.e., $\{ s\ |\ s \preceq t_{7}\ \&\&\  \forall t_{i} \in T_{pass}, s \npreceq t_{i} \} $ and $\{ s\ |\ s \preceq t_{7}\ \&\&\ \forall m \in T_{pass}^{t_{7}}, s \npreceq m \}$. We can learn these two sets are equal.
 
@@ -1334,12 +1313,9 @@ With this proposition, we do not need to check each schema in $T_{pass}^{t}$, in
 
 Going back to the previous example, we have $T_{pass}^{t_{7}\bigtriangleup}$ = \{ \{($p_{1}, 1$) , ($p_{4}, 1$)\}, \{($p_{2}, 1$), ($p_{3}, 1$)\} \}. Since in this example  $T_{pass}^{t_{7}\bigtriangleup}$ =  $T_{pass}^{t_{7}}$, it is obvious that  $\{ s\ |\ s \preceq t_{7}\ \&\&\ \forall m \in T_{pass}^{t_{7}}, s \npreceq m \}$ =  $\{ s\ |\ s \preceq t_{7}\ \&\&\ \forall m \in T_{pass}^{t_{7}\bigtriangleup}, s \npreceq m \}$.   Table \ref{ex:maximalhealthyintequal} shows the schemas of $\{ s\ |\ s \preceq t_{7}\ \&\&\ \forall m \in T_{pass}^{t_{7}\bigtriangleup}, s \npreceq m \}$.
 
-%we can observe this set is equal to the previous schema sets, that are  $\{ s\ |\ s \preceq t_{7}\ \&\&\  \forall t_{i} \in T_{pass}, s \npreceq t_{i} \} $ and $\{ s\ |\ s \preceq t_{7}\ \&\&\ \forall m \in T_{pass}^{t_{7}}, s \npreceq m \}$, respectively.
-
-
  \begin{table}[htbp]
   \centering
-  \caption{An example of the reduction to maximal healthy schemas}
+  \caption{The first example of the reduction to maximal healthy schemas}
   \label{ex:maximalhealthyintequal}
     \begin{tabular}{|c|c|} \hline
      \multicolumn{2}{|c|}{$\{ s\ |\ s \preceq t_{7}\ \&\&\ \forall m \in T_{pass}^{t_{7}\bigtriangleup}, s \npreceq m \}$} \\ \hline
@@ -1357,17 +1333,15 @@ Going back to the previous example, we have $T_{pass}^{t_{7}\bigtriangleup}$ = \
     \end{tabular}%
   \end{table}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-To depicts Proposition \ref{pro:healthysintequal2} more clearly, we next check this proposition in the condition that $T_{pass}^{t\bigtriangleup} \neq T_{pass}^{t}$. Since in the previous examples, for any test case $t$ in the SUT,  $T_{pass}^{t\bigtriangleup}$ always equals to $T_{pass}^{t}$ (the two test cases in $T_{pass}$ are two disjoint schemas), we need to consider other test sets instead of $T_{pass}$ to check this proposition. We let $T_{temp} =$ \{$ t_{1} , t_{2} $\}, where $t_{1}$ = \{$(p_{1}, 0)$, $(p_{2}, 0)$, $(p_{3}, 1)$, $(p_{4}, 1)$ \}, and $t_{2}$ = \{$(p_{1}, 0)$, $(p_{2}, 1)$, $(p_{3}, 1)$, $(p_{4}, 1)$ \}, as shown in Table \ref{ex:determinableschemassut}.  Next, we still focus the failing test case $t_{7}$, and we have $T_{temp}^{t_{7}}$ = \{ \{$(p_{3}, 1)$, $(p_{4}, 1)$ \}, \{$(p_{2}, 1)$, $(p_{3}, 1)$, $(p_{4}, 1)$ \} \}, while $T_{temp}^{t_{7}\bigtriangleup}$ = \{ \{$(p_{2}, 1)$, $(p_{3}, 1)$, $(p_{4}, 1)$ \} \}. These two schema sets are not equal. Table \ref{ex:maximalhealthyintequal2} shows the schemas of $\{ s\ |\ s \preceq t_{7}\ \&\&\ \forall m \in T_{temp}^{t_{7}}, s \npreceq m \}$ and $\{ s\ |\ s \preceq t_{7}\ \&\&\ \forall m \in T_{temp}^{t_{7}\bigtriangleup}, s \npreceq m \}$, we find these two schema sets are still equal.
+To depicts Proposition \ref{pro:healthysintequal2} more clearly, we next check this proposition in the condition that $T_{pass}^{t\bigtriangleup} \neq T_{pass}^{t}$. Since in the previous examples, for any test case $t$ in the SUT,  $T_{pass}^{t\bigtriangleup}$ always equals to $T_{pass}^{t}$ (the two test cases in $T_{pass}$ are two disjoint schemas), we need to consider other SUT to check this proposition. Specifically, we let $T_{pass\_temp} =$ \{$ t' , t'' $\}, where $t'$ = \{$(p_{1}, 0)$, $(p_{2}, 0)$, $(p_{3}, 1)$, $(p_{4}, 1)$ \}, and $t''$ = \{$(p_{1}, 0)$, $(p_{2}, 1)$, $(p_{3}, 1)$, $(p_{4}, 1)$ \}.  Next, we focus the test case $t_{temp}$ = \{$(p_{1}, 1$, $(p_{2}, 1)$, $(p_{3}, 1)$, $(p_{4}, 1)$ \}, and we have $T_{pass\_temp}^{t_{temp}}$ = \{ \{$(p_{3}, 1)$, $(p_{4}, 1)$ \}, \{$(p_{2}, 1)$, $(p_{3}, 1)$, $(p_{4}, 1)$ \} \}, while $T_{pass\_temp}^{t_{temp}\bigtriangleup}$ = \{ \{$(p_{2}, 1)$, $(p_{3}, 1)$, $(p_{4}, 1)$ \} \}. These two schema sets are not equal. Table \ref{ex:maximalhealthyintequal2} shows the schemas of $\{ s\ |\ s \preceq t_{temp}\ \&\&\ \forall m \in T_{pass\_temp}^{t_{temp}}, s \npreceq m \}$ and $\{ s\ |\ s \preceq t_{temp}\ \&\&\ \forall m \in T_{pass\_temp}^{t_{temp}\bigtriangleup}, s \npreceq m \}$, we find these two schema sets are still equal.
 
  \begin{table}[htbp]
   \centering
-  \caption{An example of the reduction to maximal schemas}
+  \caption{The second example of the reduction to maximal healthy schemas}
   \label{ex:maximalhealthyintequal2}
     \begin{tabular}{|c|c|} \hline
-     \multicolumn{2}{|c|}{$\{ s\ |\ s \preceq t_{7}\ \&\&\ \forall m \in T_{temp}^{t_{7}}, s \npreceq m \} $} \\ \hline
+     \multicolumn{2}{|c|}{$\{ s\ |\ s \preceq t_{temp}\ \&\&\ \forall m \in T_{pass\_temp}^{t_{temp}}, s \npreceq m \} $} \\ \hline
    $s_{31}$ & \{($p_{1}, 1$)\} \\
    $s_{51}$ & \{($p_{1}, 1$),($p_{2}, 1$)\} \\
    $s_{56}$ & \{($p_{1}, 1$),($p_{3}, 1$)\} \\
@@ -1381,7 +1355,7 @@ To depicts Proposition \ref{pro:healthysintequal2} more clearly, we next check t
     \end{tabular}%
 \quad
     \begin{tabular}{|c|c|} \hline
-   \multicolumn{2}{|c|}{$\{ s\ |\ s \preceq t_{7}\ \&\&\ \forall m \in T_{temp}^{t_{7}\bigtriangleup}, s \npreceq m \}$}\\ \hline
+   \multicolumn{2}{|c|}{$\{ s\ |\ s \preceq t_{temp}\ \&\&\ \forall m \in T_{pass\_temp}^{t_{temp}\bigtriangleup}, s \npreceq m \}$}\\ \hline
    $s_{31}$ & \{($p_{1}, 1$)\} \\
    $s_{51}$ & \{($p_{1}, 1$),($p_{2}, 1$)\} \\
    $s_{56}$ & \{($p_{1}, 1$),($p_{3}, 1$)\} \\
@@ -1471,7 +1445,6 @@ As we have shown B $\subseteq$ A, and A $\subseteq$ B, so A = B.
 
 \end{proof}
 
-%This proposition indicates for one specific schema $s$ and test case $t$, the schemas in one test case that are not $s$ and per-schemas of one specific schema, it must be the sub-schema or equal to the schemas in CMXS.
 
 In the equation of Proposition \ref{pro:subofCMXS}, the schemas of the left side, i.e., \{$s\ |\ s \preceq t\ \&\&\ s_{1} \npreceq s$\}, are the sub-schemas of test case $t$, but not the super-schemas of  schema $s_{1}$.  The right side set in this equation, i.e., \{$ s\ |\ \exists s_{1}' \in CMXS(s_{1}, t)$, $s \preceq s_{1}'$\}, are schemas which are sub-schemas of at least one schema in $CMXS(s_{1}, t)$. Proposition \ref{pro:subofCMXS} indicates that these two schema sets are equivalent.
 
@@ -1830,7 +1803,6 @@ According to Formula \ref{eq:psssecond}, the complexity of obtaining one pending
 
 \subsection{A case study of applying Formula \ref{eq:psssecond} }
 In this section, we will show a case study of how to obtain the pending schemas with Formula \ref{eq:psssecond}. For consistency, we use the example in the Section \ref{sec:motiv}. Next, we will show how to  apply Formula  \ref{eq:psssecond} to obtain the pending schemas of the failing test case $t_{5}$ after using FINOLP. Note that other approaches can be obtained in the same way.
-%  in the FINOLP. Others are shown in the appendix in a similar way.
 From Figure , we can learn that the maximal healthy schemas are the passing test cases themselves, which are $t_{1}$ ,..., and $t_{16}$. While the minimal faulty schemas are the MFS  (Other faulty schemas are the super schemas of this one).
 Then we can learn that.  Note that we can learn that .
 
@@ -1851,7 +1823,7 @@ Then we can learn that.  Note that we can learn that .
 %
 %approaches (my)
 
-\subsection{Does the exitentce of pending schemas contain some potential MFS which may be harmful}
+\subsection{Does the existence of pending schemas contain some potential MFS which may be harmful}
 In fact, this is the motivation
 
 
@@ -1906,31 +1878,8 @@ Another interesting futher work is to obtain a general theory of pending schemas
 %We will give the proofs of several important propositions.
 %
 %Proposition \ref{pro:subofCMXS}.
-%
-%
-%Proposition \ref{pro:subofCMXSfor2}.
-%
-%
-%Proposition \ref{pro:superofCMNS}.
-%
-%%Given a healthy schema $c_{1}$, a failing test case $t$, we have \{$c\ |\ c \preceq t\ \&\&\ c \npreceq c_{1}$\} $=$  \{$ c\ |\ \exists c_{1}' \in CMNS(c_{1}, t)$, $c_{1}' \preceq c$\}.
-%
-%
-%
-%Proposition \ref{pro:superofCMNS2}.
-%
-%
-%
-%
-%Proposition \ref{pro:identicialPending}.
-%
-%Given a failing test case $t$, a set of faulty schemas $FSS$, and a set of healthy schemas $HSS$, we have \{$ c\ |\ \exists c_{1}' \in CMXS(FSS^{\bot}, t)$, $c \preceq c_{1}'$ $\&\&$ $\exists c_{1}' \in CMNS($ $HSS^{\top}, t)$, $c_{1}' \preceq c$\} $=$  \{$ c\ |\ \exists c_{1}' \in CMXS(FSS, t)$, $c \preceq c_{1}'$ $\&\&$ $\exists c_{1}' \in CMNS(HSS, t)$, $c_{1}' \preceq c$\}.
-
-
 
 %\section{Other examples when applied the pending schemas}
-
-
 
 
 \begin{acks}
