@@ -27,7 +27,7 @@ One simple solution is to exhaustively list all the schemas in one failing test 
 
 For all of these, a metric should be proposed to assist in evaluating the completeness of MFS identification approaches, and it should be more efficient than a simple exhaustive testing. In this paper, we proposed the notion of \textbf{pending schemas}, which indicates the schemas that cannot be determined to be faulty or not. By calculating the number of pending schemas in one failing test case, we can easily assess the extent to which the MFS identification approaches are incomplete. In fact, by the use of pending schemas, we can also evaluate the incompleteness of traditional covering arrays.
 
-Furthermore, we theoretically analyzed the relationships among schemas by proposing nine novel propositions. Based on them, we gave three equivalent formulas, but with different complexities, to obtain the pending schemas. Among these formulas, the last formula helps to reduce the complexity of obtaining pending schemas from $O(2^{n})$ to $O(\tau^{|\mathcal{C}(T_{fail})^{t}|} \times \tau^{|T_{pass}^{t\bigtriangleup}|})$, where $\tau$ is the number of parameter values in the MFS, and $|\mathcal{C}(T_{fail})^{t}|$ and $|T_{pass}^{t\bigtriangleup}|$ are two relatively small numbers and independent on the number of parameters $n$ in one test case. The last formula is much more efficient at obtaining pending schemas when compared to the exhaustive methods which consecutively checks schemas in one failing test case, especially when $n$ is large.
+Furthermore, we theoretically analyzed the relationships among schemas by proposing several novel propositions. Based on them, we gave three equivalent formulas, but with different complexities, to obtain the pending schemas. Among these formulas, the last formula helps to reduce the complexity of obtaining pending schemas from $O(2^{n})$ to $O(\tau^{|\mathcal{C}(T_{fail})^{t}|} \times \tau^{|T_{pass}^{t\bigtriangleup}|})$, where $\tau$ is the number of parameter values in the MFS, and $|\mathcal{C}(T_{fail})^{t}|$ and $|T_{pass}^{t\bigtriangleup}|$ are two relatively small numbers and independent on the number of parameters $n$ in one test case. The last formula is much more efficient at obtaining pending schemas when compared to the exhaustive methods which consecutively checks schemas in one failing test case, especially when $n$ is large.
 
 We conducted a series empirical studies on some real software systems with various number of parameters and values. We first evaluated the incompleteness of traditional covering arrays and different fault localization approaches in CT. We also compared the efficiency of three formulas in terms of obtaining pending schemas. Our results mainly shows that the incompleteness in very common in the covering arrays and  MFS identification approaches. We also observed that Formula 3 is the most efficient formula among others in most cases.
 
@@ -1810,6 +1810,8 @@ Then we can learn that.  Note that we can learn that .
 \section{Empirical studies}\label{sec:emp}
 
 
+\subsection{Experimental subjects}
+
 \subsection{The pending schemas for covering arrays}
 
 %subjects (30 existing wildly used)
@@ -1823,7 +1825,7 @@ Then we can learn that.  Note that we can learn that .
 %approaches (my)
 
 \subsection{Does the existence of pending schemas contain some potential MFS which may be harmful}
-In fact, this is the motivation
+%In fact, this is the motivation
 
 
 \subsection{The characteristics of pending schemas with various types of MFS (multiple, overlapped, single, low-high degrees)}
@@ -1862,13 +1864,12 @@ Our previous work \cite{niu2013identifying} proposed an approach that utilizes t
 \section{Conclusion}\label{sec:conclusion}
 To identify the MFS in the SUT is important because it provides additional supports to find the cause of the failure. Although many efforts have been proposed to make the MFS identification approaches more efficient and effective, the existence of pending schemas still make them incomplete, which would be hidden dangers to the software under testing. Hence, to identify these pending schemas is of great importance to reveal such potential risks.
 
-In this paper, we studied the characteristics of the relationships among faulty schemas, healthy schemas, minimal failure-causing schemas, and maximal healthy schemas. The subsuming relationships among them form the basis of the methodology for pending schemas. Particulary, we proposed several propositions to formulate the set of pending schemas and give three equivalent formulas to obtain them in one test case. Among the three formulas, the last formula reduce the complexity of obtaining pending schemas from $O(2^{n})$ to $O(\tau^{|\mathcal{C}(T_{fail})^{t}|} \times \tau^{|T_{pass}^{t\bigtriangleup}|})$, where $n$ is the number of factors in the software, while $|\mathcal{C}(T_{fail})^{t}|$ and $|T_{pass}^{t\bigtriangleup}|$ are two relatively small numbers and independent on the number of $n$.
+In this paper, we studied the characteristics of the relationships among faulty schemas, healthy schemas, and tests. We further introduced the notion of determinability of schema, as well as its formal definition.  
+Based on these, we gave the definition of pending schema, as well as some important properties of it. After that, we focus on the methods of how to obtain the pending schemas in the test cases. Specifically, we give three equivalent formulas to obtain them in one test case. Among the three formulas, the last formula reduce the complexity of obtaining pending schemas from $O(2^{n})$ to $O(\tau^{|\mathcal{C}(T_{fail})^{t}|} \times \tau^{|T_{pass}^{t\bigtriangleup}|})$, where $n$ is the number of factors in the software, while $|\mathcal{C}(T_{fail})^{t}|$ and $|T_{pass}^{t\bigtriangleup}|$ are two relatively small numbers and independent on the number of $n$.
 
 We conduct a series empirical studies on some real software systems with various number of parameters and values. Our results shows that the incompleteness in very common in the covering arrays and MFS identification approaches. We also observed that the third proposed formula is the most efficient when compared others in most cases.
 
-As a future work, it is appealing to take the advantages of the pending schemas to assist in the MFS identification approaches. More specifically, we would like to develop a new framework for MFS identification, which take the pending schemas as a indicator. That is, any MFS identification algorithm that runs on this framework aims to empty the set of pending schemas. It is of interest to evaluate the efficiency and effectiveness of this framework with respect to various MFS identification approaches that run on it.
-
-Another interesting future work is to obtain a general theory of pending schemas, faulty schemas, and healthy schemas.
+As a future work, it is appealing to take the advantages of the pending schemas to assist in the MFS identification approaches. More specifically, we would like to develop a new framework for MFS identification, which take the pending schemas as a indicator. That is, any MFS identification algorithm that runs on this framework aims to empty the set of pending schemas. It is of interest to evaluate the efficiency and effectiveness of this framework with respect to various MFS identification approaches that run on it. Another interesting future work is to obtain a general theory of pending schemas, faulty schemas, and healthy schemas.
 
 % Appendix
 \appendix
