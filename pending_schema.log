@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6500) (preloaded format=pdflatex 2017.12.21)  10 OCT 2018 17:25
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6500) (preloaded format=pdflatex 2017.12.21)  10 OCT 2018 22:27
 entering extended mode
 **./pending_schema.tex
 (pending_schema.tex
@@ -1188,21 +1188,37 @@ mi/m/it/10 s[]; t\LMS/ntxsy/m/n/10 º [] \OML/nxlmi/m/it/10 CMNS\LMS/ntxsy/m/n/1
  []
 
 [36.36] [37.37]
-Underfull \vbox (badness 2698) has occurred while \output is active []
+LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/it' will be
+(Font)              scaled to size 9.0pt on input line 1811.
 
- [38.38]
-Processing 'acks' comment.
+Overfull \hbox (27.04486pt too wide) in paragraph at lines 1862--1863
+[]\T1/LinuxLibertineT-TLF/m/n/10 (-20) At last, we have $\OML/nxlmi/m/it/10 CMX
+S\LMS/ntxsy/m/n/10 ¹\OML/nxlmi/m/it/10 MFS[]; t[]\LMS/ntxsy/m/n/10 º$\T1/LinuxL
+ibertineT-TLF/m/n/10 (-20) , $\OML/nxlmi/m/it/10 CMNS\LMS/ntxsy/m/n/10 ¹\OML/nx
+lmi/m/it/10 T[]; t[]\LMS/ntxsy/m/n/10 º$\T1/LinuxLibertineT-TLF/m/n/10 (-20) , 
+and {$\U/ntxmia/m/it/10 \\OML/nxlmi/m/it/10 s[] \LMS/ntxsy/m/n/10 2 \OML/nxlmi/
+m/it/10 CMNS\LMS/ntxsy/m/n/10 ¹\OML/nxlmi/m/it/10 T[]; t[]\LMS/ntxsy/m/n/10 º$\
+T1/LinuxLibertineT-TLF/m/n/10 (-20) , $\OML/nxlmi/m/it/10 s[] \LMS/ntxsy/m/n/10
+ 2 \OML/nxlmi/m/it/10 CMXS\LMS/ntxsy/m/n/10 ¹\OML/nxlmi/m/it/10 MFS[]; t[]\LMS/
+ntxsy/m/n/10 º$\T1/LinuxLibertineT-TLF/m/n/10 (-20) ,
+ []
+
+[38.38] [39.39] Processing 'acks' comment.
+Underfull \vbox (badness 4441) has occurred while \output is active []
+
+ [40.40]
 \openout4 = `comment.cut'.
 
- Comment 'acks' writing to comment.cut.
-Straight input of comment.cut. (comment.cut) (pending_schema.bbl
+
+Comment 'acks' writing to comment.cut. Straight input of comment.cut.
+(comment.cut) (pending_schema.bbl
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/it' will be
 (Font)              scaled to size 8.0pt on input line 47.
 
-Underfull \vbox (badness 1881) has occurred while \output is active []
+Underfull \vbox (badness 2189) has occurred while \output is active []
 
- [39.39]))
-[40.40]
+ [41.41]))
+[42.42]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 146.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 146.
  (pending_schema.aux)
@@ -1215,45 +1231,46 @@ Package rerunfilecheck Warning: File `pending_schema.out' has changed.
 (rerunfilecheck)                or use package `bookmark'.
 
 Package rerunfilecheck Info: Checksums for `pending_schema.out':
-(rerunfilecheck)             Before: 6A845FC0A5570F888E7AA57243BEBCF5;9697
-(rerunfilecheck)             After:  8F2CAE96981651927E5832193C43E53A;7087.
+(rerunfilecheck)             Before: C5A9CDF6033E6AD081E56944CBBFEA1C;9697
+(rerunfilecheck)             After:  60A214B45BB6736E1D68734B7357FA41;7087.
  )
 (\end occurred inside a group at level 1)
 
 ### simple group (level 1) entered at line 1605 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 19547 strings out of 493312
- 296393 string characters out of 3143321
- 431727 words of memory out of 3000000
- 21873 multiletter control sequences out of 15000+200000
- 196024 words of font info for 465 fonts, out of 3000000 for 9000
+ 19568 strings out of 493312
+ 296852 string characters out of 3143321
+ 431986 words of memory out of 3000000
+ 21878 multiletter control sequences out of 15000+200000
+ 202272 words of font info for 471 fonts, out of 3000000 for 9000
  1302 hyphenation exceptions out of 8191
- 60i,17n,94p,1934b,610s stack positions out of 5000i,500n,10000p,200000b,50000s
-{C:/CTEX/MikTex2.9/fonts/enc/dvips/libertine/lbtn_ki75ao.enc}{C
-:/CTEX/MikTex2.9/fonts/enc/dvips/newtx/libertinealt.enc}{C:/CTEX/MikTex2.9/font
-s/enc/dvips/libertine/lbtn_ncsllp.enc}{C:/CTEX/MikTex2.9/fonts/enc/dvips/libert
-ine/lbtn_7grukw.enc}{C:/CTEX/MikTex2.9/fonts/enc/dvips/libertine/lbtn_nh77jq.en
-c}{C:/CTEX/MikTex2.9/fonts/enc/dvips/libertine/lbtn_naooyc.enc}{C:/CTEX/MikTex2
-.9/fonts/enc/dvips/libertine/lbtn_oexx6f.enc}{C:/CTEX/MikTex2.9/fonts/enc/dvips
-/base/8r.enc}{C:/CTEX/MikTex2.9/fonts/enc/dvips/libertine/lbtn_76gpa5.enc}{C:/C
-TEX/MikTex2.9/fonts/enc/dvips/libertine/lbtn_25tcsq.enc}<C:/CTEX/MikTex2.9/font
+ 60i,17n,94p,1934b,654s stack positions out of 5000i,500n,10000p,200000b,50000s
+{C:/CTEX/MikTex2.9/fonts/enc/dvips/libertine/lbtn_25tcsq.enc}{C
+:/CTEX/MikTex2.9/fonts/enc/dvips/libertine/lbtn_ki75ao.enc}{C:/CTEX/MikTex2.9/f
+onts/enc/dvips/newtx/libertinealt.enc}{C:/CTEX/MikTex2.9/fonts/enc/dvips/libert
+ine/lbtn_ncsllp.enc}{C:/CTEX/MikTex2.9/fonts/enc/dvips/libertine/lbtn_7grukw.en
+c}{C:/CTEX/MikTex2.9/fonts/enc/dvips/libertine/lbtn_nh77jq.enc}{C:/CTEX/MikTex2
+.9/fonts/enc/dvips/libertine/lbtn_naooyc.enc}{C:/CTEX/MikTex2.9/fonts/enc/dvips
+/libertine/lbtn_oexx6f.enc}{C:/CTEX/MikTex2.9/fonts/enc/dvips/base/8r.enc}{C:/C
+TEX/MikTex2.9/fonts/enc/dvips/libertine/lbtn_76gpa5.enc}<C:/CTEX/MikTex2.9/font
 s/type1/public/libertine/LinBiolinumT.pfb><C:/CTEX/MikTex2.9/fonts/type1/public
 /libertine/LinBiolinumTB.pfb><C:/CTEX/MikTex2.9/fonts/type1/public/libertine/Li
-nLibertineT.pfb><C:/CTEX/MikTex2.9/fonts/type1/public/libertine/LinLibertineTB.
-pfb><C:/CTEX/MikTex2.9/fonts/type1/public/libertine/LinLibertineTBI.pfb><C:/CTE
-X/MikTex2.9/fonts/type1/public/libertine/LinLibertineTI.pfb><C:/CTEX/MikTex2.9/
-fonts/type1/public/newtx/fxlri-5letters.pfb><C:/CTEX/MikTex2.9/fonts/type1/publ
-ic/newtx/fxlri-7letters.pfb><C:/CTEX/MikTex2.9/fonts/type1/public/newtx/ntxsyra
-lt.pfb><C:/CTEX/MikTex2.9/fonts/type1/public/txfonts/rtxmi.pfb><C:/CTEX/MikTex2
-.9/fonts/type1/public/txfonts/rtxr.pfb><C:/CTEX/MikTex2.9/fonts/type1/public/ne
-wtx/txexs.pfb><C:/CTEX/MikTex2.9/fonts/type1/public/txfonts/txsya.pfb><C:/CTEX/
-MikTex2.9/fonts/type1/public/txfonts/txsyb.pfb><C:/CTEX/MikTex2.9/fonts/type1/p
-ublic/txfonts/txsyc.pfb><C:/CTEX/MikTex2.9/fonts/type1/public/newtx/txsys.pfb><
-C:/CTEX/MikTex2.9/fonts/type1/public/newtx/zxlri.pfb>
-Output written on pending_schema.pdf (40 pages, 2416342 bytes).
+nBiolinumTI.pfb><C:/CTEX/MikTex2.9/fonts/type1/public/libertine/LinLibertineT.p
+fb><C:/CTEX/MikTex2.9/fonts/type1/public/libertine/LinLibertineTB.pfb><C:/CTEX/
+MikTex2.9/fonts/type1/public/libertine/LinLibertineTBI.pfb><C:/CTEX/MikTex2.9/f
+onts/type1/public/libertine/LinLibertineTI.pfb><C:/CTEX/MikTex2.9/fonts/type1/p
+ublic/newtx/fxlri-5letters.pfb><C:/CTEX/MikTex2.9/fonts/type1/public/newtx/fxlr
+i-7letters.pfb><C:/CTEX/MikTex2.9/fonts/type1/public/newtx/ntxsyralt.pfb><C:/CT
+EX/MikTex2.9/fonts/type1/public/txfonts/rtxmi.pfb><C:/CTEX/MikTex2.9/fonts/type
+1/public/txfonts/rtxr.pfb><C:/CTEX/MikTex2.9/fonts/type1/public/newtx/txexs.pfb
+><C:/CTEX/MikTex2.9/fonts/type1/public/txfonts/txsya.pfb><C:/CTEX/MikTex2.9/fon
+ts/type1/public/txfonts/txsyb.pfb><C:/CTEX/MikTex2.9/fonts/type1/public/txfonts
+/txsyc.pfb><C:/CTEX/MikTex2.9/fonts/type1/public/newtx/txsys.pfb><C:/CTEX/MikTe
+x2.9/fonts/type1/public/newtx/zxlri.pfb>
+Output written on pending_schema.pdf (42 pages, 2454777 bytes).
 PDF statistics:
- 2641 PDF objects out of 2984 (max. 8388607)
- 183 named destinations out of 1000 (max. 500000)
- 58147 words of extra memory for PDF output out of 61914 (max. 10000000)
+ 2667 PDF objects out of 2984 (max. 8388607)
+ 188 named destinations out of 1000 (max. 500000)
+ 62243 words of extra memory for PDF output out of 74296 (max. 10000000)
 

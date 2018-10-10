@@ -1801,10 +1801,117 @@ Table \ref{examleofeqpsssecond} shows this result $CMXS(FSS, t_{7})$ $CMNS(HSS, 
 According to Formula \ref{eq:psssecond}, the complexity of obtaining one pending schema is O($|\mathcal{C}(T_{fail})| + |T_{pass}|^{2} + \tau^{|\mathcal{C}(T_{fail})^{t}|} \times \tau^{|T_{pass}^{t\bigtriangleup}|}$). This is because we first need to obtain $\mathcal{C}(T_{fail})^{t}$ and $T_{pass}^{t\bigtriangleup}$, for which the complexities are $O(|\mathcal{C}(T_{fail})|)$ and $O(|T_{pass}|^{2})$. Then, to obtain one pending schema, we only need to search the schemas in $CMXS(\mathcal{C}(T_{fail})^{t}, t)$ and $CMNS(T_{pass}^{t\bigtriangleup}, t)$, of which the complexity are O($\tau^{|\mathcal{C}(T_{fail})^{t}|}$) and O($\tau^{|T_{pass}^{t\bigtriangleup}|}$), respectively. After that, we need to check each pair of schemas in these two sets, to find whether exists $c_{1} \in CMXS(\mathcal{C}(T_{fail})^{t}, t)$, $c_{2} \in CMNS(T_{pass}^{t\bigtriangleup}, t)$, such that $c_{2} \preceq c_{1}$. If so, then both $c_{2}$ and $c_{1}$ satisfy Formula \ref{eq:psssecond}. Furthermore, $\forall c_{3}, c_{2} \preceq c_{3} \preceq c_{1}$, $c_{3}$ also satisfy Formula \ref{eq:psssecond}. Hence, the complexity of obtaining one pending schema is $O(|\mathcal{C}(T_{fail})| + |T_{pass}|^{2} + \tau^{|\mathcal{C}(T_{fail})^{t}|} \times \tau^{|T_{pass}^{t\bigtriangleup}|})  \sim O( \tau^{|\mathcal{C}(T_{fail})^{t}|} \times \tau^{|T_{pass}^{t\bigtriangleup}|}) $. Note that with Formula \ref{eq:psssecond}, we have eliminated the influence of the number $n$ (See Formula \ref{eq:pssfirst} and Formula \ref{eq:pssfirst_mutated}) to obtaining the pending schemas.
 
 \subsection{A case study of applying Formula \ref{eq:psssecond} }
-In this section, we will show a case study of how to obtain the pending schemas with Formula \ref{eq:psssecond}. For consistency, we use the example in the Section \ref{sec:motiv}. Next, we will show how to  apply Formula  \ref{eq:psssecond} to obtain the pending schemas of the failing test case $t_{5}$ after using FINOLP. Note that other approaches can be obtained in the same way.
-From Figure , we can learn that the maximal healthy schemas are the passing test cases themselves, which are $t_{1}$ ,..., and $t_{16}$. While the minimal faulty schemas are the MFS  (Other faulty schemas are the super schemas of this one).
-Then we can learn that.  Note that we can learn that .
+In this section, we will give a complete a case study of how to obtain the pending schemas in one test case with Formula \ref{eq:psssecond}. In order to give a intuitional evaluation of this formula, we use the SUT in the Section \ref{sec:motiv}. Specifically, we will focus on  how to apply Formula  \ref{eq:psssecond} to obtain the pending schemas of the failing test case $t_{5}$ after using approach \emph{FINOLP}. Note that the pending schemas in the failing test case after using other approaches can also be obtained in the same way.
 
+We first need to convert the intuitive information shown in Figure \ref{fig_finovlp_multi} to the formal description. As a result, we obtain the information that we need to use in Table \ref{ex:sutwithfinolp}. In this table, we have the passing test set $T_{pass}$, minimal faulty schema set $MFS$, and the failing test case $t_{5}$ we focus.
+
+
+\begin{table}[htbp]
+  \centering
+  \caption{The SUT obtained in the motivation examples after using \emph{FINOLP}}
+  \label{ex:sutwithfinolp}
+    \begin{tabular}{|c|c|} \hline
+     \multicolumn{2}{|c|}{\textbf{Passing test Case set $T_{pass}$}} \\ \hline
+  $t_{1}$ & \{($p_{1}, 0$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 0$)\}\\
+  $t_{2}$ & \{($p_{1}, 1$), ($p_{2}, 1$), ($p_{3}, 0$), ($p_{4}, 0$)\}\\
+  $t_{3}$ & \{($p_{1}, 0$), ($p_{2}, 1$), ($p_{3}, 1$), ($p_{4}, 0$)\}\\
+  $t_{4}$ & \{($p_{1}, 0$), ($p_{2}, 1$), ($p_{3}, 0$), ($p_{4}, 1$)\}\\
+
+
+  $t_{8}$ & \{($p_{1}, 0$), ($p_{2}, 1$), ($p_{3}, 0$), ($p_{4}, 1$)\}\\
+  $t_{9}$ & \{($p_{1}, 0$), ($p_{2}, 1$), ($p_{3}, 1$), ($p_{4}, 0$)\}\\
+
+  $t_{11}$ & \{($p_{1}, 0$), ($p_{2}, 0$), ($p_{3}, 0$), ($p_{4}, 0$)\}\\
+  $t_{12}$ & \{($p_{1}, 1$), ($p_{2}, 1$), ($p_{3}, 0$), ($p_{4}, 0$)\}\\
+  $t_{15}$ & \{($p_{1}, 0$), ($p_{2}, 1$), ($p_{3}, 0$), ($p_{4}, 0$)\}\\
+
+  \hline
+
+     \multicolumn{2}{|c|}{\textbf{Minimal Faulty schemas $MFS$}} \\ \hline
+  $s_{1}$ & \{($p_{3}, 1$), ($p_{4}, 1$)\} \\
+  $s_{2}$ & \{($p_{1}, 1$), ($p_{2}, 0$)\} \\ \hline
+  \multicolumn{2}{|c|}{\textbf{The failing test case $t_{5}$}} \\ \hline
+  $t_{5}$ & \{($p_{1}, 1$), ($p_{2}, 0$), ($p_{3}, 1$), ($p_{4}, 1$)\} \\ \hline
+    \end{tabular}%
+\end{table}
+
+Based on the data shown in Table \ref{ex:sutwithfinolp}, we can obtain the two schema sets, that are  $T_{pass}^{t_{5}\bigtriangleup}$, and $MFS^{t_{5}}$, respectively, as shown in Table \ref{ex:sutwithfinolptwodata}
+
+\begin{table}[htbp]
+  \centering
+  \caption{Schemas of $T_{pass}^{t_{5}\bigtriangleup}$ and $MFS^{t_{5}}$}
+  \label{ex:sutwithfinolptwodata}
+    \begin{tabular}{|c|c|} \hline
+     \multicolumn{2}{|c|}{$T_{pass}^{t_{5}\bigtriangleup}$} \\ \hline
+  $s_{3}$ & \{($p_{1}, 1$)\}\\
+  $s_{4}$ & \{($p_{2}, 0$)\}\\
+  $s_{5}$ & \{($p_{3}, 1$)\}\\
+  $s_{6}$ & \{($p_{4}, 1$)\}\\
+
+  \hline
+   \end{tabular}
+   \quad
+  \begin{tabular}{|c|c|} \hline
+     \multicolumn{2}{|c|}{$MFS^{t_{5}}$} \\ \hline
+  $s_{1}$ & \{($p_{3}, 1$), ($p_{4}, 1$)\} \\
+  $s_{2}$ & \{($p_{1}, 1$), ($p_{2}, 0$)\} \\ \hline
+    \end{tabular}%
+\end{table}
+
+
+ At last, we have  $CMXS(MFS^{t_{5}}, t_{5})$,  $CMNS(T_{pass}^{t_{5}\bigtriangleup}, t_{5})$, and \{$\exists s_{1}' \in CMNS(T_{pass}^{t_{5}\bigtriangleup}, t_{5})$, $s_{2}' \in CMXS(MFS^{t_{5}}, t_{5})$, $s_{1}' \preceq s \preceq s_{2}'$\} shown in Table \ref{resultofcasestudy}.  In this table, we can learn the four schemas in   \{$\exists s_{1}' \in CMNS(T_{pass}^{t_{5}\bigtriangleup}, t_{5})$, $s_{2}' \in CMXS(MFS^{t_{5}}, t_{5})$, $s_{1}' \preceq s \preceq s_{2}'$\}  are equal to the pending schemas listed in Figure \ref{fig_finovlp_multi}. From this case study, we can learn that with Formula \ref{eq:psssecond}, we do not need to check each schema in the test cases (the complexity is exponentially with the number of parameters in the SUT). Instead, we only need to focus the maximal healthy schemas and minimal faulty schemas in the test case under analysis. Hence, our approach is efficient, especially when the number of parameters is large.
+
+
+ \begin{table}[htbp]
+  \centering
+  \caption{The results of applying Formula \ref{eq:psssecond}}
+  \label{resultofcasestudy}
+  \begin{tabular}{|c|c|} \hline
+     \multicolumn{2}{|c|}{$CMXS(MFS^{t_{5}}, t_{5})$} \\ \hline
+   $s_{7}$ & \{($p_{1}, 1$),($p_{3}, 1$)\} \\
+   $s_{8}$ & \{($p_{1}, 1$),($p_{4}, 1$)\} \\
+   $s_{9}$ & \{($p_{2}, 0$),($p_{3}, 1$)\} \\
+   $s_{10}$ & \{($p_{2}, 0$),($p_{4}, 1$)\} \\
+    \hline
+    \end{tabular}%
+  \quad
+    \begin{tabular}{|c|c|} \hline
+     \multicolumn{2}{|c|}{$CMNS(T_{pass}^{t_{5}\bigtriangleup}, t_{5})$} \\ \hline
+
+   $s_{2}$ & \{($p_{1}, 1$),($p_{2}, 0$)\} \\
+
+   $s_{7}$ & \{($p_{1}, 1$),($p_{3}, 1$)\} \\
+
+   $s_{8}$ & \{($p_{1}, 1$),($p_{4}, 1$)\} \\
+
+   $s_{9}$ & \{($p_{2}, 0$),($p_{3}, 1$)\} \\
+
+   $s_{10}$ & \{($p_{2}, 0$),($p_{4}, 1$)\} \\
+
+   $s_{1}$ & \{($p_{3}, 1$), ($p_{4}, 1$)\} \\
+
+   $s_{11}$ & \{($p_{1}, 1$),($p_{2}, 0$), ($p_{3}, 1$)\} \\
+
+   $s_{12}$ & \{($p_{1}, 1$),($p_{2}, 0$),($p_{4}, 1$)\} \\
+
+   $s_{13}$ & \{($p_{1}, 1$),($p_{3}, 1$), ($p_{4}, 1$)\} \\
+
+   $s_{14}$ & \{($p_{2}, 0$),($p_{3}, 1$), ($p_{4}, 1$)\} \\
+
+   $s_{15}$ & \{($p_{1}, 1$),($p_{2}, 0$),($p_{3}, 1$),($p_{4}, 1$)\} \\
+
+    \hline
+    \end{tabular}%
+   \quad
+    \begin{tabular}{|c|c|} \hline
+   \multicolumn{2}{|c|}{\{$\exists s_{1}' \in CMNS(T_{pass}^{t_{5}\bigtriangleup}, t_{5})$, $s_{2}' \in CMXS(MFS^{t_{5}}, t_{5})$, $s_{1}' \preceq s \preceq s_{2}'$\}}\\ \hline
+   $s_{7}$ & \{($p_{1}, 1$),($p_{3}, 1$)\}  $\rightarrow$  (1, -, 1, -) \\
+   $s_{8}$ & \{($p_{1}, 1$),($p_{4}, 1$)\}  $\rightarrow$  (1, -, -, 1) \\
+   $s_{9}$ & \{($p_{2}, 0$),($p_{3}, 1$)\}  $\rightarrow$  (-, 0, 1, -) \\
+   $s_{10}$ & \{($p_{2}, 0$),($p_{4}, 1$)\} $\rightarrow$  (-, 0, -, 1) \\
+   \hline
+    \end{tabular}%
+\end{table}
 
 
 \section{Empirical studies}\label{sec:emp}
@@ -1864,7 +1971,7 @@ Our previous work \cite{niu2013identifying} proposed an approach that utilizes t
 \section{Conclusion}\label{sec:conclusion}
 To identify the MFS in the SUT is important because it provides additional supports to find the cause of the failure. Although many efforts have been proposed to make the MFS identification approaches more efficient and effective, the existence of pending schemas still make them incomplete, which would be hidden dangers to the software under testing. Hence, to identify these pending schemas is of great importance to reveal such potential risks.
 
-In this paper, we studied the characteristics of the relationships among faulty schemas, healthy schemas, and tests. We further introduced the notion of determinability of schema, as well as its formal definition.  
+In this paper, we studied the characteristics of the relationships among faulty schemas, healthy schemas, and tests. We further introduced the notion of determinability of schema, as well as its formal definition.
 Based on these, we gave the definition of pending schema, as well as some important properties of it. After that, we focus on the methods of how to obtain the pending schemas in the test cases. Specifically, we give three equivalent formulas to obtain them in one test case. Among the three formulas, the last formula reduce the complexity of obtaining pending schemas from $O(2^{n})$ to $O(\tau^{|\mathcal{C}(T_{fail})^{t}|} \times \tau^{|T_{pass}^{t\bigtriangleup}|})$, where $n$ is the number of factors in the software, while $|\mathcal{C}(T_{fail})^{t}|$ and $|T_{pass}^{t\bigtriangleup}|$ are two relatively small numbers and independent on the number of $n$.
 
 We conduct a series empirical studies on some real software systems with various number of parameters and values. Our results shows that the incompleteness in very common in the covering arrays and MFS identification approaches. We also observed that the third proposed formula is the most efficient when compared others in most cases.
